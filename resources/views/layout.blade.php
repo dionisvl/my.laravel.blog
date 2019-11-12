@@ -1,23 +1,27 @@
-<? $bp = ''//base prefix?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-          itemprop="description"
-          property="og:description"
-          content="<?if (!empty($post->description)){?>{{$post->description}}<?} else {?>Cправочник по тематике программирования на языках PHP, JS.<?}?>"
-    >
-    <!-- favicon icon -->
+    @if(!empty($post))
+        <title>{{$post->getTitle()}}</title>
+        <meta property="og:title" content="{{$post->getTitle()}}"/>
+        <meta property="og:description" content="{{$post->getDescription()}}"/>
+        <meta name='description' itemprop='description' content='{{$post->getDescription()}}'/>
+        <meta property="og:image" content="{{$post->getImage()}}"/>
+        <meta property="og:image:url" content="{{$post->getImage()}}"/>
+    @else
+        <title>
+            @isset($title)
+                {{ $title }} |
+            @endisset
+            {{ config('app.name') }}
+        </title>
+    @endif
 
-    <title><?
-        if (Route::getCurrentRoute()->uri() == '/')
-        {
-            echo 'WIKI SNTA, Блог программиста, лучшие практики php, js, css';
-        }
-        else if (!empty($post->title)){?>{{$post->title}}<?}?></title>
+
+    <meta name="yandex-verification" content="aeb4e0b17d9f0967"/>
 
     <!-- common css -->
     <link rel="stylesheet" href="/css/front.css">
@@ -27,12 +31,13 @@
 
 
     <!-- Initialize EnlighterJS -->
-    <link rel="stylesheet" type="text/css" href="/js/enlighterjs/EnlighterJS.min.css" />
+    <link rel="stylesheet" type="text/css" href="/js/enlighterjs/EnlighterJS.min.css"/>
     <script type="text/javascript" src="/js/enlighterjs/MooTools.min.js"></script>
     <script type="text/javascript" src="/js/enlighterjs/EnlighterJS.min.js"></script>
-    <meta name="EnlighterJS" content="Advanced javascript based syntax highlighting" data-indent="4" data-selector-block="pre" data-selector-inline="code" data-language="js" />
+    <meta name="EnlighterJS" content="Advanced javascript based syntax highlighting" data-indent="4"
+          data-selector-block="pre" data-selector-inline="code" data-language="js"/>
     <!-- Initialize EnlighterJS END -->
-    <? require($_SERVER['DOCUMENT_ROOT'].'/tracking.php')?>
+    <? require($_SERVER['DOCUMENT_ROOT'] . '/tracking.php')?>
 </head>
 
 <body>
@@ -71,11 +76,11 @@
                         <li><a href="/register">Register</a></li>
                         <li><a href="/login">Login</a></li>
                     @endif
-                        <li>
-                            <button class="btn btn-default show_toggle_invokers" data-to-show="#search_block">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </li>
+                    <li>
+                        <button class="btn btn-default show_toggle_invokers" data-to-show="#search_block">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </li>
 
                 </ul>
 
@@ -103,6 +108,11 @@
             @if(session('status'))
                 <div class="alert alert-info">
                     {{session('status')}}
+                </div>
+            @endif
+            @if(session('dangerStatus'))
+                <div class="alert alert-danger">
+                    {{session('dangerStatus')}}
                 </div>
             @endif
         </div>
@@ -252,7 +262,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">&copy; 2019 <a href="#">Wiki Blog, </a> Designed with <i
-                                class="fa fa-heart"></i> by <a href="#">SNTA</a>
+                            class="fa fa-heart"></i> by <a href="#">SNTA</a>
                     </div>
                 </div>
             </div>

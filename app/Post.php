@@ -17,7 +17,7 @@ class Post extends Model
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
-    protected $fillable = ['title','content', 'date', 'description'];
+    protected $fillable = ['title', 'content', 'date', 'description', 'views_count'];
 
     public function category()
     {
@@ -77,15 +77,16 @@ class Post extends Model
 
     public function removeImage()
     {
-        if($this->image != null)
-        {
+        if ($this->image != null) {
             Storage::delete('uploads/' . $this->image);
         }
     }
 
     public function uploadImage($image)
     {
-        if($image == null) { return; }
+        if ($image == null) {
+            return;
+        }
 
         $this->removeImage();
         $filename = str_random(10) . '.' . $image->extension();
@@ -96,25 +97,29 @@ class Post extends Model
 
     public function getImage()
     {
-        if($this->image == null)
-        {
+        if ($this->image == null) {
+            if(\Route::getCurrentRoute()->uri() == '/'){
+                return '/img/no-image.png';
+            }
             return '/img/no-image.png';
         }
-
         return '/uploads/' . $this->image;
-
     }
 
     public function setCategory($id)
     {
-        if($id == null) {return;}
+        if ($id == null) {
+            return;
+        }
         $this->category_id = $id;
         $this->save();
     }
 
     public function setTags($ids)
     {
-        if($ids == null){return;}
+        if ($ids == null) {
+            return;
+        }
 
         $this->tags()->sync($ids);
     }
@@ -133,8 +138,7 @@ class Post extends Model
 
     public function toggleStatus($value)
     {
-        if($value == null)
-        {
+        if ($value == null) {
             return $this->setDraft();
         }
 
@@ -155,8 +159,7 @@ class Post extends Model
 
     public function toggleFeatured($value)
     {
-        if($value == null)
-        {
+        if ($value == null) {
             return $this->setStandart();
         }
 
@@ -179,14 +182,14 @@ class Post extends Model
     public function getCategoryTitle()
     {
         return ($this->category != null)
-            ?   $this->category->title
-            :   'Нет категории';
+            ? $this->category->title
+            : 'Нет категории';
     }
 
     public function getTagsTitles()
     {
         return (!$this->tags->isEmpty())
-            ?   implode(', ', $this->tags->pluck('title')->all())
+            ? implode(', ', $this->tags->pluck('title')->all())
             : 'Нет тегов';
     }
 
@@ -200,7 +203,6 @@ class Post extends Model
         //return Carbon::createFromFormat('d/m/y', $this->date)->format('F d, Y');
         //return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('F d, Y');
         return DateTime::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('F d, Y');
-
     }
 
     public function hasPrevious()
@@ -237,16 +239,53 @@ class Post extends Model
 
     public static function getPopularPosts()
     {
-        return self::orderBy('views','desc')->take(3)->get();
+        return self::orderBy('views', 'desc')->take(3)->get();
     }
 
     public function getComments()
     {
-        return $this->comments()->where('status', 1)->get();
+        $comments = $this->comments()->where('status', 1)->get();
+//        foreach ($comments as $key => $comment){
+//            $comments[$key]->load('author');
+//            $comments[$key]->getRelations();
+//            //dd($comment);
+//        }
+        return $comments;
     }
 
     public function getUrl()
     {
-        return '//'.$_SERVER['HTTP_HOST'].'/post/'.$this->slug;
+        return '//' . $_SERVER['HTTP_HOST'] . '/post/' . $this->slug;
+    }
+
+    public function getViewsCount()
+    {
+        return empty($this->views_count) ? 1 : (int) $this->views_count;
+    }
+    public function updateViewsCount()
+    {
+//        if (session($this->id) != true){
+//            session([$this->id => true]);
+//        } else {
+//
+//        }
+        $this->views_count = $this->views_count + 1;
+        $this->save();
+    }
+    public function getDescription()
+    {
+        return empty($this->description) ? 'Cправочник по тематике программирования на языках PHP, JS' : strip_tags($this->description);
+    }
+
+    public function getTitle(){
+        if(\Route::getCurrentRoute()->uri() == '/'){
+            return 'WIKI, блог программиста, лучшие практики PHP, JS, SQL';
+        } else {
+            if (empty($this->title)){
+                return 'Лучшие практики PHP, JS, SQL, блог программиста.';
+            } else {
+                return $this->title;
+            }
+        }
     }
 }

@@ -18,11 +18,10 @@ class PostsController extends Controller
     public function index()
     {
         //$posts = Post::all()->reverse();
-            $posts = Post::orderBy('posts.created_at','desc')->get();
+        $posts = Post::orderBy('updated_at', 'DESC')->get();
 
-            //dd($posts);
-        return view('admin.posts.index',
-            ['posts' => $posts]);
+//        dd($posts);
+        return view('admin.posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -41,16 +40,16 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' =>'required',
-            'content'   =>  'required',
-            'date'  =>  'required',
-            'image' =>  'nullable|image'
+            'title' => 'required',
+            'content' => 'required',
+            'date' => 'required',
+            'image' => 'nullable|image'
         ]);
 
         $post = Post::add($request->all());
@@ -66,7 +65,7 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -77,14 +76,14 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $post = Post::find($id);
-        $categories = Category::pluck('title','id')->all();
-        $tags = Tag::pluck('title','id')->all();
+        $categories = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
         $selectedTags = $post->tags->pluck('id')->all();
 
         return view('admin.posts.edit', compact(
@@ -98,8 +97,8 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -126,7 +125,7 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -10,6 +10,11 @@
             <form action="/subscribe" method="post">
                 {{csrf_field()}}
                 <input type="email" placeholder="Your email address" name="email">
+                <label class="privacy-box"> <input class="form-control" type="checkbox" required="" checked="">
+                    <p>
+                        Соглашаюсь на <a href="/privacy">обработку</a> персональных данных
+                    </p>
+                </label>
                 <input type="submit" value="Subscribe Now"
                        class="text-uppercase text-center btn btn-subscribe">
             </form>

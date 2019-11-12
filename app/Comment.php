@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    public function post(){
+    public function post()
+    {
         return $this->belongsTo(Post::class);
     }
 
-    public function author(){
-        return $this->belongsTo(User::class);
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function allow(){

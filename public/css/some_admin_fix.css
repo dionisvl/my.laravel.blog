@@ -1,0 +1,13 @@
+#cke_1_contents{
+    height: 800px!important;
+}
+table.table form {
+    display: inline-block;
+}
+
+button.delete {
+    background: transparent;
+    border: none;
+    color: #337ab7;
+    padding: 0;
+}

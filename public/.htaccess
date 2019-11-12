@@ -1,9 +1,15 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^147\.78\.67\.252
+RewriteRule (.*) https://bestwaypractice.ru/$1 [R=301,L]
+
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
 
-    RewriteEngine On
+
+
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .

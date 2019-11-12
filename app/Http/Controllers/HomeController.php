@@ -25,7 +25,9 @@ class HomeController extends Controller
     public function contacts(){
         return view('pages.contacts');
     }
-
+    public function privacy(){
+        return view('pages.privacy');
+    }
     public function highlighting($matches, $edge_tag = 'div')
     {
         // $matches[0] -  полное вхождение шаблона
@@ -45,15 +47,8 @@ class HomeController extends Controller
 //        //$highlight_pattern = '#<code>((.|\s)+?)</code>#';
 //        $post->content = stripslashes(preg_replace_callback('#<code>((.|\s)+?)</code>#', array($this,'highlighting'), $post->content)) ;
         mb_internal_encoding("UTF-8");
-
-        //$post->title = iconv_substr ( $post->title, 0, 45);
-        $rText = iconv_substr('Cправочник по тематике программирования на языках PHP, JS.'.$post->title, 0, 100);
-        $post->description = $rText;
-
         return view('pages.show', compact('post'));
-
-
-    }
+   }
 
     public function tag($slug){
         $tag = Tag::where('slug', $slug)->firstOrFail();

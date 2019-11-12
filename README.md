@@ -1,11 +1,11 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-<p align="center">
+<p>
 
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## Блог на Ларавеле 5.7
+## Блог на Ларавеле
 
 - С админкой "AdminLTE" 2.3.7
 - С редактором CkEditor

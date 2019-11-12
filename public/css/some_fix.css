@@ -60,3 +60,47 @@
 .entry-header{
     margin: 0;
 }
+
+.main-content {
+    margin-top: 25px;
+}
+
+.alert {
+    margin-bottom:0;
+}
+.text-uppercase {
+     text-transform:none;
+}
+
+.privacy-box {
+    flex: 0 0 100%;
+    display: flex;
+    line-height: 1.1em;
+    margin-bottom: 10px;
+}
+.privacy-box input {
+    margin-left: 0;
+    flex: 0 0 20px;
+    width: 15px;
+    height: 15px;
+}
+
+.form-control {
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 15px;
+}
+.privacy-box p {
+    margin-right: auto;
+    padding-left: 5px;
+    font-size: 12px;
+    opacity: .7;
+    margin-bottom: 0;
+}
+
+.map.container-fluid {
+    height: 340px;
+    padding: 0;
+    background-image: url(https://bestwaypractice.ru/uploads/common/ymap0.png);
+    background-position: center center;
+}

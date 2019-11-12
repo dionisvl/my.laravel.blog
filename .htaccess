@@ -1,0 +1,6 @@
+RewriteEngine on
+#RewriteCond %{REQUEST_URI} !^public
+#RewriteRule ^(.*)$ public/$1 [L]
+
+    # редирект всех страниц articles На Post
+    RewriteRule ^articles/(.*)$ /post/$1 [L,R=301]

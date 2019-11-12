@@ -2,11 +2,16 @@
 
 ## Unreleased
 
-- починить подписку 
+
 - выгрузка турбо страниц по API а не RSS
-- завершить миграцию всех статей с https://sites.google.com/u/0/s/1nH469ev7zFblBP0E4qdUuND2G3lTOuEp/edit?usp=sites_home
+
 - Сохранение кук в local storage
 - ajax полнотекстовый поиск
+
+## v1.0.2 (06.08.2019)
+
+- готова email подписка
+- завершена миграция всех статей с https://sites.google.com/u/0/s/1nH469ev7zFblBP0E4qdUuND2G3lTOuEp/edit?usp=sites_home
 
 ## v1.0.1 (06.04.2019)
 
