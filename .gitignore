@@ -12,14 +12,10 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
-
 /public/ckfinder/
 /public/plugins/ckfinder/
 /public/plugins/ckeditor/
 
 /package-lock.json
 /webpack.mix.js
-
-
-
-
+/phpmyadmin/
