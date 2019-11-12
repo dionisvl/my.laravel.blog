@@ -14,21 +14,25 @@
 Route::get('/', 'HomeController@index');
 Route::get('/contacts/', 'HomeController@contacts');
 
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
+});
 
-Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
 Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
-Route::post('/subscribe','SubsController@subsribe');
+Route::post('/subscribe', 'SubsController@subscribe');
 Route::get('/verify/{token}', 'SubsController@verify');
+Route::get('/privacy/', 'HomeController@privacy');
 
 Route::get('/profile', 'ProfileController@index');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'ProfileController@index');
-    Route::post('/profile','ProfileController@store');
+    Route::post('/profile', 'ProfileController@store');
     Route::get('/logout', 'AuthController@logout');
-    Route::post('/comment', 'CommentsController@store');
+
 });
+Route::post('/comment', 'CommentsController@store');
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', 'AuthController@registerForm');
@@ -38,7 +42,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['admin', 'web']], function () {
     Route::get('/', 'DashboardController@index');
     Route::resource('/categories', 'CategoriesController');
     Route::resource('/tags', 'TagsController');
@@ -58,7 +62,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
 //    else return view ('search')->withMessage('No Details found. Try to search again !');
 //});
 
-Route::any('/search','SearchController@index');
+Route::any('/search', 'SearchController@index');
 
 
 

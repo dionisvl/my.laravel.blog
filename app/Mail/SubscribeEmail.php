@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Subscription;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -12,15 +13,16 @@ class SubscribeEmail extends Mailable
     use Queueable, SerializesModels;
 
 
-    public $subs;
+    public $token;
+
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param Subscription $subs
      */
-    public function __construct()
+    public function __construct($token)
     {
-        return $this->view('email.verify');
+        $this->token = $token;
     }
 
     /**
@@ -30,6 +32,9 @@ class SubscribeEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.verify')
+                    ->with([
+                        'token' => $this->token
+                    ]);
     }
 }

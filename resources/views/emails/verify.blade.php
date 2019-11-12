@@ -1,2 +1,3 @@
-<h1>Спасибо! Кликните по ссылке</h1>
-<a href="http://blog/verify/{{$subs->token}}">{{$subs->token}}</a>
+<h2>Спасибо!</h2>
+<h3>Для подтверждения подписки на сайте <?=$_SERVER['HTTP_HOST']?> кликните по ссылке: </h3>
+<a href="http://<?=$_SERVER['HTTP_HOST']?>/verify/{{$token}}">Ссылка для подтверждения</a>
