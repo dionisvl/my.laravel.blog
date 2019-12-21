@@ -112,7 +112,7 @@
                     </div><!--related post carousel-->
                     {{--@if(!$post->comments->isEmpty())--}}
                     @foreach($post->getComments() as $comment)
-                        
+
                         <div class="bottom-comment"><!--bottom comment-->
                             <div class="comment-img">
                                 <img class="img-circle" src="{{$comment->author->getImage()}}" alt="" width="75"

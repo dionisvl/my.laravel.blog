@@ -3168,7 +3168,7 @@ Copyright (c) 2014 Daniel Eden
           animation-name: slideOutUp;
 }
 
-/* 
+/*
  * 	Core Owl Carousel CSS File
  *	v1.3.3
  */
@@ -3206,7 +3206,7 @@ Copyright (c) 2014 Daniel Eden
 	-o-transition: height 500ms ease-in-out;
 	transition: height 500ms ease-in-out;
 }
-	
+
 .owl-carousel .owl-item{
 	float: left;
 }
@@ -3224,7 +3224,7 @@ Copyright (c) 2014 Daniel Eden
 }
 
 /* mouse grab icon */
-.grabbing { 
+.grabbing {
     cursor:url(grabbing.html) 8 8, move;
 }
 
@@ -3241,7 +3241,7 @@ Copyright (c) 2014 Daniel Eden
 
 
 /*
-* 	Owl Carousel Owl Demo Theme 
+* 	Owl Carousel Owl Demo Theme
 *	v1.3.3
 */
 
@@ -3319,8 +3319,8 @@ Copyright (c) 2014 Daniel Eden
 	min-height: 150px;
 	background: url(AjaxLoader.html) no-repeat center center
 }
-/* 
- *  Owl Carousel CSS3 Transitions 
+/*
+ *  Owl Carousel CSS3 Transitions
  *  v1.3.2
  */
 
@@ -4684,7 +4684,7 @@ blog css
 }
 
 .bottom-comment .comment-img {
-    padding: 10px 15px 100px;
+    padding: 10px 15px 10px;
     float: left;
 }
 
