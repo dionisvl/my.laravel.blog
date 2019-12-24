@@ -26,10 +26,7 @@
                     @foreach($posts as $post)
                         <article class="post">
                             <?// if ($post->getImage() != '/img/no-image.png') {?>
-                            <div class="post-thumb" style="
-        flex-direction: row;
-        justify-content: start;
-">
+                            <div class="post-thumb">
                                 <a class='post_image_block' href="{{route('post.show', $post->slug)}}">
                                     <img src="{{$post->getImage()}}" alt="">
                                 </a>

@@ -31,20 +31,19 @@
 
 .post-thumb {
     margin: 10px 10px 0 10px;
+    display: grid;
+    grid-template-columns: minmax(50px, 200px) 1fr;
 }
 
 .post-thumb img {
-    width: auto;
-    height: 100px;
-    min-width: 180px;
-    padding: 10px;
+    height: 100%;
+    object-fit: contain;
 }
 
 .post_image_block {
-    min-width: 320px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    display: grid;
+    justify-items: center;
 }
 
 .post-thumb-overlay-img {
