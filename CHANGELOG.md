@@ -7,7 +7,8 @@
 
 - Сохранение кук в local storage
 - ajax полнотекстовый поиск
-
+## (05.01.2020)
+- add loading='lazy' to all imgs
 ## v1.0.2 (06.08.2019)
 
 - готова email подписка
