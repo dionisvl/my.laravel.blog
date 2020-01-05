@@ -28,7 +28,7 @@
                             <?// if ($post->getImage() != '/img/no-image.png') {?>
                             <div class="post-thumb">
                                 <a class='post_image_block' href="{{route('post.show', $post->slug)}}">
-                                    <img src="{{$post->getImage()}}" alt="">
+                                    <img src="{{$post->getImage()}}" alt="" loading="lazy">
                                 </a>
 
                                 <a href="{{route('post.show', $post->slug)}}" class="post-thumb-overlay text-center">

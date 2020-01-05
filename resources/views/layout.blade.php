@@ -54,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="WIKI snta"></a>
+                <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="BWP wiki resource" loading="lazy"></a>
             </div>
 
 
@@ -148,7 +148,7 @@
         <div class="row">
             <div class="col-md-4">
                 <aside class="footer-widget">
-                    <div class="about-img"><img src="/images/footer-logo.png" alt=""></div>
+                    <div class="about-img"><img src="/images/footer-logo.png" alt="" loading="lazy"></div>
                     <div class="about-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
                         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed voluptua. At vero eos et
                         accusam et justo duo dlores et ea rebum magna text ar koto din.
@@ -186,8 +186,7 @@
                                             magna aliquyam eratma</p>
                                     </div>
                                     <div class="author-id">
-                                        <img src="/images/author.png" alt="">
-
+                                        <img src="/images/author.png" alt="" loading="lazy">
                                         <div class="author-text">
                                             <h4>Sophia</h4>
 
@@ -196,44 +195,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="single-review">
-                                    <div class="review-text">
-                                        <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
-                                            tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                            vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata
-                                            magna aliquyam eratma</p>
-                                    </div>
-                                    <div class="author-id">
-                                        <img src="/images/author.png" alt="">
-
-                                        <div class="author-text">
-                                            <h4>Sophia</h4>
-
-                                            <h4>Client, Tech</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="single-review">
-                                    <div class="review-text">
-                                        <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
-                                            tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                            vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata
-                                            magna aliquyam eratma</p>
-                                    </div>
-                                    <div class="author-id">
-                                        <img src="/images/author.png" alt="">
-
-                                        <div class="author-text">
-                                            <h4>Sophia</h4>
-
-                                            <h4>Client, Tech</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- there must be a nex item active -->
                         </div>
                     </div>
 
@@ -242,11 +204,9 @@
             <div class="col-md-4">
                 <aside class="footer-widget">
                     <h3 class="widget-title text-uppercase">Custom Category Post</h3>
-
-
                     <div class="custom-post">
                         <div>
-                            <a href="#"><img src="/images/footer-img.png" alt=""></a>
+                            <a href="#"><img src="/images/footer-img.png" alt="" loading="lazy"></a>
                         </div>
                         <div>
                             <a href="#" class="text-uppercase">Home is peaceful Place</a>
@@ -262,7 +222,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">&copy; 2019 <a href="#">Wiki Blog, </a> Designed with <i
-                            class="fa fa-heart"></i> by <a href="#">SNTA</a>
+                            class="fa fa-heart"></i> by <a href="#">BWP</a>
                     </div>
                 </div>
             </div>
