@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->integer('status')->default(0);
             $table->integer('views')->default(0);
             $table->integer('is_featured')->default(0);
+            $table->integer('views_count')->default(0);
             $table->timestamps();
         });
     }

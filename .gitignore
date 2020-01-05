@@ -19,3 +19,5 @@ yarn-error.log
 /package-lock.json
 /webpack.mix.js
 /phpmyadmin/
+
+.idea
