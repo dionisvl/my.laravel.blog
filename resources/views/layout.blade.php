@@ -169,21 +169,19 @@
                 <aside class="footer-widget">
                     <h3 class="widget-title text-uppercase">Testimonials</h3>
 
+
+                    <!--Indicator-->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                    </ol>
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <!--Indicator-->
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
-                        </ol>
+
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
                                 <div class="single-review">
                                     <div class="review-text">
-                                        <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
-                                            tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                            vero eos et accusam justo duo dolores et ea rebum.gubergren no sea takimata
-                                            magna aliquyam eratma</p>
+                                        <p>Очень хороший сайт, прям помог вообще!</p>
                                     </div>
                                     <div class="author-id">
                                         <img src="/images/author.png" alt="" loading="lazy">

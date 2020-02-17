@@ -13,17 +13,6 @@
         });
     }());
 
-
-
-    /*=== single blog carousel =====*/
-    (function () {
-        $('.items').owlCarousel({
-            items: 3,
-            autoPlay: true,
-            pagination: false
-        });
-    }());
-
     /* === Instagram Widget === */
 
     (function () {
@@ -66,9 +55,4 @@
         });
     }());
 
-
-
-
 })(jQuery);
-
-

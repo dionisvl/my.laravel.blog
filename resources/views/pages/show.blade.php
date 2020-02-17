@@ -97,7 +97,8 @@
                         <div class="related-heading">
                             <h4>You might also like</h4>
                         </div>
-                        <div class="items">
+                        <!--related post carousel-->
+                        <div id="also_like_tns">
                             @foreach($post->related() as $item)
                                 <div class="single-item">
                                     <a href="{{route('post.show', $item->slug)}}">
@@ -107,9 +108,8 @@
                                     </a>
                                 </div>
                             @endforeach
-
                         </div>
-                    </div><!--related post carousel-->
+                    </div>
                     {{--@if(!$post->comments->isEmpty())--}}
                     @foreach($post->getComments() as $comment)
 
