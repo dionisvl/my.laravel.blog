@@ -1,7 +1,6 @@
 <div class="col-md-4" data-sticky_column>
     <div class="primary-sidebar">
 
-
         <aside class="widget news-letter">
             <h3 class="widget-title text-uppercase text-center">Get Newsletter</h3>
             {{--@include('admin.errors')--}}
@@ -19,10 +18,12 @@
             </form>
         </aside>
 
+
         <aside class="widget">
             <h3 class="widget-title text-uppercase text-center">Featured Posts</h3>
 
-            <div id="widget-feature" class="owl-carousel">
+
+            <div id="widget-feature-tns">
                 @foreach($featuredPosts as $post)
                     <div class="item">
                         <div class="feature-content">
@@ -37,7 +38,19 @@
                     </div>
                 @endforeach
             </div>
+
+            <div class="customize-tools">
+                <ul class="controls" id="customize-controls">
+                    <li class="prev">
+                        <i class='fa fa-angle-left'></i>
+                    </li>
+                    <li class="next">
+                        <i class='fa fa-angle-right'></i>
+                    </li>
+                </ul>
+            </div>
         </aside>
+
 
         <aside class="widget">
             <h3 class="widget-title text-uppercase text-center">Popular Posts</h3>

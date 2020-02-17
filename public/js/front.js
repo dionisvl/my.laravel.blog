@@ -214,18 +214,6 @@ function(){this.reset();this.spacer.remove();this.element.removeData("jquery-sti
         });
     }());
 
-    /* === Instagram Widget === */
-
-    (function () {
-        $('#widget-feature').owlCarousel({
-            singleItem: true,
-            navigation: true,
-            navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-            autoPlay: true,
-            pagination: false
-        });
-    }());
-
     /* === Back To Top === */
 
     (function () {
@@ -256,9 +244,4 @@ function(){this.reset();this.spacer.remove();this.element.removeData("jquery-sti
         });
     }());
 
-
-
-
 })(jQuery);
-
-

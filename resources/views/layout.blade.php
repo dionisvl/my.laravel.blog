@@ -232,5 +232,14 @@
 <!-- js files -->
 <script src="/js/front.js"></script>
 <script src="/js/some_fix.js"></script>
+
+{{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css"/>--}}
+<link rel="stylesheet" href="/css/tiny-slider.css"/>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
+        integrity="sha256-CApIX5Te4OdXVy1iWP+5+qG/iHa+8apfYOFagdVMRwk=" crossorigin="anonymous"></script>
+<script src="/js/sliders.js"></script>
+
 </body>
 </html>
