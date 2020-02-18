@@ -4,15 +4,6 @@
 ;(function ($) {
     'use strict'; // use strict to start
 
-    /* === Stickit === */
-
-    (function () {
-        $("[data-sticky_column]").stickit({
-            scope: StickScope.Parent,
-            top: 0
-        });
-    }());
-
     /* === Instagram Widget === */
 
     (function () {

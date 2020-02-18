@@ -41,59 +41,60 @@
 
 <body>
 
-<nav class="navbar main-menu navbar-default">
+<nav class="navbar main-menu navbar-expand-md navbar-light border-bottom">
     <div class="container">
-        <div class="menu-content">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="BWP wiki resource" loading="lazy"></a>
-            </div>
+        <a class="navbar-brand" href="/">
+            <img src="/images/logo.png" alt="Wiki BWP resource" loading="lazy">
+        </a>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Homepage</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contacts/">Contacts</a>
+                    </li>
+                </div>
 
-                <ul class="nav navbar-nav text-uppercase">
-                    <li><a href="/">Homepage</a></li>
-                    <li><a href="/contacts/">Contacts</a></li>
-                </ul>
 
-                <ul class="nav navbar-nav text-uppercase pull-right">
+                <div>
                     @if(Auth::check())
                         @if(Auth::user()->is_admin)
-                            <li><a href="/admin">Admin panel</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/admin">Admin panel</a></li>
                         @endif
-                        <li><a href="/profile">My profile</a></li>
-                        <li><a href="/logout">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/profile">My profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
                     @else
-                        <li><a href="/register">Register</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                     @endif
-                    <li>
+                    <li class="nav-item float-right">
                         <button class="btn btn-default show_toggle_invokers" data-to-show="#search_block">
-                            <span class="glyphicon glyphicon-search"></span>
+                            <i class="fa fa-search"></i>
                         </button>
                     </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-
-            <div class="show-search" id="search_block">
-                <form role="search" method="POST" id="searchform" action="/search">
-                    {{ csrf_field() }}
-                    <div>
-                        <input type="text" placeholder="Search and hit enter..." name="q" id="s">
-                    </div>
-                </form>
-            </div>
+                </div>
+            </ul>
         </div>
+
+
+        <div class="show-search" id="search_block">
+            <form role="search" method="POST" id="searchform" action="/search">
+                {{ csrf_field() }}
+                <div>
+                    <input type="text" placeholder="Search and hit enter..." name="q" id="s">
+                </div>
+            </form>
+        </div>
+
+
     </div>
-    <!-- /.container-fluid -->
+
 </nav>
 
 
@@ -207,7 +208,8 @@
 
 {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css"/>--}}
 <link rel="stylesheet" href="/css/tiny-slider.css"/>
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
         integrity="sha256-CApIX5Te4OdXVy1iWP+5+qG/iHa+8apfYOFagdVMRwk=" crossorigin="anonymous"></script>
