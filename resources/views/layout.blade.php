@@ -20,7 +20,6 @@
         </title>
     @endif
 
-
     <meta name="yandex-verification" content="aeb4e0b17d9f0967"/>
 
     <!-- common css -->
@@ -57,7 +56,6 @@
                 <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="BWP wiki resource" loading="lazy"></a>
             </div>
 
-
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav text-uppercase">
@@ -81,12 +79,9 @@
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </li>
-
                 </ul>
-
             </div>
             <!-- /.navbar-collapse -->
-
 
             <div class="show-search" id="search_block">
                 <form role="search" method="POST" id="searchform" action="/search">
@@ -123,24 +118,6 @@
 <!--footer start-->
 <div id="footer">
 
-    <?/*<div class="footer-instagram-section">
-        <h3 class="footer-instagram-title text-center text-uppercase">Instagram</h3>
-        <div id="footer-instagram" class="owl-carousel">
-            <div class="item">
-                <a href="#"><img src="/images/ins-1.jpg" alt=""></a>
-            </div>
-            <div class="item">
-                <a href="#"><img src="/images/ins-2.jpg" alt=""></a>
-            </div>
-            <div class="item">
-                <a href="#"><img src="/images/ins-3.jpg" alt=""></a>
-            </div>
-            <div class="item">
-                <a href="#"><img src="/images/ins-4.jpg" alt=""></a>
-            </div>
-        </div>
-    </div>*/?>
-
 </div>
 
 <footer class="footer-widget-section">
@@ -155,11 +132,8 @@
                     </div>
                     <div class="address">
                         <h4 class="text-uppercase">contact Info</h4>
-
                         <p> б. Черемушкинская 20, Москва</p>
-
                         <p> Phone: +123 456 78900</p>
-
                         <p>info@<?=$_SERVER['HTTP_HOST']?></p>
                     </div>
                 </aside>
@@ -169,12 +143,12 @@
                 <aside class="footer-widget">
                     <h3 class="widget-title text-uppercase">Testimonials</h3>
 
-
                     <!--Indicator-->
                     <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
                     </ol>
+
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
                         <div class="carousel-inner" role="listbox">
@@ -233,7 +207,7 @@
 
 {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css"/>--}}
 <link rel="stylesheet" href="/css/tiny-slider.css"/>
-
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
         integrity="sha256-CApIX5Te4OdXVy1iWP+5+qG/iHa+8apfYOFagdVMRwk=" crossorigin="anonymous"></script>

@@ -93,23 +93,25 @@
                             @endif
                         </div>
                     </div><!--blog next previous end-->
-                    <div class="related-post-carousel"><!--related post carousel-->
-                        <div class="related-heading">
-                            <h4>You might also like</h4>
-                        </div>
-                        <!--related post carousel-->
-                        <div id="also_like_tns">
-                            @foreach($post->related() as $item)
-                                <div class="single-item">
-                                    <a href="{{route('post.show', $item->slug)}}">
-                                        <img src="{{$item->getImage()}}" alt="">
+                    @if(!$post->related()->isEmpty())
+                        <div class="related-post-carousel"><!--related post carousel-->
+                            <div class="related-heading">
+                                <h4>You might also like</h4>
+                            </div>
+                            <!--related post carousel-->
+                            <div id="also_like_tns">
+                                @foreach($post->related() as $item)
+                                    <div class="single-item">
+                                        <a href="{{route('post.show', $item->slug)}}">
+                                            <img src="{{$item->getImage()}}" alt="">
 
-                                        <p>{{$item->title}}</p>
-                                    </a>
-                                </div>
-                            @endforeach
+                                            <p>{{$item->title}}</p>
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
+                    @endif
                     {{--@if(!$post->comments->isEmpty())--}}
                     @foreach($post->getComments() as $comment)
 

@@ -98,7 +98,7 @@ class Post extends Model
     public function getImage()
     {
         if ($this->image == null) {
-            if(\Route::getCurrentRoute()->uri() == '/'){
+            if (\Route::getCurrentRoute()->uri() == '/') {
                 return '/img/no-image.png';
             }
             return '/img/no-image.png';
@@ -229,7 +229,7 @@ class Post extends Model
 
     public function related()
     {
-        return self::all()->except($this->id);
+        return self::where('category_id', '=', $this->category_id)->take(5)->get()->except($this->id);
     }
 
     public function hasCategory()
@@ -260,8 +260,9 @@ class Post extends Model
 
     public function getViewsCount()
     {
-        return empty($this->views_count) ? 1 : (int) $this->views_count;
+        return empty($this->views_count) ? 1 : (int)$this->views_count;
     }
+
     public function updateViewsCount()
     {
 //        if (session($this->id) != true){
@@ -272,16 +273,18 @@ class Post extends Model
         $this->views_count = $this->views_count + 1;
         $this->save();
     }
+
     public function getDescription()
     {
         return empty($this->description) ? 'Cправочник по тематике программирования на языках PHP, JS' : strip_tags($this->description);
     }
 
-    public function getTitle(){
-        if(\Route::getCurrentRoute()->uri() == '/'){
+    public function getTitle()
+    {
+        if (\Route::getCurrentRoute()->uri() == '/') {
             return 'WIKI, блог программиста, лучшие практики PHP, JS, SQL';
         } else {
-            if (empty($this->title)){
+            if (empty($this->title)) {
                 return 'Лучшие практики PHP, JS, SQL, блог программиста.';
             } else {
                 return $this->title;
