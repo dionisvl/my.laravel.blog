@@ -25,3 +25,11 @@
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+#### Other
+Чтобы создать фабрики, миграции, модели и ресурсный контроллер выполните:
+```
+php artisan make:model Post -a
+```
+

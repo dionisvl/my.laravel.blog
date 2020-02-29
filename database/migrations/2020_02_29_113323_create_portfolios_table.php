@@ -17,7 +17,7 @@ class CreatePortfoliosTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug');
-            $table->text('content')->nullable();;
+            $table->text('content')->nullable();
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->integer('category_id')->nullable();

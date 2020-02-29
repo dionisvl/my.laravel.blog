@@ -19,5 +19,5 @@
     <li><a href="{{route('users.index')}}"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
     <li><a href="{{route('subscribers.index')}}"><i class="fa fa-user-plus"></i> <span>Подписчики</span></a></li>
     <li><a href="{{route('portfolios.index')}}"><i class="fa fa-users"></i> <span>Портфолио</span></a></li>
-
+    <li><a href="{{route('incomings.index')}}"><i class="fa fa-users"></i> <span>Входящие сообщения</span></a></li>
 </ul>

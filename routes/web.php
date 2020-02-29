@@ -33,6 +33,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 Route::post('/comment', 'CommentsController@store');
+Route::group(['middleware' => ['cors']], function () {
+    Route::post('/incoming', 'IncomingsController@store');
+});
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', 'AuthController@registerForm');
@@ -54,6 +57,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['adm
     Route::resource('/subscribers', 'SubscribersController');
 
     Route::resource('/portfolios', 'PortfoliosController');
+
+    Route::resource('/incomings', 'IncomingsController');
+    Route::get('/incomings/toggle/{id}', 'IncomingsController@toggle');
+    Route::delete('/incomings/{id}/destroy', 'IncomingsController@destroy')->name('incomings.destroy');
 });
 
 //Route::any('/search',function(){
