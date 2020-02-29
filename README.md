@@ -3,7 +3,16 @@
 <p>
 
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+</p>  
+
+## How to Install
+
+- git clone THIS_REPO
+- cp .env.example .env
+- php artisan key:generate
+- composer install
+- create empty DB and config it into .env
+- php artisan migrate
 
 ## Блог на Ларавеле
 
