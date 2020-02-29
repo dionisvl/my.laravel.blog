@@ -21,3 +21,4 @@ yarn-error.log
 /phpmyadmin/
 
 .idea
+/public/uploads/

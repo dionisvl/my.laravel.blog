@@ -36,7 +36,10 @@
     <meta name="EnlighterJS" content="Advanced javascript based syntax highlighting" data-indent="4"
           data-selector-block="pre" data-selector-inline="code" data-language="js"/>
     <!-- Initialize EnlighterJS END -->
-    <? require($_SERVER['DOCUMENT_ROOT'] . '/tracking.php')?>
+    <?
+    require($_SERVER['DOCUMENT_ROOT'] . '/tracking.php');
+    ?>
+
 </head>
 
 <body>
