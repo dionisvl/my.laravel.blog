@@ -22,3 +22,5 @@ yarn-error.log
 
 .idea
 /public/uploads/
+/robots.txt
+/sitemap.xml

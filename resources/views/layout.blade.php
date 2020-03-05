@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="/css/front.css">
     <link rel="stylesheet" href="/css/some_fix.css">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
 
 
     <!-- Initialize EnlighterJS -->
