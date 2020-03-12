@@ -51,15 +51,17 @@
                                     @else
                                         <a href="/admin/comments/toggle/{{$comment->id}}" class="fa fa-thumbs-o-up"></a>
                                     @endif
-                                    {{Form::open(['route'=>['comments.destroy', $comment->id], 'method'=>'delete'])}}
-                                    <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                                        <i class="fa fa-remove"></i>
-                                    </button>
 
-                                {{Form::close()}}
+                                    <form action="/comments/{{$comment->id}}/destroy" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button onclick="return confirm('are you sure?')" type="submit" class="delete">
+                                            <i class="fa fa-remove"></i>
+                                        </button>
+                                    </form>
                             </tr>
                         @endforeach
-                        </tfoot>
+                        </tbody>
                     </table>
                 </div>
                 <!-- /.box-body -->
