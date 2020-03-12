@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email'
+        'name', 'email', 'password', 'is_admin'
     ];
 
     /**
@@ -29,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
 
     public function posts(){

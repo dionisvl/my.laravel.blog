@@ -32,4 +32,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ```
 php artisan make:model Post -a
 ```
-
+Чтобы создать пользователя админа
+```
+php artisan tinker
+\App\User::add(['name' => 'admin', 'email' => 'admin@admin.net', 'is_admin' => 1, 'password' => bcrypt('admin')]);
+```
