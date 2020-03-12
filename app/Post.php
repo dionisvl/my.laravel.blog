@@ -8,12 +8,10 @@ use DateTime;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
-    use Sluggable;
-
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
@@ -44,19 +42,11 @@ class Post extends Model
         );
     }
 
-    public function sluggable()
-    {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ]
-        ];
-    }
-
     public static function add($fields)
     {
         $post = new static;
         $post->fill($fields);
+        $post->slug = Str::slug($fields['title']);
         $post->user_id = Auth::user()->id;
         $post->save();
 

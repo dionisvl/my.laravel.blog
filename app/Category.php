@@ -3,25 +3,24 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Str;
 
 class Category extends Model
 {
-    use Sluggable;
-
     protected $fillable = ['title'];
 
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
 
-    public function sluggable()
+    public static function create($fields)
     {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ]
-        ]; //привет - privet
-        //привет - privet-1
+        $category = new static;
+        $category->fill($fields);
+        $category->slug = Str::slug($fields['title']);
+        $category->save();
+
+        return $category;
     }
 }

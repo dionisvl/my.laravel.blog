@@ -3,15 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Str;
 
 class Tag extends Model
 {
-    use Sluggable;
-
     protected $fillable = ['title'];
 
-    public function posts(){
+    public function posts()
+    {
         return $this->belongsToMany(
             Post::class,
             'post_tags',
@@ -20,13 +19,13 @@ class Tag extends Model
         );
     }
 
-    public function sluggable()
+    public static function create($fields)
     {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ]
-        ]; //привет - privet
-        //привет - privet-1
+        $tag = new static;
+        $tag->fill($fields);
+        $tag->slug = Str::slug($fields['title']);
+        $tag->save();
+
+        return $tag;
     }
 }
