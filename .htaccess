@@ -1,6 +1,9 @@
-RewriteEngine on
+#RewriteEngine on
 #RewriteCond %{REQUEST_URI} !^public
 #RewriteRule ^(.*)$ public/$1 [L]
 
-    # редирект всех страниц articles На Post
-    RewriteRule ^articles/(.*)$ /post/$1 [L,R=301]
+# редирект всех страниц articles На Post
+# RewriteRule ^articles/(.*)$ /post/$1 [L,R=301]
+
+RewriteEngine on
+RewriteRule ^(.*)$ https://phpqa.ru/$1 [R=301,L]
