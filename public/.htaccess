@@ -1,6 +1,6 @@
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^147\.78\.67\.252
-RewriteRule (.*) https://bestwaypractice.ru/$1 [R=301,L]
+RewriteRule (.*) https://phpqa.ru/$1 [R=301,L]
 
 RewriteCond %{SERVER_PORT} !^443$
 RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
