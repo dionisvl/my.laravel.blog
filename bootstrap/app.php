@@ -19,6 +19,28 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+/** Use storage path from parent catalog (for CI/CD) */
+if (!function_exists('locateBasePath')) {
+    /**
+     * @param $app
+     * @return string
+     */
+    function locateBasePath($app)
+    {
+        // этот путь содержит зависимую от версии часть пути, поэтому запущенные процессы не найдут после апдейта такой путь
+        // возможно разумным вариантом было бы dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'storage'
+        $underBuild = realpath($app->basePath() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'storage');
+        $inBuild = realpath($app->basePath() . DIRECTORY_SEPARATOR . 'storage');
+
+        if (is_dir($underBuild))
+            return $underBuild;
+        else
+            return $inBuild;
+    }
+}
+$app->useStoragePath(locateBasePath($app));
+/** end */
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces

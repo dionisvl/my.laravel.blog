@@ -46,7 +46,7 @@ class Portfolio extends Model
     public function removeImage()
     {
         if ($this->image != null) {
-            Storage::delete('uploads/portfolio/' . $this->image);
+            Storage::delete('storage/uploads/portfolio/' . $this->image);
         }
     }
 
@@ -58,7 +58,7 @@ class Portfolio extends Model
 
         $this->removeImage();
         $filename = str_random(10) . '.' . $image->extension();
-        $image->storeAs('uploads/portfolio', $filename);
+        $image->storeAs('storage/uploads/portfolio', $filename);
         $this->image = $filename;
         $this->save();
     }
@@ -67,11 +67,11 @@ class Portfolio extends Model
     {
         if ($this->image == null) {
             if (\Route::getCurrentRoute()->uri() == '/') {
-                return '/img/no-image.png';
+                return '/storage/blog_images/no-image.png';
             }
-            return '/img/no-image.png';
+            return '/storage/blog_images/no-image.png';
         }
-        return '/uploads/portfolio/' . $this->image;
+        return '/storage/uploads/portfolio/' . $this->image;
     }
 
     public function setDraft()

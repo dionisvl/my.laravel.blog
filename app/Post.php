@@ -68,7 +68,7 @@ class Post extends Model
     public function removeImage()
     {
         if ($this->image != null) {
-            Storage::delete('uploads/' . $this->image);
+            Storage::delete('storage/uploads/' . $this->image);
         }
     }
 
@@ -80,7 +80,7 @@ class Post extends Model
 
         $this->removeImage();
         $filename = str_random(10) . '.' . $image->extension();
-        $image->storeAs('uploads', $filename);
+        $image->storeAs('storage/uploads', $filename);
         $this->image = $filename;
         $this->save();
     }
@@ -89,11 +89,11 @@ class Post extends Model
     {
         if ($this->image == null) {
             if (\Route::getCurrentRoute()->uri() == '/') {
-                return '/img/no-image.png';
+                return '/storage/blog_images/no-image.png';
             }
-            return '/img/no-image.png';
+            return '/storage/blog_images/no-image.png';
         }
-        return '/uploads/' . $this->image;
+        return '/storage/uploads/' . $this->image;
     }
 
     public function setCategory($id)

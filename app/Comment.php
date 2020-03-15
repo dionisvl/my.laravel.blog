@@ -27,14 +27,24 @@ class Comment extends Model
     }
 
     public function toggleStatus(){
-        if($this->status == 0){
+        if ($this->status == 0) {
             return $this->allow();
         }
 
         return $this->disAllow();
     }
 
-    public function remove(){
+    public function remove()
+    {
         $this->delete();
+    }
+
+    public function getAuthorImage()
+    {
+        if (empty($this->author)) {
+            return '/storage/blog_images/no-image.png';
+        } else {
+            return $this->author->getImage();
+        }
     }
 }

@@ -4,399 +4,655 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+    <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
-<url>
-  <loc>https://bestwaypractice.ru/</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/zametki-javascript</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/fetchapi</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kak-v-delphi-poluchit-pid-processa-po-zagolovku-ego-okna</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/zametki-devops</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/prostye-modaly</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/emulyaciya-sayta-s-pomoshchyu-iframe</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/funkciya-dlya-opredeleniya-okonchaniya-slova-po-chislitelnomu-1-den-2-dnya-5-dney</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/zametki-php</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/zametki-po-laravel</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/chto-delat-kogda-pis-ma-popadayut-v-spam</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/otlozhennaya-zagruzka-veb-shriftov</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/lazy-lenivaya-zagruzka-yandeks-karty</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/ajax-zagruzka-kontenta-po-trebovaniyu</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/url---friendly-shifrovanie-dannyh</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/samaya-luchshaya-forma-otpravki-s-ajax</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/testirovanie-s-pomosch-yu-codeception</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/ideal-naya-zaschita-ot-botov-bez-kapchi</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kastomizaciya-formy-avtorizaciy-i-registracii-vyzvannye-define-quot-need_auth-quot-true</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/oshibka-cors</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/klass-dlya-raboty-s-curl-na-php</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/to-do-list</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/n-yuynsy-mnogosaytovoy-ustanovki-bitriksa</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kak-sdelat-beskonechnuyu-prokrutku-novostey-v-vk-var-timerid-setinterval-function</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kak-vyvesti-dannye-v-pdf-iz-php</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/category/cat-1</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/category/cat-2</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/category/common</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/category/shpory</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/category/windows</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/javascript</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kak-isklyuchit-informaciyu-iz-keshirovaniya-v-bitrikse</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/zadat-fil-tr-pered-komponentom-po-date-bol-she-segodnyashney</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kak-poluchit-dostup-k-dinamicheski-zagruzhennym-elementam-ajax</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kak-lovit-celi-gugl-i-yandeks-metriki</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kak-zadat-fil-tr-pered-komponentom</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/vyvesti-svoystvo-elementa</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/vyvesti-kartinki-elementa-iz-mnozhestvennogo-svoystva-34-privyazka-k-elementam-infobloka-34-so-szhatiem-na-storone-servera</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/zakryt-vse-otkrytye-modaly-bootrstap</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/znacheniya-spravochnika-ne-otobrazhayutsya-v-infobloke</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/samaya-umnaya-forma-maska-validacii-telefona-ajax-forms-and-bitrix-cache-friendly</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/zapretit-dobavlyat-bolee-1-tovara-ili-polnaya-ochistka-korziny-pered-dobavleniem-tovara</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/modifikaciya-formy-avto-kalbaski-chtob-lyubaya-forma-na-sayte-mogla-zapustit-zvonok</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/import-dannyh-v-infoblok-n-yuansy</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/regulyarka-poluchit-cifry-ili-chislo-iz-stroki</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/nayti-blizhayshiy-podhodyaschiy-predok-jq</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/plavnoe-skrytie-raskrytie-bloka-s-lyubym-soderzhimym</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/poluchit-dostup-k-soderzhumomu-iframe</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/migraciya-sekciy-infobloka-v-hl-blok-ciblocksection-getlist</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kak-poluchit-imya-sekcii-v-bitrix</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kak-podklyuchit-sya-k-api-getresponse-dobavlenie-novogo-podpischika</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/js-dobavit-element-v-massiv-s-proverkoy-nalichiya</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/vernut-kolichestvo-elementov-bitrix</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kak-otkryt-popap-magnific-bez-klika-po-knopke</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/ochistit-u-vseh-elementov-pole-naprimer-detail_text</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/proverit-podklyuchen-li-jquery</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kak-poluchit-vse-svoystva-elementa</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/kak-sravnit-izobrazheniya-na-php</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/rabota-s-zakazom</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/bitriks-kompozit-inline-javascript-was-not-found-on-the-page</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/n-yuansy-nastroek-prav-dostupa-bitriks</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/post/poluchit-vcherashniy-den-na-php</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/html</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/devops</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/css</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/bitrix</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/php</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/laravel</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/category/shpory?page=2</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/category/shpory?page=3</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/javascript?page=2</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/html?page=2</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/php?page=2</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/php?page=3</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/category/shpory?page=1</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/javascript?page=1</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/html?page=1</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
-<url>
-  <loc>https://bestwaypractice.ru/tag/php?page=1</loc>
-  <lastmod>2019-05-21T14:56:15+00:00</lastmod>
-  <priority>0.41</priority>
-</url>
+    <url>
+        <loc>https://phpqa.ru/</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/contacts</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/register</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/login</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/sozdanie-polzovatelya-i-ssh-klyuchey</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/mysqldump-kopirovanie-baz</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-sozdat-poddomen-na-apache-servere</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/ocheredi-v-laravel</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/perenos-sertifikata-kriptopro</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/stored-procedures-while-and-repeat-in-sql</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/znakomstvo-s-docker</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/how-to-enable-amd-v-on-asrock-b450m-pro4-ryzen-2400g</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/analog-sprintf-v-vanilla-js-podstanovka-peremennyh-v-stroku</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/excel-zametki</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/nayti-fayly-vnutri-papki-po-date-i-po-spisku-csv-ili-excel-na-php</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/izvlech-parametr-iz-env-fayla</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-dobavit-podsvetku-koda-k-sebe-na-sayt</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/laravel-eloquent-one-to-many-relationship</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/integraciya-bitrix24-s-chertom-lysym</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-vypolnit-mysql-migraciyu-i-otsledit-rezultat-vypolneniya</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/zametki-git</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/zametki-linux</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/zametki-sql</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-dobavit-kastomnyy-header-v-nginx</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/privacy</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/prostye-modaly</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/zametki-devops</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/n-yuynsy-mnogosaytovoy-ustanovki-bitriksa</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-sdelat-beskonechnuyu-prokrutku-novostey-v-vk-var-timerid-setinterval-function
+        </loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-vyvesti-dannye-v-pdf-iz-php</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/cat-1</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/cat-2</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/common</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/laravel</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/shpory</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/windows</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/sql</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/database</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/linux</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/git</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/docker</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/devops</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/devops</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/linux</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/lazy-lenivaya-zagruzka-yandeks-karty</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/otlozhennaya-zagruzka-veb-shriftov</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/zametki-php</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/fetchapi</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/mysql-1</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/zametki</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/apache</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/laravel-1</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/docker-compose</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/docker</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/javascript</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/to-do-list</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/php</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/klass-dlya-raboty-s-curl-na-php</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/zametki-po-laravel</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/funkciya-dlya-opredeleniya-okonchaniya-slova-po-chislitelnomu-1-den-2-dnya-5-dney
+        </loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/emulyaciya-sayta-s-pomoshchyu-iframe</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/php-how-to-debug-to-file</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/laravel</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/html</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/nastraivaem-filtr-po-kategoriyam</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/bitrix</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-uznat-imya-razdela-po-ego-id-cherez-mysql</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/zadat-fil-tr-pered-komponentom-po-date-bol-she-segodnyashney</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/regulyarka-poluchit-cifry-ili-chislo-iz-stroki</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-podklyuchit-sya-k-api-getresponse-dobavlenie-novogo-podpischika</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/bitriks-kompozit-inline-javascript-was-not-found-on-the-page</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/oshibka-cors</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/git</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/zametki-javascript</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/css</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-v-delphi-poluchit-pid-processa-po-zagolovku-ego-okna</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-isklyuchit-informaciyu-iz-keshirovaniya-v-bitrikse</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-poluchit-dostup-k-dinamicheski-zagruzhennym-elementam-ajax</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/ideal-naya-zaschita-ot-botov-bez-kapchi</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/testirovanie-s-pomosch-yu-codeception</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/samaya-luchshaya-forma-otpravki-s-ajax</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/url---friendly-shifrovanie-dannyh</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/ajax-zagruzka-kontenta-po-trebovaniyu</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/cat-1?page=2</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/php-analog-komandy-dir-ls</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/ostanovit-vypolnenie-skriptov-i-aktivnost-stranicy-v-brauzere</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/how-to-enable-cron-on-reg-ru-hosting</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/shpory?page=2</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/chto-delat-kogda-pis-ma-popadayut-v-spam</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/zametki?page=2</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/php?page=2</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/poluchit-vcherashniy-den-na-php</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>
+            https://phpqa.ru/post/rasparsit-nazvanie-elementa-na-parametry-obnovit-mnozhestvennye-znacheniya-parametrov-tipa-privyazka-k-elementam-i-spisok
+        </loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/zagolovok-stranicy-otlichnyy-ot-title</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/vyvesti-vse-rubriki-etogo-bloga-bitrix</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>
+            https://phpqa.ru/post/migraciya-izobrazheniy-iz-svoystva-privyazka-elementov-v-vide-spiska-v-pole-tipa-fayl-mnozhestvennyy
+        </loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>
+            https://phpqa.ru/post/pravilnoe-sozdanie-tovara-v-infobloke-migraciya-cen-iz-svoystv-elementov-v-ceny-tipa-torgovogo-kataloga
+        </loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/import-dannyh-v-infoblok-n-yuansy</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/nayti-blizhayshiy-podhodyaschiy-predok-jq</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-poluchit-imya-sekcii-v-bitrix</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/js-dobavit-element-v-massiv-s-proverkoy-nalichiya</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/rabota-s-zakazom</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/n-yuansy-nastroek-prav-dostupa-bitriks</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>
+            https://phpqa.ru/post/kastomizaciya-formy-avtorizaciy-i-registracii-vyzvannye-define-quot-need_auth-quot-true
+        </loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-lovit-celi-gugl-i-yandeks-metriki</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/cat-1?page=1</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/category/shpory?page=1</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/zametki?page=1</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.41</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/tag/php?page=1</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.41</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/modifikaciya-formy-avto-kalbaski-chtob-lyubaya-forma-na-sayte-mogla-zapustit-zvonok
+        </loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.41</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/plavnoe-skrytie-raskrytie-bloka-s-lyubym-soderzhimym</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.41</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/migraciya-sekciy-infobloka-v-hl-blok-ciblocksection-getlist</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.41</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/vernut-kolichestvo-elementov-bitrix</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.41</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-sravnit-izobrazheniya-na-php</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.41</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-zadat-fil-tr-pered-komponentom</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.41</priority>
+    </url>
+    <url>
+        <loc>
+            https://phpqa.ru/post/zapretit-dobavlyat-bolee-1-tovara-ili-polnaya-ochistka-korziny-pered-dobavleniem-tovara
+        </loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.33</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/poluchit-dostup-k-soderzhumomu-iframe</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.33</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-otkryt-popap-magnific-bez-klika-po-knopke</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.33</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/kak-poluchit-vse-svoystva-elementa</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.33</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/vyvesti-svoystvo-elementa</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.33</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/samaya-umnaya-forma-maska-validacii-telefona-ajax-forms-and-bitrix-cache-friendly
+        </loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.26</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/ochistit-u-vseh-elementov-pole-naprimer-detail_text</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.26</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/proverit-podklyuchen-li-jquery</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.26</priority>
+    </url>
+    <url>
+        <loc>
+            https://phpqa.ru/post/vyvesti-kartinki-elementa-iz-mnozhestvennogo-svoystva-34-privyazka-k-elementam-infobloka-34-so-szhatiem-na-storone-servera
+        </loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.26</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/znacheniya-spravochnika-ne-otobrazhayutsya-v-infobloke</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.21</priority>
+    </url>
+    <url>
+        <loc>https://phpqa.ru/post/zakryt-vse-otkrytye-modaly-bootrstap</loc>
+        <lastmod>2020-03-15T16:17:24+00:00</lastmod>
+        <priority>0.21</priority>
+    </url>
 
 
 </urlset>

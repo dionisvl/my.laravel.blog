@@ -13,6 +13,8 @@
 - composer install
 - create empty DB and config it into .env
 - php artisan migrate
+- php artisan storage:link
+- ln -s /var/www/THIS_SITE/storage/app/public/ /var/www/THIS_SITE/html/public/storage
 
 ## Блог на Ларавеле
 

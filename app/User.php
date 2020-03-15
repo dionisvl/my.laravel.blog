@@ -72,7 +72,7 @@ class User extends Authenticatable
         $this->removeAvatar();
 
         $filename = str_random(10) . '.' . $image->extension();
-        $image->storeAs('uploads', $filename);
+        $image->storeAs('storage/uploads', $filename);
         $this->avatar = $filename;
         $this->save();
     }
@@ -81,15 +81,15 @@ class User extends Authenticatable
     {
         if($this->avatar != null)
         {
-            Storage::delete('uploads/' . $this->avatar);
+            Storage::delete('storage/uploads/' . $this->avatar);
         }
     }
 
     public function getImage(){
         if($this->avatar == null){
-            return '/img/no-image.png';
+            return '/storage/blog_images/no-image.png';
         }
-        return '/uploads/'.$this->avatar;
+        return '/storage/uploads/' . $this->avatar;
     }
 
     public function makeAdmin(){

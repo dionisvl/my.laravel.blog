@@ -49,7 +49,7 @@
 <nav class="navbar main-menu navbar-expand-md navbar-light border-bottom">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="/images/logo.png" alt="Wiki BWP resource" loading="lazy">
+            <img src="/storage/blog_images/logo.png" alt="Wiki BWP resource" loading="lazy">
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -131,7 +131,7 @@
         <div class="row">
             <div class="col-md-4">
                 <aside class="footer-widget">
-                    <div class="about-img"><img src="/images/footer-logo.png" alt="" loading="lazy"></div>
+                    <div class="about-img"><img src="/storage/blog_images/footer-logo.png" alt="" loading="lazy"></div>
                     <div class="about-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
                         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed voluptua. At vero eos et
                         accusam et justo duo dlores et ea rebum magna text ar koto din.
@@ -164,7 +164,7 @@
                                         <p>Очень хороший сайт, прям помог вообще!</p>
                                     </div>
                                     <div class="author-id">
-                                        <img src="/images/author.png" alt="" loading="lazy">
+                                        <img src="/storage/blog_images/author.png" alt="" loading="lazy">
                                         <div class="author-text">
                                             <h4>Sophia</h4>
 
@@ -184,7 +184,7 @@
                     <h3 class="widget-title text-uppercase">Custom Category Post</h3>
                     <div class="custom-post">
                         <div>
-                            <a href="#"><img src="/images/footer-img.png" alt="" loading="lazy"></a>
+                            <a href="#"><img src="/storage/blog_images/footer-img.png" alt="" loading="lazy"></a>
                         </div>
                         <div>
                             <a href="#" class="text-uppercase">Home is peaceful Place</a>

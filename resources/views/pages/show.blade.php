@@ -49,7 +49,7 @@
                         </div>
                     </article>
                     <div class="top-comment"><!--top comment-->
-                        <img src="/images/comment.jpg" class="pull-left img-circle" alt="">
+                        <img src="/storage/blog_images/comment.jpg" class="pull-left img-circle" alt="">
                         <h4>Rubel Miah</h4>
 
                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
@@ -117,12 +117,12 @@
 
                         <div class="bottom-comment"><!--bottom comment-->
                             <div class="comment-img">
-                                <img class="img-circle" src="{{$comment->author->getImage()}}" alt="" width="75"
+                                <img class="img-circle" src="{{$comment->getAuthorImage()}}" alt="" width="75"
                                      height="75">
                             </div>
 
                             <div class="comment-text">
-                                <h5>{{$comment->author->name}}</h5>
+                                <h5>{{$comment->author_name}}</h5>
 
                                 <p class="comment-date">
                                     {{$comment->created_at->diffForHumans()}}
