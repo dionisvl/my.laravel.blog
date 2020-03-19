@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
 
-                <?/* old template search
+                <?php /* old template search
                 <div class="col-md-12 widget search">
                     <form action="/search" method="POST" role="search">
                         {{ csrf_field() }}
@@ -27,9 +27,9 @@
                         <article class="post">
                             <?// if ($post->getImage() != '/storage/blog_images/no-image.png') {?>
                             <div class="post-thumb">
-                                <a class='post_image_block' href="{{route('post.show', $post->slug)}}">
-                                    <img src="{{$post->getImage()}}" alt="" loading="lazy">
-                                </a>
+                                <div class='post_image_block'>
+                                    <img src="{{$post->getImage()}}" alt="{{$post->title}}" loading="lazy">
+                                </div>
 
                                 <a href="{{route('post.show', $post->slug)}}" class="post-thumb-overlay text-center">
                                     <div class="text-uppercase text-center">View Post</div>
