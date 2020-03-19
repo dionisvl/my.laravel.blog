@@ -3706,9 +3706,14 @@ a.more-link:hover {
     background: rgba(0, 0, 0, 0.4);
     opacity: 0;
     overflow: hidden;
-    -webkit-transition: all .5s;
     transition: all .5s;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
 
+.post-thumb-overlay:hover {
+    text-decoration: none;
 }
 
 .post-thumb-overlay div {
@@ -3721,11 +3726,7 @@ a.more-link:hover {
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
-    position: relative;
-    top: 50%;
     letter-spacing: 1px;
-    margin: 5px;
-    margin-top: -18px;
     text-transform: uppercase;
 }
 
