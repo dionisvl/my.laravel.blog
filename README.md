@@ -9,17 +9,25 @@
 
 - git clone THIS_REPO
 - cp .env.example .env
-- php artisan key:generate
 - composer install
+- php artisan key:generate
 - create empty DB and config it into .env
 - php artisan migrate
 - php artisan storage:link
 - ln -s /var/www/THIS_SITE/storage/app/public/ /var/www/THIS_SITE/html/public/storage
 
+```
+sudo chmod -R 777 /var/www/phpqa.ru/{\
+storage/framework/cache,\
+storage/framework/views,\
+storage/framework/sessions,\
+bootstrap/cache}
+```
+
 ## Блог на Ларавеле
 
 - С админкой "AdminLTE" 2.3.7
-- С редактором CkEditor
+- С редактором TinyMCE
 - Возможность создавать и редактировать теги/категории статей
 - Регистрация и управление пользователями
 
