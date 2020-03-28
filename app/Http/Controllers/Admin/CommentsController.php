@@ -12,7 +12,7 @@ class CommentsController extends Controller
     {
         $comments = Comment::all();
 
-        return view('admin.comments.index', ['comments'	=>	$comments]);
+        return view('admin.comments.index', ['comments' => $comments]);
     }
 
     public function toggle($id)

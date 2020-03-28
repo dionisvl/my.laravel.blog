@@ -52,7 +52,7 @@
                                         <a href="/admin/comments/toggle/{{$comment->id}}" class="fa fa-thumbs-o-up"></a>
                                     @endif
 
-                                    <form action="/comments/{{$comment->id}}/destroy" method="POST">
+                                    <form action="/admin/comments/{{$comment->id}}/destroy" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button onclick="return confirm('are you sure?')" type="submit" class="delete">
