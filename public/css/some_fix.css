@@ -128,3 +128,11 @@ pre {
     font-family: "JetBrains Mono", "Lucida Console", serif;
     font-size: 12px;
 }
+
+pre[class*=language-] {
+    font-size: 0.88em !important;
+}
+
+code {
+    font-size: 0.88em !important;
+}

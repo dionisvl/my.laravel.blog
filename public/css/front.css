@@ -3660,9 +3660,9 @@ a.more-link:hover {
 }
 
 .post-content {
-    padding: 0 43px;
+    padding: 0 15px 0 15px;
     overflow: hidden;
-
+    list-style-position: inside;
 }
 
 .post .social-share {
