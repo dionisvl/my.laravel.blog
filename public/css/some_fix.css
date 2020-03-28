@@ -50,6 +50,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: 150px;
 }
 
 @media (max-width: 600px) {
