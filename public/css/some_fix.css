@@ -107,3 +107,22 @@
     opacity: .7;
     margin-bottom: 0;
 }
+
+@font-face {
+    font-display: swap;
+    font-family: 'JetBrains Mono';
+    src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff2/JetBrainsMono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*Подсветка кода*/
+pre {
+    tab-size: 4;
+    background: #0d0d0d;
+    color: lightgreen;
+    padding: 10px;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    font-family: "JetBrains Mono", "Lucida Console", serif;
+}

@@ -3408,6 +3408,7 @@ header
     display: block;
     margin-right: 45px;
     padding: 0 0;
+    height: 50px;
 }
 
 .icon-right {
@@ -3963,6 +3964,7 @@ feature post
 .feature-content {
     position: relative;
     overflow: hidden;
+    min-height: 165px;
 }
 
 .feature-content img {

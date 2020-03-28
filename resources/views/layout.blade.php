@@ -30,18 +30,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png">
 
-
-    <!-- Initialize EnlighterJS -->
-    <link rel="stylesheet" type="text/css" href="/js/enlighterjs/EnlighterJS.min.css"/>
-    <script type="text/javascript" src="/js/enlighterjs/MooTools.min.js"></script>
-    <script type="text/javascript" src="/js/enlighterjs/EnlighterJS.min.js"></script>
-    <meta name="EnlighterJS" content="Advanced javascript based syntax highlighting" data-indent="4"
-          data-selector-block="pre" data-selector-inline="code" data-language="js"/>
-    <!-- Initialize EnlighterJS END -->
     <?
     require($_SERVER['DOCUMENT_ROOT'] . '/tracking.php');
     ?>
-
 </head>
 
 <body>
@@ -219,6 +210,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
         integrity="sha256-CApIX5Te4OdXVy1iWP+5+qG/iHa+8apfYOFagdVMRwk=" crossorigin="anonymous"></script>
 <script src="/js/sliders.js"></script>
+
+{{--prism.js--}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-php.min.js"></script>
+{{--prism.js--}}
 
 </body>
 </html>

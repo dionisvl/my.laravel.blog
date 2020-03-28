@@ -424,6 +424,12 @@
 </div>
 <!-- ./wrapper -->
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.2.0/skins/content/default/content.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.2.0/tinymce.min.js"></script>
