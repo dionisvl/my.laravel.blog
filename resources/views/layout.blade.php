@@ -215,7 +215,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/autoloader/prism-autoloader.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-php.min.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-php.min.js"></script>--}}
 {{--prism.js--}}
 
 </body>

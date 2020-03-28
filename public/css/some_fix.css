@@ -120,10 +120,11 @@
 /*Подсветка кода*/
 pre {
     tab-size: 4;
-    background: #0d0d0d;
+    background: #000000;
     color: lightgreen;
-    padding: 10px;
+    padding: 8px;
     white-space: pre-wrap;
     overflow-x: auto;
     font-family: "JetBrains Mono", "Lucida Console", serif;
+    font-size: 12px;
 }
