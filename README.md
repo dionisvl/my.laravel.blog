@@ -24,7 +24,7 @@ storage/framework/sessions,\
 bootstrap/cache}
 ```
 
-## Блог на Ларавеле
+## Интернет магазин на Ларавеле
 
 - С админкой "AdminLTE" 2.3.7
 - С редактором TinyMCE
@@ -46,4 +46,8 @@ php artisan make:model Post -a
 ```
 php artisan tinker
 \App\User::add(['name' => 'admin', 'email' => 'admin@admin.net', 'is_admin' => 1, 'password' => bcrypt('admin')]);
+```
+Миграции заново:
+```
+php artisan migrate:refresh
 ```

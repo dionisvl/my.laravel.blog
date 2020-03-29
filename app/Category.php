@@ -14,6 +14,11 @@ class Category extends Model
         return $this->hasMany(Post::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public static function create($fields)
     {
         $category = new static;

@@ -11,12 +11,18 @@ class Comment extends Model
         return $this->belongsTo(Post::class);
     }
 
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function allow(){
+    public function allow()
+    {
         $this->status = 1;
         $this->save();
     }

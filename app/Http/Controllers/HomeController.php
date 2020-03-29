@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Product;
 use App\Tag;
 use App\Post;
 use Auth;
@@ -18,9 +19,11 @@ class HomeController extends Controller
         } else {
             //guest
         }
-        //$posts = Post::paginate(6);
-        $posts = Post::orderBy('posts.created_at', 'desc')->paginate(20);
-        return view('pages.index')->with('posts', $posts);
+
+//        $posts = Post::orderBy('posts.created_at', 'desc')->paginate(20);
+//        return view('pages.index')->with('posts', $posts);
+        $products = Product::orderBy('products.created_at', 'desc')->paginate(20);
+        return view('pages.products')->with('products', $products);
     }
 
     public function contacts()

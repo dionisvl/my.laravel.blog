@@ -14,10 +14,6 @@
 Route::get('/', 'HomeController@index');
 Route::get('/contacts/', 'HomeController@contacts');
 
-Route::group(['middleware' => ['web']], function () {
-    Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
-});
-
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
 Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
 Route::post('/subscribe', 'SubsController@subscribe');
@@ -61,6 +57,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['adm
     Route::resource('/incomings', 'IncomingsController');
     Route::get('/incomings/toggle/{id}', 'IncomingsController@toggle');
     Route::delete('/incomings/{id}/destroy', 'IncomingsController@destroy')->name('incomings.destroy');
+
+    Route::resource('/products', 'ProductsController');
 });
 
 //Route::any('/search',function(){
@@ -72,6 +70,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['adm
 //});
 
 Route::any('/search', 'SearchController@index');
+
+Route::group(['middleware' => ['web']], function () {
+//    Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
+    Route::get('/{slug}', 'ProductController@show')->name('product.show');
+    Route::get('/pages/cart', 'ProductController@showCart');
+});
 
 
 
