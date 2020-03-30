@@ -32,7 +32,8 @@
                                    value="{{old('title')}}">
 
                             <label for="price">Цена:</label>
-                            <input type="number" name="price" id="price" class="form-control" value="{{old('price')}}">
+                            <input type="number" name="price" id="price" class="form-control"
+                                   value="{{old('price') || 1990}}">
 
                             <label for="exampleInputFile">Лицевая картинка</label>
                             <input type="file" id="exampleInputFile" name="image">
@@ -57,17 +58,19 @@
 
                             <label for="balance">Остаток(на складе):</label>
                             <input type="number" name="balance" id="balance" class="form-control"
-                                   value="{{old('balance')}}">
+                                   value="{{old('balance') || 1006}}">
 
                             <label for="size">Размеры:</label>
-                            <input type="text" name="size" id="size" class="form-control" value="{{old('size')}}">
+                            <input type="text" name="size" id="size" class="form-control"
+                                   value="{{old('size') || 'упаковка 100штук'}}">
 
                             <label for="manufacturer">Информация о производителе:</label>
                             <input type="text" name="manufacturer" id="manufacturer" class="form-control"
                                    value="{{old('manufacturer')}}">
 
                             <label for="stars">Оценка (звёзды):</label>
-                            <input type="number" name="stars" id="stars" class="form-control" value="{{old('stars')}}">
+                            <input type="number" name="stars" id="stars" class="form-control"
+                                   value="{{old('stars') || 100}}">
                         </div>
                     </div>
 
