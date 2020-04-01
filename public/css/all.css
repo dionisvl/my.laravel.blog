@@ -4991,21 +4991,16 @@ This must be run when you have at least 2 sprites.
     letter-spacing: 0.2px;
     font-weight: 400;
     border: none;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
     border-radius: 3px;
-    color: #fff;
-    text-decoration: none;
     outline: 0 !important;
     cursor: pointer;
     white-space: nowrap;
     text-align: center;
     overflow: hidden;
-    -webkit-transition: all 0.15s ease;
-    -moz-transition: all 0.15s ease;
-    -o-transition: all 0.15s ease;
+    background: url(/upload/btn_bg.png) top center no-repeat;
     transition: all 0.15s ease;
     text-decoration: none !important;
+    color: black;
 }
 
 .btn.inactive {
@@ -6678,6 +6673,8 @@ textarea.form-control.style2 {
 .modal__basket__item .desc {
     margin-left: 106px;
     padding-top: 19px;
+    /*text-decoration:none;*/
+    /*color:black!important;*/
 }
 
 @media (max-width: 789px) {

@@ -25,9 +25,11 @@
                                 <div class=c-thumb__btn-group>
                                     <form action method=POST class=add_to_cart_form>
                                         <input type=hidden name=itemId value={{$product->id}}>
-                                        <input type=hidden name=quantity value=1>
-                                        <input type=hidden name=name value="{{$product->title}}">
-                                        <input type=hidden name=price value={{$product->price}}>
+                                        <input type=hidden name=itemCount value=1>
+                                        <input type=hidden name=itemTitle value="{{$product->title}}">
+                                        <input type=hidden name=itemPrice value={{$product->price}}>
+                                        <input type=hidden name=itemImg value="{{$product->getImage()}}">
+                                        <input type=hidden name=itemSrc value={{route('product.show', $product->slug)}}>
                                         <span class="btn btn_xs add_to_cart">
                                             <span class="ico ico-thumb-basket"></span>
                                             <input type=submit value="В корзину" class=add_to_cart>
@@ -38,12 +40,6 @@
                                     </a>
                                 </div>
                                 {!!$product->preview_text!!}
-                                <ul class="list c-thumb__list">
-                                    <li>Самый горячий термогеник</li>
-                                    <li>Максимальное снижение аппетита</li>
-                                    <li>250% прирост жиросжигания</li>
-                                    <li>Made in USA</li>
-                                </ul>
                             </div>
 
                         </div>
@@ -57,42 +53,14 @@
             <div role=document class=modal-dialog>
                 <div class=modal-content>
                     <div class=modal-header>
-                        <div class="modal-title empty-state">Товар добавлен в корзину</div>
+                        <div class="modal-title">
+                            <span id="modal_product_name"></span>
+                        </div>
                     </div>
                     <div class=modal-body id=header_basket>
                         <div id=warning_message></div>
                         <form method=post action name=basket_form class=cart-form>
                             <div id=cart_content>empty cart_content</div>
-                            <div class=modal__basket__item id=basket_item_6742>
-                                <div class=img>
-                                    <img
-                                        src=upload/resize_cache/iblock/0d7/200_177_1/0d770dc3b1a56b9fe27e63551932518e.jpg
-                                        alt=Taipan>
-                                </div>
-                                <div class=desc>
-                                    <a href=/venom_predtren/><b>Venom</b></a>
-                                    <div class=item-group>
-                                        <div class=ttl>Кол-во</div>
-                                        <div class=e-count>
-                                            <i class="minus input_calc" data-operator=- data-item=6742
-                                               onclick=input_calc()></i>
-                                            <input type=text data-item=6742 value=1 id=NUMBER_FIELD_6742>
-                                            <i class="plus input_calc" data-operator=+ data-item=6742
-                                               onclick=input_calc()></i>
-                                        </div>
-                                        <i class="ico ico-remove" data-item=6742 onclick=remove_from_cart(this)></i>
-                                    </div>
-                                    <span class=js_current_price><span id=price_6742
-                                                                       data-price=2700>2700</span> р.</span>
-                                    <div class=item-group>
-                                        <div class=ttl>Цена:</div>
-                                        <div class=i_desc>
-                                        <span class="js_price total_span" id=total_price_6742
-                                              data-total=2700>2700</span>р.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="modal__basket__item modal__basket__total">
                                 <div class=desc>
                                     <div class=item-group>
@@ -110,7 +78,7 @@
                         </form>
                     </div>
                     <div class=modal-footer>
-                        <a href=/cart/ class=btn style=color:blue><span>Перейти в корзину</span></a>
+                        <a href=/cart/ class=btn><span>Перейти в корзину</span></a>
                         <a href=# data-dismiss=modal class=modal-link>Продолжить покупки</a>
                     </div>
                 </div>
