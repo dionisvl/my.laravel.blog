@@ -16,6 +16,7 @@
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js></script>
     <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js></script>
     <script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js></script>
+    <script src=/js/cart.js></script>
 </head>
 <body>
 <div id=loading>
@@ -37,20 +38,21 @@
                 </div>
                 <div class="cnt hidden-xs">
                     <span>Есть вопросы? Позвоните нам: </span>
-                    <span><a href=tel:+79154775385 rel=nofollow target=_blank>+7 (915) 477-53-85</a>
-<br>
-<div style=line-height:2.5>
-<a href=https://wa.me/79154775385 rel=nofollow target=_blank>WhatsApp</a> &nbsp; &nbsp; &nbsp;
-<a rel=nofollow target=_blank href="viber://add?number=79154775385">Viber</a>&nbsp; &nbsp; &nbsp; &nbsp;
-<a rel=nofollow target=_blank href=https://t.me/innovativbase>Telegram</a></div>
-</span>
+                    <span>
+                        <a href=tel:+79991140312 rel=nofollow target=_blank>+7 (999) 114-03-12</a><br>
+                        <div style=line-height:2.5>
+                            <a href=https://wa.me/79991140312 rel=nofollow target=_blank>WhatsApp</a> &nbsp; &nbsp; &nbsp;
+                            <a rel=nofollow target=_blank href="viber://add?number=79991140312">Viber</a>&nbsp; &nbsp; &nbsp; &nbsp;
+                            <a rel=nofollow target=_blank href=https://t.me/79991140312>Telegram</a>
+                        </div>
+                    </span>
                     <span>Время работы: пн-сб с 10:00-20:05</span>
                 </div>
-                <div class="cnt visible-xs"><span>
-Интернет магазин спортивного питания в Москве и Регионах<br>
+                <div class="cnt visible-xs">
+                <span>Интернет магазин спортивного питания в Москве и Регионах<br>
 <div style=display:none><div class=wf-breadcrumb><ul itemscope itemtype=http://schema.org/BreadcrumbList>
 <li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
-<a href=catalog/index.html title=Главная itemprop=item>
+<a href="/" title=Главная itemprop=item>
 <span itemprop=name>Главная</span>
 <meta itemprop=position content="0"/>
 </a>
@@ -61,11 +63,11 @@
 <meta itemprop=position content="1"/>
 </a>
 </li></ul></div></div><br>
-<br> </span><span><a href=tel:+79154775385 rel=nofollow target=_blank>+7 (915) 477-53-85</a>
+<br> </span><span><a href=tel:+79991140312 rel=nofollow target=_blank>+7 (999) 114-03-12</a>
 <br>
 <div style=line-height:2.5>
-<a href=https://wa.me/79154775385 rel=nofollow target=_blank>WhatsApp</a> &nbsp; &nbsp; &nbsp;
-<a rel=nofollow target=_blank href="viber://add?number=79154775385">Viber</a>&nbsp; &nbsp; &nbsp; &nbsp;
+<a href=https://wa.me/79991140312 rel=nofollow target=_blank>WhatsApp</a> &nbsp; &nbsp; &nbsp;
+<a rel=nofollow target=_blank href="viber://add?number=79991140312">Viber</a>&nbsp; &nbsp; &nbsp; &nbsp;
 <a rel=nofollow target=_blank href=https://t.me/innovativbase>Telegram</a></div>
 </span></div>
             </div>
@@ -74,17 +76,17 @@
     <div class=mn-header__bottom>
         <div class=container>
             <div class="mn-header__logo hidden-xs">
-                <a href=catalog/index.html><img alt=logo src=/upload/logo.jpg></a>
+                <a href="/"><img alt=logo src=/upload/logo.jpg></a>
                 <span>Интернет магазин спортивного питания в Москве и Регионах<br>
 <div style=display:none><div class=wf-breadcrumb><ul itemscope itemtype=http://schema.org/BreadcrumbList>
 <li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
-<a href=catalog/index.html title=Главная itemprop=item>
+<a href="/" title=Главная itemprop=item>
 <span itemprop=name>Главная</span>
 <meta itemprop=position content="0"/>
 </a>
 </li>
 <li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
-<a href=/catalog/index.html title="Innovative labs" itemprop=item>
+<a href=/ title="Innovative labs" itemprop=item>
 <span itemprop=name>Innovative labs</span>
 <meta itemprop=position content="1"/>
 </a>
@@ -98,7 +100,7 @@
                 <nav class=mn-header__nav>
                     <ul class=list_float id=horizontal-3level-menu>
                         <li class=root-item-selected>
-                            <a href=catalog/index.html>Каталог</a>
+                            <a href="/">Каталог</a>
                             <ul class=second-level>
                                 <li>
                                     <a href=zhiroszhigatel/index.html>Жиросжигатели</a>
@@ -138,7 +140,7 @@
                     </ul>
                 </nav>
                 <div class="mn-header__logo-xs visible-xs-inline-block">
-                    <span><a href=/index.html>innovativbase</a></span></div>
+                    <span><a href="/">innovativbase</a></span></div>
                 <a href=/pages/cart class=mn-header__basket id=sw_basket>
                     <i id=top_basket_counter>0</i>
                     <span class="ico ico-basket hidden-sm hidden-xs"></span>
@@ -161,7 +163,7 @@
                 <div class=col-sm-18>
                     <nav class="mn-footer__nav hidden-xs">
                         <ul class=list_float>
-                            <li class=active><a href=catalog/index.html>Каталог</a></li>
+                            <li class=active><a href="/">Каталог</a></li>
                             <li><a href=food/index.html>Питание</a></li>
                             <li><a href=payment/index.html>Оплата и доставка</a></li>
                             <li><a href=contacts/index.html>Контакты</a></li>
@@ -189,8 +191,8 @@
                 <div class="col-sm-6 col-xs-12">
                     <div class=mn-footer__soc>
 <span class=hidden-xs>
-Почта:&nbsp;<a href=mailto:info@innovativbase.ru>info@innovativbase.ru</a><br>
-Тел: +7 (915) 477-53-85<br>
+Почта:&nbsp;<a href=mailto:info@innovativlab.ru>info@innovativlab.ru</a><br>
+Тел: +7 (999) 114-03-12<br>
 Время работы: <br>
 пн-сб с 10:00-20:05<br>
 <br>
@@ -209,9 +211,8 @@
                         лекарственным средством. Перед началом применения обязательно проконсультируйтесь у специалиста.&nbsp;Продукция
                         обмену и возврату не подлежит. 1436
                     </p>
-                    <p>
-                        &nbsp;
-                    </p></div>
+                    <p></p>
+                </div>
             </div>
         </div>
     </div>
@@ -221,17 +222,45 @@
         </div>
     </div>
 </div>
-<div id=success_modal tabindex=-1 role=dialog class="modal fade">
+
+<div id=modal_basket tabindex=-1 role=dialog class="modal fade">
     <div role=document class=modal-dialog>
         <div class=modal-content>
-            <span class=close data-dismiss=modal>X</span>
-            <div class=modal-body id=success_modal_content>
+            <div class=modal-header>
+                <div class="modal-title">
+                    <span id="modal_product_name"></span>
+                </div>
+            </div>
+            <div class=modal-body id=header_basket>
+                <div id=warning_message></div>
+                <form method=post action name=basket_form class=cart-form>
+                    <div id=cart_content>empty cart_content</div>
+                    <div class="modal__basket__item modal__basket__total">
+                        <div class=desc>
+                            <div class=item-group>
+                                <div class=ttl>Выбрано товаров:</div>
+                                <div class="i_desc js_item_count" id=modal_basket_counter>1</div>
+                            </div>
+                            <div class=item-group>
+                                <div class=ttl>На сумму:</div>
+                                <div class=i_desc>
+                                    <span class=js_item_price id=modal_basket_total>777</span>р
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class=modal-footer>
+                <a href=/cart/ class=btn><span>Перейти в корзину</span></a>
+                <a href=# data-dismiss=modal class=modal-link>Продолжить покупки</a>
             </div>
         </div>
     </div>
 </div>
+
 <div itemscope itemtype=https://schema.org/SportingGoodsStore style=display:none>
-    <span itemprop=name>innovativbase</span><span itemprop=url>https://innovativbase.ru</span>
+    <span itemprop=name>innovativbase</span><span itemprop=url>https://innovativlab.ru</span>
     <span itemprop=priceRange>от 2600 руб до 5500 руб</span>
     <img itemprop=logo src="/upload/logo.jpg"/><img itemprop=image src="/upload/innova.jpg"/>
     <div itemprop=address itemscope itemtype=https://schema.org/PostalAddress><span
@@ -239,205 +268,9 @@
             itemprop=addressRegion>Московская область</span><span
             itemprop=streetAddress>улица Бутырский Вал, 68/70с1</span>
     </div>
-    <span itemprop=telephone>+79853505587</span><a itemprop=email href=mailto:info@innovativbase.ru>info@innovativbase.ru</a>
+    <span itemprop=telephone>+79853505587</span><a itemprop=email
+                                                   href=mailto:info@innovativlab.ru>info@innovativlab.ru</a>
     <time itemprop=openingHours datetime="Mo-Su 10:00-22:00"></time>
 </div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        /** Найдем все товары в документе и навесим событие добавления его в корзину */
-        let products = document.getElementsByClassName('add_to_cart_form');
-        for (let product of products) {
-            product.onsubmit = function (event) {
-                event.preventDefault();
-                let formData = new FormData(this);
-                // console.log(formData.get("itemId"));
-                addToCart(formData);
-                fillCart();
-                document.getElementById('modal_product_name').innerHTML = formData.get('itemTitle') + ' добавлен в корзину';
-                cart_items_count_recalc();
-                $("#modal_basket").modal();
-            };
-        }
-
-        function clearCart() {
-            localStorage.removeItem('cart');
-            document.getElementById('cart_content').innerHTML = 'Корзина очишена.';
-        }
-    });
-
-    function cart_items_count_recalc() {
-        document.getElementById('modal_basket_counter').innerHTML = document.querySelectorAll('.modal__basket__product').length;
-    }
-
-    /** добавление товара в объект "корзина" учитывая localStorage*/
-    function addToCart(formData) {
-        let itemId = formData.get("itemId");
-        let cartData = getCartData() || {};
-        // console.log('first get cartada:');
-        // console.log(cartData);
-        if (cartData.hasOwnProperty(itemId)) {
-            cartData[itemId].itemCount = parseInt(cartData[itemId].itemCount) + parseInt(1);
-        } else {
-            cartData[itemId] = {
-                itemId: itemId,
-                itemTitle: formData.get("itemTitle"),
-                itemPrice: formData.get("itemPrice"),
-                itemCount: formData.get("itemCount"),
-                itemImg: formData.get("itemImg"),
-                itemSrc: formData.get("itemSrc")
-            }
-        }
-        if (!setCartData(cartData)) {
-        }
-        return false;
-    }
-
-    /** Заполним корзину товарами из localStorage */
-    function fillCart(e) {
-        let cartData = getCartData(), totalItems = '';
-        if (cartData !== null) {
-            totalItems = '';
-            for (let itemId in cartData) {
-                let id = cartData[itemId].itemId;
-                let price = cartData[itemId].itemPrice;
-                let name = cartData[itemId].itemTitle;
-                let itemCount = cartData[itemId].itemCount;
-                let itemImg = cartData[itemId].itemImg;
-                let itemSrc = cartData[itemId].itemSrc;
-                // console.log(name);
-                totalItems += `
-                <div class="modal__basket__item modal__basket__product" id="basket_item_${id}">
-    <div class="img">
-    <img src="${itemImg}" alt="${name}"></div>
-    <div class="desc">
-        <a href="${itemSrc}" style='color:black'>
-            <b>${name}</b>
-        </a>
-        <div class="item-group">
-            <div class="ttl">Кол-во</div>
-            <div class="e-count">
-                <i class="minus input_calc" data-operator='-' data-item="${id}" onclick="input_calc(this)"></i>
-                <input type="text" data-item="${id}" value="${itemCount}" id="NUMBER_FIELD_${id}">
-                <i class="plus input_calc" data-operator='+' data-item="${id}" onclick="input_calc(this)"></i>
-            </div>
-            <i class="ico ico-remove" data-item="${id}" onclick="remove_from_cart(this)"></i>
-    </div>
-        <span class="js_current_price"><span id="price_${id}" data-price="${price}">${price}</span>р.</span>
-        <div class="item-group">
-            <div class="ttl">Цена:</div>
-            <div class="i_desc">
-                <span class="js_price total_span" id="total_price_${id}" data-total="${price}">${price}</span>р.
-            </div>
-        </div>
-    </div>
-</div>
-                `;
-            }
-            document.getElementById('cart_content').innerHTML = totalItems;
-        } else {
-            document.getElementById('cart_content').innerHTML = 'В корзине пусто!';
-        }
-        return false;
-    }
-
-    /* удалим элемент из localstorage*/
-    function removeItemCartData(itemId) {
-        let cartData = getCartData();
-        if (cartData !== null) {
-            for (let id in cartData) {
-                if (id === itemId) {
-                    delete cartData[id];
-                    setCartData(cartData)
-                }
-            }
-        }
-        return false;
-    }
-
-    /* установим количество элементу в localstorage*/
-    function setCountItemCartData(itemId, itemCount) {
-        let cartData = getCartData();
-        if (cartData !== null) {
-            for (let id in cartData) {
-                if (id === itemId) {
-                    cartData[id].itemCount = itemCount;
-                    console.log(cartData);
-                    setCartData(cartData);
-                }
-            }
-        }
-        return false;
-    }
-
-    function getCartData() {
-        return JSON.parse(localStorage.getItem('cart'));
-    }
-
-    function setCartData(o) {
-        localStorage.setItem('cart', JSON.stringify(o));
-        return false;
-    }
-
-
-    /** Пересчет цен в корзине/заказе */
-    let minuses = document.getElementsByClassName("input_calc");
-    for (let i = 0; i < minuses.length; i++) {
-        minuses[i].addEventListener('click', input_calc, false);
-    }
-
-    /** Кнопка плюс/минус в корзине у каждого товара */
-    function input_calc(element) {
-        let id = element.dataset.item;
-        let operator = element.dataset.operator;
-        let input = document.getElementById('NUMBER_FIELD_' + id);
-        if (operator === '-') {
-            if (parseInt(input.value) === 0) {
-                return;
-            }
-            input.value = parseInt(input.value) - 1;
-        } else {
-            input.value = parseInt(input.value) + 1;
-        }
-        cart_item_price_recalc(id);
-        cart_price_recalc();
-        cart_items_count_recalc();
-        setCountItemCartData(id, input.value);
-    }
-
-    /** Удалим товар из корзины */
-    function remove_from_cart(element) {
-        let id = element.dataset.item;
-        id = 'basket_item_' + id;
-        // console.log(id);
-        let node = document.getElementById(id);
-        node.remove();
-        cart_price_recalc();
-        cart_items_count_recalc();
-        removeItemCartData(element.dataset.item);
-    }
-
-    /** Пересчитать цену этого товара на основе его количества в корзине*/
-    function cart_item_price_recalc(id) {
-        let totalPrice = document.getElementById('total_price_' + id);
-        let count = document.getElementById('NUMBER_FIELD_' + id).value;
-        let one_price = document.getElementById('price_' + id).dataset.price;
-        let newTotalPrice = one_price * count;
-        totalPrice.dataset.total = newTotalPrice;
-        totalPrice.innerHTML = newTotalPrice;
-    }
-
-    /** Пересчитать сумму всего заказа на основе количества и цен выбранных товаров */
-    function cart_price_recalc() {
-        let newTotalPrice = 0;
-        let total_prices = document.getElementsByClassName('total_span');
-        for (let i = 0; i < total_prices.length; i++) {
-            newTotalPrice += parseInt(total_prices[i].dataset.total);
-        }
-        document.getElementById('modal_basket_total').innerHTML = newTotalPrice;
-    }
-
-
-</script>
 </body>
 </html>

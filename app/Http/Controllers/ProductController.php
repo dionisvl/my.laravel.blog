@@ -47,7 +47,6 @@ class ProductController extends Controller
     public function show($slug)
     {
         $product = Product::where('slug', $slug)->firstOrFail();
-        mb_internal_encoding("UTF-8");
         return view('shop.show', compact('product'));
     }
 
