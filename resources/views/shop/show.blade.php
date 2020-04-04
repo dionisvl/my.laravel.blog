@@ -49,19 +49,12 @@
                                         <input type=hidden name=itemImg value="{{$product->getImage()}}">
                                         <input type=hidden name=itemSrc value={{route('product.show', $product->slug)}}>
                                         @if ($product->balance > 0)
-                                            <button type=submit class="btn btn_sm hidden-sm hidden-xs add_to_cart">
-                                                Купить
-                                            </button>
-                                            <button type=submit class="btn btn_xs visible-sm visible-xs add_to_cart">
-                                                Купить
-                                            </button>
+                                            <button class="btn btn_sm hidden-sm hidden-xs add_to_cart"
+                                                    data-name=".Red Wasp.">
+                                                <i class="ico ico-thumb-busket-sm "></i><span>Купить</span></button>
                                         @else
                                             <button disabled
                                                     class="btn btn_sm hidden-sm hidden-xs add_to_cart inactive">
-                                                <span>Нет в наличии</span>
-                                            </button>
-                                            <button disabled
-                                                    class="btn btn_xs visible-sm visible-xs add_to_cart inactive">
                                                 <span>Нет в наличии</span>
                                             </button>
                                         @endif
@@ -79,48 +72,10 @@
                                 </ul>
 
                                 <div class="h3">Преимущества:</div>
-                                {{$product->features}}
-                                <ul class="list c-card-desc__advantages">
-                                    <li>Первоклассный памп</li>
-                                    <li>Эфедра + 1,3 ДМАА</li>
-                                    <li>Тестобустер</li>
-                                    <li>Уменьшает уровень Эстрогенов</li>
-                                </ul>
-
+                                {!! $product->features !!}
 
                                 <div class="h3">Доставка:</div>
-                                {{$product->delivery}}
-                                <ul class="list c-card-desc__delivery">
-                                    <li>
-                                        <div class="ttl">
-                                            <div class="cnt">
-                                                <i class="ico ico-delivery-blue"></i>
-                                                <span>Курьерская по Москве</span></div>
-                                            <div class="price">300р</div>
-                                        </div>
-                                        <span>(от 3 до 10 дней, курьер/самовывоз)</span>
-                                    </li>
-                                    <li>
-                                        <div class="ttl">
-                                            <div class="cnt">
-                                                <i class="ico ico-delivery-green"></i>
-                                                <span>Доставка по России</span>
-                                            </div>
-                                            <div class="price">от 230р</div>
-                                        </div>
-                                        <span>(от 2 до 5 дней, курьер/самовывоз)</span>
-                                    </li>
-                                    <li>
-                                        <div class="ttl">
-                                            <div class="cnt">
-                                                <i class="ico ico-delivery-red"></i>
-                                                <span>СДЭК Казахстан, Беларусь</span>
-                                            </div>
-                                            <div class="price">от 400р</div>
-                                        </div>
-                                        <span>(отправление в день заказа)</span>
-                                    </li>
-                                </ul>
+                                {!! $product->delivery !!}
                             </div>
                         </div>
                     </div>
@@ -166,129 +121,11 @@
             </div>
 
         </div>
-        <section class="card-sesc-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-24 col-sm-24">
-                        <div class="card-sesc-section__cnt">
-                            <h2 class="h1 text-center">
-                                <b>Описание и преимущества предтреника {{$product->title}}</b>
-                            </h2>
 
-                            <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;"></span>
-                            <p style="text-align: justify;">
-                                <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">Встречайте новинку! Предтренировочный комплекс AREZ God of The Gym от компании NtelPharma. Первоклассный энергетик и пампилка. Именно эти слова пришли мне в голову, когда я первый раз посмотрел на состав предтреника AREZ God of The Gym от NtelPharma. Стандартная порция Ареса 5,8 грамм и хватает на 50 раз. Скажу прямо, если вам нужен каждодневный предтрен, тогда вы пришли по адресу. Если вы любитель мезоморфа или съедаете по 4 черпака за раз, потому, что не пробивает. Возьмите лучше Wiked или I am God. AREZ God of The Gym от NtelPharma это предтрен, который больше подойдет любителям культуристам или просто тем у кого на работе приходится частенько таскать тяжести.</span><br>
-                                <span style="font-family: Arial, Helvetica; font-size: 14pt;"> </span><br>
-                                <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;"> <b>Влияние на организм</b> предтреника AREZ God of The Gym от NtelPharma</span><br>
-                                <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;"> </span>
-                            </p>
-                            <ul>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">Энергетик</span>
-                                </li>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-	Памп</span></li>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-	Быстрое восстановление</span></li>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-	Силовые</span></li>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-	Фокусировка</span></li>
-                            </ul>
-                            <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-<p style="text-align: justify;">
-	 Что еще можно рассказать о предтренике AREZ God of The Gym от NtelPharma? В составе есть эфедра 15 мг, немного 1,3 ДМАА 25 мг. После вечерней тренировки спать особо не мешает. Стимуляторы есть, но с одного черпака бессонницы не будет. Каких либо побочек, честно не почувствовал. Аппетит не сбивает и живот от него не болит. Плюсом идет небольшая дозировка аргинина 750 мг, агматин сульфата 750 мг и цитрулина 375мг. Памп есть, но прям таки лютого разрыва мышц вы не почувствуете. Подведя итог могу сказать только одно, если вы обычный человек, который любит потрениться, тогда предтреник AREZ God of The Gym от NtelPharma отлично вам подойдет. Если же вы танк, заряженный стероидами по самые самые? Тогда ищите вариант посильней.
-</p>
- </span>
-                            <p>
-                            </p>
-                            <span class="text1" style="font-family: Arial, Helvetica; font-size: 16pt;"><b>
-<p style="text-align: center;">
-	 Состав предтреника AREZ God of The Gym от NtelPharma
-</p>
-<p style="text-align: center;">
- <img width="495" src="../upload/medialibrary/038/Arez_God_Of_War.png" height="630"
-      title="Состав Arez God of War Ntel Pharma"><br>
-</p>
- </b></span></div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </section>
-        <div class="container">
+        {!! $product->detail_text !!}
 
+        <div class="container"></div>
 
-        </div>
-        <section class="card-men-section">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-md-24 col-sm-24">
-                        <div class="card-men-section__cnt">
-                            <h2 class="h1 text-center">
-                                <b>Способ применения и побочные эффекты предтреника AREZ God of The Gym от
-                                    NtelPharma</b></h2>
-                            <p class="text1">
-                            </p>
-                            <span class="text1"></span><span class="text1"
-                                                             style="font-family: Arial, Helvetica; font-size: 14pt;"></span>
-                            <p style="text-align: justify;">
-                                <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">Принимать 1-2 черпака на 200-300 мл воды перед тренировкой. Не превышать дневную дозировку выше 2 черпаков в сутки.</span><br>
-                                <span style="font-family: Arial, Helvetica; font-size: 14pt;"> </span><br>
-                                <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;"> <b>Противопоказания к применению</b> предтреника&nbsp;AREZ God of The Gym от NtelPharma</span><br>
-                                <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;"> </span>
-                            </p>
-                            <ul>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">Болезни сердечно сосудистой системы </span>
-                                </li>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-	Нарушения в работе печени и почек </span></li>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-	Аллергия на компоненты&nbsp; </span></li>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-	Возраст до 18 лет </span></li>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-	Беременность и кормление грудью</span></li>
-                            </ul>
-                            <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;"> <b>Возможные побочные эффекты</b> предтреника&nbsp;AREZ God of The Gym от NtelPharma</span><br>
-                            <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;"> </span>
-                            <ul>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">Головная боль </span>
-                                </li>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-	Тахикардия </span></li>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-	Тремор рук </span></li>
-                                <li><span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-	Тошнота&nbsp;</span></li>
-                            </ul>
-                            <p>
-                            </p>
-                            <p style="text-align: center;">
-                                <span class="text1"
-                                      style="text-align: center; font-family: Arial, Helvetica; font-size: 16pt;"><b>Купить AREZ God of The Gym оригинальный предтреник от NtelPharma</b></span>
-                            </p>
-                            <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;">
-<p style="text-align: justify;">
-	 Прямые поставки из США. Гарантия от производителя. У нас только оригинальная продукция и максимум качества. Купить предтрен AREZ God of The Gym от NtelPharma&nbsp;в Москве и Московской области, Одинцово, Санкт-Петербурге и по всей России в интернет магазине спортивного питания InnovativeBase.
-</p>
- </span>
-                            <p class="text1">
-                            </p>
-                            <p style="text-align: justify;">
-                            </p>
-                            <p>
-                            </p>
-                            <p>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="container">
-        </div>
-        </br>
         <div class="container linked_goods">
 
             <div class="catalog-page__catalog-block">

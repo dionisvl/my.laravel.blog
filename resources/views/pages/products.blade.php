@@ -39,7 +39,7 @@
                                         <span>Подробнее</span>
                                     </a>
                                 </div>
-                                {!!$product->preview_text!!}
+                                {!!$product->features!!}
                             </div>
 
                         </div>

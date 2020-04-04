@@ -66,14 +66,15 @@
 <br> </span><span><a href=tel:+79991140312 rel=nofollow target=_blank>+7 (999) 114-03-12</a>
 <br>
 <div style=line-height:2.5>
-<a href=https://wa.me/79991140312 rel=nofollow target=_blank>WhatsApp</a> &nbsp; &nbsp; &nbsp;
-<a rel=nofollow target=_blank href="viber://add?number=79991140312">Viber</a>&nbsp; &nbsp; &nbsp; &nbsp;
+<a href=https://wa.me/79991140312 rel=nofollow target=_blank>WhatsApp</a>
+<a rel=nofollow target=_blank href="viber://add?number=79991140312">Viber</a>
 <a rel=nofollow target=_blank href=https://t.me/innovativbase>Telegram</a></div>
 </span></div>
             </div>
         </div>
     </div>
-    <div class=mn-header__bottom>
+    <div class="mn-header__bottom @if (Request::path() !== '/') mn-header__isSmall @endif">
+
         <div class=container>
             <div class="mn-header__logo hidden-xs">
                 <a href="/"><img alt=logo src=/upload/logo.jpg></a>
@@ -149,8 +150,12 @@
                 </a>
             </div>
         </div>
-        <div class=mn-header__bg
-             style="background:url(/upload/iblock/5c3/5c33f7f19f09f529b28d0ccc7266f39a.jpg) top center"></div>
+        @if (Request::path() === '/')
+            <div class="mn-header__bg"
+                 style="background:url(/upload/iblock/5c3/5c33f7f19f09f529b28d0ccc7266f39a.jpg) top center"></div>
+        @else
+            <div class="mn-header__bg-gray"></div>
+        @endif
     </div>
 </header>
 
@@ -268,8 +273,8 @@
             itemprop=addressRegion>Московская область</span><span
             itemprop=streetAddress>улица Бутырский Вал, 68/70с1</span>
     </div>
-    <span itemprop=telephone>+79853505587</span><a itemprop=email
-                                                   href=mailto:info@innovativlab.ru>info@innovativlab.ru</a>
+    <span itemprop=telephone>+79991140312</span>
+    <a itemprop=email href=mailto:info@innovativlab.ru>info@innovativlab.ru</a>
     <time itemprop=openingHours datetime="Mo-Su 10:00-22:00"></time>
 </div>
 </body>

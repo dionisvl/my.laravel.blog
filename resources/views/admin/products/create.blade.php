@@ -60,7 +60,7 @@
                             <input type="number" name="balance" id="balance" class="form-control"
                                    value="{{old('balance') || 1006}}">
 
-                            <label for="size">Размеры:</label>
+                            <label for="size">Объем, размеры:</label>
                             <input type="text" name="size" id="size" class="form-control"
                                    value="{{old('size') || 'упаковка 100штук'}}">
 
@@ -76,25 +76,25 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Полный текст</label>
+                            <label for="exampleInputEmail1">Подробное описание в карточке элемента</label>
                             <textarea name="detail_text" id="detail_text" cols="30" rows="10"
                                       class="form-control myeditable"></textarea>
 
-                            <label for="exampleInputEmail1">Описание</label>
-                            <textarea name="preview_text" id="preview_text" cols="30" rows="10"
-                                      class="form-control myeditable">{{old('description')}}</textarea>
+                            {{--                            <label for="exampleInputEmail1">Краткое описание</label>--}}
+                            {{--                            <textarea name="preview_text" id="preview_text" cols="30" rows="10"--}}
+                            {{--                                      class="form-control myeditable">{{old('description')}}</textarea>--}}
 
-                            <label for="features">Особенности товара:</label>
+                            <label for="features">Преимущества, особенности товара:</label>
                             <textarea name="features" id="features" cols="30" rows="4"
-                                      class="form-control">{{old('features')}}</textarea>
+                                      class="form-control myeditable">{{old('features')}}</textarea>
+
+                            <label for="delivery">Доставка, информация о доставке:</label>
+                            <textarea name="delivery" id="delivery" cols="30" rows="4"
+                                      class="form-control myeditable">{{old('delivery')}}</textarea>
 
                             <label for="composition">Состав продукта:</label>
                             <textarea name="composition" id="composition" cols="30" rows="4"
-                                      class="form-control">{{old('composition')}}</textarea>
-
-                            <label for="delivery">Информация о доставке:</label>
-                            <textarea name="delivery" id="delivery" cols="30" rows="4"
-                                      class="form-control">{{old('delivery')}}</textarea>
+                                      class="form-control ">{{old('composition')}}</textarea>
                         </div>
                     </div>
 
