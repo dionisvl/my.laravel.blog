@@ -26,18 +26,24 @@
                 <div class="box-body">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Название</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" name="title"
-                                   value="{{$product->title}}">
+                            <label for="title">Название</label>
+                            <input type="text" class="form-control" id="title" name="title" value="{{$product->title}}">
+
+                            <label for="slug">Код</label>
+                            <input type="text" class="form-control" id="slug" name="slug" value="{{$product->slug}}">
 
                             <label for="price">Цена:</label>
                             <input type="number" name="price" id="price" class="form-control"
                                    value="{{$product->price}}">
 
                             <img src="{{$product->getImage()}}" alt="" class="img-responsive" width="200">
-                            <label for="exampleInputFile">Лицевая картинка</label>
-                            <input type="file" id="exampleInputFile" name="image">
+                            <label for="preview_image">Превью картинка</label>
+                            <input type="file" id="preview_image" name="image">
                             <p class="help-block"></p>
+
+                            <img src="{{$product->getImage()}}" alt="" class="img-responsive" width="200">
+                            <label for="detail_image">Детальная картинка</label>
+                            <input type="file" id="detail_image" name="detail_image">
 
                             <label>Категория</label>
                             {{Form::select('category_id',

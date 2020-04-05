@@ -11,6 +11,7 @@ class Product extends Model
 {
     protected $fillable = [
         'title',
+        'slug',
         'category_id',
         'date',
         'detail_text',
@@ -36,12 +37,24 @@ class Product extends Model
 //        $post->date = $fields['date'];
 //        $post->detail_text = $fields['detail_text'];
 //        $post->preview_text = $fields['preview_text'];
-        $post->slug = Str::slug($fields['title']);
+        $post->slug = static::getSlug($fields['title']);
         $post->user_id = Auth::user()->id;
         $post->save();
 
         return $post;
     }
+
+    private static function getSlug($title)
+    {
+        $slug = Str::slug($title);
+        $original = $slug;
+        $count = 2;
+        while (static::whereSlug($slug)->exists()) {
+            $slug = "{$original}-" . $count++;
+        }
+        return $slug;
+    }
+
 
     public function category()
     {
@@ -51,6 +64,7 @@ class Product extends Model
     public function edit($fields)
     {
         $this->fill($fields);
+        $this->slug = static::getSlug($fields['title']);
         $this->save();
     }
 

@@ -27,16 +27,18 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Название</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="title"
-                                   value="{{old('title')}}">
+                            <label for="title">Название</label>
+                            <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}">
 
                             <label for="price">Цена:</label>
                             <input type="number" name="price" id="price" class="form-control"
                                    value="{{old('price') || 1990}}">
 
-                            <label for="exampleInputFile">Лицевая картинка</label>
-                            <input type="file" id="exampleInputFile" name="image">
+                            <label for="previewImage">Лицевая картинка</label>
+                            <input type="file" id="previewImage" name="image">
+
+                            <label for="detailImage">Лицевая картинка</label>
+                            <input type="file" id="detailImage" name="detailImage">
 
                             <p class="help-block"></p>
 
