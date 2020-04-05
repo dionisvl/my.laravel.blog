@@ -73,8 +73,18 @@ Route::any('/search', 'SearchController@index');
 
 Route::group(['middleware' => ['web']], function () {
 //    Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
+    Route::get('/cart', 'ProductController@showCart');
     Route::get('/{slug}', 'ProductController@show')->name('product.show');
-    Route::get('/pages/cart', 'ProductController@showCart');
+
+    Route::get('/contacts/index.html', function () {
+        return view('shop.contacts');
+    });
+    Route::get('/payment/index.html', function () {
+        return view('shop.payment');
+    });
+    Route::get('/food/index.html', function () {
+        return view('shop.food');
+    });
 });
 
 

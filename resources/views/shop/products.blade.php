@@ -16,7 +16,8 @@
                                 </div>
                                 <div class=c-thumb__img>
                                     <a href={{route('product.show', $product->slug)}}>
-                                        <img src={{$product->getImage()}} alt="{{$product->title}}" height=177>
+                                        <img src={{$product->getImage('preview_picture')}} alt="{{$product->title}}"
+                                             height=177>
                                     </a>
                                 </div>
                                 <div class=c-thumb__price>
@@ -28,7 +29,8 @@
                                         <input type=hidden name=itemCount value=1>
                                         <input type=hidden name=itemTitle value="{{$product->title}}">
                                         <input type=hidden name=itemPrice value={{$product->price}}>
-                                        <input type=hidden name=itemImg value="{{$product->getImage()}}">
+                                        <input type=hidden name=itemImg
+                                               value="{{$product->getImage('preview_picture')}}">
                                         <input type=hidden name=itemSrc value={{route('product.show', $product->slug)}}>
                                         <span class="btn btn_xs add_to_cart">
                                             <span class="ico ico-thumb-basket"></span>

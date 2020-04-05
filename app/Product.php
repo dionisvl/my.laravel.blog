@@ -16,7 +16,8 @@ class Product extends Model
         'date',
         'detail_text',
         'preview_text',
-        'image',
+        'detail_picture',
+        'preview_picture',
         'price',
         'balance',
         'composition',
@@ -70,39 +71,40 @@ class Product extends Model
 
     public function remove()
     {
-        $this->removeImage();
+        $this->removeImage('detail_picture');
+        $this->removeImage('preview_picture');
         $this->delete();
     }
 
-    public function removeImage()
+    public function removeImage(string $type_picture)
     {
-        if ($this->image != null) {
-            Storage::delete('storage/shop_uploads/' . $this->image);
+        if ($this->{$type_picture} != null) {
+            Storage::delete('storage/shop_uploads/' . $this->{$type_picture});
         }
     }
 
-    public function uploadImage($image)
+    public function uploadImage($file_picture, string $type_picture)
     {
-        if ($image == null) {
+        if (empty($file_picture)) {
             return;
         }
 
-        $this->removeImage();
-        $filename = str_random(10) . '.' . $image->extension();
-        $image->storeAs('storage/shop_uploads', $filename);
-        $this->image = $filename;
+        $this->removeImage($type_picture);
+        $filename = str_random(10) . '.' . $file_picture->extension();
+        $file_picture->storeAs('storage/shop_uploads', $filename);
+        $this->{$type_picture} = $filename;
         $this->save();
     }
 
-    public function getImage()
+    public function getImage(string $type_picture)
     {
-        if ($this->image == null) {
+        if ($this->{$type_picture} == null) {
             if (\Route::getCurrentRoute()->uri() == '/') {
                 return '/storage/shop_uploads/no-image.png';
             }
             return '/storage/shop_uploads/no-image.png';
         }
-        return '/storage/shop_uploads/' . $this->image;
+        return '/storage/shop_uploads/' . $this->{$type_picture};
     }
 
     public function setCategory($id)

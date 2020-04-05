@@ -24,7 +24,7 @@
                                 <span class="hidden-xs">{{$product->composition}}</span>
                             </div>
                             <div class="c-card-view__body">
-                                <img src="{{$product->getImage()}}">
+                                <img src="{{$product->getImage('detail_picture')}}">
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,8 @@
                                         <input type=hidden name=itemCount value=1>
                                         <input type=hidden name=itemTitle value="{{$product->title}}">
                                         <input type=hidden name=itemPrice value={{$product->price}}>
-                                        <input type=hidden name=itemImg value="{{$product->getImage()}}">
+                                        <input type=hidden name=itemImg
+                                               value="{{$product->getImage('preview_picture')}}">
                                         <input type=hidden name=itemSrc value={{route('product.show', $product->slug)}}>
                                         @if ($product->balance > 0)
                                             <button class="btn btn_sm hidden-sm hidden-xs add_to_cart"
@@ -86,7 +87,7 @@
                 <p itemprop="name">{{$product->title}}</p>
 
 
-                <img src="{{$product->getImage()}}" itemprop="image" alt="{{$product->title}}">
+                <img src="{{$product->getImage('preview_picture')}}" itemprop="image" alt="{{$product->title}}">
 
                 <div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
                     <span itemprop="lowPrice">{{$product->price}}</span>

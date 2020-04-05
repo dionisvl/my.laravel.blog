@@ -51,7 +51,8 @@ class ProductsController extends Controller
         ]);
 
         $product = Product::add($request->all());
-        $product->uploadImage($request->file('image'));
+        $product->uploadImage($request->file('preview_picture'), 'preview_picture');
+        $product->uploadImage($request->file('detail_picture'), 'detail_picture');
         $product->setCategory($request->get('category_id'));
 
         return redirect()->route('products.index');
@@ -102,7 +103,8 @@ class ProductsController extends Controller
 
         $product = Product::find($id);
         $product->edit($request->all());
-        $product->uploadImage($request->file('image'));
+        $product->uploadImage($request->file('preview_picture'), 'preview_picture');
+        $product->uploadImage($request->file('detail_picture'), 'detail_picture');
         $product->setCategory($request->get('category_id'));
 
 //        dd($request->get('is_featured'));

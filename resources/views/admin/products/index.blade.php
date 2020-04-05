@@ -42,7 +42,7 @@
                                 <td>{{$product->title}}</td>
                                 <td>{{$product->getCategoryTitle()}}</td>
                                 <td>
-                                    <img src="{{$product->getImage()}}" alt="" width="100">
+                                    <img src="{{$product->getImage('preview_picture')}}" alt="" width="100">
                                 </td>
                                 <td>
                                     <a href="{{route('products.edit', $product->id)}}" class="fa fa-pencil"></a>

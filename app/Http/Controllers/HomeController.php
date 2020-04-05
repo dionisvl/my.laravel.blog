@@ -23,7 +23,7 @@ class HomeController extends Controller
 //        $posts = Post::orderBy('posts.created_at', 'desc')->paginate(20);
 //        return view('pages.index')->with('posts', $posts);
         $products = Product::orderBy('products.created_at', 'desc')->paginate(20);
-        return view('pages.products')->with('products', $products);
+        return view('shop.products')->with('products', $products);
     }
 
     public function contacts()

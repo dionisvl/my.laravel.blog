@@ -32,13 +32,13 @@
 
                             <label for="price">Цена:</label>
                             <input type="number" name="price" id="price" class="form-control"
-                                   value="{{old('price') || 1990}}">
+                                   value="{{old('price', 1990)}}">
 
-                            <label for="previewImage">Лицевая картинка</label>
-                            <input type="file" id="previewImage" name="image">
+                            <label for="preview_picture">Картинка - превью</label>
+                            <input type="file" id="preview_picture" name="preview_picture">
 
-                            <label for="detailImage">Лицевая картинка</label>
-                            <input type="file" id="detailImage" name="detailImage">
+                            <label for="detail_picture">Картинка - детальная</label>
+                            <input type="file" id="detail_picture" name="detail_picture">
 
                             <p class="help-block"></p>
 
@@ -60,11 +60,11 @@
 
                             <label for="balance">Остаток(на складе):</label>
                             <input type="number" name="balance" id="balance" class="form-control"
-                                   value="{{old('balance') || 1006}}">
+                                   value="{{old('balance', 1006)}}">
 
                             <label for="size">Объем, размеры:</label>
                             <input type="text" name="size" id="size" class="form-control"
-                                   value="{{old('size') || 'упаковка 100штук'}}">
+                                   value="{{old('size', 'Упаковка 100штук')}}">
 
                             <label for="manufacturer">Информация о производителе:</label>
                             <input type="text" name="manufacturer" id="manufacturer" class="form-control"
@@ -72,7 +72,7 @@
 
                             <label for="stars">Оценка (звёзды):</label>
                             <input type="number" name="stars" id="stars" class="form-control"
-                                   value="{{old('stars') || 100}}">
+                                   value="{{old('stars', 100)}}">
                         </div>
                     </div>
 

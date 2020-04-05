@@ -11,12 +11,12 @@
     <meta name=viewport content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i&amp;subset=cyrillic"
           rel=stylesheet>
-    <link href=/css/template_48586b61863cda9ef9ffe2b13dd34702_v1.css rel=stylesheet>
-    <link href=/css/all.css rel=stylesheet>
+    <link href=/themes/sportfood/template_48586b61863cda9ef9ffe2b13dd34702_v1.css rel=stylesheet>
+    <link href=/themes/sportfood/all.css rel=stylesheet>
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js></script>
     <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js></script>
     <script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js></script>
-    <script src=/js/cart.js></script>
+    <script src=/themes/sportfood/cart.js></script>
 </head>
 <body>
 <div id=loading>
@@ -104,45 +104,45 @@
                             <a href="/">Каталог</a>
                             <ul class=second-level>
                                 <li>
-                                    <a href=zhiroszhigatel/index.html>Жиросжигатели</a>
+                                    <a href=/zhiroszhigatel/index.html>Жиросжигатели</a>
                                 </li>
                                 <li>
-                                    <a href=predtrenik/index.html>Предтреники</a>
+                                    <a href=/predtrenik/index.html>Предтреники</a>
                                 </li>
                                 <li>
-                                    <a href=progormony-dizaynerskie-steroidy/index.html>Прогормоны</a>
+                                    <a href=/progormony-dizaynerskie-steroidy/index.html>Прогормоны</a>
                                 </li>
                                 <li>
-                                    <a href=testobuster-tribulus/index.html>Тестобустеры, ПКТ </a>
+                                    <a href=/testobuster-tribulus/index.html>Тестобустеры, ПКТ </a>
                                 </li>
                                 <li>
-                                    <a href=innovative-labs/index.html>Innovative Labs</a>
+                                    <a href=/innovative-labs/index.html>Innovative Labs</a>
                                 </li>
                                 <li>
-                                    <a href=cloma-pharma/index.html>Cloma Pharma</a>
+                                    <a href=/cloma-pharma/index.html>Cloma Pharma</a>
                                 </li>
                                 <li>
-                                    <a href=hi-tech-pharmaceuticals/index.html>Hi-Tech Pharmaceuticals</a>
+                                    <a href=/hi-tech-pharmaceuticals/index.html>Hi-Tech Pharmaceuticals</a>
                                 </li>
                                 <li>
-                                    <a href=wtf-labz/index.html>WTF Labz</a>
+                                    <a href=/wtf-labz/index.html>WTF Labz</a>
                                 </li>
                             </ul>
                         </li>
                         <li class=root-item>
-                            <a href=food/index.html>Питание</a>
+                            <a href=/food/index.html>Питание</a>
                         </li>
                         <li class=root-item>
-                            <a href=payment/index.html>Оплата и доставка</a>
+                            <a href=/payment/index.html>Оплата и доставка</a>
                         </li>
                         <li class=root-item>
-                            <a href=contacts/index.html>Контакты</a>
+                            <a href=/contacts/index.html>Контакты</a>
                         </li>
                     </ul>
                 </nav>
                 <div class="mn-header__logo-xs visible-xs-inline-block">
                     <span><a href="/">innovativbase</a></span></div>
-                <a href=/pages/cart class=mn-header__basket id=sw_basket>
+                <a href=/cart class=mn-header__basket id=sw_basket>
                     <i id=top_basket_counter>0</i>
                     <span class="ico ico-basket hidden-sm hidden-xs"></span>
                     <span class="ico ico-basket_sm visible-sm"></span>

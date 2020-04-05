@@ -36,14 +36,16 @@
                             <input type="number" name="price" id="price" class="form-control"
                                    value="{{$product->price}}">
 
-                            <img src="{{$product->getImage()}}" alt="" class="img-responsive" width="200">
-                            <label for="preview_image">Превью картинка</label>
-                            <input type="file" id="preview_image" name="image">
+                            <img src="{{$product->getImage('preview_picture')}}" alt="" class="img-responsive"
+                                 width="200">
+                            <label for="preview_picture">Картинка - превью</label>
+                            <input type="file" id="preview_picture" name="preview_picture">
                             <p class="help-block"></p>
 
-                            <img src="{{$product->getImage()}}" alt="" class="img-responsive" width="200">
-                            <label for="detail_image">Детальная картинка</label>
-                            <input type="file" id="detail_image" name="detail_image">
+                            <img src="{{$product->getImage('detail_picture')}}" alt="" class="img-responsive"
+                                 width="200">
+                            <label for="detail_picture">Картинка - детальная</label>
+                            <input type="file" id="detail_picture" name="detail_picture">
 
                             <label>Категория</label>
                             {{Form::select('category_id',

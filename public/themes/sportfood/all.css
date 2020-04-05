@@ -4294,19 +4294,21 @@ ul.h6:not(.list):not(.list_float) > li:before {
     padding: 0 21px;
     min-width: 111px;
     font-size: 16px;
-    letter-spacing: .2px;
+    letter-spacing: 0.2px;
     font-weight: 400;
     border: none;
     border-radius: 3px;
+    color: #fff;
     outline: 0 !important;
     cursor: pointer;
     white-space: nowrap;
     text-align: center;
     overflow: hidden;
-    background: url(/upload/btn_bg.png) top center no-repeat;
-    transition: all .15s ease;
+    transition: all 0.15s ease;
+    background: url(btn_bg.png) top center no-repeat;
+    font-family: Arial, serif;
+    background-size: 100% 100%;
     text-decoration: none !important;
-    color: #000
 }
 
 .btn:before {
