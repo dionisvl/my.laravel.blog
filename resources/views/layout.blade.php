@@ -77,7 +77,7 @@
 
         <div class=container>
             <div class="mn-header__logo hidden-xs">
-                <a href="/"><img alt=logo src=/upload/logo.jpg></a>
+                <a href="/"><img alt=logo src=/upload/logo2.jpg></a>
                 <span>Интернет магазин спортивного питания в Москве и Регионах<br>
 <div style=display:none><div class=wf-breadcrumb><ul itemscope itemtype=http://schema.org/BreadcrumbList>
 <li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
@@ -103,40 +103,23 @@
                         <li class=root-item-selected>
                             <a href="/">Каталог</a>
                             <ul class=second-level>
-                                <li>
-                                    <a href=/zhiroszhigatel/index.html>Жиросжигатели</a>
-                                </li>
-                                <li>
-                                    <a href=/predtrenik/index.html>Предтреники</a>
-                                </li>
-                                <li>
-                                    <a href=/progormony-dizaynerskie-steroidy/index.html>Прогормоны</a>
-                                </li>
-                                <li>
-                                    <a href=/testobuster-tribulus/index.html>Тестобустеры, ПКТ </a>
-                                </li>
-                                <li>
-                                    <a href=/innovative-labs/index.html>Innovative Labs</a>
-                                </li>
-                                <li>
-                                    <a href=/cloma-pharma/index.html>Cloma Pharma</a>
-                                </li>
-                                <li>
-                                    <a href=/hi-tech-pharmaceuticals/index.html>Hi-Tech Pharmaceuticals</a>
-                                </li>
-                                <li>
-                                    <a href=/wtf-labz/index.html>WTF Labz</a>
-                                </li>
+                                @if(isset($categories))
+                                    @foreach($categories as $category)
+                                        <li>
+                                            <a href=/categories/{{$category->slug}}.html>{{$category->title}}</a>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </li>
                         <li class=root-item>
-                            <a href=/food/index.html>Питание</a>
+                            <a href=/pages/food.html>Питание</a>
                         </li>
                         <li class=root-item>
-                            <a href=/payment/index.html>Оплата и доставка</a>
+                            <a href=/pages/payment.html>Оплата и доставка</a>
                         </li>
                         <li class=root-item>
-                            <a href=/contacts/index.html>Контакты</a>
+                            <a href=/pages/contacts.html>Контакты</a>
                         </li>
                     </ul>
                 </nav>

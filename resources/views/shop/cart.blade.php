@@ -101,7 +101,7 @@
                                 <div class="basket-checkout-block basket-checkout-block-total-price">
                                     <div class="basket-checkout-block-total-price-inner">
                                         <div class="basket-coupon-block-total-price-current"
-                                             data-entity="basket-total-price" id="modal_basket_total">13 200
+                                             data-entity="basket-total-price" id="modal_basket_total">0
                                         </div>
                                         руб.
                                     </div>
