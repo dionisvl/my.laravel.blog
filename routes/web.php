@@ -76,15 +76,18 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/cart', 'ProductController@showCart');
     Route::get('/{slug}', 'ProductController@show')->name('product.show');
 
-    Route::get('/contacts/index.html', function () {
+    Route::get('/categories/{category}.html', 'CategoryController@show')->name('category.show');
+
+    Route::get('/pages/contacts.html', function () {
         return view('shop.contacts');
     });
-    Route::get('/payment/index.html', function () {
+    Route::get('/pages/payment.html', function () {
         return view('shop.payment');
     });
-    Route::get('/food/index.html', function () {
+    Route::get('/pages/food.html', function () {
         return view('shop.food');
     });
+
 });
 
 

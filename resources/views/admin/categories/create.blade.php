@@ -5,10 +5,7 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>
-                Добавить категорию
-                <small>приятные слова..</small>
-            </h1>
+            <h1>Добавляем категорию</h1>
         </section>
 
         <!-- Main content -->
@@ -31,9 +28,16 @@
                 <div class="box-body">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Название</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                   name='title' placeholder="">
+                            <label for="title">Название</label>
+                            <input type="text" class="form-control" id="title" name='title' placeholder="">
+
+                            <label for="detail_text">Подробное описание</label>
+                            <textarea name="detail_text" id="detail_text" cols="30" rows="10"
+                                      class="form-control myeditable">{{old('detail_text')}}</textarea>
+
+                            <label for="preview_text">Краткое описание</label>
+                            <textarea name="preview_text" id="preview_text" cols="30" rows="10"
+                                      class="form-control myeditable">{{old('preview_text')}}</textarea>
                         </div>
                     </div>
                 </div>

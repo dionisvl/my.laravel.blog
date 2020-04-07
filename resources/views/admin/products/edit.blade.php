@@ -82,13 +82,13 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Подробное описание в карточке элемента</label>
+                            <label for="detail_text">Подробное описание в карточке элемента</label>
                             <textarea name="detail_text" id="detail_text" cols="30" rows="10"
                                       class="form-control myeditable">{{$product->detail_text}}</textarea>
 
-                            {{--                            <label for="exampleInputEmail1">Краткое писание</label>--}}
-                            {{--                            <textarea name="preview_text" id="preview_text" cols="30" rows="4"--}}
-                            {{--                                      class="form-control myeditable">{{$product->preview_text}}</textarea>--}}
+                            {{-- <label for="preview_text">Краткое писание</label>--}}
+                            {{-- <textarea name="preview_text" id="preview_text" cols="30" rows="4"--}}
+                            {{--  class="form-control myeditable">{{$product->preview_text}}</textarea>--}}
 
                             <label for="features">Преимущества, особенности товара:</label>
                             <textarea name="features" id="features" cols="30" rows="4"
