@@ -77,7 +77,7 @@
 
         <div class=container>
             <div class="mn-header__logo hidden-xs">
-                <a href="/"><img alt=logo src=/upload/logo.jpg></a>
+                <a href="/"><img alt=logo src=/upload/template/sportfood/logo.jpg></a>
                 <span>Интернет магазин спортивного питания в Москве и Регионах<br>
 <div style=display:none><div class=wf-breadcrumb><ul itemscope itemtype=http://schema.org/BreadcrumbList>
 <li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
@@ -103,40 +103,23 @@
                         <li class=root-item-selected>
                             <a href="/">Каталог</a>
                             <ul class=second-level>
-                                <li>
-                                    <a href=/zhiroszhigatel/index.html>Жиросжигатели</a>
-                                </li>
-                                <li>
-                                    <a href=/predtrenik/index.html>Предтреники</a>
-                                </li>
-                                <li>
-                                    <a href=/progormony-dizaynerskie-steroidy/index.html>Прогормоны</a>
-                                </li>
-                                <li>
-                                    <a href=/testobuster-tribulus/index.html>Тестобустеры, ПКТ </a>
-                                </li>
-                                <li>
-                                    <a href=/innovative-labs/index.html>Innovative Labs</a>
-                                </li>
-                                <li>
-                                    <a href=/cloma-pharma/index.html>Cloma Pharma</a>
-                                </li>
-                                <li>
-                                    <a href=/hi-tech-pharmaceuticals/index.html>Hi-Tech Pharmaceuticals</a>
-                                </li>
-                                <li>
-                                    <a href=/wtf-labz/index.html>WTF Labz</a>
-                                </li>
+                                @if(isset($categories))
+                                    @foreach($categories as $category)
+                                        <li>
+                                            <a href=/categories/{{$category->slug}}.html>{{$category->title}}</a>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </li>
                         <li class=root-item>
-                            <a href=/food/index.html>Питание</a>
+                            <a href=/pages/food.html>Питание</a>
                         </li>
                         <li class=root-item>
-                            <a href=/payment/index.html>Оплата и доставка</a>
+                            <a href=/pages/payment.html>Оплата и доставка</a>
                         </li>
                         <li class=root-item>
-                            <a href=/contacts/index.html>Контакты</a>
+                            <a href=/pages/contacts.html>Контакты</a>
                         </li>
                     </ul>
                 </nav>
@@ -152,7 +135,7 @@
         </div>
         @if (Request::path() === '/')
             <div class="mn-header__bg"
-                 style="background:url(/upload/iblock/5c3/5c33f7f19f09f529b28d0ccc7266f39a.jpg) top center"></div>
+                 style="background:url(/upload/template/sportfood/background.jpg) top center"></div>
         @else
             <div class="mn-header__bg-gray"></div>
         @endif
@@ -267,7 +250,8 @@
 <div itemscope itemtype=https://schema.org/SportingGoodsStore style=display:none>
     <span itemprop=name>innovativbase</span><span itemprop=url>https://innovativlab.ru</span>
     <span itemprop=priceRange>от 2600 руб до 5500 руб</span>
-    <img itemprop=logo src="/upload/logo.jpg"/><img itemprop=image src="/upload/innova.jpg"/>
+    <img itemprop=logo src="/upload/template/sportfood/logo.jpg"/>
+    <img itemprop=image src="/upload/template/sportfood/innova.jpg"/>
     <div itemprop=address itemscope itemtype=https://schema.org/PostalAddress><span
             itemprop=addressCountry>Россия</span><span itemprop=addressLocality>Москва</span><span
             itemprop=addressRegion>Московская область</span><span

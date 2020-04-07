@@ -5158,7 +5158,7 @@ textarea.form-control.style2 {
     float: left;
     padding-left: 15px;
     padding-right: 15px;
-    background-color: #fff
+    background-color: rgba(255, 255, 255, 0.90);
 }
 
 @media (max-width: 1009px) {
@@ -5214,11 +5214,12 @@ textarea.form-control.style2 {
     position: relative;
     display: block;
     color: #000;
-    font-family: Arial;
-    font-weight: 400;
+    font-family: Arial, serif;
+    font-weight: 500;
     text-transform: uppercase;
     white-space: nowrap;
-    padding: 29px 0 20px
+    padding: 29px 0 20px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.89)
 }
 
 @media (max-width: 1009px) {
@@ -5499,7 +5500,7 @@ textarea.form-control.style2 {
     right: 0;
     bottom: 0;
     height: 100%;
-    background: url(/upload/template/gray.jpg) top center no-repeat;
+    background: url(/upload/template/sportfood/gray.jpg) top center no-repeat;
     background-size: cover;
 }
 
@@ -7134,7 +7135,7 @@ textarea.form-control.style2 {
 
 .card-sesc-section {
     padding-top: 3px;
-    background: url(/upload/template/gray.jpg) top center no-repeat;
+    background: url(/upload/template/sportfood/gray.jpg) top center no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
