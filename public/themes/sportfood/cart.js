@@ -252,3 +252,32 @@ function cart_price_recalc() {
     document.getElementById('modal_basket_total').innerHTML = newTotalPrice;
 }
 
+/** Оформление заказа */
+if (document.getElementById('order_form')) {
+    document.getElementById('order_form').onsubmit = function (event) {
+        event.preventDefault();
+        let url = this.getAttribute('action');
+        let submit = document.querySelectorAll('.basket-btn-checkout');
+        let formData = new FormData(this);
+        submit[0].innerHTML = '';
+        submit[0].append('Загрузка...');
+        submit[0].setAttribute('disabled', 'true');
+        return fetch(url, {
+            method: 'POST',
+            body: formData  //data
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data['status'] === true) {
+                    submit[0].innerHTML = '';
+                    submit[0].append(data.msg);
+                    submit[0].setAttribute('disabled', 'true');
+                    window.top.location = "/thankyou_page/";
+                } else {
+                    console.log(data);// Prints result from `response.json()` in getRequest
+                }
+            })
+            .catch(error => console.error(error))
+    };
+}
+

@@ -77,13 +77,34 @@
                                 </div>
                                 <table class="basket-items-list-table" id="basket-item-table">
                                     <tbody id="cart_content">
-                                    {{--                                        Вот тут будут автоматически заполняться товары методом fillCart()--}}
+                                    {{-- Вот тут будут автоматически заполняться товары методом fillCart()--}}
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="row" id="order_row">
+                <form action="/shop/cart/checkout" id="order_form">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Ваше имя*:</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+
+                            <label for="phone">Телефон*:</label>
+                            <input type="tel" name="phone" id="phone" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="notes">Примечания к заказу:</label>
+                            <textarea name="notes" id="notes" cols="50" rows="2" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </form>
+
             </div>
             <div class="row">
                 <div class="col" data-entity="basket-total-block">
@@ -97,7 +118,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="basket-checkout-block basket-checkout-block-total-price">
                                     <div class="basket-checkout-block-total-price-inner">
                                         <div class="basket-coupon-block-total-price-current"
@@ -107,7 +127,8 @@
                                     </div>
                                 </div>
                                 <div class="basket-checkout-block basket-checkout-block-btn">
-                                    <button class="btn btn-lg btn-primary basket-btn-checkout"
+                                    <button id="submit" form="order_form"
+                                            class="btn btn-lg btn-primary basket-btn-checkout"
                                             data-entity="basket-checkout-button">
                                         Оформить заказ
                                     </button>

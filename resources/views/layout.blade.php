@@ -8,7 +8,7 @@
           content="Купить спортивное питание в Москве, МО, Одинцово и Трехгорке. Прямые поставки из США. Гарантия от производителя"/>
     <title>Спортивное питание в Одинцово, Москве, Московской области, Трехгорке + Отзывы</title>
     <link rel="shortcut icon" type=image/x-icon href="favicon.ico"/>
-    <meta name=viewport content="width=device-width, initial-scale=1.0">
+    <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i&amp;subset=cyrillic"
           rel=stylesheet>
     <link href=/themes/sportfood/template_48586b61863cda9ef9ffe2b13dd34702_v1.css rel=stylesheet>
@@ -20,15 +20,6 @@
     <script src=/themes/sportfood/main.js defer></script>
 </head>
 <body>
-<div id=loading>
-    <div id=loading-center>
-        <div id=loading-center-absolute>
-            <div id=object></div>
-        </div>
-    </div>
-</div>
-<div id=panel>
-</div>
 <header class=mn-header>
     <div class=mn-header__top>
         <div class=container>

@@ -2501,8 +2501,42 @@ body.bx-theme-yellow .catalog-block-header {
     .basket-item-block-actions {
         position: absolute;
         right: 0;
-
     }
+}
+
+.col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.form-group {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 240px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+#order_row {
+    padding: 15px;
+}
+
+#order_form textarea {
+    min-height: 70px;
 }
 
 /* End */
