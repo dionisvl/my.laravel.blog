@@ -16,7 +16,8 @@
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js></script>
     <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js></script>
     <script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js></script>
-    <script src=/themes/sportfood/cart.js></script>
+    <script src=/themes/sportfood/cart.js defer></script>
+    <script src=/themes/sportfood/main.js defer></script>
 </head>
 <body>
 <div id=loading>
