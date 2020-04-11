@@ -1,222 +1,257 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="@php echo env('CANONICAL').$_SERVER['REQUEST_URI'] @endphp"/>
-
-    @if(!empty($post))
-        <title>{{$post->getTitle()}}</title>
-        <meta property="og:title" content="{{$post->getTitle()}}"/>
-        <meta property="og:description" content="{{$post->getDescription()}}"/>
-        <meta name='description' itemprop='description' content='{{$post->getDescription()}}'/>
-        <meta property="og:image" content="{{$post->getImage()}}"/>
-        <meta property="og:image:url" content="{{$post->getImage()}}"/>
-    @else
-        <title>
-            @isset($title)
-                {{ $title }} |
-            @endisset
-            {{ config('app.name') }}
-        </title>
-    @endif
-
-    <meta name="yandex-verification" content="aeb4e0b17d9f0967"/>
-
-    <!-- common css -->
-    <link rel="stylesheet" href="/css/front.css">
-    <link rel="stylesheet" href="/css/some_fix.css">
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png">
-
-    <?
-    require($_SERVER['DOCUMENT_ROOT'] . '/tracking.php');
-    ?>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8"/>
+    <meta name=robots content="index, follow"/>
+    <meta name=keywords content="Интернет-магазин спортивного питания"/>
+    <meta name=description
+          content="Купить спортивное питание в Москве, МО, Одинцово и Трехгорке. Прямые поставки из США. Гарантия от производителя"/>
+    <title>Спортивное питание в Одинцово, Москве, Московской области, Трехгорке + Отзывы</title>
+    <link rel="shortcut icon" type=image/x-icon href="favicon.ico"/>
+    <meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i&amp;subset=cyrillic"
+          rel=stylesheet>
+    <link href=/themes/sportfood/template_48586b61863cda9ef9ffe2b13dd34702_v1.css rel=stylesheet>
+    <link href=/themes/sportfood/all.css rel=stylesheet>
+    <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js></script>
+    <script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js></script>
+    <script src=/themes/sportfood/cart.js defer></script>
+    <script src=/themes/sportfood/main.js defer></script>
 </head>
-
 <body>
-
-<nav class="navbar main-menu navbar-expand-md navbar-light border-bottom">
-    <div class="container">
-        <a class="navbar-brand" href="/">
-            <img src="/storage/blog_images/logo.png" alt="Wiki BWP resource" loading="lazy">
-        </a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <div>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Homepage</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contacts/">Contacts</a>
-                    </li>
+<header class=mn-header>
+    <div class=mn-header__top>
+        <div class=container>
+            <div class=mn-header__questions>
+                <div class=img>
+                    <i class="ico ico-phone hidden-sm"></i>
+                    <i class="ico ico-phone_sm visible-sm-inline-block"></i>
                 </div>
-
-
-                <div>
-                    @if(Auth::check())
-                        @if(Auth::user()->is_admin)
-                            <li class="nav-item"><a class="nav-link" href="/admin">Admin panel</a></li>
-                        @endif
-                        <li class="nav-item"><a class="nav-link" href="/profile">My profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-                    @else
-                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                    @endif
-                    <li class="nav-item float-right">
-                        <button class="btn btn-default show_toggle_invokers" data-to-show="#search_block">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </li>
+                <div class="cnt hidden-xs">
+                    <span>Есть вопросы? Позвоните нам: </span>
+                    <span>
+                        <a href=tel:+79991140312 rel=nofollow target=_blank>+7 (999) 114-03-12</a><br>
+                        <div style=line-height:2.5>
+                            <a href=https://wa.me/79991140312 rel=nofollow target=_blank>WhatsApp</a> &nbsp; &nbsp; &nbsp;
+                            <a rel=nofollow target=_blank href="viber://add?number=79991140312">Viber</a>&nbsp; &nbsp; &nbsp; &nbsp;
+                            <a rel=nofollow target=_blank href=https://t.me/79991140312>Telegram</a>
+                        </div>
+                    </span>
+                    <span>Время работы: пн-сб с 10:00-20:05</span>
                 </div>
-            </ul>
-        </div>
-
-
-        <div class="show-search" id="search_block">
-            <form role="search" method="POST" id="searchform" action="/search">
-                {{ csrf_field() }}
-                <div>
-                    <input type="text" placeholder="Search and hit enter..." name="q" id="s">
-                </div>
-            </form>
-        </div>
-
-
-    </div>
-
-</nav>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            @if(session('status'))
-                <div class="alert alert-info">
-                    {{session('status')}}
-                </div>
-            @endif
-            @if(session('dangerStatus'))
-                <div class="alert alert-danger">
-                    {{session('dangerStatus')}}
-                </div>
-            @endif
-        </div>
-    </div>
-</div>
-@yield('content')
-
-<!--footer start-->
-<div id="footer">
-
-</div>
-
-<footer class="footer-widget-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <aside class="footer-widget">
-                    <div class="about-img"><img src="/storage/blog_images/footer-logo.png" alt="" loading="lazy"></div>
-                    <div class="about-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed voluptua. At vero eos et
-                        accusam et justo duo dlores et ea rebum magna text ar koto din.
-                    </div>
-                    <div class="address">
-                        <h4 class="text-uppercase">contact Info</h4>
-                        <p> б. Черемушкинская 20, Москва</p>
-                        <p> Phone: +123 456 78900</p>
-                        <p>info@<?=$_SERVER['HTTP_HOST']?></p>
-                    </div>
-                </aside>
+                <div class="cnt visible-xs">
+                <span>Интернет магазин спортивного питания в Москве и Регионах<br>
+<div style=display:none><div class=wf-breadcrumb><ul itemscope itemtype=http://schema.org/BreadcrumbList>
+<li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
+<a href="/" title=Главная itemprop=item>
+<span itemprop=name>Главная</span>
+<meta itemprop=position content="0"/>
+</a>
+</li>
+<li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
+<a href=/shop/catalog/index.html title="Innovative labs" itemprop=item>
+<span itemprop=name>Innovative labs</span>
+<meta itemprop=position content="1"/>
+</a>
+</li></ul></div></div><br>
+<br> </span><span><a href=tel:+79991140312 rel=nofollow target=_blank>+7 (999) 114-03-12</a>
+<br>
+<div style=line-height:2.5>
+<a href=https://wa.me/79991140312 rel=nofollow target=_blank>WhatsApp</a>
+<a rel=nofollow target=_blank href="viber://add?number=79991140312">Viber</a>
+<a rel=nofollow target=_blank href=https://t.me/innovativbase>Telegram</a></div>
+</span></div>
             </div>
+        </div>
+    </div>
+    <div class="mn-header__bottom @if (Request::path() !== '/') mn-header__isSmall @endif">
 
-            <div class="col-md-4">
-                <aside class="footer-widget">
-                    <h3 class="widget-title text-uppercase">Testimonials</h3>
+        <div class=container>
+            <div class="mn-header__logo hidden-xs">
+                <a href="/"><img alt=logo src=/upload/template/sportfood/logo.jpg></a>
+                <span>Интернет магазин спортивного питания в Москве и Регионах<br>
+<div style=display:none><div class=wf-breadcrumb><ul itemscope itemtype=http://schema.org/BreadcrumbList>
+<li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
+<a href="/" title=Главная itemprop=item>
+<span itemprop=name>Главная</span>
+<meta itemprop=position content="0"/>
+</a>
+</li>
+<li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
+<a href=/ title="Innovative labs" itemprop=item>
+<span itemprop=name>Innovative labs</span>
+<meta itemprop=position content="1"/>
+</a>
+</li></ul></div></div><br>
+<br> </span>
+            </div>
+            <div class=mn-header__right-group>
+                <div class="mn-header__nav-trigger visible-xs">
+                    <i class="ico ico-hamburger"></i>
+                </div>
+                <nav class=mn-header__nav>
+                    <ul class=list_float id=horizontal-3level-menu>
+                        <li class=root-item-selected>
+                            <a href="/shop/">Каталог</a>
+                            <ul class=second-level>
+                                @if(isset($categories))
+                                    @foreach($categories as $category)
+                                        <li>
+                                            <a href=/shop/categories/{{$category->slug}}.html>{{$category->title}}</a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </li>
+                        <li class=root-item>
+                            <a href=/shop/pages/food.html>Питание</a>
+                        </li>
+                        <li class=root-item>
+                            <a href=/shop/pages/payment.html>Оплата и доставка</a>
+                        </li>
+                        <li class=root-item>
+                            <a href=/shop/pages/contacts.html>Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="mn-header__logo-xs visible-xs-inline-block">
+                    <span><a href="/shop/">innovativbase</a></span></div>
+                <a href=/shop/cart class=mn-header__basket id=sw_basket>
+                    <i id=top_basket_counter>0</i>
+                    <span class="ico ico-basket hidden-sm hidden-xs"></span>
+                    <span class="ico ico-basket_sm visible-sm"></span>
+                    <span class="icon ico-basket_xs visible-xs"></span>
+                </a>
+            </div>
+        </div>
+        @if (Request::path() === '/')
+            <div class="mn-header__bg"
+                 style="background:url(/upload/template/sportfood/background.jpg) top center"></div>
+        @else
+            <div class="mn-header__bg-gray"></div>
+        @endif
+    </div>
+</header>
 
-                    <!--Indicator-->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                    </ol>
 
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+@yield('content')
+<div class=mn-footer>
+    <div class=mn-footer__top>
+        <div class=container>
+            <div class=row>
+                <div class=col-sm-18>
+                    <nav class="mn-footer__nav hidden-xs">
+                        <ul class=list_float>
+                            <li class=active><a href="/shop/">Каталог</a></li>
+                            <li><a href=/shop/food/index.html>Питание</a></li>
+                            <li><a href=/shop/payment/index.html>Оплата и доставка</a></li>
+                            <li><a href=/shop/contacts/index.html>Контакты</a></li>
+                        </ul>
+                    </nav>
+                    <div class="mn-footer__txt hidden-xs">
+                        <p>
+                        </p>
+                        <p>
+                            ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ&nbsp;
+                        </p>
+                        <p>
+                            Хранить в недоступном для детей месте. Продукты, представленные на сайте, не являются
+                            лекарственным средством. Перед началом применения обязательно проконсультируйтесь у
+                            специалиста.&nbsp;Продукция обмену и возврату не подлежит. 1436
+                        </p>
+                        <p>
+                            &nbsp;
+                        </p></div>
+                </div>
+                <div class="col-xs-12 visible-xs">
+                    <div class="mn-header__logo-xs visible-xs-inline-block"><span>innovativbase</span></div>
+                    <div class="mn-footer__tel visible-xs"></div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class=mn-footer__soc>
+<span class=hidden-xs>
+Почта:&nbsp;<a href=mailto:info@innovativlab.ru>info@innovativlab.ru</a><br>
+Тел: +7 (999) 114-03-12<br>
+Время работы: <br>
+пн-сб с 10:00-20:05<br>
+<br>
+<br> </span>
+                        <span class=hidden-xs></span>
+                    </div>
+                </div>
+                <div class="mn-footer__txt visible-xs col-xs-24">
+                    <p>
+                    </p>
+                    <p>
+                        ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ&nbsp;
+                    </p>
+                    <p>
+                        Хранить в недоступном для детей месте. Продукты, представленные на сайте, не являются
+                        лекарственным средством. Перед началом применения обязательно проконсультируйтесь у специалиста.&nbsp;Продукция
+                        обмену и возврату не подлежит. 1436
+                    </p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=mn-footer__bottom>
+        <div class=container>
+            <span>Copyright © <?php echo date('Y') ?> Innovative Base®. Все права защищены.</span>
+        </div>
+    </div>
+</div>
 
-                        <div class="carousel-inner" role="listbox">
-                            <div class="item active">
-                                <div class="single-review">
-                                    <div class="review-text">
-                                        <p>Очень хороший сайт, прям помог вообще!</p>
-                                    </div>
-                                    <div class="author-id">
-                                        <img src="/storage/blog_images/author.png" alt="" loading="lazy">
-                                        <div class="author-text">
-                                            <h4>Sophia</h4>
-
-                                            <h4>Client, Tech</h4>
-                                        </div>
-                                    </div>
+<div id=modal_basket tabindex=-1 role=dialog class="modal fade">
+    <div role=document class=modal-dialog>
+        <div class=modal-content>
+            <div class=modal-header>
+                <div class="modal-title">
+                    <span id="modal_product_name"></span>
+                </div>
+            </div>
+            <div class=modal-body id=header_basket>
+                <div id=warning_message></div>
+                <form method=post action name=basket_form class=cart-form>
+                    <div id=cart_content>empty cart_content</div>
+                    <div class="modal__basket__item modal__basket__total">
+                        <div class=desc>
+                            <div class=item-group>
+                                <div class=ttl>Выбрано товаров:</div>
+                                <div class="i_desc js_item_count" id=modal_basket_counter>1</div>
+                            </div>
+                            <div class=item-group>
+                                <div class=ttl>На сумму:</div>
+                                <div class=i_desc>
+                                    <span class=js_item_price id=modal_basket_total>777</span>р
                                 </div>
                             </div>
-                            <!-- there must be a nex item active -->
                         </div>
                     </div>
-
-                </aside>
+                </form>
             </div>
-            <div class="col-md-4">
-                <aside class="footer-widget">
-                    <h3 class="widget-title text-uppercase">Custom Category Post</h3>
-                    <div class="custom-post">
-                        <div>
-                            <a href="#"><img src="/storage/blog_images/footer-img.png" alt="" loading="lazy"></a>
-                        </div>
-                        <div>
-                            <a href="#" class="text-uppercase">Home is peaceful Place</a>
-                            <span class="p-date">February 15, 2019</span>
-                        </div>
-                    </div>
-                </aside>
+            <div class=modal-footer>
+                <a href=/shop/cart/ class=btn><span>Перейти в корзину</span></a>
+                <a href=# data-dismiss=modal class=modal-link>Продолжить покупки</a>
             </div>
         </div>
     </div>
-    <div class="footer-copy">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="text-center">&copy; 2019 <a href="#">Wiki Blog, </a> Designed with <i
-                            class="fa fa-heart"></i> by <a href="#">BWP</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+</div>
+
+<div itemscope itemtype=https://schema.org/SportingGoodsStore style=display:none>
+    <span itemprop=name>innovativbase</span><span itemprop=url>https://innovativlab.ru</span>
+    <span itemprop=priceRange>от 2600 руб до 5500 руб</span>
+    <img itemprop=logo src="/upload/template/sportfood/logo.jpg"/>
+    <img itemprop=image src="/upload/template/sportfood/innova.jpg"/>
+    <div itemprop=address itemscope itemtype=https://schema.org/PostalAddress><span
+            itemprop=addressCountry>Россия</span><span itemprop=addressLocality>Москва</span><span
+            itemprop=addressRegion>Московская область</span><span
+            itemprop=streetAddress>улица Бутырский Вал, 68/70с1</span>
     </div>
-</footer>
-<!-- js files -->
-<script src="/js/front.js"></script>
-<script src="/js/some_fix.js"></script>
-
-{{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css"/>--}}
-<link rel="stylesheet" href="/css/tiny-slider.css"/>
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
-        integrity="sha256-CApIX5Te4OdXVy1iWP+5+qG/iHa+8apfYOFagdVMRwk=" crossorigin="anonymous"></script>
-<script src="/js/sliders.js"></script>
-
-{{--prism.js--}}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/autoloader/prism-autoloader.min.js"></script>
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-php.min.js"></script>--}}
-{{--prism.js--}}
-
+    <span itemprop=telephone>+79991140312</span>
+    <a itemprop=email href=mailto:info@innovativlab.ru>info@innovativlab.ru</a>
+    <time itemprop=openingHours datetime="Mo-Su 10:00-22:00"></time>
+</div>
 </body>
 </html>

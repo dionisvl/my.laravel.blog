@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('shop.layout')
 
 @section('content')
     <!--main content start-->

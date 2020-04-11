@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Order;
 use App\Post;
 use App\Comment;
 use App\Category;
@@ -26,11 +27,16 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('admin._sidebar', function ($view) {
-            $view->with('newCommentsCount', Comment::where('status', 0)->count());
+            $view->with([
+                'newOrdersCount' => Order::where('status', 0)->count(),
+                'newCommentsCount' => Comment::where('status', 0)->count(),
+            ]);
         });
 
-        $categories = Category::orderBy('title', 'asc')->get();
-        View::share('categories', $categories);
+        view()->composer('shop', function ($view) {
+            $categories = Category::orderBy('title', 'asc')->get();
+            $view->with('categories', $categories);
+        });
     }
 
     /**

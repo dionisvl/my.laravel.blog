@@ -23,7 +23,12 @@ storage/framework/views,\
 storage/framework/sessions,\
 bootstrap/cache}
 ```
-
+- Optional:  
+    fill some test orders:
+    ```
+  php artisan tinker  
+  factory(App\Order::class, 4)->create();  
+  ```
 ## Интернет магазин на Ларавеле
 
 - С админкой "AdminLTE" 2.3.7

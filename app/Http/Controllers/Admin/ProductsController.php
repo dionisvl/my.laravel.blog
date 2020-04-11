@@ -82,7 +82,7 @@ class ProductsController extends Controller
 
         return view('admin.products.edit', compact(
             'categories',
-            'product',
+            'product'
         ));
     }
 

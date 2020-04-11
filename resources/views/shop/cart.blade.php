@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('shop.layout')
 
 @section('content')
 
@@ -87,11 +87,12 @@
             </div>
 
             <div class="row" id="order_row">
-                <form action="/shop/cart/checkout" id="order_form">
+                <form action="/shop/cart/order" id="order_form">
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="name">Ваше имя*:</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <label for="title">Ваше имя*:</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
 
                             <label for="phone">Телефон*:</label>
                             <input type="tel" name="phone" id="phone" class="form-control" required>
