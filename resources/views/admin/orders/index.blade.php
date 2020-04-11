@@ -61,8 +61,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-body">
-                    <i class="fas fa-file-excel"></i>Скачать в EXCEL
-                    <i class="fa fa-excel"></i>
+                    <a href="/admin/orders/download"><i class="fas fa-file-excel"></i> Скачать в EXCEL</a>
                 </div>
             </div>
             <!-- /.box -->

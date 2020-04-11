@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['adm
 
     Route::resource('/products', 'ProductsController');
 
+    Route::get('/orders/download', ['as' => 'orders_download', 'uses' => OrdersController::class . '@download']);
     Route::resource('/orders', 'OrdersController');
 });
 

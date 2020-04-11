@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Order;
-use App\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class OrdersController extends Controller
 {
@@ -106,5 +106,38 @@ class OrdersController extends Controller
     {
         Order::find($id)->remove();
         return redirect()->route('orders.index');
+    }
+
+    public function download()
+    {
+        $orders = Order::orderBy('updated_at', 'DESC')->get();
+        //return Excel::download($orders, 'orders_' . date('Y-m-d') . '.xlsx');
+        $orders = $orders->toArray();
+        $keys = array_keys($orders[0]);
+
+        $alphabet = range('A', 'Z');
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        foreach ($keys as $key_id => $key) {
+            $sheet->setCellValue($alphabet[$key_id] . '1', $key);
+        }
+
+        foreach ($orders as $order_id => $order) {
+            $row_id = $order_id + 2;
+            $i = 0;
+            foreach ($order as $value_id => $value) {
+                $column_id = $alphabet[$i++];
+                $sheet->setCellValue($column_id . $row_id, $value);
+            }
+        }
+
+        $filename = 'orders_' . date('Y-m-d') . '.xlsx';
+        $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, "Xlsx");
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header("Content-Disposition: attachment; filename={$filename}");
+        $writer->save("php://output");
     }
 }

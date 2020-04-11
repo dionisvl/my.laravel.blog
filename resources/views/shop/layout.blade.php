@@ -18,6 +18,7 @@
     <script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js></script>
     <script src=/themes/sportfood/cart.js defer></script>
     <script src=/themes/sportfood/main.js defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
 </head>
 <body>
 <header class=mn-header>
@@ -70,7 +71,14 @@
         <div class=container>
             <div class="mn-header__logo hidden-xs">
                 <a href="/"><img alt=logo src=/upload/template/sportfood/logo.jpg></a>
-                <span>Интернет магазин спортивного питания в Москве и Регионах<br>
+                <span>Интернет магазин спортивного питания в Москве и Регионах
+                    @if(Auth::check())
+                        @if(Auth::user()->is_admin)
+                            <a href="/admin"><i class="fas fa-users-cog"></i> login</a>
+                            <a href="/logout">Logout</a>
+                        @endif
+                    @endif
+                    <br>
 <div style=display:none><div class=wf-breadcrumb><ul itemscope itemtype=http://schema.org/BreadcrumbList>
 <li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
 <a href="/" title=Главная itemprop=item>
