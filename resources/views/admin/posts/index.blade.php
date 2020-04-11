@@ -50,16 +50,16 @@
                                     <img src="{{$post->getImage()}}" alt="" width="100">
                                 </td>
                                 <td>
-                                    <a href="{{route('posts.edit', $post->id)}}" class="fa fa-pencil"></a>
+                                    <a href="{{route('posts.edit', $post->id)}}"><i class="fas fa-pencil-alt"></i></a>
 
                                     {{Form::open(['route'=>['posts.destroy', $post->id], 'method'=>'delete'])}}
                                     <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                                        <i class="fa fa-remove"></i>
+                                        <i class="fas fa-trash"></i>
                                     </button>
 
                                     {{Form::close()}}
 
-                                    <a href="{{$post->getUrl()}}" class="fa fa-external-link-square" target="_blank"></a>
+                                    <a href="{{$post->getUrl()}}"><i class="fas fa-external-link-alt"></i></a>
                                 </td>
                             </tr>
                         @endforeach

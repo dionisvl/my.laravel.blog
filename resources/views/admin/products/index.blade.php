@@ -45,17 +45,17 @@
                                     <img src="{{$product->getImage('preview_picture')}}" alt="" width="100">
                                 </td>
                                 <td>
-                                    <a href="{{route('products.edit', $product->id)}}" class="fa fa-pencil"></a>
+                                    <a href="{{route('products.edit', $product->id)}}"><i class="fas fa-pencil-alt"></i></a>
 
                                     {{Form::open(['route'=>['products.destroy', $product->id], 'method'=>'delete'])}}
                                     <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                                        <i class="fa fa-remove"></i>
+                                        <i class="fas fa-trash"></i>
                                     </button>
 
                                     {{Form::close()}}
 
-                                    <a href="{{$product->getUrl()}}" class="fa fa-external-link-square"
-                                       target="_blank"></a>
+                                    <a href="{{$product->getUrl()}}" target="_blank"><i
+                                            class="fas fa-external-link-alt"></i></a>
                                 </td>
                             </tr>
                         @endforeach

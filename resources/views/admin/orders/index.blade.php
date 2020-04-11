@@ -45,11 +45,11 @@
                                 <td>{{$order->contents}}</td>
                                 <td>{{$order->price}}</td>
                                 <td>
-                                    <a href="{{route('orders.edit', $order->id)}}" class="fa fa-pencil"></a>
+                                    <a href="{{route('orders.edit', $order->id)}}"><i class="fas fa-pencil-alt"></i></a>
 
                                     {{Form::open(['route'=>['orders.destroy', $order->id], 'method'=>'delete'])}}
                                     <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                                        <i class="fa fa-remove"></i>
+                                        <i class="fas fa-trash"></i>
                                     </button>
 
                                     {{Form::close()}}
@@ -60,6 +60,10 @@
                     </table>
                 </div>
                 <!-- /.box-body -->
+                <div class="box-body">
+                    <i class="fas fa-file-excel"></i>Скачать в EXCEL
+                    <i class="fa fa-excel"></i>
+                </div>
             </div>
             <!-- /.box -->
         </section>

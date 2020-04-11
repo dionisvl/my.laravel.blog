@@ -32,26 +32,26 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Название</th>
-                  <th>Действия</th>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Действия</th>
                 </tr>
                 </thead>
-                <tbody>
-                @foreach($tags as $tag)
-	                <tr>
-	                  <td>{{$tag->id}}</td>
-	                  <td>{{$tag->title}}</td>
-	                  <td><a href="{{route('tags.edit', $tag->id)}}" class="fa fa-pencil"></a>
-					{{Form::open(['route'=>['tags.destroy', $tag->id], 'method'=>'delete'])}}
-	                  <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-	                   <i class="fa fa-remove"></i>
-	                  </button>
+                  <tbody>
+                  @foreach($tags as $tag)
+                      <tr>
+                          <td>{{$tag->id}}</td>
+                          <td>{{$tag->title}}</td>
+                          <td><a href="{{route('tags.edit', $tag->id)}}"><i class="fas fa-pencil-alt"></i></a>
+                              {{Form::open(['route'=>['tags.destroy', $tag->id], 'method'=>'delete'])}}
+                              <button onclick="return confirm('are you sure?')" type="submit" class="delete">
+                                  <i class="fas fa-trash"></i>
+                              </button>
 
-	                   {{Form::close()}}
-	                  </td>
-	                </tr>
-                @endforeach
+                              {{Form::close()}}
+                          </td>
+                      </tr>
+                  @endforeach
 
                 </tfoot>
               </table>

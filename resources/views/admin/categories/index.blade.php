@@ -32,27 +32,27 @@
           <table id="admin_data_table" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>ID</th>
-              <th>Название</th>
-              <th>Действия</th>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Действия</th>
             </tr>
             </thead>
-            <tbody>
-            @foreach($categories as $category)
-              <tr>
-                <td>{{$category->id}}</td>
-                <td>{{$category->title}}</td>
-                <td><a href="{{route('categories.edit', $category->id)}}" class="fa fa-pencil"></a>
+              <tbody>
+              @foreach($categories as $category)
+                  <tr>
+                      <td>{{$category->id}}</td>
+                      <td>{{$category->title}}</td>
+                      <td><a href="{{route('categories.edit', $category->id)}}"><i class="fas fa-pencil-alt"></i></a>
 
-                  {{Form::open(['route'=>['categories.destroy', $category->id], 'method'=>'delete'])}}
-                  <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                    <i class="fa fa-remove"></i>
-                  </button>
+                          {{Form::open(['route'=>['categories.destroy', $category->id], 'method'=>'delete'])}}
+                          <button onclick="return confirm('are you sure?')" type="submit" class="delete">
+                              <i class="fas fa-trash"></i>
+                          </button>
 
-                  {{Form::close()}}
+                          {{Form::close()}}
 
-                </td>
-              </tr>
+                      </td>
+                  </tr>
             @endforeach
 
             </tfoot>

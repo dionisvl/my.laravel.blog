@@ -56,7 +56,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                                            <i class="fa fa-remove"></i>
+                                            <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
                             </tr>

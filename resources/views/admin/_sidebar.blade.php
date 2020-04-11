@@ -2,7 +2,7 @@
     <li class="header">MAIN NAVIGATION</li>
     <li class="treeview">
         <a href="/admin/posts">
-            <i class="fa fa-dashboard"></i> <span>Админ-панель</span>
+            <i class="fas fa-tachometer-alt"></i> <span>Админ-панель</span>
         </a>
     </li>
     <li><a href="{{route('products.index')}}"><i class="fa fa-users"></i> <span>Товары</span></a></li>
@@ -14,11 +14,11 @@
         </a>
     </li>
 
-    <li><a href="{{route('posts.index')}}"><i class="fa fa-sticky-note-o"></i> <span>Посты</span></a></li>
+    <li><a href="{{route('posts.index')}}"><i class="fas fa-sticky-note"></i> <span>Посты</span></a></li>
     <li><a href="{{route('tags.index')}}"><i class="fa fa-tags"></i> <span>Теги</span></a></li>
     <li>
         <a href="/admin/comments">
-            <i class="fa fa-commenting"></i> <span>Комментарии</span>
+            <i class="fas fa-comments"></i> <span>Комментарии</span>
             <span class="pull-right-container">
                 <small class="label pull-right bg-green">{{$newCommentsCount}}</small>
             </span>
