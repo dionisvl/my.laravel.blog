@@ -3713,7 +3713,7 @@ tbody.collapse.in {
 
 img {
     max-width: 100%;
-    height: auto
+    /*height: auto*/
 }
 
 html {
@@ -6993,12 +6993,16 @@ textarea.form-control.style2 {
 }
 
 .c-card-desc__advantages {
-    margin-bottom: 18px
+    margin-bottom: 18px;
+}
+
+.c-thumb .c-card-desc__advantages {
+    font-size: 12px;
+    padding-left: 4px;
 }
 
 @media (max-width: 1009px) {
     .c-card-desc__advantages {
-        font-size: 12px;
         font-weight: 400;
         line-height: 12px;
         margin-bottom: 9px
