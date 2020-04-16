@@ -80,7 +80,6 @@ Route::group(['prefix' => 'shop', 'middleware' => ['web']], function () {
     Route::get('/cart', 'ProductController@showCart');
     Route::any('/cart/order', ['as' => 'order_store', 'uses' => OrderController::class . '@store']);
     Route::get('/{slug}', 'ProductController@show')->name('product.show');
-
     Route::get('/categories/{category}.html', 'CategoryController@show')->name('category.show');
 
     Route::get('/pages/contacts.html', function () {
@@ -96,12 +95,13 @@ Route::group(['prefix' => 'shop', 'middleware' => ['web']], function () {
 
 });
 
-
-
-
-//index
-//create
-//store
-//edit
-//update
-//destroy
+/**
+ * Verb             URI                     Action  Route Name
+ * GET              /photos                 index   photos.index
+ * GET              /photos/create          create  photos.create
+ * POST             /photos                 store   photos.store
+ * GET              /photos/{photo}         show    photos.show
+ * GET              /photos/{photo}/edit    edit    photos.edit
+ * PUT/PATCH        /photos/{photo}         update  photos.update
+ * DELETE           /photos/{photo}         destroy photos.destroy
+ */

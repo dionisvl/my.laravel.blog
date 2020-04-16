@@ -54,7 +54,7 @@
 
                                     {{Form::close()}}
 
-                                    <a href="{{$product->getUrl()}}" target="_blank"><i
+                                    <a href="{{route('product.show',$product->slug)}}" target="_blank"><i
                                             class="fas fa-external-link-alt"></i></a>
                                 </td>
                             </tr>

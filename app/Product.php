@@ -65,7 +65,6 @@ class Product extends Model
     public function edit($fields)
     {
         $this->fill($fields);
-        $this->slug = static::getSlug($fields['title']);
         $this->save();
     }
 
