@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        view()->composer('shop', function ($view) {
+        view()->composer('shop.layout', function ($view) {
             $categories = Category::orderBy('title', 'asc')->get();
             $view->with('categories', $categories);
         });

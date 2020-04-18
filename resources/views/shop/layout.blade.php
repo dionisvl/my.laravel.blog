@@ -43,34 +43,24 @@
                 </div>
                 <div class="cnt visible-xs">
                 <span>Интернет магазин спортивного питания в Москве и Регионах<br>
-<div style=display:none><div class=wf-breadcrumb><ul itemscope itemtype=http://schema.org/BreadcrumbList>
-<li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
-<a href="/" title=Главная itemprop=item>
-<span itemprop=name>Главная</span>
-<meta itemprop=position content="0"/>
-</a>
-</li>
-<li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
-<a href=/shop/catalog/index.html title="Innovative labs" itemprop=item>
-<span itemprop=name>Innovative labs</span>
-<meta itemprop=position content="1"/>
-</a>
-</li></ul></div></div><br>
-<br> </span><span><a href=tel:+79991140312 rel=nofollow target=_blank>+7 (999) 114-03-12</a>
+<br>
+<br>
+</span><span><a href=tel:+79991140312 rel=nofollow target=_blank>+7 (999) 114-03-12</a>
 <br>
 <div style=line-height:2.5>
 <a href=https://wa.me/79991140312 rel=nofollow target=_blank>WhatsApp</a>
 <a rel=nofollow target=_blank href="viber://add?number=79991140312">Viber</a>
 <a rel=nofollow target=_blank href=https://t.me/innovativbase>Telegram</a></div>
-</span></div>
+</span>
+                </div>
             </div>
         </div>
     </div>
-    <div class="mn-header__bottom @if (Request::path() !== '/') mn-header__isSmall @endif">
+    <div class="mn-header__bottom @if (Request::path() !== 'shop') mn-header__isSmall @endif">
 
         <div class=container>
             <div class="mn-header__logo hidden-xs">
-                <a href="/"><img alt=logo src=/upload/template/sportfood/logo.jpg></a>
+                <a href="{{route('shop.index')}}"><img alt=logo src=/upload/template/sportfood/logo.jpg></a>
                 <span>Интернет магазин спортивного питания в Москве и Регионах
                     @if(Auth::check())
                         @if(Auth::user()->is_admin)
@@ -78,21 +68,8 @@
                             <a href="/logout">Logout</a>
                         @endif
                     @endif
-                    <br>
-<div style=display:none><div class=wf-breadcrumb><ul itemscope itemtype=http://schema.org/BreadcrumbList>
-<li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
-<a href="/" title=Главная itemprop=item>
-<span itemprop=name>Главная</span>
-<meta itemprop=position content="0"/>
-</a>
-</li>
-<li itemprop=itemListElement itemscope itemtype=http://schema.org/ListItem>
-<a href=/ title="Innovative labs" itemprop=item>
-<span itemprop=name>Innovative labs</span>
-<meta itemprop=position content="1"/>
-</a>
-</li></ul></div></div><br>
-<br> </span>
+                    <br><br><br>
+                </span>
             </div>
             <div class=mn-header__right-group>
                 <div class="mn-header__nav-trigger visible-xs">
@@ -101,31 +78,34 @@
                 <nav class=mn-header__nav>
                     <ul class=list_float id=horizontal-3level-menu>
                         <li class=root-item-selected>
-                            <a href="/shop/">Каталог</a>
+                            <a href="{{route('shop.index')}}">Каталог</a>
                             <ul class=second-level>
                                 @if(isset($categories))
                                     @foreach($categories as $category)
                                         <li>
-                                            <a href=/shop/categories/{{$category->slug}}.html>{{$category->title}}</a>
+                                            <a href={{route('category.show',$category->slug)}}>{{$category->title}}</a>
                                         </li>
                                     @endforeach
                                 @endif
                             </ul>
                         </li>
                         <li class=root-item>
-                            <a href=/shop/pages/food.html>Питание</a>
+                            <a href={{route('shop.food.show')}}>Питание</a>
                         </li>
                         <li class=root-item>
-                            <a href=/shop/pages/payment.html>Оплата и доставка</a>
+                            <a href={{route('shop.payment.show')}}>Оплата и доставка</a>
                         </li>
                         <li class=root-item>
-                            <a href=/shop/pages/contacts.html>Контакты</a>
+                            <a href={{route('shop.contacts.show')}}>Контакты</a>
                         </li>
                     </ul>
                 </nav>
                 <div class="mn-header__logo-xs visible-xs-inline-block">
-                    <span><a href="/shop/">innovativbase</a></span></div>
-                <a href=/shop/cart class=mn-header__basket id=sw_basket>
+                    <span>
+                        <a href="{{route('shop.index')}}">innovativbase</a>
+                    </span>
+                </div>
+                <a href={{route('cart.show')}} class=mn-header__basket id=sw_basket>
                     <i id=top_basket_counter>0</i>
                     <span class="ico ico-basket hidden-sm hidden-xs"></span>
                     <span class="ico ico-basket_sm visible-sm"></span>
@@ -133,7 +113,7 @@
                 </a>
             </div>
         </div>
-        @if (Request::path() === '/')
+        @if (Request::path() === 'shop')
             <div class="mn-header__bg"
                  style="background:url(/upload/template/sportfood/background.jpg) top center"></div>
         @else
@@ -151,10 +131,10 @@
                 <div class=col-sm-18>
                     <nav class="mn-footer__nav hidden-xs">
                         <ul class=list_float>
-                            <li class=active><a href="/shop/">Каталог</a></li>
-                            <li><a href=/shop/food/index.html>Питание</a></li>
-                            <li><a href=/shop/payment/index.html>Оплата и доставка</a></li>
-                            <li><a href=/shop/contacts/index.html>Контакты</a></li>
+                            <li class=active><a href="{{route('shop.index')}}">Каталог</a></li>
+                            <li><a href={{route('shop.food.show')}}>Питание</a></li>
+                            <li><a href={{route('shop.payment.show')}}>Оплата и доставка</a></li>
+                            <li><a href={{route('shop.contacts.show')}}>Контакты</a></li>
                         </ul>
                     </nav>
                     <div class="mn-footer__txt hidden-xs">
@@ -240,7 +220,7 @@
                 </form>
             </div>
             <div class=modal-footer>
-                <a href=/shop/cart/ class=btn><span>Перейти в корзину</span></a>
+                <a href={{route('cart.show')}} class=btn><span>Перейти в корзину</span></a>
                 <a href=# data-dismiss=modal class=modal-link>Продолжить покупки</a>
             </div>
         </div>

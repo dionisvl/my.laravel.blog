@@ -5,7 +5,7 @@
         <div class="container c-gui-article">
             <div class=catalog-page__catalog-block>
                 <div class="row row_inline">
-
+                    <h1>Купить {{$category->title}}</h1>
                     @foreach($products as $product)
                         <div class="col-md-6 col-sm-8 col-xs-12 col-xx-24 product" id="{{$product->id}}">
                             <div class=c-thumb>
