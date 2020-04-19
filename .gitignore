@@ -25,3 +25,4 @@ yarn-error.log
 /robots.txt
 /sitemap.xml
 /public/upload/
+/public/vendor/telescope/

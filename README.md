@@ -1,9 +1,12 @@
 <p><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-<p>
 
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>  
+## Laravel ecommerce template
+
+- С админкой "AdminLTE" 2.3.7
+- С редактором TinyMCE
+- Возможность создавать и редактировать теги/категории статей
+- Регистрация и управление пользователями
 
 ## How to Install
 
@@ -29,18 +32,23 @@ bootstrap/cache}
   php artisan tinker  
   factory(App\Order::class, 4)->create();  
   ```
-## Интернет магазин на Ларавеле
-
-- С админкой "AdminLTE" 2.3.7
-- С редактором TinyMCE
-- Возможность создавать и редактировать теги/категории статей
-- Регистрация и управление пользователями
 
 
-## License
+## Telescope
+The "Laravel Telescope" will be enabled when `TELESCOPE_ENABLED` is true.  
+Access will be if `APP_ENV` is local.
+##### Installing
+``` 
+php artisan telescope:install
+php artisan migrate 
+``` 
+after updatig:  
+`
+php artisan telescope:publish
+`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
+## Debugbar
+The Debugbar will be enabled when APP_DEBUG is true.
 
 #### Other
 Чтобы создать фабрики, миграции, модели и ресурсный контроллер выполните:
