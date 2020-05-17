@@ -24,3 +24,7 @@ yarn-error.log
 /public/uploads/
 /robots.txt
 /sitemap.xml
+/public/upload/
+/public/vendor/telescope/
+/.phpstorm.meta.php
+/_ide_helper.php

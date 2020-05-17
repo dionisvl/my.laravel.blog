@@ -12,7 +12,6 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/contacts/', 'HomeController@contacts');
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
@@ -20,11 +19,13 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
 Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
+
+Route::get('/privacy/', 'HomeController@privacy');
+Route::get('/contacts/', 'HomeController@contacts');
+Route::get('/profile', 'ProfileController@index');
+
 Route::post('/subscribe', 'SubsController@subscribe');
 Route::get('/verify/{token}', 'SubsController@verify');
-Route::get('/privacy/', 'HomeController@privacy');
-
-Route::get('/profile', 'ProfileController@index');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'ProfileController@index');
@@ -32,7 +33,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout', 'AuthController@logout');
 
 });
+
 Route::post('/comment', 'CommentsController@store');
+
 Route::group(['middleware' => ['cors']], function () {
     Route::post('/incoming', 'IncomingsController@store');
 });
@@ -95,8 +98,6 @@ Route::group(['prefix' => 'shop', 'middleware' => ['web']], function () {
     Route::get('/pages/food.html', function () {
         return view('shop.food');
     })->name('shop.food.show');
-
-
 });
 
 /**

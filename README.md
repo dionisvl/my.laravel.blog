@@ -1,9 +1,12 @@
 <p><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-<p>
 
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>  
+## Laravel ecommerce/blog template
+
+- С админкой "AdminLTE" 2.3.7
+- С редактором TinyMCE
+- Возможность создавать и редактировать теги/категории статей
+- Регистрация и управление пользователями
 
 ## How to Install
 
@@ -17,25 +20,38 @@
 - ln -s /var/www/THIS_SITE/storage/app/public/ /var/www/THIS_SITE/html/public/storage
 
 ```
-sudo chmod -R 777 /var/www/phpqa.ru/{\
+sudo chown www-data -R /var/www/THIS_SITE/{\
 storage/framework/cache,\
 storage/framework/views,\
 storage/framework/sessions,\
 bootstrap/cache}
 ```
 
-## Блог на Ларавеле
+- for subscription functionality fill all .env params - MAIL_FROM_ADDRESS
 
-- С админкой "AdminLTE" 2.3.7
-- С редактором TinyMCE
-- Возможность создавать и редактировать теги/категории статей
-- Регистрация и управление пользователями
+- Optional:  
+    fill some test orders:
+    ```
+  php artisan tinker  
+  factory(App\Order::class, 4)->create();  
+  ```
 
 
-## License
+## Telescope
+The "Laravel Telescope" will be enabled when `TELESCOPE_ENABLED` is true.  
+Access will be if `APP_ENV` is local.
+##### Installing
+``` 
+php artisan telescope:install
+php artisan migrate 
+``` 
+after updatig:  
+`
+php artisan telescope:publish
+`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
+## Debugbar
+The Debugbar will be enabled when APP_DEBUG is true.
 
 #### Other
 Чтобы создать фабрики, миграции, модели и ресурсный контроллер выполните:
@@ -46,4 +62,8 @@ php artisan make:model Post -a
 ```
 php artisan tinker
 \App\User::add(['name' => 'admin', 'email' => 'admin@admin.net', 'is_admin' => 1, 'password' => bcrypt('admin')]);
+```
+Миграции заново:
+```
+php artisan migrate:refresh
 ```

@@ -46,10 +46,10 @@
                   <td>
                    {{Form::open(['route'=>['subscribers.destroy', $subscriber->id], 'method'=>'delete'])}}
 	                  <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-	                   <i class="fa fa-remove"></i>
-	                  </button>
+                          <i class="fas fa-trash"></i>
+                      </button>
 
-	                   {{Form::close()}}
+                      {{Form::close()}}
                    </td>
                 </tr>
                 @endforeach

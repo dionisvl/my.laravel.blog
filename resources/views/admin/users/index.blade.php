@@ -39,25 +39,25 @@
                   <th>Действия</th>
                 </tr>
                 </thead>
-                <tbody>
-                @foreach($users as $user)
-	                <tr>
-	                  <td>{{$user->id}}</td>
-	                  <td>{{$user->name}}</td>
-	                  <td>{{$user->email}}</td>
-	                  <td>
-	                    <img src="{{$user->getImage()}}" alt="" class="img-responsive" width="150">
-	                  </td>
-	                  <td><a href="{{route('users.edit', $user->id)}}" class="fa fa-pencil"></a> 
-	                  {{Form::open(['route'=>['users.destroy', $user->id], 'method'=>'delete'])}}
-	                  <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-	                   <i class="fa fa-remove"></i>
-	                  </button>
+                  <tbody>
+                  @foreach($users as $user)
+                      <tr>
+                          <td>{{$user->id}}</td>
+                          <td>{{$user->name}}</td>
+                          <td>{{$user->email}}</td>
+                          <td>
+                              <img src="{{$user->getImage()}}" alt="" class="img-responsive" width="150">
+                          </td>
+                          <td><a href="{{route('users.edit', $user->id)}}"><i class="fas fa-pencil-alt"></i></a>
+                              {{Form::open(['route'=>['users.destroy', $user->id], 'method'=>'delete'])}}
+                              <button onclick="return confirm('are you sure?')" type="submit" class="delete">
+                                  <i class="fas fa-trash"></i>
+                              </button>
 
-	                   {{Form::close()}}
-	                  </td>
-	                </tr>
-                @endforeach
+                              {{Form::close()}}
+                          </td>
+                      </tr>
+                  @endforeach
 
                 </tfoot>
               </table>

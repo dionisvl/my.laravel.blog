@@ -60,7 +60,7 @@
                                     {{--<div class="ya-share2" data-services="vkontakte,facebook,twitter,linkedin,telegram" data-limit="3"></div>--}}
                                     <ul class="text-center pull-right">
                                         <li>
-                                                <i class="fa fa-eye"> {{$post->getViewsCount()}}</i>
+                                            <i class="fa fa-eye"> {{$post->getViewsCount()}}</i>
                                         </li>
 
                                     </ul>

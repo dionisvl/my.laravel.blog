@@ -55,7 +55,7 @@
                                     @endif
                                     {{Form::open(['route'=>['incomings.destroy', $incoming->id], 'method'=>'delete'])}}
                                     <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                                        <i class="fa fa-remove"></i>
+                                        <i class="fas fa-trash"></i>
                                     </button>
 
                                 {{Form::close()}}

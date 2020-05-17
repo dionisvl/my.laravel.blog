@@ -8,6 +8,8 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/some_admin_fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -27,6 +29,8 @@
         <nav class="navbar navbar-static-top">
             <!-- Sidebar toggle button-->
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <i class="fas fa-hamburger"></i>
+
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -38,7 +42,7 @@
                     <!-- Messages: style can be found in dropdown.less-->
                     <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-envelope-o"></i>
+                            <i class="fas fa-tachometer-alt"></i>
                             <span class="label label-success">4</span>
                         </a>
                         <ul class="dropdown-menu">
@@ -68,7 +72,7 @@
                     <!-- Notifications: style can be found in dropdown.less -->
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
+                            <i class="fas fa-bell"></i>
                             <span class="label label-warning">10</span>
                         </a>
                         <ul class="dropdown-menu">
@@ -89,7 +93,7 @@
                     <!-- Tasks: style can be found in dropdown.less -->
                     <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-o"></i>
+                            <i class="fas fa-flag"></i>
                             <span class="label label-danger">9</span>
                         </a>
                         <ul class="dropdown-menu">
@@ -167,7 +171,7 @@
                     </li>
                     <!-- Control Sidebar Toggle Button -->
                     <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        <a href="#" data-toggle="control-sidebar"><i class="fas fa-cogs"></i></a>
                     </li>
                 </ul>
             </div>
@@ -233,7 +237,7 @@
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
             <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
 
-            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fas fa-cogs"></i></a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">

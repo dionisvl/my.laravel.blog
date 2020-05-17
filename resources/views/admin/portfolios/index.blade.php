@@ -46,16 +46,18 @@
                                     <img src="{{$portfolio->getImage()}}" alt="" width="100">
                                 </td>
                                 <td>
-                                    <a href="{{route('portfolios.edit', $portfolio->id)}}" class="fa fa-pencil"></a>
+                                    <a href="{{route('portfolios.edit', $portfolio->id)}}"><i
+                                            class="fas fa-pencil-alt"></i></a>
 
                                     {{Form::open(['route'=>['portfolios.destroy', $portfolio->id], 'method'=>'delete'])}}
                                     <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                                        <i class="fa fa-remove"></i>
+                                        <i class="fas fa-trash"></i>
                                     </button>
 
                                     {{Form::close()}}
 
-                                    <a href="{{$portfolio->getUrl()}}" class="fa fa-external-link-square" target="_blank"></a>
+                                    <a href="{{$portfolio->getUrl()}}" target="_blank"> <i
+                                            class="fas fa-external-link-alt"></i></a>
                                 </td>
                             </tr>
                         @endforeach
