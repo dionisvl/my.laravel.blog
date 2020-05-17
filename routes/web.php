@@ -61,6 +61,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['adm
     Route::resource('/incomings', 'IncomingsController');
     Route::get('/incomings/toggle/{id}', 'IncomingsController@toggle');
     Route::delete('/incomings/{id}/destroy', 'IncomingsController@destroy')->name('incomings.destroy');
+
+    Route::resource('/products', 'ProductsController');
+
+    Route::get('/orders/download', ['as' => 'orders_download', 'uses' => OrdersController::class . '@download']);
+    Route::resource('/orders', 'OrdersController');
 });
 
 //Route::any('/search',function(){
@@ -73,12 +78,34 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['adm
 
 Route::any('/search', 'SearchController@index');
 
+Route::group(['prefix' => 'shop', 'middleware' => ['web']], function () {
+    Route::get('/', ['as' => 'shop.index', 'uses' => ProductController::class . '@index']);
+    //   Route::get('/', 'ProductController@index');
+    Route::get('/cart', 'ProductController@showCart')->name('cart.show');
+    Route::any('/cart/order', ['as' => 'order_store', 'uses' => OrderController::class . '@store']);
+    Route::get('/{slug}', 'ProductController@show')->name('product.show');
+    Route::get('/categories/{category}.html', 'CategoryController@show')->name('category.show');
+
+    Route::get('/pages/contacts.html', function () {
+        return view('shop.contacts');
+    })->name('shop.contacts.show');
+    Route::get('/pages/payment.html', function () {
+        return view('shop.payment');
+    })->name('shop.payment.show');
+    Route::get('/pages/food.html', function () {
+        return view('shop.food');
+    })->name('shop.food.show');
 
 
+});
 
-//index
-//create
-//store
-//edit
-//update
-//destroy
+/**
+ * Verb             URI                     Action  Route Name
+ * GET              /photos                 index   photos.index
+ * GET              /photos/create          create  photos.create
+ * POST             /photos                 store   photos.store
+ * GET              /photos/{photo}         show    photos.show
+ * GET              /photos/{photo}/edit    edit    photos.edit
+ * PUT/PATCH        /photos/{photo}         update  photos.update
+ * DELETE           /photos/{photo}         destroy photos.destroy
+ */
