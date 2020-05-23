@@ -65,6 +65,18 @@
     padding: 10px;
 }
 
+.entry-header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px;
+    color: #212529;
+    font-size: 1.3rem;
+}
+
+.entry-header a {
+    color: #212529;
+}
+
 .entry-header {
     margin: 0;
 }

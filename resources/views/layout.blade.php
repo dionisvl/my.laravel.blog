@@ -25,6 +25,13 @@
     <meta name="yandex-verification" content="aeb4e0b17d9f0967"/>
 
     <!-- common css -->
+    <link rel="preload" as='style' href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="preload" as='style' href="/css/front.css">
+    <link rel="preload" as='style' href="/css/some_fix.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/front.css">
     <link rel="stylesheet" href="/css/some_fix.css">
     <!-- Favicon -->
@@ -40,7 +47,7 @@
 <nav class="navbar main-menu navbar-expand-md navbar-light border-bottom">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="/storage/blog_images/logo.png" alt="Wiki BWP resource" loading="lazy">
+            <img src="/storage/blog_images/logo.png" alt="Wiki BWP resource" loading="lazy" style="width:197px">
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -187,6 +194,10 @@
     </div>
 </footer>
 <!-- js files -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
 <script src="/js/front.js"></script>
 <script src="/js/some_fix.js"></script>
 
