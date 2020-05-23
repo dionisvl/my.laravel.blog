@@ -48,51 +48,38 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <div>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Homepage</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contacts/">Contacts</a>
-                    </li>
-                </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Homepage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contacts/">Contacts</a>
+                </li>
 
-
-                <div>
-                    @if(Auth::check())
-                        @if(Auth::user()->is_admin)
-                            <li class="nav-item"><a class="nav-link" href="/admin">Admin panel</a></li>
-                        @endif
-                        <li class="nav-item"><a class="nav-link" href="/profile">My profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-                    @else
-                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                @if(Auth::check())
+                    @if(Auth::user()->is_admin)
+                        <li class="nav-item"><a class="nav-link" href="/admin">Admin panel</a></li>
                     @endif
-                    <li class="nav-item float-right">
-                        <button class="btn btn-default show_toggle_invokers" data-to-show="#search_block">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </li>
-                </div>
+                    <li class="nav-item"><a class="nav-link" href="/profile">My profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                @else
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                @endif
+
+                <li class="nav-item">
+                    <form class="form-inline" role="search" method="POST" id="searchform" action="/search">
+                        {{ csrf_field() }}
+                        <span class="btn btn-default show_toggle_invokers" data-to-show="#search_block">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </span>
+                        <input class="form-control form-control-sm" type="text" placeholder="Search..."
+                               aria-label="Search" style="margin-bottom:0;" name="q" id="s">
+                    </form>
+                </li>
             </ul>
         </div>
-
-
-        <div class="show-search" id="search_block">
-            <form role="search" method="POST" id="searchform" action="/search">
-                {{ csrf_field() }}
-                <div>
-                    <input type="text" placeholder="Search and hit enter..." name="q" id="s">
-                </div>
-            </form>
-        </div>
-
-
     </div>
-
 </nav>
-
 
 <div class="container">
     <div class="row">
@@ -190,8 +177,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="text-center">&copy; 2019 <a href="#">Wiki Blog, </a> Designed with <i
-                            class="fa fa-heart"></i> by <a href="#">BWP</a>
+                    <div class="text-center">&copy; @php echo date('Y'); @endphp <a href="#">Wiki Blog, </a> Designed
+                        with
+                        <i class="fas fa-heart" style="color: red;"></i> by <a href="#">BWP</a>
                     </div>
                 </div>
             </div>
@@ -204,8 +192,9 @@
 
 {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css"/>--}}
 <link rel="stylesheet" href="/css/tiny-slider.css"/>
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
         integrity="sha256-CApIX5Te4OdXVy1iWP+5+qG/iHa+8apfYOFagdVMRwk=" crossorigin="anonymous"></script>

@@ -5,27 +5,9 @@
     <div class="main-content">
         <div class="container">
             <div class="row">
-
-                <?php /* old template search
-                <div class="col-md-12 widget search">
-                    <form action="/search" method="POST" role="search">
-                        {{ csrf_field() }}
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="q"
-                                   placeholder="Search text there">
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-                */?>
                 <div class="col-md-8">
                     @foreach($posts as $post)
                         <article class="post">
-                            <?// if ($post->getImage() != '/storage/blog_images/no-image.png') {?>
                             <div class="post-thumb">
                                 <div class='post_image_block'>
                                     <img src="{{$post->getImage()}}" alt="{{$post->title}}" loading="lazy">
@@ -40,31 +22,17 @@
                                     </h1>
                                 </header>
                             </div>
-                            <?//}?>
                             <div class="post-content">
+                                <div class="entry-content">{!!$post->description!!}</div>
 
-                                <div class="entry-content">
-                                    {!!$post->description!!}
-                                    <?/*
-                                    <div class="btn-continue-reading text-center text-uppercase">
-                                        <a href="{{route('post.show', $post->slug)}}" class="more-link">Continue
-                                            Reading</a>
-                                    </div>
-                                    */?>
-                                </div>
                                 <div class="social-share">
-                            <span class="social-share-title pull-left text-capitalize">
-                                By <a href="#">{{$post->author->name}}</a> On {{$post->getDate()}}
-                            </span>
-                                    {{--<script src="//yastatic.net/share2/share.js"></script>--}}
-                                    {{--<div class="ya-share2" data-services="vkontakte,facebook,twitter,linkedin,telegram" data-limit="3"></div>--}}
-                                    <ul class="text-center pull-right">
-                                        <li>
-                                            <i class="fa fa-eye"> {{$post->getViewsCount()}}</i>
-                                        </li>
-
-                                    </ul>
-
+                                    <span class="social-share-title pull-left">
+                                        By <a href="#">{{$post->author->name}}</a> On {{$post->getDate()}}
+                                    </span>
+                                    <span class="float-right">
+                                        <span class="pl-2"><i class="fas fa-eye"></i> {{$post->getViewsCount()}}</span>
+                                        <span class="pl-2"><i class="far fa-heart" style="color: red;"></i> {{$post->getViewsCount()}}</span>
+                                    </span>
                                 </div>
                             </div>
                         </article>

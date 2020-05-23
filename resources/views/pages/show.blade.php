@@ -32,20 +32,23 @@
                                        class="btn btn-default">{{$tag->title}}</a>
                                 @endforeach
                             </div>
-
                             <div class="social-share">
-                                <span class="social-share-title text-capitalize">By {{$post->author->name}} On {{$post->getDate()}}
-                                    <i class="fa fa-eye"> {{$post->getViewsCount()}}{{$post->updateViewsCount()}}</i>
+                                <span class="social-share-title pull-left">
+                                    By <a href="#">{{$post->author->name}}</a> On <b>{{$post->getDate()}}</b>
                                 </span>
-                                <ul class="text-center pull-right">
+
+                                <span class="float-right">
+                                    <span class="pl-2"><i
+                                            class="fas fa-eye"></i> {{$post->getViewsCount()}}{{$post->updateViewsCount()}}</span>
+                                    <span class="pl-2"><i class="far fa-heart" style="color: red;"></i> {{$post->getViewsCount()}}</span>
+                                </span>
+
+                                <ul class="text-center float-right">
                                     <script src="//yastatic.net/share2/share.js"></script>
                                     <div class="ya-share2"
                                          data-services="vkontakte,facebook,twitter,linkedin,telegram"></div>
-
-
                                 </ul>
                             </div>
-
                         </div>
                     </article>
                     <div class="top-comment"><!--top comment-->

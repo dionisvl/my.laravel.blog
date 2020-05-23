@@ -24,7 +24,9 @@ sudo chown www-data -R /var/www/THIS_SITE/{\
 storage/framework/cache,\
 storage/framework/views,\
 storage/framework/sessions,\
-bootstrap/cache}
+html/public/storage/uploads,\
+bootstrap/cache,
+}
 ```
 
 - for subscription functionality fill all .env params - MAIL_FROM_ADDRESS
