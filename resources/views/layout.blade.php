@@ -43,10 +43,10 @@
 
 <body>
 
-<nav class="navbar main-menu navbar-expand-md navbar-light border-bottom">
+<nav class="navbar main-menu navbar-expand-md navbar-light border-bottom _fixed">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="/storage/blog_images/logo.png" alt="Wiki BWP resource" loading="lazy" style="width:197px">
+            <img src="/storage/blog_images/logo.png" alt="Wiki BWP resource" loading="lazy" class="logo-main">
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -75,7 +75,7 @@
                 <li class="nav-item">
                     <form class="form-inline" role="search" method="POST" id="searchform" action="/search">
                         {{ csrf_field() }}
-                        <span class="btn btn-default show_toggle_invokers" data-to-show="#search_block">
+                        <span class="btn btn-default show_toggle_invokers lens-search" data-to-show="#search_block">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </span>
                         <input class="form-control form-control-sm" type="text" placeholder="Search..."

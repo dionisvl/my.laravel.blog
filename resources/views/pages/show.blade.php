@@ -5,7 +5,7 @@
     <div class="main-content">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 flow-main">
                     <article class="post">
                         @if(!empty($post->getImage()))
                             <div class="post-detail-thumb">
@@ -20,8 +20,6 @@
                                     </h6>
                                 @endif
                                 <h1 class="entry-title">{{$post->title}}</h1>
-
-
                             </header>
                             <div class="entry-content">
                                 {!! $post->content !!}
@@ -38,9 +36,15 @@
                                 </span>
 
                                 <span class="float-right">
-                                    <span class="pl-2"><i
-                                            class="fas fa-eye"></i> {{$post->getViewsCount()}}{{$post->updateViewsCount()}}</span>
-                                    <span class="pl-2 likes"><i class="far fa-heart" style="color: red;"></i> {{$post->likes_count}}</span>
+                                    <span class="pl-2">
+                                        <i class="fas fa-eye"></i> {{$post->getViewsCount()}}{{$post->updateViewsCount()}}
+                                    </span>
+                                    <a class="pl-2 like" onclick="Likes.toggle(this,event);"
+                                       data-post_id="{{$post->id}}" href="#" title="Like">
+                                            <i class="@if ($post->is_liked) fas @else far @endif fa-heart"
+                                               style="color: red;"></i>
+                                            <span class="like_button_count">{{$post->likes_count}} </span>
+                                    </a>
                                 </span>
 
                                 <ul class="text-center float-right">
@@ -51,14 +55,35 @@
                             </div>
                         </div>
                     </article>
-                    <div class="top-comment"><!--top comment-->
-                        <img src="/storage/blog_images/comment.jpg" class="pull-left img-circle" alt="">
-                        <h4>{{$post->author->name}}</h4>
+                    @foreach($post->getComments() as $comment)
+                        <div class="bottom-comment">
+                            <div class="comment-img">
+                                <img class="img-circle" src="{{$comment->getAuthorImage()}}" alt="" width="75"
+                                     height="75">
+                            </div>
+                            <div class="comment-text">
+                                <h5>{{$comment->author_name}}</h5>
+                                <p class="comment-date">{{$comment->created_at->diffForHumans()}}</p>
+                                <p class="para">{{$comment->text}}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="leave-comment">
+                        <h4>Leave a reply</h4>
+                        <form class="form-horizontal contact-form" role="form" method="post" action="/comment">
+                            {{csrf_field()}}
+                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <textarea class="border form-control" rows="4" name="message"
+                                              placeholder="Write Massage"></textarea>
+                                </div>
+                            </div>
+                            <button class="btn send-btn">Post Comment</button>
+                        </form>
+                    </div>
 
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
-                            invidunt ut labore et dolore magna aliquyam erat.</p>
-                    </div><!--top comment end-->
-                    <div class="row"><!--blog next previous-->
+                    <div class="row">
                         <div class="col-md-6">
                             @if($post->hasPrevious())
                                 <div class="single-blog-box">
@@ -92,18 +117,17 @@
                             @endif
                         </div>
                     </div><!--blog next previous end-->
+
                     @if(!$post->related()->isEmpty())
                         <div class="related-post-carousel"><!--related post carousel-->
                             <div class="related-heading">
                                 <h4>You might also like</h4>
                             </div>
-                            <!--related post carousel-->
                             <div id="also_like_tns">
                                 @foreach($post->related() as $item)
                                     <div class="single-item">
                                         <a href="{{route('post.show', $item->slug)}}">
                                             <img src="{{$item->getImage()}}" alt="">
-
                                             <p>{{$item->title}}</p>
                                         </a>
                                     </div>
@@ -111,48 +135,6 @@
                             </div>
                         </div>
                     @endif
-                    {{--@if(!$post->comments->isEmpty())--}}
-                    @foreach($post->getComments() as $comment)
-
-                        <div class="bottom-comment"><!--bottom comment-->
-                            <div class="comment-img">
-                                <img class="img-circle" src="{{$comment->getAuthorImage()}}" alt="" width="75"
-                                     height="75">
-                            </div>
-
-                            <div class="comment-text">
-                                <h5>{{$comment->author_name}}</h5>
-
-                                <p class="comment-date">
-                                    {{$comment->created_at->diffForHumans()}}
-                                </p>
-
-                                <p class="para">{{$comment->text}}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                    {{--@endif--}}
-
-                <!-- end bottom comment-->
-
-                    {{--@if(Auth::check())--}}
-                    <div class="leave-comment"><!--leave comment-->
-                        <h4>Leave a reply</h4>
-
-
-                        <form class="form-horizontal contact-form" role="form" method="post" action="/comment">
-                            {{csrf_field()}}
-                            <input type="hidden" name="post_id" value="{{$post->id}}">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <textarea class="form-control" rows="6" name="message"
-                                              placeholder="Write Massage"></textarea>
-                                </div>
-                            </div>
-                            <button class="btn send-btn">Post Comment</button>
-                        </form>
-                    </div><!--end leave comment-->
-                    {{--@endif--}}
 
                 </div>
                 @include('pages._sidebar')

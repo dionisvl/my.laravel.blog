@@ -3397,7 +3397,7 @@ header
 .main-menu .navbar-brand > img {
     display: block;
     margin-right: 45px;
-    padding: 0 0;
+    padding: 7px;
     height: 50px;
 }
 
@@ -3587,6 +3587,7 @@ post css
 
 article {
     border: 1px solid #eee;
+    border-radius: 2px;
 }
 
 .entry-header {
@@ -3635,7 +3636,6 @@ a.more-link {
     display: inline-block;
     color: #00BFF3;
     border: 1px solid #eee;
-    -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
 
@@ -3793,8 +3793,8 @@ about me
 }
 
 .widget {
-    padding: 37px 30px;
-    margin-bottom: 35px;
+    padding: 15px;
+    margin-bottom: 10px;
     background-color: #fff;
     border: 1px solid #eee;
 }
@@ -3841,7 +3841,7 @@ subscribe newsletter
     border: 1px solid #eeeeee;
     padding: 5px 15px;
     font-style: italic;
-    border-radius: 0;
+    border-radius: 2px;
     background: #fafafa;
 }
 
@@ -3850,8 +3850,7 @@ subscribe newsletter
     background-color: #333333;
     color: #fff;
     font-weight: 600;
-    border-radius: 0;
-    -webkit-transition: all 0.33s;
+    border-radius: 2px;
     transition: all 0.33s;
     letter-spacing: 1px;
     font-size: 12px;
@@ -3878,13 +3877,11 @@ popular post
 .popular-post {
     border-bottom: 1px solid #eee;
     padding: 25px 0 20px;
-
 }
 
 .popular-post:last-child {
     border-bottom: 0 solid #eee;
     padding-bottom: 0;
-
 }
 
 .widget .popular-post:first-of-type {
@@ -3912,7 +3909,6 @@ popular post
 
 .popular-img img {
     width: 100%;
-
 }
 
 .popular-img {
@@ -4126,12 +4122,11 @@ footer instragram
 }
 
 .footer-widget {
-    padding: 70px 0;
-
+    padding: 25px 0;
 }
 
 .about-content {
-    padding-top: 35px;
+    padding-top: 0;
     line-height: 24px;
     font-family: 'Merriweather', serif
 }
@@ -4294,7 +4289,7 @@ athuor
     background: #222222;
     padding: 15px 0;
     color: #e2e2e2;
-    line-height: 30px;
+    line-height: 10px;
     font-family: 'Merriweather', serif;
     font-size: 13px;
 }
@@ -4336,10 +4331,10 @@ blog css
 }
 
 .top-comment {
-    padding: 30px;
+    padding: 15px;
     background-color: #fff;
     color: #212121;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .top-comment img {
@@ -4418,8 +4413,8 @@ blog css
 
 /*related post section*/
 .related-post-carousel {
-    padding: 20px 20px 10px;
-    margin-top: 20px;
+    padding: 15px;
+    margin-top: 10px;
     background-color: #fff;
     color: #212121;
 }
@@ -4520,10 +4515,9 @@ blog css
 
 .leave-comment {
     background-color: #fff;
-    margin: 30px 0;
-    padding: 20px;
+    margin: 15px 0;
+    padding: 15px;
     color: #212121;
-
 }
 
 .leave-comment h4 {
@@ -4535,14 +4529,12 @@ blog css
 .leave-comment input, .leave-comment textarea {
     background-color: #FAFAFA;
     color: #999999;
-    border-radius: 0;
+    border-radius: 2px;
     font-size: 14px;
     line-height: 28px;
-    padding: 20px;
+    padding: 10px;
     border-color: #eee;
-    -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, .075);
     box-shadow: inset 0 0 0 rgba(0, 0, 0, .075);
-
 }
 
 .leave-comment input[type="text"] + input[type="email"] {
@@ -4566,9 +4558,8 @@ input[type="text"]:focus, input[type="email"]:focus, textarea {
     background: #333;
     color: #fff;
     text-transform: uppercase;
-    -webkit-transition: all .33s;
     transition: all .33s;
-    border-radius: 0;
+    border-radius: 2px;
 }
 
 .send-btn:hover {
