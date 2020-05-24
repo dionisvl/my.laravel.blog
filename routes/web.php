@@ -100,6 +100,8 @@ Route::group(['prefix' => 'shop', 'middleware' => ['web']], function () {
     })->name('shop.food.show');
 });
 
+Route::post('/postlike/{post_id}', PostLikeController::class . '@toggle');
+
 /**
  * Verb             URI                     Action  Route Name
  * GET              /photos                 index   photos.index

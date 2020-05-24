@@ -148,3 +148,12 @@ pre[class*=language-] {
 code {
     font-size: 0.88em !important;
 }
+
+/* likes system */
+.fa-heart {
+    transition: 1s; /* Время эффекта */
+}
+
+.like:hover .fa-heart {
+    transform: scale(1.4);
+}

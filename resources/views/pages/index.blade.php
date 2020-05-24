@@ -31,7 +31,12 @@
                                     </span>
                                     <span class="float-right">
                                         <span class="pl-2"><i class="fas fa-eye"></i> {{$post->getViewsCount()}}</span>
-                                        <span class="pl-2"><i class="far fa-heart" style="color: red;"></i> {{$post->getViewsCount()}}</span>
+                                        <a class="pl-2 like" onclick="Likes.toggle(this,event);"
+                                           data-post_id="{{$post->id}}" href="#" title="Like">
+                                            <i class="@if ($post->is_liked) fas @else far @endif fa-heart"
+                                               style="color: red;"></i>
+                                            <span class="like_button_count">{{$post->likes_count}} </span>
+                                        </a>
                                     </span>
                                 </div>
                             </div>

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 
 use DateTime;
@@ -30,6 +31,11 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    private function likes()
+    {
+        return $this->hasMany(PostLike::class);
     }
 
     public function tags()
@@ -280,5 +286,17 @@ class Post extends Model
                 return $this->title;
             }
         }
+    }
+
+    /* Аксессор для получения количества лайков, $post->likes_count*/
+    public function getLikesCountAttribute()
+    {
+        return $this->likes()->where('post_id', $this->id)->count();
+    }
+
+    /* Аксессор для определения поставлен ли лайк этим пользователем, $post->is_liked */
+    public function getIsLikedAttribute()
+    {
+        return PostController::isLiked($this->id);
     }
 }

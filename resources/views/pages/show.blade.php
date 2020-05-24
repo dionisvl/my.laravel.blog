@@ -40,7 +40,7 @@
                                 <span class="float-right">
                                     <span class="pl-2"><i
                                             class="fas fa-eye"></i> {{$post->getViewsCount()}}{{$post->updateViewsCount()}}</span>
-                                    <span class="pl-2"><i class="far fa-heart" style="color: red;"></i> {{$post->getViewsCount()}}</span>
+                                    <span class="pl-2 likes"><i class="far fa-heart" style="color: red;"></i> {{$post->likes_count}}</span>
                                 </span>
 
                                 <ul class="text-center float-right">
@@ -53,7 +53,7 @@
                     </article>
                     <div class="top-comment"><!--top comment-->
                         <img src="/storage/blog_images/comment.jpg" class="pull-left img-circle" alt="">
-                        <h4>Rubel Miah</h4>
+                        <h4>{{$post->author->name}}</h4>
 
                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
                             invidunt ut labore et dolore magna aliquyam erat.</p>
@@ -64,16 +64,12 @@
                                 <div class="single-blog-box">
                                     <a href="{{route('post.show', $post->getPrevious()->slug)}}">
                                         <img src="{{$post->getPrevious()->getImage()}}" alt="">
-
                                         <div class="overlay">
-
                                             <div class="promo-text">
                                                 <p><i class=" pull-left fa fa-angle-left"></i></p>
                                                 <h5>{{$post->getPrevious()->title}}</h5>
                                             </div>
                                         </div>
-
-
                                     </a>
                                 </div>
                             @endif
@@ -131,7 +127,6 @@
                                     {{$comment->created_at->diffForHumans()}}
                                 </p>
 
-
                                 <p class="para">{{$comment->text}}</p>
                             </div>
                         </div>
@@ -144,13 +139,14 @@
                     <div class="leave-comment"><!--leave comment-->
                         <h4>Leave a reply</h4>
 
+
                         <form class="form-horizontal contact-form" role="form" method="post" action="/comment">
                             {{csrf_field()}}
                             <input type="hidden" name="post_id" value="{{$post->id}}">
                             <div class="form-group">
                                 <div class="col-md-12">
-    										<textarea class="form-control" rows="6" name="message"
-                                                      placeholder="Write Massage"></textarea>
+                                    <textarea class="form-control" rows="6" name="message"
+                                              placeholder="Write Massage"></textarea>
                                 </div>
                             </div>
                             <button class="btn send-btn">Post Comment</button>
