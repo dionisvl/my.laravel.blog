@@ -11,14 +11,21 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+use App\Http\Controllers\Admin\OrdersController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PostLikeController;
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', [HomeController::class, 'index']);
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
 });
 
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
-Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
+Route::get('/category/{slug}', [HomeController::class, 'category'])->name('blog.category.show');
 
 Route::get('/privacy/', 'HomeController@privacy');
 Route::get('/contacts/', 'HomeController@contacts');
@@ -31,7 +38,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'ProfileController@index');
     Route::post('/profile', 'ProfileController@store');
     Route::get('/logout', 'AuthController@logout');
-
 });
 
 Route::post('/comment', 'CommentsController@store');
