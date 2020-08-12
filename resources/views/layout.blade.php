@@ -36,7 +36,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png">
 
-    <?
+    <?php
     require($_SERVER['DOCUMENT_ROOT'] . '/tracking.php');
     ?>
 </head>
