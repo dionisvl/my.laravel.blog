@@ -33,10 +33,10 @@ bootstrap/cache,
 
 - Optional:  
     fill some test orders:
-    ```
+```
   php artisan tinker  
   factory(App\Order::class, 4)->create();  
-  ```
+```
 
 
 ## Telescope

@@ -22,17 +22,15 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Листинг сущности</h3>
+                    <h3 class="box-title">Список комментариев</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="form-group">
-                        <a href="create.html" class="btn btn-success">Добавить</a>
-                    </div>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Автор</th>
                             <th>Текст</th>
                             <th>post_id</th>
                             <th>Действия</th>
@@ -44,12 +42,18 @@
                                 <td>{{$comment->id}}</td>
                                 <td>{{$comment->author_name}}</td>
                                 <td>{{$comment->text}}</td>
-                                <td>{{$comment->post_id}}</td>
+                                <td>
+                                    <a href="{{route('post.showById', ['id' => $comment->post_id])}}">{{$comment->post_id}}</a>
+                                </td>
                                 <td>
                                     @if($comment->status == 1)
-                                        <a href="/admin/comments/toggle/{{$comment->id}}" class="fa fa-lock"></a>
+                                        <a href="/admin/comments/toggle/{{$comment->id}}">
+                                            <i class="fa fa-lock"></i>
+                                        </a>
                                     @else
-                                        <a href="/admin/comments/toggle/{{$comment->id}}" class="fa fa-thumbs-o-up"></a>
+                                        <a href="/admin/comments/toggle/{{$comment->id}}">
+                                            <i class="fas fa-lock-open"></i>
+                                        </a>
                                     @endif
 
                                     <form action="/admin/comments/{{$comment->id}}/destroy" method="POST">

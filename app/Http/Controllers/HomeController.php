@@ -40,10 +40,16 @@ class HomeController extends Controller
     }
 
 
-    public function show($slug)
+    public function show(string $slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
         mb_internal_encoding("UTF-8");
+        return view('pages.show', compact('post'));
+    }
+
+    public function showById(int $id)
+    {
+        $post = Post::where('id', $id)->firstOrFail();
         return view('pages.show', compact('post'));
     }
 
