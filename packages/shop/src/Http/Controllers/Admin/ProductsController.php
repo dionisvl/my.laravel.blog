@@ -1,46 +1,50 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace Dionisvl\Shop\Http\Controllers\Admin;
 
-use App\Product;
-use App\Post;
 use App\Category;
+use Dionisvl\Shop\Models\Product;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|Response|View
      */
     public function index()
     {
-        //$products = Product::all()->reverse();
         $products = Product::orderBy('updated_at', 'DESC')->get();
 
-//        dd($products);
-        return view('admin.products.index', ['products' => $products]);
+        return view('shop::admin.products.index', ['products' => $products]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|Response|View
      */
     public function create()
     {
         $categories = Category::pluck('title', 'id')->all();
 
-        return view('admin.products.create', compact('categories'));
+        return view('shop::admin.products.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
@@ -59,28 +63,17 @@ class ProductsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|Response|View
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         $product = Product::find($id);
         $categories = Category::pluck('title', 'id')->all();
 
-        return view('admin.products.edit', compact(
+        return view('shop::admin.products.edit', compact(
             'categories',
             'product'
         ));
@@ -89,9 +82,10 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
+     * @throws ValidationException
      */
     public function update(Request $request, $id)
     {
@@ -107,7 +101,6 @@ class ProductsController extends Controller
         $product->uploadImage($request->file('detail_picture'), 'detail_picture');
         $product->setCategory($request->get('category_id'));
 
-//        dd($request->get('is_featured'));
         return redirect()->route('products.index');
     }
 
@@ -115,7 +108,7 @@ class ProductsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function destroy($id)
     {

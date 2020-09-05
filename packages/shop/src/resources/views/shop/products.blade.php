@@ -1,4 +1,4 @@
-@extends('shop.layout')
+@extends('shop::shop.layout')
 
 @section('content')
     <main class=mn-content>
@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        @include('shop.promo')
+        @include('shop::shop.promo')
     </main>
 
 @endsection

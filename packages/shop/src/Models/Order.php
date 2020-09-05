@@ -1,10 +1,8 @@
 <?php
 
-namespace App;
+namespace Dionisvl\Shop\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Order extends Model
@@ -30,7 +28,6 @@ class Order extends Model
         $order = new static;
 
         $order->fill($fields);
-//        $order->title = $fields['title'];
         $order->slug = static::getSlug($fields['title']);
         $order->save();
 

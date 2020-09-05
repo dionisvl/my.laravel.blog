@@ -1,11 +1,12 @@
 <?php
 
 
-namespace App\Http\Controllers;
+namespace Dionisvl\Shop\Http\Controllers;
 
 
 use App\Http\Controllers\API\ResponseObject;
-use App\Order;
+use App\Http\Controllers\Controller;
+use Dionisvl\Shop\Models\Order;
 use \Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Response as FacadeResponse;

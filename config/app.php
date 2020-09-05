@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Dionisvl\Shop\ShopServiceProvider::class,
 
         /*
          * Application Service Providers...

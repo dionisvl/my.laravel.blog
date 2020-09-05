@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Dionisvl\Shop\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 

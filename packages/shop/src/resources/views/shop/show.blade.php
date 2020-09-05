@@ -1,4 +1,4 @@
-@extends('shop.layout')
+@extends('shop::shop.layout')
 
 @section('content')
     <!--main content start-->
@@ -471,12 +471,11 @@
 Например вы устали на работе и не хотите заниматься в зале. Выпили предтрен, желание появилось и вы не прогуляли. Или намечается просто тяжелый день и, чтобы не свалиться от усталости, принимаем предтреник. Вот для чего они служат в первую очередь. Далее идет возможность поднять себе настроение и покрасоваться в зале, но это как по мне вторичные плюсы.</span>
                     <p>
                     </p>
-                    <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;"></span><br></p><br/>
+                    <span class="text1" style="font-family: Arial, Helvetica; font-size: 14pt;"></span><br><br/>
                 </div>
             </div>
         </section>
         <div class="container">
-
 
             <form class="c-reviews-form" method="POST" id="add_review_form" enctype="multipart/form-data"
                   action="https://innovativebase.ru/bitrix/templates/innovativebase/ajax/feedback.php">
@@ -528,8 +527,6 @@
                 </div>
             </form>
 
-
-        </div>
         </div>
     </main>
 

@@ -61,7 +61,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-body">
-                    <a href="/admin/orders/download"><i class="fas fa-file-excel"></i> Скачать в EXCEL</a>
+                    <a href="{{route('orders_download')}}"><i class="fas fa-file-excel"></i> Скачать в EXCEL</a>
                 </div>
             </div>
             <!-- /.box -->

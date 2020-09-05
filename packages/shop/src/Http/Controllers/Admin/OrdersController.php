@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace Dionisvl\Shop\Http\Controllers\Admin;
 
-use App\Order;
+use Dionisvl\Shop\Models\Order;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class OrdersController extends Controller
@@ -15,22 +18,22 @@ class OrdersController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return Application|Factory|Response|View
      */
     public function index()
     {
         $orders = Order::orderBy('updated_at', 'DESC')->get();
-        return view('admin.orders.index', ['orders' => $orders]);
+        return view('shop::admin.orders.index', ['orders' => $orders]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|Response|View
      */
     public function create()
     {
-        return view('admin.orders.create');
+        return view('shop::admin.orders.create');
     }
 
     /**
@@ -52,26 +55,15 @@ class OrdersController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return void
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return Response
+     * @return Application|Factory|Response|View
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         $order = Order::find($id);
-        return view('admin.orders.edit', compact(
+        return view('shop::admin.orders.edit', compact(
             'order'
         ));
     }
@@ -81,10 +73,10 @@ class OrdersController extends Controller
      *
      * @param Request $request
      * @param int $id
-     * @return Response
+     * @return RedirectResponse
      * @throws ValidationException
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $this->validate($request, [
             'title' => 'required'
@@ -100,9 +92,9 @@ class OrdersController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return Response
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         Order::find($id)->remove();
         return redirect()->route('orders.index');

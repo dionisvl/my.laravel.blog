@@ -1,4 +1,4 @@
-@extends('shop.layout')
+@extends('shop::shop.layout')
 
 @section('content')
     <main class=mn-content>

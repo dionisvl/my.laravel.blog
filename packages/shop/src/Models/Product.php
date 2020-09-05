@@ -1,9 +1,12 @@
 <?php
 
-namespace App;
+namespace Dionisvl\Shop\Models;
 
+use App\Category;
+use App\Comment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -30,19 +33,14 @@ class Product extends Model
 
     public static function add($fields)
     {
-        $post = new static;
+        $product = new static;
 
-        $post->fill($fields);
-//        $post->title = $fields['title'];
-//        $post->category_id = $fields['category_id'];
-//        $post->date = $fields['date'];
-//        $post->detail_text = $fields['detail_text'];
-//        $post->preview_text = $fields['preview_text'];
-        $post->slug = static::getSlug($fields['title']);
-        $post->user_id = Auth::user()->id;
-        $post->save();
+        $product->fill($fields);
+        $product->slug = static::getSlug($fields['title']);
+        $product->user_id = Auth::user()->id;
+        $product->save();
 
-        return $post;
+        return $product;
     }
 
     private static function getSlug($title)
@@ -98,7 +96,7 @@ class Product extends Model
     public function getImage(string $type_picture)
     {
         if ($this->{$type_picture} == null) {
-            if (\Route::getCurrentRoute()->uri() == '/') {
+            if (Route::getCurrentRoute()->uri() == '/') {
                 return '/storage/shop_uploads/no-image.png';
             }
             return '/storage/shop_uploads/no-image.png';
