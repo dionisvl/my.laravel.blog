@@ -25,7 +25,7 @@ Route::group(['prefix' => 'shop', 'middleware' => ['web']], function () {
     })->name('shop.food.show');
 });
 
-Route::group(['prefix' => 'admin/shop', 'middleware' => ['web']], function () {
+Route::group(['prefix' => 'admin/shop', 'middleware' => ['web', 'admin']], function () {
     Route::resource('/products', ProductsController::class);
     Route::get('/orders/download', ['as' => 'orders_download', 'uses' => OrdersController::class . '@download']);
     Route::resource('/orders', OrdersController::class);

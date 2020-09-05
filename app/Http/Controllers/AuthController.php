@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -44,7 +44,7 @@ class AuthController extends Controller
             'email' => $request->get('email'),
             'password' => $request->get('password')
         ])){
-            return redirect('/admin/products');
+            return redirect(route('products.index'));
         }
 
         return redirect()->back()->with('status','Неправильный логин или пароль');
