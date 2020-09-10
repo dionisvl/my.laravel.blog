@@ -69,3 +69,7 @@ php artisan tinker
 ```
 php artisan migrate:refresh
 ```
+A specific table fresh migration:
+```
+php artisan migrate:refresh --path=/database/migrations/fileName.php
+```

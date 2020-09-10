@@ -26,7 +26,6 @@
     <meta name="yandex-verification" content="aeb4e0b17d9f0967"/>
 
     <!-- common css -->
-
     <link rel="preload" as='style' href="/css/front.css">
     <link rel="preload" as='style' href="/css/some_fix.css">
 
@@ -35,10 +34,11 @@
     <link rel="stylesheet" href="/css/some_fix.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png">
-
-    <?php
-    require($_SERVER['DOCUMENT_ROOT'] . '/tracking.php');
-    ?>
+    @isset($cssParts)
+        @foreach($cssParts as $cssPart)
+            {!! $cssPart !!}
+        @endforeach
+    @endisset
 </head>
 
 <body>
@@ -198,7 +198,6 @@
 <script src="/js/front.js"></script>
 <script src="/js/some_fix.js"></script>
 
-{{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css"/>--}}
 <link rel="stylesheet" href="/css/tiny-slider.css"/>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
@@ -208,12 +207,14 @@
         integrity="sha256-CApIX5Te4OdXVy1iWP+5+qG/iHa+8apfYOFagdVMRwk=" crossorigin="anonymous"></script>
 <script src="/js/sliders.js"></script>
 
-{{--prism.js--}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/autoloader/prism-autoloader.min.js"></script>
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-php.min.js"></script>--}}
-{{--prism.js--}}
+@isset($jsParts)
+    @foreach($jsParts as $jsPart)
+        {!! $jsPart !!}
+    @endforeach
+@endisset
 
 </body>
 </html>

@@ -7,7 +7,7 @@
     </li>
     <li><a href="{{route('products.index')}}"><i class="fa fa-users"></i> <span>Товары</span></a></li>
     <li><a href="{{route('categories.index')}}"><i class="fa fa-list-ul"></i> <span>Категории</span></a></li>
-    <li><a href="{{route('orders.index')}}"><i class="fa fa-list-ul"></i> <span>Заказы</span>
+    <li><a href="{{route('orders.index')}}"><i class="fas fa-file-invoice-dollar"></i> <span>Заказы</span>
             <span class="pull-right-container">
                 <small class="label pull-right bg-green">{{$newOrdersCount}}</small>
             </span>
@@ -26,6 +26,14 @@
     </li>
     <li><a href="{{route('users.index')}}"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
     <li><a href="{{route('subscribers.index')}}"><i class="fa fa-user-plus"></i> <span>Подписчики</span></a></li>
-    <li><a href="{{route('portfolios.index')}}"><i class="fa fa-users"></i> <span>Портфолио</span></a></li>
-    <li><a href="{{route('incomings.index')}}"><i class="fa fa-users"></i> <span>Входящие сообщения</span></a></li>
+    <li><a href="{{route('portfolios.index')}}"><i class="fas fa-clipboard-list"></i> <span>Портфолио</span></a></li>
+    <li><a href="{{route('incomings.index')}}"><i class="fas fa-envelope-square"></i>
+            <span>Входящие сообщения</span></a>
+    </li>
+
+    @if (Route::has('frontparts.index'))
+        <li><a href="{{route('frontparts.index')}}"><i class="fab fa-js"></i> <span>Компоненты фронта</span></a></li>
+    @else
+        <li>! модуль "Компоненты фронта" не подключен !</li>
+    @endif
 </ul>
