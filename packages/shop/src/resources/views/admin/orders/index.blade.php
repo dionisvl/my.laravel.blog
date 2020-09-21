@@ -47,12 +47,13 @@
                                 <td>
                                     <a href="{{route('orders.edit', $order->id)}}"><i class="fas fa-pencil-alt"></i></a>
 
-                                    {{Form::open(['route'=>['orders.destroy', $order->id], 'method'=>'delete'])}}
-                                    <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-
-                                    {{Form::close()}}
+                                    <form method="POST" action="{{route('orders.destroy', $order->id)}}">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button onclick="return confirm('are you sure?')" type="submit" class="delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
