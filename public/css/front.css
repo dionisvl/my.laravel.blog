@@ -3822,6 +3822,10 @@ a.more-link:hover {
     list-style-position: inside;
 }
 
+.post-content p {
+    text-indent: 1.5em;
+}
+
 .post .social-share {
     border-top: 1px solid #EEE;
 }
