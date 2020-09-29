@@ -8,6 +8,17 @@
     background: #fafafa;
 }
 
+.search-element-body {
+    max-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+.search-element-body h1, h2, h3, h4, h5, h6 {
+    font-size: 14px;
+}
+
 [hidden] {
     display: none;
 }
@@ -109,8 +120,8 @@
 
 .form-control {
     border-radius: 6px;
-    border: none;
-    margin-bottom: 15px;
+    /*border: none;*/
+    /*margin-bottom: 15px;*/
 }
 
 .privacy-box p {

@@ -11,13 +11,10 @@ class SearchController extends Controller
     {
         $q = htmlspecialchars($request->q, ENT_QUOTES);
 
-        $post = Post::where('title', 'LIKE', '%' . $q . '%')
+        $posts = Post::where('title', 'LIKE', '%' . $q . '%')
             ->orWhere('description', 'LIKE', '%' . $q . '%')
-            ->orWhere('content', 'LIKE', '%' . $q . '%')->get();
+            ->orWhere('content', 'LIKE', '%' . $q . '%')->limit(20)->get();
 
-        if (count($post) > 0)
-            return view('pages.search')->withDetails($post)->withQuery($q);
-        else
-            return view('pages.search')->withMessage('No Details found. Try to search again !');
+        return view('pages.search')->withDetails($posts)->withQuery($q);
     }
 }

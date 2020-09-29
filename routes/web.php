@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -77,10 +78,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['adm
 //    else return view ('search')->withMessage('No Details found. Try to search again !');
 //});
 
-Route::any('/search', 'SearchController@index');
+Route::any('/search', [SearchController::class, 'index']);
 
 Route::post('/postlike/{post_id}', PostLikeController::class . '@toggle');
-
 /**
  * Verb             URI                     Action  Route Name
  * GET              /photos                 index   photos.index

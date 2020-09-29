@@ -3767,7 +3767,14 @@ article {
 
 .entry-header h1 {
     margin-top: 0;
-    /*font-size: 24px;*/
+    font-size: 1.8em;
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
+    text-transform: none;
+}
+
+.entry-content h2 {
+    font-size: 1.5em;
 }
 
 .entry-header h6 {
@@ -3824,6 +3831,10 @@ a.more-link:hover {
 
 .post-content p {
     text-indent: 1.5em;
+}
+
+.post-content a {
+    text-indent: 0;
 }
 
 .post .social-share {

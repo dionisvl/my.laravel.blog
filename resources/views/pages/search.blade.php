@@ -1,40 +1,64 @@
 @extends('layout')
 
 @section('content')
-    <form action="/search" method="POST" role="search">
-        {{ csrf_field() }}
-        <div class="input-group">
-            <input type="text" class="form-control" name="q"
-                   placeholder="Search users">
-            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-        </div>
-    </form>
+    <!--main content start-->
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 flow-main">
 
-    <div class="container">
-        @if(isset($details))
-            <p> The Search results for your query <b> {{ $query }} </b> are :</p>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>title</th>
-                    <th>description</th>
-                    <th>content</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($details as $post)
-                    <tr>
-                        <td><a href="{{route('post.show', $post->slug)}}">{{$post->title}}</a></td>
-                        <td><a href="{{route('post.show', $post->slug)}}">{{$post->description}}</a></td>
-                        <td><a href="{{route('post.show', $post->slug)}}">{{$post->content}}</a></td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        @endif
+                    <form action="/search" method="POST" role="search" class="form-inline mr-auto mb-4">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
+                                   name="q">
+                        </div>
+                        <button class="btn btn-outline-primary btn-rounded btn-sm my-0 waves-effect waves-light"
+                                type="submit">Search
+                        </button>
+                    </form>
+
+                    @if($details->count() > 0)
+                        <div class="alert alert-success mb-3" role="alert">
+                            The Search results for your query <b>{{ $query }}</b> are:
+                        </div>
+                        @foreach($details as $post)
+                            <article class="post">
+                                <div class="post-thumb">
+                                    <div class='post_image_block'>
+                                        <img src="{{$post->getImage()}}" alt="{{$post->title}}" loading="lazy">
+                                    </div>
+
+                                    <a href="{{route('post.show', $post->slug)}}"
+                                       class="post-thumb-overlay text-center">
+                                        <div class="text-uppercase text-center">View Post</div>
+                                    </a>
+                                    <header style='flex-grow:2;' class="entry-header text-uppercase">
+                                        <h3 class="entry-title">
+                                            <a href="{{route('post.show', $post->slug)}}">{{$post->title}}</a>
+                                        </h3>
+                                    </header>
+                                </div>
+                                <div class="post-content">
+                                    <div class="entry-content">{{$post->description}}</div>
+                                    <div class="entry-content search-element-body">{!! $post->content !!}</div>
+                                    <div class="social-share social-share-title">
+                                    <span class=" pull-left">
+                                        By <a href="#">{{$post->author->name}}</a> On {{$post->getDate()}}
+                                    </span>
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+                    @else
+                        <div class="alert alert-warning" role="alert">
+                            For your query <b>{{ $query }}</b> nothing found.
+                        </div>
+                    @endif
+                </div>
+                @include('pages._sidebar')
+            </div>
+        </div>
     </div>
+    <!-- end main content-->
 @endsection
