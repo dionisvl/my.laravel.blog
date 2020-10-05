@@ -34,11 +34,13 @@
     <link rel="stylesheet" href="/css/some_fix.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png">
-    @isset($cssParts)
-        @foreach($cssParts as $cssPart)
-            {!! $cssPart !!}
-        @endforeach
-    @endisset
+@isset($cssParts)
+    @foreach($cssParts as $cssPart)
+        {!! $cssPart !!}
+    @endforeach
+@endisset
+<!-- Tailwind CSS -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
