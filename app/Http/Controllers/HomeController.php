@@ -7,7 +7,7 @@ use App\Product;
 use App\Tag;
 use App\Post;
 use Auth;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
@@ -42,8 +42,12 @@ class HomeController extends Controller
 
     public function show(string $slug)
     {
-        $post = Post::where('slug', $slug)->firstOrFail();
-        mb_internal_encoding("UTF-8");
+        $aphorisms_count = DB::table('aphorism')->count();
+        $today = date('d');
+        $post = Post::where('slug', $slug)
+            ->select(DB::raw('posts.*, aphorism.detail_text as aphorism_detail_text'))
+            ->join('aphorism', 'aphorism.id', '=', DB::raw("$aphorisms_count - 365 - posts.id + $today"))
+            ->firstOrFail();
         return view('pages.show', compact('post'));
     }
 
