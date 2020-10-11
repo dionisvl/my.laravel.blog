@@ -24,10 +24,12 @@
                             <div class="entry-content">
                                 {!! $post->content !!}
                             </div>
-                            <div>Афоризм дня:</div>
-                            <div class="border-2 rounded-sm p-2 m-2 flex items-center bg-gray-200">
-                                {{ $post->aphorism_detail_text }}
-                            </div>
+                            @if(!empty($aphorism))
+                                <div>Афоризм дня:</div>
+                                <div class="border-2 rounded-sm p-2 m-2 flex items-center bg-gray-200">
+                                    {{ $aphorism->detail_text }} ({{ $aphorism->id }})
+                                </div>
+                            @endif
                             <div class="decoration">
                                 @foreach($post->tags as $tag)
                                     <a href="{{route('tag.show', $tag->slug)}}"

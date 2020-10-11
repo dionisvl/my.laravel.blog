@@ -42,12 +42,22 @@ class HomeController extends Controller
 
     public function show(string $slug)
     {
-        $aphorisms_count = DB::table('aphorism')->count();
-        $today = date('d');
         $post = Post::where('slug', $slug)
-            ->select(DB::raw('posts.*, aphorism.detail_text as aphorism_detail_text'))
-            ->join('aphorism', 'aphorism.id', '=', DB::raw("$aphorisms_count - 365 - posts.id + $today"))
+            ->select(DB::raw('posts.*'))
             ->firstOrFail();
+
+        $postId = $post->id;
+
+        $aphorismsCount = DB::table('aphorism')->count();
+        $needleAphorismId = $aphorismsCount - 365 - $postId + date('d');
+        $aphorism = DB::table('aphorism')
+            ->where('aphorism.id', '=', $needleAphorismId)
+            ->first();
+
+        if (!empty($aphorism)) {
+            return view('pages.show', ['post' => $post, 'aphorism' => $aphorism]);
+        }
+
         return view('pages.show', compact('post'));
     }
 
