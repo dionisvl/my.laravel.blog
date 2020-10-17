@@ -76,13 +76,18 @@
                     @endforeach
                     <div class="leave-comment">
                         <h4>Leave a reply</h4>
+
+                        @include('admin.errors')
+
                         <form class="form-horizontal contact-form" role="form" method="post" action="/comment">
                             {{csrf_field()}}
                             <input type="hidden" name="post_id" value="{{$post->id}}">
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <textarea class="border form-control" rows="4" name="message"
-                                              placeholder="Write Massage"></textarea>
+                                    <x-inputs.honeypot/>
+                                    <x-inputs.countme/>
+                                    <textarea required class="border form-control" rows="4" name="message"
+                                              placeholder="Write some comment" onkeyup="count_keyup()"></textarea>
                                 </div>
                             </div>
                             <button class="btn send-btn">Post Comment</button>

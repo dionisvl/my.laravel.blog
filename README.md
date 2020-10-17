@@ -30,7 +30,7 @@ bootstrap/cache,
 }
 ```
 
-- for subscription functionality fill all .env params - MAIL_FROM_ADDRESS
+- fill all "MAIL_*" params in .env file for subscription functionality
 
 - Optional:  
     fill some test orders:
@@ -73,4 +73,14 @@ php artisan migrate:refresh
 A specific table fresh migration:
 ```
 php artisan migrate:refresh --path=/database/migrations/fileName.php
+```
+
+### How to test and check honeypot  
+Open post with comment text field, after it open browser console and write:
+```
+let count = document.getElementById('countMe');
+count.value;
+
+let honeypot = document.getElementById('honeypot');
+honeypot.value;
 ```
