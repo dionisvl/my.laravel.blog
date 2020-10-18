@@ -24,6 +24,8 @@
     @endif
 
     <meta name="yandex-verification" content="aeb4e0b17d9f0967"/>
+    <!-- Tailwind CSS -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
     <!-- common css -->
     <link rel="preload" as='style' href="/css/front.css">
@@ -39,8 +41,6 @@
         {!! $cssPart !!}
     @endforeach
 @endisset
-<!-- Tailwind CSS -->
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>

@@ -3523,7 +3523,7 @@ img {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    /*font-weight: 600;*/
+    font-weight: 600;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -3533,8 +3533,9 @@ a {
 }
 
 ul {
-    padding: 0;
     margin: 0;
+    padding: 0 0 0 2.5rem;
+    list-style-type: disc;
 }
 
 .media .media-left {
@@ -3774,10 +3775,18 @@ article {
 }
 
 .entry-content h2 {
+    padding-top: 1rem;
     font-size: 1.5em;
 }
 
-.entry-header h6 {
+.entry-content h3 {
+    padding-top: 1rem;
+    font-size: 1.3em;
+}
+
+.entry-content h4 {
+    padding-top: 1rem;
+    font-size: 1.2em;
 }
 
 .entry-header h6 a {
@@ -4493,6 +4502,10 @@ athuor
 /*===========
 blog css
 =============*/
+.decoration {
+    margin: 20px 6px 20px 0
+}
+
 .decoration a {
     color: #60c7eb;
     border: 1px solid #60c7eb;
@@ -4502,7 +4515,7 @@ blog css
     line-height: 35px;
     padding: 0;
     border-radius: 0;
-    margin: 30px 6px 30px 0;
+    margin: 5px;
 }
 
 .decoration a:hover {
