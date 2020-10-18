@@ -28,8 +28,8 @@ class SubsController extends Controller
 
         \Mail::to($request->get('email'))->send((new SubscribeEmail($subs->token)));
 
-        if( count(\Mail::failures()) > 0 ) {
-            return redirect('/')->with('dangerStatus', 'Ошибка при отправке письма: '.implode(', ',\Mail::failures));
+        if (count(\Mail::failures()) > 0) {
+            return redirect('/')->with('dangerStatus', 'Ошибка при отправке письма: ' . implode(', ', \Mail::failures));
         } else {
             return redirect('/')->with('status', 'Проверьте вашу почту!');
         }

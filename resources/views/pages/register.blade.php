@@ -12,6 +12,8 @@
                         <br>
                         <form class="form-horizontal contact-form" role="form" method="post" action="/register">
                             {{csrf_field()}}
+                            <x-inputs.honeypot/>
+                            <x-inputs.countme/>
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <input type="text" class="form-control border" id="name" name="name"
@@ -27,7 +29,7 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <input type="password" class="form-control border" id="password" name="password"
-                                           placeholder="password">
+                                           placeholder="password" onkeyup="count_keyup()">
                                 </div>
                             </div>
                             <button type="submit" class="btn send-btn">Register</button>

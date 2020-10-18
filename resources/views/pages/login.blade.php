@@ -6,12 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 flow-main">
-                    <div class="leave-comment mr0"><!--leave comment-->
-                        @if(session('status'))
-                            <div class="alert alert-danger">
-                                {{session('status')}}
-                            </div>
-                        @endif
+                    <div class="leave-comment mr0">
                         <h3 class="text-uppercase">Login</h3>
                         @include('admin.errors')
                         <br>
@@ -31,9 +26,8 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn send-btn">Login</button>
-
                         </form>
-                    </div><!--end leave comment-->
+                    </div>
                 </div>
                 @include('pages._sidebar')
             </div>
