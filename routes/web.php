@@ -91,3 +91,6 @@ Route::post('/postlike/{post_id}', PostLikeController::class . '@toggle');
  * PUT/PATCH        /photos/{photo}         update  photos.update
  * DELETE           /photos/{photo}         destroy photos.destroy
  */
+
+//Generate sitemap.xml
+Route::get('mysitemap', SitemapController::class . '@create');
