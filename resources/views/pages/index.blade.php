@@ -27,7 +27,7 @@
 
                                 <div class="social-share social-share-title">
                                     <span class=" pull-left">
-                                        By <a href="#">{{$post->author->name}}</a> On {{$post->getDate()}}
+                                        By <a href="#">{{$post->author['name']}}</a> On {{$post->getDate()}}
                                     </span>
                                     <span class="float-right">
                                         <span class="pl-2"><i class="fas fa-eye"></i> {{$post->getViewsCount()}}</span>

@@ -21,7 +21,9 @@ class AppServiceProvider extends ServiceProvider
             $view->with('popularPosts', Post::getPopularPosts());
             $view->with('featuredPosts', Post::where('is_featured', 1)->take(3)->get());
             $view->with('recentPosts', Post::orderBy('date', 'desc')->take(4)->get());
-            $view->with('categories', Category::all());
+            $view->with('categories', Category::withCount('posts')
+                ->orderBy('posts_count', 'desc')
+                ->get());
         });
 
         view()->composer('layout', static function ($view) {

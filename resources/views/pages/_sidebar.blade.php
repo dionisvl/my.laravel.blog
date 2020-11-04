@@ -95,7 +95,7 @@
                 @foreach($categories as $category)
                     <li>
                         <a href="{{route('blog.category.show', $category->slug)}}">{{$category->title}}</a>
-                        <span class="post-count pull-right"> ({{$category->posts()->count()}})</span>
+                        <span class="post-count pull-right"> ({{$category->posts_count}})</span>
                     </li>
                 @endforeach
             </ul>

@@ -33,7 +33,7 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
-    private function likes()
+    public function likes(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(PostLike::class);
     }
@@ -289,10 +289,10 @@ class Post extends Model
     }
 
     /* Аксессор для получения количества лайков, $post->likes_count*/
-    public function getLikesCountAttribute()
-    {
-        return $this->likes()->where('post_id', $this->id)->count();
-    }
+//    public function getLikesCountAttribute()
+//    {
+//        return $this->likes()->where('post_id', $this->id)->count();
+//    }
 
     /* Аксессор для определения поставлен ли лайк этим пользователем, $post->is_liked */
     public function getIsLikedAttribute()

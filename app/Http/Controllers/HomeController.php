@@ -17,9 +17,16 @@ class HomeController extends Controller
         if ($app_main_module === '/') {
             //for admin we will show all posts
             if (Auth::check()) {
-                $posts = Post::orderBy('posts.created_at', 'desc')->paginate(20);
+                $posts = Post::orderBy('posts.created_at', 'desc')
+                    ->withCount('likes')
+                    ->with('author')
+                    ->paginate(20);
             } else {
-                $posts = Post::where('status', 0)->orderBy('posts.created_at', 'desc')->paginate(20);
+                $posts = Post::where('status', 0)
+                    ->withCount('likes')
+                    ->orderBy('posts.created_at', 'desc')
+                    ->with('author')
+                    ->paginate(20);
             }
 
             return view('pages.index')->with('posts', $posts);
