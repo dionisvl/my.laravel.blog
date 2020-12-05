@@ -14,9 +14,9 @@
                         @endif
                         <div class="post-content">
                             <header class="entry-header text-center text-uppercase">
-                                @if($post->hasCategory())
+                                @if($post->category)
                                     <h6>
-                                        <a href="{{route('category.show', $post->category->slug)}}"> {{$post->getCategoryTitle()}}</a>
+                                        <a href="{{route('category.show', $post->category->slug)}}"> {{$post->category->title}}</a>
                                     </h6>
                                 @endif
                                 <h1 class="entry-title">{{$post->title}}</h1>
@@ -96,14 +96,14 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            @if($post->hasPrevious())
+                            @if($previous)
                                 <div class="single-blog-box">
-                                    <a href="{{route('post.show', $post->getPrevious()->slug)}}">
-                                        <img src="{{$post->getPrevious()->getImage()}}" alt="">
+                                    <a href="{{route('post.show', $previous->slug)}}">
+                                        <img src="{{$previous->getImage()}}" alt="">
                                         <div class="overlay">
                                             <div class="promo-text">
                                                 <p><i class=" pull-left fa fa-angle-left"></i></p>
-                                                <h5>{{$post->getPrevious()->title}}</h5>
+                                                <h5>{{$previous->title}}</h5>
                                             </div>
                                         </div>
                                     </a>
@@ -111,15 +111,15 @@
                             @endif
                         </div>
                         <div class="col-md-6">
-                            @if($post->hasNext())
+                            @if($next)
                                 <div class="single-blog-box">
-                                    <a href="{{route('post.show', $post->getNext()->slug)}}">
-                                        <img src="{{$post->getNext()->getImage()}}" alt="">
+                                    <a href="{{route('post.show', $next->slug)}}">
+                                        <img src="{{$next->getImage()}}" alt="">
 
                                         <div class="overlay">
                                             <div class="promo-text">
                                                 <p><i class=" pull-right fa fa-angle-right"></i></p>
-                                                <h5>{{$post->getNext()->title}}</h5>
+                                                <h5>{{$next->title}}</h5>
 
                                             </div>
                                         </div>
@@ -129,13 +129,13 @@
                         </div>
                     </div><!--blog next previous end-->
 
-                    @if(!$post->related()->isEmpty())
+                    @if(!$related->isEmpty())
                         <div class="related-post-carousel"><!--related post carousel-->
                             <div class="related-heading">
                                 <h4>You might also like</h4>
                             </div>
                             <div id="also_like_tns">
-                                @foreach($post->related() as $item)
+                                @foreach($related as $item)
                                     <div class="single-item">
                                         <a href="{{route('post.show', $item->slug)}}">
                                             <img src="{{$item->getImage()}}" alt="">

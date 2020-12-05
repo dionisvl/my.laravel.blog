@@ -4,8 +4,6 @@ namespace App;
 
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
-
-use DateTime;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
@@ -13,8 +11,8 @@ use Illuminate\Support\Str;
 
 class Post extends Model
 {
-    const IS_DRAFT = 0;
-    const IS_PUBLIC = 1;
+    public const IS_DRAFT = 0;
+    public const IS_PUBLIC = 1;
 
     protected $fillable = ['title', 'content', 'date', 'description', 'views_count'];
 
@@ -48,7 +46,7 @@ class Post extends Model
         );
     }
 
-    public static function add($fields)
+    public static function add($fields): Post
     {
         $post = new static;
         $post->fill($fields);
@@ -59,28 +57,28 @@ class Post extends Model
         return $post;
     }
 
-    public function edit($fields)
+    public function edit($fields): void
     {
         $this->fill($fields);
         $this->save();
     }
 
-    public function remove()
+    public function remove(): void
     {
         $this->removeImage();
         $this->delete();
     }
 
-    public function removeImage()
+    public function removeImage(): void
     {
-        if ($this->image != null) {
+        if ($this->image !== null) {
             Storage::delete('storage/uploads/' . $this->image);
         }
     }
 
-    public function uploadImage($image)
+    public function uploadImage($image): void
     {
-        if ($image == null) {
+        if ($image === null) {
             return;
         }
 
@@ -91,9 +89,9 @@ class Post extends Model
         $this->save();
     }
 
-    public function getImage()
+    public function getImage(): string
     {
-        if ($this->image == null) {
+        if ($this->image === null) {
             if (\Route::getCurrentRoute()->uri() == '/') {
                 return '/storage/blog_images/no-image.png';
             }
@@ -102,82 +100,78 @@ class Post extends Model
         return '/storage/uploads/' . $this->image;
     }
 
-    public function setCategory($id)
+    public function setCategory($id): void
     {
-        if ($id == null) {
+        if ($id === null) {
             return;
         }
         $this->category_id = $id;
         $this->save();
     }
 
-    public function setTags($ids)
+    public function setTags($ids): void
     {
-        if ($ids == null) {
-            return;
-        }
-
         $this->tags()->sync($ids);
     }
 
-    public function setDraft()
+    private function setDraft(): void
     {
-        $this->status = Post::IS_DRAFT;
+        $this->status = self::IS_DRAFT;
         $this->save();
     }
 
-    public function setPublic()
+    private function setPublic(): void
     {
-        $this->status = Post::IS_PUBLIC;
+        $this->status = self::IS_PUBLIC;
         $this->save();
     }
 
-    public function toggleStatus($value)
+    public function toggleStatus($value): void
     {
-        if ($value == null) {
-            return $this->setDraft();
+        if (empty($value)) {
+            $this->setDraft();
+            return;
         }
 
-        return $this->setPublic();
+        $this->setPublic();
     }
 
-    public function setFeatured()
+    private function setFeatured(): void
     {
         $this->is_featured = 1;
         $this->save();
     }
 
-    public function setStandart()
+    private function setStandard(): void
     {
         $this->is_featured = 0;
         $this->save();
     }
 
-    public function toggleFeatured($value)
+    public function toggleFeatured($value): void
     {
-        if ($value == null) {
-            return $this->setStandart();
+        if (empty($value)) {
+            $this->setStandard();
+            return;
         }
 
-        return $this->setFeatured();
+        $this->setFeatured();
     }
 
-    public function setDateAttribute($value)
+    public function setDateAttribute($value): void
     {
         $date = Carbon::createFromFormat('d/m/y', $value)->format('Y-m-d');
         $this->attributes['date'] = $date;
     }
 
-    public function getDateAttribute($value)
+    public function getDateAttribute(): string
     {
-//        $date = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/y');
-        $date = Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d/m/y');
-        return $date;
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d/m/y');
     }
 
     public function getCategoryTitle()
     {
-        return ($this->category != null)
+        return ($this->category !== null)
             ? $this->category->title
             : 'Нет категории';
     }
@@ -191,36 +185,22 @@ class Post extends Model
 
     public function getCategoryID()
     {
-        return $this->category != null ? $this->category->id : null;
+        return $this->category !== null ? $this->category->id : null;
     }
 
     public function getDate()
     {
-        //return Carbon::createFromFormat('d/m/y', $this->date)->format('F d, Y');
-        //return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('F d, Y');
-        return DateTime::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('F d, Y');
-    }
-
-    public function hasPrevious()
-    {
-        return self::where('id', '<', $this->id)->max('id');
+        return date('F d, Y', strtotime($this->created_at));
     }
 
     public function getPrevious()
     {
-        $postID = $this->hasPrevious(); //ID
-        return self::find($postID);
-    }
-
-    public function hasNext()
-    {
-        return self::where('id', '>', $this->id)->min('id');
+        return self::where('id', '<', $this->id)->first();
     }
 
     public function getNext()
     {
-        $postID = $this->hasNext();
-        return self::find($postID);
+        return self::where('id', '>', $this->id)->first();
     }
 
     public function related()
@@ -228,9 +208,9 @@ class Post extends Model
         return self::where('category_id', '=', $this->category_id)->take(5)->get()->except($this->id);
     }
 
-    public function hasCategory()
+    public function hasCategory(): bool
     {
-        return $this->category != null ? true : false;
+        return $this->category !== null;
     }
 
     public static function getPopularPosts()
@@ -240,33 +220,32 @@ class Post extends Model
 
     public function getComments()
     {
-        $comments = $this->comments()->where('status', 1)->get();
 //        foreach ($comments as $key => $comment){
 //            $comments[$key]->load('author');
 //            $comments[$key]->getRelations();
 //            //dd($comment);
 //        }
-        return $comments;
+        return $this->comments()->where('status', 1)->get();
     }
 
-    public function getUrl()
+    public function getUrl(): string
     {
         return '//' . $_SERVER['HTTP_HOST'] . '/post/' . $this->slug;
     }
 
-    public function getViewsCount()
+    public function getViewsCount(): int
     {
         return empty($this->views_count) ? 1 : (int)$this->views_count;
     }
 
-    public function updateViewsCount()
+    public function updateViewsCount(): void
     {
 //        if (session($this->id) != true){
 //            session([$this->id => true]);
 //        } else {
 //
 //        }
-        $this->views_count = $this->views_count + 1;
+        ++$this->views_count;
         $this->save();
     }
 
@@ -277,15 +256,15 @@ class Post extends Model
 
     public function getTitle()
     {
-        if (\Route::getCurrentRoute()->uri() == '/') {
+        if (\Request::is('/')) {
             return 'WIKI, блог программиста, лучшие практики PHP, JS, SQL';
-        } else {
-            if (empty($this->title)) {
-                return 'Лучшие практики PHP, JS, SQL, блог программиста.';
-            } else {
-                return $this->title;
-            }
         }
+
+        if (empty($this->title)) {
+            return 'Лучшие практики PHP, JS, SQL, блог программиста.';
+        }
+
+        return $this->title;
     }
 
     /* Аксессор для получения количества лайков, $post->likes_count*/
@@ -295,7 +274,7 @@ class Post extends Model
 //    }
 
     /* Аксессор для определения поставлен ли лайк этим пользователем, $post->is_liked */
-    public function getIsLikedAttribute()
+    public function getIsLikedAttribute(): bool
     {
         return PostController::isLiked($this->id);
     }
