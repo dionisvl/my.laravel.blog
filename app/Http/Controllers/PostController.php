@@ -46,7 +46,8 @@ class PostController
     private function getPostBySlug(string $slug)
     {
         return Post::where('slug', $slug)
-            ->select(DB::raw('posts.*'))
+            ->withCount('likes')
+            ->with('author')
             ->firstOrFail();
     }
 
@@ -54,6 +55,7 @@ class PostController
     {
         $aphorismsCount = DB::table('aphorism')->count();
         $needleAphorismId = $aphorismsCount - 365 - $postId + date('d');
+
         return DB::table('aphorism')
             ->where('aphorism.id', '=', $needleAphorismId)
             ->first();
@@ -61,7 +63,11 @@ class PostController
 
     public function showById(int $id)
     {
-        $post = Post::where('id', $id)->firstOrFail();
+        $post = Post::where('id', $id)
+            ->withCount('likes')
+            ->with('author')
+            ->firstOrFail();
+
         return view('pages.show', compact('post'));
     }
 
