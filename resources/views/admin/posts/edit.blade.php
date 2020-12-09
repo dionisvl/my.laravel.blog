@@ -72,7 +72,7 @@
                         <!-- checkbox -->
                         <div class="form-group">
                             <label>
-                                {{Form::checkbox('is_featured', '1', $post->is_featured, ['class'=>'minimal'])}}
+                                <input name="is_featured" type="checkbox" @if($post->is_featured) checked @endif>
                             </label>
                             <label>
                                 Рекомендовать
@@ -81,7 +81,7 @@
                         <!-- checkbox -->
                         <div class="form-group">
                             <label>
-                                {{Form::checkbox('status', '1', $post->status, ['class'=>'minimal'])}}
+                                <input name="status" type="checkbox" @if($post->status) checked @endif>
                             </label>
                             <label>
                                 Черновик

@@ -5,31 +5,31 @@ namespace App\Http\Controllers\Admin;
 use App\Tag;
 use App\Post;
 use App\Category;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 
 class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        //$posts = Post::all()->reverse();
         $posts = Post::orderBy('updated_at', 'DESC')->get();
 
-//        dd($posts);
         return view('admin.posts.index', ['posts' => $posts]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
@@ -40,16 +40,17 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'title' => 'required',
             'content' => 'required',
             'date' => 'required',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image',
+
         ]);
 
         $post = Post::add($request->all());
@@ -63,21 +64,10 @@ class PostsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -97,9 +87,9 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -107,7 +97,7 @@ class PostsController extends Controller
             'title' => 'required',
             'content' => 'required',
             'date' => 'required',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image',
         ]);
 
         $post = Post::find($id);
@@ -118,7 +108,6 @@ class PostsController extends Controller
         $post->toggleStatus($request->get('status'));
         $post->toggleFeatured($request->get('is_featured'));
 
-//        dd($request->get('is_featured'));
         return redirect()->route('posts.index');
     }
 
@@ -126,7 +115,7 @@ class PostsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
