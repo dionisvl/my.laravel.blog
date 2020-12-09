@@ -52,7 +52,6 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/login', 'AuthController@login');
 });
 
-
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['admin', 'web']], function () {
     Route::get('/', 'DashboardController@index');
     Route::resource('/categories', 'CategoriesController');
@@ -71,15 +70,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['adm
     Route::delete('/incomings/{id}/destroy', 'IncomingsController@destroy')->name('incomings.destroy');
 });
 
-//Route::any('/search',function(){
-//    $q = Input::get ( 'q' );
-//    $post = Post::where('title','LIKE','%'.$q.'%')->orWhere('description','LIKE','%'.$q.'%')->get();
-//    if(count($post) > 0)
-//        return view('search')->withDetails($post)->withQuery ( $q );
-//    else return view ('search')->withMessage('No Details found. Try to search again !');
-//});
-
-Route::any('/search', [SearchController::class, 'index']);
+Route::post('/search', [SearchController::class, 'index']);
 
 Route::post('/postlike/{post_id}', PostLikeController::class . '@toggle');
 /**

@@ -75,12 +75,20 @@ A specific table fresh migration:
 php artisan migrate:refresh --path=/database/migrations/fileName.php
 ```
 
-### How to test and check honeypot  
+### How to test and check honeypot
+
 Open post with comment text field, after it open browser console and write:
+
 ```
 let count = document.getElementById('countMe');
 count.value;
 
 let honeypot = document.getElementById('honeypot');
 honeypot.value;
+```
+
+### How to generate laravel request with namespace
+
+```
+php artisan make:request Post\AddPostRequest
 ```

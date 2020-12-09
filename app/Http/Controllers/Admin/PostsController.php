@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\Post\AddPostRequest;
+use App\Http\Requests\Admin\Post\UpdatePostRequest;
 use App\Tag;
 use App\Post;
 use App\Category;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Response;
 
 class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
      */
     public function index()
     {
@@ -26,10 +24,8 @@ class PostsController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create(): Response
+    public function create()
     {
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
@@ -40,19 +36,11 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param AddPostRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(AddPostRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'content' => 'required',
-            'date' => 'required',
-            'image' => 'nullable|image',
-
-        ]);
-
         $post = Post::add($request->all());
         $post->uploadImage($request->file('image'));
         $post->setCategory($request->get('category_id'));
@@ -63,11 +51,10 @@ class PostsController extends Controller
         return redirect()->route('posts.index');
     }
 
-    /**
+    /*
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return Response
      */
     public function edit($id)
     {
@@ -87,19 +74,12 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param UpdatePostRequest $request
      * @param int $id
-     * @return Response
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePostRequest $request, int $id): RedirectResponse
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'content' => 'required',
-            'date' => 'required',
-            'image' => 'nullable|image',
-        ]);
-
         $post = Post::find($id);
         $post->edit($request->all());
         $post->uploadImage($request->file('image'));
@@ -115,9 +95,9 @@ class PostsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return Response
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
         Post::find($id)->remove();
         return redirect()->route('posts.index');
