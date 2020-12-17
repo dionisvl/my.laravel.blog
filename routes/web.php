@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/post/{slug}', [PostController::class, 'show'])->name('post.show');
+    Route::get('/post/{slug}', [PostController::class, 'showBySlug'])->name('post.show');
     Route::get('/post-by-id/{id}', [PostController::class, 'showById'])->name('post.showById');
 });
 

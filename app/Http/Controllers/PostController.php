@@ -30,9 +30,28 @@ class PostController
         return view('pages.index')->with('posts', $posts);
     }
 
-    public function show(string $slug)
+    public function showBySlug(string $slug)
     {
-        $post = $this->getPostBySlug($slug);
+        $post = Post::where('slug', $slug)
+            ->withCount('likes')
+            ->with('author')
+            ->firstOrFail();
+
+        return $this->show($post);
+    }
+
+    public function showById(int $postId)
+    {
+        $post = Post::where('id', $postId)
+            ->withCount('likes')
+            ->with('author')
+            ->firstOrFail();
+
+        return $this->show($post);
+    }
+
+    public function show(Post $post)
+    {
         $postId = $post->id;
 
         $aphorism = $this->getAphorismByPostId($postId);
@@ -43,14 +62,6 @@ class PostController
         return view('pages.show', compact('post', 'aphorism', 'previous', 'next', 'related'));
     }
 
-    private function getPostBySlug(string $slug)
-    {
-        return Post::where('slug', $slug)
-            ->withCount('likes')
-            ->with('author')
-            ->firstOrFail();
-    }
-
     private function getAphorismByPostId(int $postId)
     {
         $aphorismsCount = DB::table('aphorism')->count();
@@ -59,16 +70,6 @@ class PostController
         return DB::table('aphorism')
             ->where('aphorism.id', '=', $needleAphorismId)
             ->first();
-    }
-
-    public function showById(int $id)
-    {
-        $post = Post::where('id', $id)
-            ->withCount('likes')
-            ->with('author')
-            ->firstOrFail();
-
-        return view('pages.show', compact('post'));
     }
 
     public static function isLiked(int $post_id): bool

@@ -96,7 +96,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            @if($previous)
+                            @if(!empty($previous))
                                 <div class="single-blog-box">
                                     <a href="{{route('post.show', $previous->slug)}}">
                                         <img src="{{$previous->getImage()}}" alt="">
@@ -111,7 +111,7 @@
                             @endif
                         </div>
                         <div class="col-md-6">
-                            @if($next)
+                            @if(!empty($next))
                                 <div class="single-blog-box">
                                     <a href="{{route('post.show', $next->slug)}}">
                                         <img src="{{$next->getImage()}}" alt="">
@@ -129,7 +129,7 @@
                         </div>
                     </div><!--blog next previous end-->
 
-                    @if(!$related->isEmpty())
+                    @if(!empty($related))
                         <div class="related-post-carousel"><!--related post carousel-->
                             <div class="related-heading">
                                 <h4>You might also like</h4>
