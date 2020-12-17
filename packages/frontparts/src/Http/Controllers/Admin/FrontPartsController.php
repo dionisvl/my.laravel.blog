@@ -45,10 +45,14 @@ class FrontPartsController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
-            'title' => 'required'
+            'title' => 'required',
         ]);
 
-        $frontpart = FrontPart::add($request->all());
+        $request->merge([
+            'status' => $request->has('status'),
+        ]);
+
+        FrontPart::add($request->all());
 
         return redirect()->route('frontparts.index');
     }
@@ -78,10 +82,15 @@ class FrontPartsController extends Controller
     public function update(Request $request, int $id): RedirectResponse
     {
         $this->validate($request, [
-            'title' => 'required'
+            'title' => 'required',
         ]);
 
         $frontpart = FrontPart::find($id);
+
+        $request->merge([
+            'status' => $request->has('status'),
+        ]);
+
         $frontpart->edit($request->all());
 
         return redirect()->route('frontparts.index');

@@ -44,9 +44,11 @@
                                 <label for="detail_text">Содержимое:</label>
                                 <textarea name="detail_text" id="detail_text" cols="30" rows="4"
                                           class="form-control">{{$frontpart->detail_text}}</textarea>
-                                <label for="status">Статус</label>
-                                <input type="text" class="form-control" id="status" name="status"
-                                       value="{{$frontpart->status}}">
+                                <div class="form-group">
+                                    <input type="checkbox" id="status" name="status"
+                                           @if($frontpart->status) checked @endif>
+                                    <label for="status">Статус</label>
+                                </div>
                             </div>
                         </div>
                     </div>
