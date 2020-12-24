@@ -12,7 +12,7 @@ Route::group(['prefix' => 'shop', 'middleware' => ['web']], function () {
     Route::get('/cart', [ProductController::class, 'showCart'])->name('cart.show');
     Route::any('/cart/order', ['as' => 'order_store', 'uses' => OrderController::class . '@store']);
     Route::get('/{slug}', [ProductController::class, 'show'])->name('product.show');
-    Route::get('/categories/{category}.html', [CategoryController::class, 'show'])->name('category.show');
+    Route::get('/categories/{category}.html', [CategoryController::class, 'show'])->name('shop.category.show');
 
     Route::get('/pages/contacts.html', function () {
         return view('shop::shop.contacts');

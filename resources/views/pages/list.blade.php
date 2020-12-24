@@ -18,7 +18,7 @@
                                             </a>
                                             @if($post->category)
                                                 <h6>
-                                                    <a href="{{route('category.show', $post->category->slug)}}"> {{$post->category->title}}</a>
+                                                    <a href="{{route('blog.category.show', $post->category->slug)}}"> {{$post->category->title}}</a>
                                                 </h6>
                                             @endif
                                             <h1 class="entry-title">

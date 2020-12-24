@@ -83,7 +83,7 @@
                                 @if(isset($categories))
                                     @foreach($categories as $category)
                                         <li>
-                                            <a href={{route('category.show',$category->slug)}}>{{$category->title}}</a>
+                                            <a href={{route('shop.category.show',$category->slug)}}>{{$category->title}}</a>
                                         </li>
                                     @endforeach
                                 @endif
