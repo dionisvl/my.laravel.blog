@@ -43,7 +43,7 @@
 
                                 <span class="float-right">
                                     <span class="pl-2">
-                                        <i class="fas fa-eye"></i> {{$post->getViewsCount()}}{{$post->updateViewsCount()}}
+                                        <i class="fas fa-eye"></i> {{$post->getViewsCount()}}
                                     </span>
                                     <a class="pl-2 like" onclick="Likes.toggle(this,event);"
                                        data-post_id="{{$post->id}}" href="#" title="Like">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Post;
+use App\Models\PostVisitor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
@@ -59,6 +60,8 @@ class PostController
         $next = $post->getNext();
         $related = $post->related();
 
+        $this->updateViewsCount($post);
+
         return view('pages.show', compact('post', 'aphorism', 'previous', 'next', 'related'));
     }
 
@@ -75,5 +78,27 @@ class PostController
     public static function isLiked(int $post_id): bool
     {
         return Cookie::get('likedPostToday' . $post_id) ? true : false;
+    }
+
+    /**
+     * @param $post
+     * @return bool
+     */
+    private function updateViewsCount($post): bool
+    {
+        $visitor = VisitorController::getVisitor();
+
+        if ($visitor === false) {
+            return false;
+        }
+
+        if (PostVisitorController::postIsVisited($post->id, $visitor->id)) {
+            return false;
+        }
+
+        PostVisitorController::store($post->id, $visitor->id);
+
+        $post->updateViewsCount();
+        return true;
     }
 }

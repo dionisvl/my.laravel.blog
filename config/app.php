@@ -178,6 +178,7 @@ return [
         App\Providers\TelescopeServiceProvider::class,
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
     ],
 
     /*
@@ -227,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
     ],
 
     'main_module' => env('APP_MAIN_MODULE', '/'),

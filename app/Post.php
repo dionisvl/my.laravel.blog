@@ -220,11 +220,6 @@ class Post extends Model
 
     public function getComments()
     {
-//        foreach ($comments as $key => $comment){
-//            $comments[$key]->load('author');
-//            $comments[$key]->getRelations();
-//            //dd($comment);
-//        }
         return $this->comments()->where('status', 1)->get();
     }
 
@@ -240,11 +235,6 @@ class Post extends Model
 
     public function updateViewsCount(): void
     {
-//        if (session($this->id) != true){
-//            session([$this->id => true]);
-//        } else {
-//
-//        }
         ++$this->views_count;
         $this->save();
     }
