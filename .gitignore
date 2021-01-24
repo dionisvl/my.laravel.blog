@@ -18,7 +18,6 @@ yarn-error.log
 /public/plugins/ckeditor/
 
 /package-lock.json
-/webpack.mix.js
 /phpmyadmin/
 
 .idea
@@ -31,3 +30,6 @@ yarn-error.log
 /_ide_helper.php
 /public/yandex_2f0ae3085ec5ffe3.html
 /public/robots.txt
+
+/public/packages/chat/
+/public/mix-manifest.json

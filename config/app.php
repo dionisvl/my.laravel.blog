@@ -167,6 +167,7 @@ return [
          */
         Dionisvl\Shop\ShopServiceProvider::class,
         Dionisvl\FrontParts\FrontPartsServiceProvider::class,
+        Dionisvl\Chat\ChatServiceProvider::class,
         /*
          * Application Service Providers...
          */
