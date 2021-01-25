@@ -41,9 +41,9 @@ class RunChatServer extends Command
      */
     public function handle()
     {
-        if (PHP_SAPI !== "cli") {
-            die("Please run this in the command line");
-        }
+//        if (PHP_SAPI !== "cli") {
+//            die("Please run this in the command line");
+//        }
 
         // WEBSOCKET SERVER START!
         $server = IoServer::factory(

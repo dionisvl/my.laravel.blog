@@ -3,6 +3,7 @@
 namespace Dionisvl\Chat\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
 
 class ChatController extends Controller
 {
@@ -11,9 +12,10 @@ class ChatController extends Controller
 
     }
 
-    public function start()
+    public function start(): void
     {
-
+        Artisan::call('chat:start');
+        dd(Artisan::output());
     }
 
     public function stop()
