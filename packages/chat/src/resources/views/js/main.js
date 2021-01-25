@@ -16,7 +16,7 @@ const chat = {
     },
 
     // (B) START CHAT
-    host: "ws://" + CHAT_HOST + ":" + CHAT_PORT + "/", // Change to your own!
+    host: CHAT_SCHEME + "://" + CHAT_HOST + ":" + CHAT_PORT + "/", // Change to your own!
     userName: "", // Current user name
     socket: null, // Websocket object
     htmlText: null, // HTML send text field
@@ -35,7 +35,7 @@ const chat = {
             chat.userName = document.getElementById("chat-name-set").value;
             chat.swapForm(1);
 
-            chat.addRow(`<div class="ch-msg">Hi, ${chat.userName}! And welcome to my "ratchet Chat box"!</div>`)
+            chat.addRow(`<div class="ch-msg">Hi, ${chat.userName}! And welcome to my "Online chat-box"!</div>`)
             chat.addRow(`<div class="ch-msg">${CHAT_HOST}:${CHAT_PORT} connected</div>`)
         };
 

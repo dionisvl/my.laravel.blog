@@ -1,8 +1,9 @@
 <!-- (A) CSS + JS -->
 <link rel="stylesheet" href="{{ mix('packages/chat/css/main.css') }}"/>
 <script>
-    const CHAT_HOST = '{{config('chat.host')}}'
-    const CHAT_PORT = '{{config('chat.port')}}'
+    const CHAT_SCHEME = '{{config('chat.client_side.scheme')}}'
+    const CHAT_HOST = '{{config('chat.client_side.host')}}'
+    const CHAT_PORT = '{{config('chat.client_side.port')}}'
     const CHAT_USER_COLOR = '@php echo config('chat.colors')[array_rand(config('chat.colors'))] @endphp'
 </script>
 <script src="{{ mix('packages/chat/js/main.js') }}"></script>

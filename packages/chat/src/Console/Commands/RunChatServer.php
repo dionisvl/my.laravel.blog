@@ -46,7 +46,13 @@ class RunChatServer extends Command
         }
 
         // WEBSOCKET SERVER START!
-        $server = IoServer::factory(new HttpServer(new WsServer(new RatchetChat())), config('chat.port'));
+        $server = IoServer::factory(
+            new HttpServer(
+                new WsServer(
+                    new RatchetChat()
+                )
+            ), config('chat.proxy_side.port')
+        );
         $server->run();
         return 0;
     }
