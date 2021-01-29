@@ -1,0 +1,74 @@
+/* (A) WRAPPER + SHARED */
+#chat-wrap {
+    font: bold 12px/normal 'lucida grande', tahoma, verdana, arial, sans-serif;
+    border: 1px solid #aaa;
+    max-width: 600px;
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+#chat-messages, #chat-name, #chat-send {
+    padding: 5px;
+    border-radius: 2px;
+}
+
+/* (B) CHAT MESSAGES */
+#chat-messages {
+    height: 300px;
+    overflow: auto;
+}
+
+.ch-row {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.ch-name, .ch-msg {
+    padding: 5px;
+}
+
+.ch-name {
+    width: 150px;
+    background: #d63737;
+    color: #fff;
+    font-weight: bold;
+}
+
+.ch-msg {
+    width: 100%;
+    background: #ffe9e9;
+    border-radius: 2px;
+}
+
+/* (C) NAME + SEND MESSAGE */
+#chat-wrap input {
+    padding: 5px;
+    border: 0;
+}
+
+#chat-wrap input[type=submit] {
+    background: #5c63c1;
+    color: #fff;
+    cursor: pointer;
+}
+
+#chat-wrap input[type=submit]:disabled {
+    background: #b9b9b9;
+}
+
+#chat-name {
+    display: grid;
+}
+
+#chat-send {
+    display: none;
+}
+
+#chat-name, #chat-send {
+    grid-template-columns: 75% 25%;
+    background: #e2e2e2;
+}
+
+.ch-dt {
+    font-size: 8px;
+}
