@@ -5,6 +5,6 @@
 - [ ] store messages and visitors to DB
 - [ ] restore messages to chat box
 - [ ] info about new user connected
-- [ ] filtering obscene words
+- [x] filtering obscene words
 - [ ] filtering spam-bots
 - [ ] check status/start/stop chat-server methods by REST

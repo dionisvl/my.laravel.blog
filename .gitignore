@@ -17,6 +17,7 @@ yarn-error.log
 /public/plugins/ckfinder/
 /public/plugins/ckeditor/
 
+/composer.lock
 /package-lock.json
 /phpmyadmin/
 

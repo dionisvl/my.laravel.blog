@@ -4,6 +4,7 @@ namespace Dionisvl\Chat\domain;
 
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
+use Wkhooy\ObsceneCensorRus;
 
 // (C) CHAT CLASS
 class RatchetChat implements MessageComponentInterface
@@ -58,6 +59,7 @@ class RatchetChat implements MessageComponentInterface
 
         $msg = json_decode($msg, true, 512, JSON_THROW_ON_ERROR);
         $msg['datetime'] = date('Y-m-d H:i:s');
+        ObsceneCensorRus::filterText($msg['m']);
         $msg = json_encode($msg, JSON_THROW_ON_ERROR);
 
         foreach ($this->clients as $client) {

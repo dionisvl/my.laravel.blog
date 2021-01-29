@@ -42,11 +42,18 @@ php artisan chat:start
 source:  
 https://code-boxx.com/php-live-chat-websocket/
 
-run server:
+Use case example (Windows platform):
+
+- edit CHAT_* params in .env file  
+  server and client ports must be same. Ideal for both - 8083  
+  client scheme must be "ws"
+- run server :
 
 ```
+php artisan chat:start
+or
 php -q C:\OSpanel\domains\test\websockets\chat_ratchet\2-chat-server.php
 ```
 
-Open url:  
-http://test/websockets/chat_ratchet/3a-chat-client.php
+- Open url:  
+  http://test/websockets/chat_ratchet/3a-chat-client.php
