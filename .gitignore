@@ -1,7 +1,5 @@
 /node_modules
-/public/hot
-/public/storage
-/public/pets/
+
 /storage/*.key
 /vendor
 .env
@@ -13,24 +11,29 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
-/public/ckfinder/
-/public/plugins/ckfinder/
-/public/plugins/ckeditor/
-
 /composer.lock
 /package-lock.json
 /phpmyadmin/
 
 .idea
-/public/uploads/
+
 /robots.txt
 /sitemap.xml
-/public/upload/
-/public/vendor/telescope/
+
 /.phpstorm.meta.php
 /_ide_helper.php
+
+/public/hot
+/public/storage
+/public/pets/
+/public/css/front.css
+/public/ckfinder/
+/public/plugins/ckfinder/
+/public/plugins/ckeditor/
+/public/uploads/
+/public/upload/
+/public/vendor/telescope/
 /public/yandex_2f0ae3085ec5ffe3.html
 /public/robots.txt
-
 /public/packages/chat/
 /public/mix-manifest.json

@@ -19,7 +19,6 @@
 - php artisan migrate
 - php artisan storage:link
 - ln -s /var/www/THIS_SITE/storage/app/public/ /var/www/THIS_SITE/html/public/storage
-
 ```
 sudo chown www-data -R /var/www/THIS_SITE/{\
 storage/framework/cache,\
@@ -29,11 +28,12 @@ html/public/storage/uploads,\
 bootstrap/cache,
 }
 ```
-
-- fill all "MAIL_*" params in .env file for subscription functionality
+- `npm install`
+- `npm run prod`
+- fill all `MAIL_*` params in .env file for subscription functionality
 
 - Optional:  
-    fill some test orders:
+  fill some test orders:
 ```
   php artisan tinker  
   factory(App\Order::class, 4)->create();  

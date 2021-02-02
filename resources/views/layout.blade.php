@@ -29,11 +29,9 @@
 
     <!-- common css -->
     <link rel="preload" as='style' href="/css/front.css">
-    <link rel="preload" as='style' href="/css/some_fix.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/front.css">
-    <link rel="stylesheet" href="/css/some_fix.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png">
 @isset($cssParts)
