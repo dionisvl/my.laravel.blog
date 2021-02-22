@@ -1,17 +1,33 @@
 <?php
 
-/** @var Factory $factory */
+namespace Dionisvl\Shop\database\factories;
 
 use Dionisvl\Shop\Models\Order;
-use Faker\Generator as Faker;
-use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-$factory->define(Order::class, function (Faker $faker) {
-    $name = $faker->name;
-    return [
-        'title' => $name,
-        'slug' => Str::slug($name),
-        'price' => $faker->randomNumber(5)
-    ];
-});
+
+class OrderFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Order::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition(): array
+    {
+        $name = $this->faker->name;
+        return [
+            'title' => $name,
+            'slug' => Str::slug($name),
+            'price' => $this->faker->randomNumber(5)
+        ];
+    }
+}

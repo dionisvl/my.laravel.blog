@@ -56,14 +56,12 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/",
             "Dionisvl\\Shop\\": "packages/shop/src/",
             "Dionisvl\\FrontParts\\": "packages/frontparts/src/",
             "Dionisvl\\Chat\\": "packages/chat/src/"
-        },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {

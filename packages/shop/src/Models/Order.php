@@ -2,11 +2,25 @@
 
 namespace Dionisvl\Shop\Models;
 
+use Dionisvl\Shop\database\factories\OrderFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Order extends Model
 {
+    use HasFactory;
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return Factory
+     */
+    protected static function newFactory(): Factory
+    {
+        return OrderFactory::new();
+    }
+
     protected $fillable = [
         'title',
         'slug',
@@ -23,7 +37,7 @@ class Order extends Model
         'status_date'
     ];
 
-    public static function add($fields)
+    public static function add($fields): Order
     {
         $order = new static;
 
@@ -34,7 +48,7 @@ class Order extends Model
         return $order;
     }
 
-    private static function getSlug($title)
+    private static function getSlug($title): string
     {
         $slug = Str::slug($title);
         $original = $slug;
@@ -45,14 +59,14 @@ class Order extends Model
         return $slug;
     }
 
-    public function edit($fields)
+    public function edit($fields): void
     {
         $this->fill($fields);
         $this->slug = static::getSlug($fields['title']);
         $this->save();
     }
 
-    public function remove()
+    public function remove(): void
     {
         $this->delete();
     }

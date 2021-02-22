@@ -38,7 +38,9 @@
                             </div>
                             <div class="social-share">
                                 <span class="social-share-title pull-left">
-                                    By <a href="#">{{$post->author->name}}</a> On <b>{{$post->getDate()}}</b>
+                                    @if(!empty($post->author->name))
+                                    By <a href="#">{{$post->author->name}}</a>
+                                    @endif On <b>{{$post->getDate()}}</b>
                                 </span>
 
                                 <span class="float-right">

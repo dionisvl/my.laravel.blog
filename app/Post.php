@@ -92,9 +92,6 @@ class Post extends Model
     public function getImage(): string
     {
         if ($this->image === null) {
-            if (\Route::getCurrentRoute()->uri() == '/') {
-                return '/storage/blog_images/no-image.png';
-            }
             return '/storage/blog_images/no-image.png';
         }
         return '/storage/uploads/' . $this->image;
@@ -169,14 +166,12 @@ class Post extends Model
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d/m/y');
     }
 
-    public function getCategoryTitle()
+    public function getCategoryTitle(): string
     {
-        return ($this->category !== null)
-            ? $this->category->title
-            : 'Нет категории';
+        return $this->category->title ?? 'Нет категории';
     }
 
-    public function getTagsTitles()
+    public function getTagsTitles(): string
     {
         return (!$this->tags->isEmpty())
             ? implode(', ', $this->tags->pluck('title')->all())
@@ -185,7 +180,7 @@ class Post extends Model
 
     public function getCategoryID()
     {
-        return $this->category !== null ? $this->category->id : null;
+        return $this->category->id ?? null;
     }
 
     public function getDate()
@@ -239,12 +234,12 @@ class Post extends Model
         $this->save();
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return empty($this->description) ? 'Cправочник по тематике программирования на языках PHP, JS' : strip_tags($this->description);
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         if (\Request::is('/')) {
             return 'WIKI, блог программиста, лучшие практики PHP, JS, SQL';

@@ -6,7 +6,6 @@ use App\Category;
 use App\Comment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -31,7 +30,7 @@ class Product extends Model
         'stars',
     ];
 
-    public static function add($fields)
+    public static function add($fields): Product
     {
         $product = new static;
 
@@ -43,7 +42,7 @@ class Product extends Model
         return $product;
     }
 
-    private static function getSlug($title)
+    private static function getSlug($title): string
     {
         $slug = Str::slug($title);
         $original = $slug;
@@ -54,33 +53,32 @@ class Product extends Model
         return $slug;
     }
 
-
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function edit($fields)
+    public function edit($fields): void
     {
         $this->fill($fields);
         $this->save();
     }
 
-    public function remove()
+    public function remove(): void
     {
         $this->removeImage('detail_picture');
         $this->removeImage('preview_picture');
         $this->delete();
     }
 
-    public function removeImage(string $type_picture)
+    public function removeImage(string $type_picture): void
     {
-        if ($this->{$type_picture} != null) {
+        if ($this->{$type_picture} !== null) {
             Storage::delete('storage/shop_uploads/' . $this->{$type_picture});
         }
     }
 
-    public function uploadImage($file_picture, string $type_picture)
+    public function uploadImage($file_picture, string $type_picture): void
     {
         if (empty($file_picture)) {
             return;
@@ -93,42 +91,39 @@ class Product extends Model
         $this->save();
     }
 
-    public function getImage(string $type_picture)
+    public function getImage(string $type_picture): string
     {
-        if ($this->{$type_picture} == null) {
-            if (Route::getCurrentRoute()->uri() == '/') {
-                return '/storage/shop_uploads/no-image.png';
-            }
+        if ($this->{$type_picture} === null) {
             return '/storage/shop_uploads/no-image.png';
         }
         return '/storage/shop_uploads/' . $this->{$type_picture};
     }
 
-    public function setCategory($id)
+    public function setCategory($id): void
     {
-        if ($id == null) {
+        if ($id === null) {
             return;
         }
         $this->category_id = $id;
         $this->save();
     }
 
-    public function getCategoryTitle()
+    public function getCategoryTitle(): string
     {
-        return ($this->category != null)
-            ? $this->category->title
-            : 'Нет категории';
+        return $this->category->title ?? 'Нет категории';
     }
 
     public function related()
     {
-        return self::where('category_id', '=', $this->category_id)->take(5)->get()->except($this->id);
+        return self::where('category_id', '=', $this->category_id)
+            ->take(5)
+            ->get()
+            ->except($this->id);
     }
 
-    public function getComments()
+    public function getComments(): \Illuminate\Database\Eloquent\Collection
     {
-        $comments = $this->comments()->where('status', 1)->get();
-        return $comments;
+        return $this->comments()->where('status', 1)->get();
     }
 
     public function comments()
@@ -136,13 +131,13 @@ class Product extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function getUrl()
+    public function getUrl(): string
     {
         return '//' . $_SERVER['HTTP_HOST'] . '/' . $this->slug;
     }
 
     public function getCategoryID()
     {
-        return $this->category != null ? $this->category->id : null;
+        return $this->category->id ?? null;
     }
 }

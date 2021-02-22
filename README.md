@@ -33,12 +33,7 @@ bootstrap/cache,
 - fill all `MAIL_*` params in .env file for subscription functionality
 
 - Optional:  
-  fill some test orders:
-```
-  php artisan tinker  
-  factory(App\Order::class, 4)->create();  
-```
-
+    see how to create demo items in `Factories.md` file.
 
 ## Telescope
 The "Laravel Telescope" will be enabled when `TELESCOPE_ENABLED` is true.  
@@ -48,7 +43,7 @@ Access will be if `APP_ENV` is local.
 php artisan telescope:install
 php artisan migrate 
 ``` 
-after updatig:  
+after updating:  
 `
 php artisan telescope:publish
 `
@@ -61,11 +56,7 @@ The Debugbar will be enabled when APP_DEBUG is true.
 ```
 php artisan make:model Post -a
 ```
-Чтобы создать пользователя админа
-```
-php artisan tinker
-\App\User::add(['name' => 'admin', 'email' => 'admin@admin.net', 'is_admin' => 1, 'password' => bcrypt('admin')]);
-```
+
 Миграции заново:
 ```
 php artisan migrate:refresh
