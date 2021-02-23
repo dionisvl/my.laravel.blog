@@ -59,7 +59,7 @@
 
                                     {{Form::close()}}
 
-                                    <a href="{{$post->getUrl()}}"><i class="fas fa-external-link-alt"></i></a>
+                                    <a target='_blank' href="{{$post->getUrl()}}"><i class="fas fa-external-link-alt"></i></a>
                                 </td>
                             </tr>
                         @endforeach

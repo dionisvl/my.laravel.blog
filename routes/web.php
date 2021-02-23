@@ -54,20 +54,20 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['admin', 'web']], function () {
     Route::get('/', 'DashboardController@index');
-    Route::resource('/categories', 'CategoriesController');
-    Route::resource('/tags', 'TagsController');
-    Route::resource('/users', 'UsersController');
+    Route::resource('/categories', 'CategoriesController')->except('show');
+    Route::resource('/tags', 'TagsController')->except('show');
+    Route::resource('/users', 'UsersController')->except('show');
     Route::resource('/posts', 'PostsController')->except('show');
     Route::get('/comments', 'CommentsController@index');
     Route::get('/comments/toggle/{id}', 'CommentsController@toggle');
     Route::delete('/comments/{id}/destroy', 'CommentsController@destroy')->name('comments.destroy');
-    Route::resource('/subscribers', 'SubscribersController');
+    Route::resource('/subscribers', 'SubscribersController')
+        ->except('show', 'edit', 'update');
 
-    Route::resource('/portfolios', 'PortfoliosController');
+    Route::resource('/portfolios', 'PortfoliosController')->except('show');
 
-    Route::resource('/incomings', 'IncomingsController');
-    Route::get('/incomings/toggle/{id}', 'IncomingsController@toggle');
-    Route::delete('/incomings/{id}/destroy', 'IncomingsController@destroy')->name('incomings.destroy');
+    Route::resource('/incomings', 'IncomingsController')
+        ->except('create', 'store', 'show', 'edit', 'update');
 });
 
 Route::post('/search', [SearchController::class, 'index']);

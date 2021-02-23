@@ -26,7 +26,7 @@ class OrderController extends Controller
             $response->status = $response::status_fail;
             $response->code = $response::code_failed;
             foreach ($validator->errors()->getMessages() as $item) {
-                array_push($response->messages, $item);
+                $response->messages[] = $item;
             }
         } else {
             $order = Order::add($data);

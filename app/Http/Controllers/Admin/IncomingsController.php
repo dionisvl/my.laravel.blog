@@ -13,8 +13,7 @@ class IncomingsController extends Controller
         return view('admin.incomings.index', ['incomings'	=>	$incomings]);
     }
 
-
-    public function destroy($id)
+    public function destroy(int $id): \Illuminate\Http\RedirectResponse
     {
         Incoming::find($id)->remove();
         return redirect()->back();
