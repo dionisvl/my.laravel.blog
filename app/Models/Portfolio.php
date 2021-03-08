@@ -2,25 +2,36 @@
 
 namespace App\Models;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+/**
+ * Class Portfolio
+ * @package App\Models
+ * @property string slug
+ * @property int user_id
+ * @property bool is_featured
+ * @property string image
+ * @property bool status
+ * @property datetime created_at
+ */
 class Portfolio extends Model
 {
-    const IS_DRAFT = 0;
-    const IS_PUBLIC = 1;
+    public const IS_DRAFT = 0;
+    public const IS_PUBLIC = 1;
 
     protected $fillable = ['title', 'content', 'description', 'views_count'];
 
-    public function author()
+    public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public static function add($fields)
+    public static function add($fields): self
     {
         $post = new static;
         $post->fill($fields);
@@ -31,27 +42,27 @@ class Portfolio extends Model
         return $post;
     }
 
-    public function edit($fields)
+    public function edit($fields): void
     {
         $this->fill($fields);
         $this->slug = Str::slug($fields['title']);
         $this->save();
     }
 
-    public function remove()
+    public function remove(): void
     {
         $this->removeImage();
         $this->delete();
     }
 
-    public function removeImage()
+    public function removeImage(): void
     {
         if ($this->image !== null) {
             Storage::delete('storage/uploads/portfolio/' . $this->image);
         }
     }
 
-    public function uploadImage($image)
+    public function uploadImage($image): void
     {
         if ($image === null) {
             return;
@@ -64,7 +75,7 @@ class Portfolio extends Model
         $this->save();
     }
 
-    public function getImage()
+    public function getImage(): string
     {
         if ($this->image === null) {
             return '/storage/blog_images/no-image.png';
@@ -72,55 +83,54 @@ class Portfolio extends Model
         return '/storage/uploads/portfolio/' . $this->image;
     }
 
-    public function setDraft()
+    public function setDraft(): void
     {
         $this->status = Post::IS_DRAFT;
         $this->save();
     }
 
-    public function setPublic()
+    public function setPublic(): void
     {
         $this->status = Post::IS_PUBLIC;
         $this->save();
     }
 
-    public function toggleStatus($value)
+    public function toggleStatus($value): void
     {
-        if ($value == null) {
-            return $this->setDraft();
+        if ($value === null) {
+            $this->setDraft();
         }
 
-        return $this->setPublic();
+        $this->setPublic();
     }
 
-    public function setFeatured()
+    public function setFeatured(): void
     {
         $this->is_featured = 1;
         $this->save();
     }
 
-    public function setStandart()
+    public function setStandard(): void
     {
         $this->is_featured = 0;
         $this->save();
     }
 
-    public function toggleFeatured($value)
+    public function toggleFeatured($value): void
     {
-        if ($value == null) {
-            return $this->setStandart();
+        if ($value === null) {
+            $this->setStandard();
         }
 
-        return $this->setFeatured();
+        $this->setFeatured();
     }
 
-    public function getDate()
+    public function getDate(): string
     {
         return DateTime::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('F d, Y');
     }
 
-
-    public function getUrl()
+    public function getUrl(): string
     {
         return '//' . $_SERVER['HTTP_HOST'] . '/portfolio/' . $this->slug;
     }

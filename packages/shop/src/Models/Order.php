@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+/**
+ * Class Order
+ * @package Dionisvl\Shop\Models
+ * @property string slug
+ */
 class Order extends Model
 {
     use HasFactory;
@@ -37,7 +42,7 @@ class Order extends Model
         'status_date'
     ];
 
-    public static function add($fields): Order
+    public static function add($fields): self
     {
         $order = new static;
 

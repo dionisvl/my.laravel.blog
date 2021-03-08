@@ -4,7 +4,14 @@ namespace Dionisvl\FrontParts\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use RuntimeException;
+use Throwable;
 
+/**
+ * Class FrontPart
+ * @package Dionisvl\FrontParts\Models
+ * @property string slug
+ */
 class FrontPart extends Model
 {
     protected $fillable = [
@@ -17,7 +24,7 @@ class FrontPart extends Model
         'status'
     ];
 
-    public static function add($fields): FrontPart
+    public static function add($fields): self
     {
         $order = new static;
 
@@ -50,8 +57,8 @@ class FrontPart extends Model
     {
         try {
             $this->delete();
-        } catch (\Exception $e) {
-            throw new \RuntimeException('error during deleting ' . __CLASS__ . ' element');
+        } catch (Throwable $e) {
+            throw new RuntimeException('error during deleting ' . __CLASS__ . ' element');
         }
     }
 }

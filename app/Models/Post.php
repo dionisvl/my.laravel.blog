@@ -3,12 +3,31 @@
 namespace App\Models;
 
 use App\Http\Controllers\PostController;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+/**
+ * Class Post
+ * @package App\Models
+ * @property int id
+ * @property string slug
+ * @property int user_id
+ * @property bool is_featured
+ * @property string image
+ * @property bool status
+ * @property string created_at
+ * @property int category_id
+ * @property Tag[]|Collection tags
+ * @property-read bool isLiked
+ */
 class Post extends Model
 {
     public const IS_DRAFT = 0;
@@ -16,27 +35,27 @@ class Post extends Model
 
     protected $fillable = ['title', 'content', 'date', 'description', 'views_count'];
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function author()
+    public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function comments()
+    public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
     }
 
-    public function likes(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function likes(): HasMany
     {
         return $this->hasMany(PostLike::class);
     }
 
-    public function tags()
+    public function tags(): BelongsToMany
     {
         return $this->belongsToMany(
             Tag::class,
@@ -46,7 +65,7 @@ class Post extends Model
         );
     }
 
-    public static function add($fields): Post
+    public static function add($fields): self
     {
         $post = new static;
         $post->fill($fields);
@@ -213,7 +232,7 @@ class Post extends Model
         return self::orderBy('views', 'desc')->take(3)->get();
     }
 
-    public function getComments()
+    public function getComments(): Collection
     {
         return $this->comments()->where('status', 1)->get();
     }
@@ -236,12 +255,14 @@ class Post extends Model
 
     public function getDescription(): string
     {
-        return empty($this->description) ? 'Cправочник по тематике программирования на языках PHP, JS' : strip_tags($this->description);
+        return empty($this->description)
+            ? 'Справочник по тематике программирования на языках PHP, JS'
+            : strip_tags($this->description);
     }
 
     public function getTitle(): string
     {
-        if (\Request::is('/')) {
+        if (Request::is('/')) {
             return 'WIKI, блог программиста, лучшие практики PHP, JS, SQL';
         }
 

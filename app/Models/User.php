@@ -2,16 +2,26 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * Class User
+ * @package App\Models
+ * @property string password
+ * @property string avatar
+ * @property bool is_admin
+ * @property int status
+ * @property int id
+ */
 class User extends Authenticatable
 {
     use Notifiable;
 
-    const IS_BANNED = 1;
-    const IS_ACTIVE = 0;
+    public const IS_BANNED = 1;
+    public const IS_ACTIVE = 0;
 
     /**
      * The attributes that are mass assignable.
@@ -31,15 +41,18 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function posts(){
+    public function posts(): HasMany
+    {
         return $this->hasMany(Post::class);
     }
 
-    public function comments(){
+    public function comments(): HasMany
+    {
         return $this->hasMany(Comment::class);
     }
 
-    public static function add($fields){
+    public static function add($fields): User
+    {
         $user = new static;
         $user->fill($fields);
 
@@ -48,25 +61,31 @@ class User extends Authenticatable
         return $user;
     }
 
-    public function edit($fields){
+    public function edit($fields): void
+    {
         $this->fill($fields);
 
         $this->save();
     }
 
-    public function generatePassword($password){
-        if($password != null){
+    public function generatePassword($password): void
+    {
+        if ($password !== null) {
             $this->password = bcrypt($password);
             $this->save();
         }
     }
 
-    public function remove(){
+    public function remove(): void
+    {
         $this->delete();
     }
 
-    public function uploadAvatar($image){
-        if($image == null) { return; }
+    public function uploadAvatar($image): void
+    {
+        if ($image === null) {
+            return;
+        }
 
         $this->removeAvatar();
 
@@ -76,54 +95,60 @@ class User extends Authenticatable
         $this->save();
     }
 
-    public function removeAvatar()
+    public function removeAvatar(): void
     {
-        if($this->avatar != null)
-        {
+        if ($this->avatar !== null) {
             Storage::delete('storage/uploads/' . $this->avatar);
         }
     }
 
-    public function getImage(){
-        if($this->avatar == null){
+    public function getImage(): string
+    {
+        if ($this->avatar === null) {
             return '/storage/blog_images/no-image.png';
         }
         return '/storage/uploads/' . $this->avatar;
     }
 
-    public function makeAdmin(){
+    public function makeAdmin(): void
+    {
         $this->is_admin = 1;
         $this->save();
     }
 
-    public function makeNormal(){
+    public function makeNormal(): void
+    {
         $this->is_admin = 0;
         $this->save();
     }
 
-    public function toggleAdmin($value){
-        if ($value === null){
+    public function toggleAdmin($value): void
+    {
+        if ($value === null) {
             $this->makeNormal();
         }
 
         $this->makeAdmin();
     }
 
-    public function ban($value){
-        $this->status = User::IS_BANNED;
+    public function ban(): void
+    {
+        $this->status = self::IS_BANNED;
         $this->save();
     }
 
-    public function unban(){
-        $this->status = User::IS_ACTIVE;
+    public function unban(): void
+    {
+        $this->status = self::IS_ACTIVE;
         $this->save();
     }
 
-    public function toggleBan($value){
-        if ($value == null){
-            return $this->unban();
+    public function toggleBan($value): void
+    {
+        if ($value === null) {
+            $this->unban();
         }
 
-        return $this->ban();
+        $this->ban();
     }
 }

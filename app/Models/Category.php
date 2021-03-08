@@ -4,23 +4,28 @@ namespace App\Models;
 
 use Dionisvl\Shop\Models\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
+/**
+ * Class Category
+ * @property string slug
+ */
 class Category extends Model
 {
     protected $fillable = ['title', 'detail_text', 'preview_text'];
 
-    public function posts()
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
 
-    public function products()
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class);
     }
 
-    public static function create($fields)
+    public static function create($fields): self
     {
         $category = new static;
         $category->fill($fields);
@@ -30,14 +35,14 @@ class Category extends Model
         return $category;
     }
 
-    public function edit($fields)
+    public function edit($fields): void
     {
         $this->fill($fields);
         $this->slug = static::getSlug($fields['title']);
         $this->save();
     }
 
-    private static function getSlug($title)
+    private static function getSlug($title): string
     {
         $slug = Str::slug($title);
         $original = $slug;

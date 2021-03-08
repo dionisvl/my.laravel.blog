@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Incoming extends Model
 {
-    public function remove(){
+    public function remove(): void
+    {
         $this->delete();
     }
 }

@@ -4,9 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Subscription
+ * @package App\Models
+ * @property string email
+ * @property string token
+ */
 class Subscription extends Model
 {
-    public static function add($email){
+    public static function add($email): self
+    {
         $sub = new static;
         $sub->email = $email;
         $sub->save();
@@ -14,13 +21,14 @@ class Subscription extends Model
         return $sub;
     }
 
-    public function generateToken(){
+    public function generateToken(): void
+    {
         $this->token = str_random(100);
         $this->save();
     }
 
-
-    public function remove(){
+    public function remove(): void
+    {
         $this->delete();
     }
 }

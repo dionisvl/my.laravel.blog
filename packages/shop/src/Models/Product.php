@@ -5,10 +5,21 @@ namespace Dionisvl\Shop\Models;
 use App\Models\Category;
 use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-
+/**
+ * Class Post
+ * @package App\Models
+ * @property int id
+ * @property string slug
+ * @property int user_id
+ * @property string image
+ * @property int category_id
+ * @property Comment[]|Collection comments
+ */
 class Product extends Model
 {
     protected $fillable = [
@@ -30,7 +41,7 @@ class Product extends Model
         'stars',
     ];
 
-    public static function add($fields): Product
+    public static function add($fields): self
     {
         $product = new static;
 
@@ -121,12 +132,12 @@ class Product extends Model
             ->except($this->id);
     }
 
-    public function getComments(): \Illuminate\Database\Eloquent\Collection
+    public function getComments(): Collection
     {
         return $this->comments()->where('status', 1)->get();
     }
 
-    public function comments()
+    public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
     }

@@ -3,13 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
+/**
+ * Class Tag
+ * @package App\Models
+ * @property string slug
+ */
 class Tag extends Model
 {
     protected $fillable = ['title'];
 
-    public function posts()
+    public function posts(): BelongsToMany
     {
         return $this->belongsToMany(
             Post::class,
@@ -19,7 +25,7 @@ class Tag extends Model
         );
     }
 
-    public static function create($fields)
+    public static function create($fields): Tag
     {
         $tag = new static;
         $tag->fill($fields);
