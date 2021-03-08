@@ -2,7 +2,7 @@
 
 namespace Dionisvl\Shop;
 
-use App\Category;
+use App\Models\Category;
 use Dionisvl\Shop\Models\Order;
 use Illuminate\Support\ServiceProvider;
 

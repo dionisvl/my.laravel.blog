@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\PostLike;
+use App\Models\PostLike;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cookie;
 
 class PostLikeController extends Controller
 {
-    /** Если лайк поставлен тогда удалим */
-    public function toggle(int $post_id)
+    /**
+     * Если лайк поставлен тогда удалим
+     * @param int $post_id
+     * @return JsonResponse
+     */
+    public function toggle(int $post_id): JsonResponse
     {
         if (empty($post_id)) {
             return response()->json([
@@ -34,21 +35,21 @@ class PostLikeController extends Controller
                 'status' => 'ok',
                 'data' => 'unliked'
             ])->withCookie(Cookie::forget('likedPostToday' . $post_id));
-        } else {
-            $fields = request()->all();
-            $postLike = new PostLike();
-            $postLike->fill($fields);
-            $postLike->post_id = $post_id;
-            $postLike->ip = $this->getIp();
-            $postLike->save();
-
-            return response()->json([
-                'status' => 'ok',
-                'data' => 'liked'
-            ])->cookie(
-                'likedPostToday' . $post_id, $postLike->created_at, 60 * 24
-            );
         }
+
+        $fields = request()->all();
+        $postLike = new PostLike();
+        $postLike->fill($fields);
+        $postLike->post_id = $post_id;
+        $postLike->ip = $this->getIp();
+        $postLike->save();
+
+        return response()->json([
+            'status' => 'ok',
+            'data' => 'liked'
+        ])->cookie(
+            'likedPostToday' . $post_id, $postLike->created_at, 60 * 24
+        );
     }
 
     public function getIp()
@@ -75,9 +76,9 @@ class PostLikeController extends Controller
      * Display the specified resource.
      *
      * @param int $post_id
-     * @return void
+     * @return JsonResponse
      */
-    public function show(int $post_id)
+    public function show(int $post_id): JsonResponse
     {
         $count = $this->getCount($post_id);
 

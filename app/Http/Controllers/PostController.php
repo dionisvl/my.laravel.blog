@@ -3,9 +3,7 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Post;
-use App\Models\PostVisitor;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;

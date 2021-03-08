@@ -1,9 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -45,14 +46,14 @@ class Portfolio extends Model
 
     public function removeImage()
     {
-        if ($this->image != null) {
+        if ($this->image !== null) {
             Storage::delete('storage/uploads/portfolio/' . $this->image);
         }
     }
 
     public function uploadImage($image)
     {
-        if ($image == null) {
+        if ($image === null) {
             return;
         }
 
@@ -65,10 +66,7 @@ class Portfolio extends Model
 
     public function getImage()
     {
-        if ($this->image == null) {
-            if (\Route::getCurrentRoute()->uri() == '/') {
-                return '/storage/blog_images/no-image.png';
-            }
+        if ($this->image === null) {
             return '/storage/blog_images/no-image.png';
         }
         return '/storage/uploads/portfolio/' . $this->image;

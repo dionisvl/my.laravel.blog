@@ -2,11 +2,9 @@
 
 namespace App\Mail;
 
-use App\Subscription;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SubscribeEmail extends Mailable
 {
@@ -18,7 +16,7 @@ class SubscribeEmail extends Mailable
     /**
      * Create a new message instance.
      *
-     * @param Subscription $subs
+     * @param $token
      */
     public function __construct($token)
     {

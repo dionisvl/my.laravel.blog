@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Tag;
+use App\Models\Category;
+use App\Models\Tag;
 use Dionisvl\Shop\Http\Controllers\ProductController;
 
 class HomeController extends Controller

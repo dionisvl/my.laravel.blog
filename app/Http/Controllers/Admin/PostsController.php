@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\Post\AddPostRequest;
 use App\Http\Requests\Admin\Post\UpdatePostRequest;
-use App\Tag;
-use App\Post;
-use App\Category;
+use App\Models\Tag;
+use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 

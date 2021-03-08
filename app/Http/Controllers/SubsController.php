@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Subscription;
+use App\Models\Subscription;
 use App\Mail\SubscribeEmail;
 use Illuminate\Http\Request;
 
@@ -10,9 +10,6 @@ class SubsController extends Controller
 {
     public function subscribe(Request $request)
     {
-//        $subs = Subscription::add('123@123.ru');
-//        $subs->generateToken();
-//        return (new SubscribeEmail($subs))->build();
         $validator = \Validator::make($request->all(), [
             'email' => 'required|email|unique:subscriptions'
         ]);
@@ -30,10 +27,9 @@ class SubsController extends Controller
 
         if (count(\Mail::failures()) > 0) {
             return redirect('/')->with('dangerStatus', 'Ошибка при отправке письма: ' . implode(', ', \Mail::failures));
-        } else {
-            return redirect('/')->with('status', 'Проверьте вашу почту!');
         }
 
+        return redirect('/')->with('status', 'Проверьте вашу почту!');
     }
 
     public function verify($token)

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Portfolio;
+use App\Models\Portfolio;
 
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;

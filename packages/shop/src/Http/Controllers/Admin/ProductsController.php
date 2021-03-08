@@ -2,7 +2,7 @@
 
 namespace Dionisvl\Shop\Http\Controllers\Admin;
 
-use App\Category;
+use App\Models\Category;
 use Dionisvl\Shop\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;

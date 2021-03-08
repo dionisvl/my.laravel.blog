@@ -1,11 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use \Storage;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -103,11 +102,11 @@ class User extends Authenticatable
     }
 
     public function toggleAdmin($value){
-        if ($value == null){
-            return $this->makeNormal();
+        if ($value === null){
+            $this->makeNormal();
         }
 
-        return $this->makeAdmin();
+        $this->makeAdmin();
     }
 
     public function ban($value){

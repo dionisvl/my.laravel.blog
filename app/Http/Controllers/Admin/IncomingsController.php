@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Incoming;
+use App\Models\Incoming;
 use Illuminate\Routing\Controller;
 
 class IncomingsController extends Controller

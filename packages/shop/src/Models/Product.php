@@ -2,8 +2,8 @@
 
 namespace Dionisvl\Shop\Models;
 
-use App\Category;
-use App\Comment;
+use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;

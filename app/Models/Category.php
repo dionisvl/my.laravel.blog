@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Dionisvl\Shop\Models\Product;
 use Illuminate\Database\Eloquent\Model;

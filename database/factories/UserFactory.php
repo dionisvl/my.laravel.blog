@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Category;
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\User;
 use Faker\Generator as Faker;
 
 /*
@@ -13,7 +17,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
@@ -25,7 +29,7 @@ $factory->define(App\User::class, function (Faker $faker) {
 
 
 
-$factory->define(App\Post::class, function (Faker $faker) {
+$factory->define(Post::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence,
         'content' => $faker->sentence,
@@ -39,12 +43,12 @@ $factory->define(App\Post::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\Category::class, function (Faker $faker) {
+$factory->define(Category::class, function (Faker $faker) {
     return [
         'title' => $faker->word,
     ];
 });
-$factory->define(App\Tag::class, function (Faker $faker) {
+$factory->define(Tag::class, function (Faker $faker) {
     return [
         'title' => $faker->word,
     ];

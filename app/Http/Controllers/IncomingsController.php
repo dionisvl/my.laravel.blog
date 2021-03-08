@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Incoming;
+use App\Models\Incoming;
 use Illuminate\Http\Request;
 
 class IncomingsController extends Controller

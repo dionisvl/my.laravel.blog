@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Dionisvl\Shop\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
@@ -49,8 +50,8 @@ class Comment extends Model
     {
         if (empty($this->author)) {
             return '/storage/blog_images/no-image.png';
-        } else {
-            return $this->author->getImage();
         }
+
+        return $this->author->getImage();
     }
 }

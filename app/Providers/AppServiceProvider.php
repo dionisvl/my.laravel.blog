@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Post;
-use App\Comment;
-use App\Category;
+use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Post;
 use Dionisvl\FrontParts\Models\FrontPart;
 use Illuminate\Support\ServiceProvider;
 
