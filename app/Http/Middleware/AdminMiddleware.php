@@ -17,6 +17,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        $uri = $request->path();
+        $requestParams = $request->all();
+        logs('by_user_logs')->info('this user want to: ', ['uri' => $uri, 'params' => $requestParams]);
+
         if (Auth::check() && Auth::user()->is_admin) {
             return $next($request);
         }

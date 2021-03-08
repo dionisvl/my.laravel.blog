@@ -1,5 +1,6 @@
 <?php
 
+use App\Utils\Logs\UserLogger;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
 
@@ -86,6 +87,13 @@ return [
 
         'errorlog' => [
             'driver' => 'errorlog',
+            'level' => 'debug',
+        ],
+
+        'by_user_logs' => [
+            'driver' => 'custom',
+            'via' => UserLogger::class,
+            'logname' => 'by_user_logs',
             'level' => 'debug',
         ],
     ],
