@@ -4,6 +4,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
@@ -49,6 +52,10 @@ class PostController
         return $this->show($post);
     }
 
+    /**
+     * @param Post $post
+     * @return Application|Factory|View
+     */
     public function show(Post $post)
     {
         $postId = $post->id;

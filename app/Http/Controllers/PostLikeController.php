@@ -10,6 +10,30 @@ class PostLikeController extends Controller
 {
     /**
      * Если лайк поставлен тогда удалим
+     *
+     * @OA\Post(
+     * path="/postlike/{post_id}",
+     * summary="Post likes",
+     * description="Toggle like for this post for this day",
+     * operationId="post.likes",
+     * tags={"postlikes.toggle"},
+     * @OA\RequestBody(
+     *    required=true,
+     *    description="Transfer of the liker fingerprint",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="device_memory", type="int", format="int", example="8"),
+     *    ),
+     * ),
+     *  @OA\Response(
+     *    response=200,
+     *    description="Show status of liked",
+     *     @OA\JsonContent(
+     *          @OA\Property(property="status", type="string", example="ok"),
+     *          @OA\Property(property="data", type="string", example="liked/unliked"),
+     *      )
+     *    )
+     * )
+     *)
      * @param int $post_id
      * @return JsonResponse
      */
@@ -23,18 +47,20 @@ class PostLikeController extends Controller
         }
 
         if (PostController::isLiked($post_id)) {
-
-            $deletedRows = PostLike::where([
-                ['post_id', '=', $post_id],
-                ['created_at', '=', Cookie::get('likedPostToday' . $post_id)]
-            ])
-//                ->whereDate('created_at', Carbon::today())
+            PostLike::where(
+                [
+                    ['post_id', '=', $post_id],
+                    ['created_at', '=', Cookie::get('likedPostToday' . $post_id)]
+                ]
+            )
                 ->delete();
 
-            return response()->json([
-                'status' => 'ok',
-                'data' => 'unliked'
-            ])->withCookie(Cookie::forget('likedPostToday' . $post_id));
+            return response()->json(
+                [
+                    'status' => 'ok',
+                    'data' => 'unliked'
+                ]
+            )->withCookie(Cookie::forget('likedPostToday' . $post_id));
         }
 
         $fields = request()->all();
