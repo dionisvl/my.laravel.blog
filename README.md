@@ -83,3 +83,17 @@ honeypot.value;
 ```
 php artisan make:request Post\AddPostRequest
 ```
+
+# Tests
+
+## Codeception
+
+### Preparing
+
+- cp codeception.example.yml codeception.yml
+
+### Run
+
+```
+vendor/bin/codecept run unit
+```

@@ -1,17 +1,18 @@
 <?php
 
 
-use App\User;
+use App\Models\User;
+use Codeception\TestCase\Test;
 use Illuminate\Support\Facades\Hash;
 
-class UserTest extends \Codeception\TestCase\Test
+class UserTest extends Test
 {
     /**
-     * @var \UnitTester
+     * @var UnitTester
      */
     protected $tester;
 
-    public function testRegister()
+    public function testRegister(): void
     {
         $name = 'testName';
         $email = 'johndoe@example.com';

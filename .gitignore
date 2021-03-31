@@ -2,6 +2,7 @@
 
 /storage/*.key
 /vendor
+codeception.yml
 .env
 .env.backup
 .env.testing
@@ -37,3 +38,4 @@ yarn-error.log
 /public/robots.txt
 /public/packages/chat/
 /public/mix-manifest.json
+

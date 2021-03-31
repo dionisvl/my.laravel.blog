@@ -41,7 +41,7 @@
         "nunomaduro/collision": "^5.0",
         "phpstan/phpstan": "^0.12.76",
         "phpunit/phpunit": "^9.0",
-        "roave/security-advisories": "dev-master",
+        "roave/security-advisories": "dev-latest",
         "vimeo/psalm": "^4.6"
     },
     "config": {

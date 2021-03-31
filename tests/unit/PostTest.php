@@ -1,6 +1,6 @@
 <?php namespace Post;
 
-use App\Post;
+
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
