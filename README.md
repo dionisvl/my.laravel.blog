@@ -91,9 +91,10 @@ php artisan make:request Post\AddPostRequest
 ### Preparing
 
 - cp codeception.example.yml codeception.yml
+- php artisan config:cache
 
 ### Run
 
 ```
-vendor/bin/codecept run unit
+php vendor\bin\codecept run unit
 ```

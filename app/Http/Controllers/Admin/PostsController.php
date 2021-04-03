@@ -7,8 +7,12 @@ use App\Http\Requests\Admin\Post\UpdatePostRequest;
 use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
@@ -41,22 +45,31 @@ class PostsController extends Controller
      */
     public function store(AddPostRequest $request): RedirectResponse
     {
+        $this->add($request);
+
+        return redirect()->route('posts.index');
+    }
+
+    /**
+     * @param Request|AddPostRequest $request
+     */
+    public function add(Request $request): void
+    {
         $post = Post::add($request->all());
         $post->uploadImage($request->file('image'));
         $post->setCategory($request->get('category_id'));
         $post->setTags($request->get('tags'));
         $post->toggleStatus($request->get('status'));
         $post->toggleFeatured($request->get('is_featured'));
-
-        return redirect()->route('posts.index');
     }
 
-    /*
+    /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
+     * @return Application|Factory|View
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         $post = Post::find($id);
         $categories = Category::pluck('title', 'id')->all();
