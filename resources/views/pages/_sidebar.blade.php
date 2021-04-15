@@ -5,16 +5,22 @@
             <h3 class="widget-title text-uppercase text-center">Get Newsletter</h3>
             {{--@include('admin.errors')--}}
 
-            <form action="/subscribe" method="post">
+            <form action="{{route('subscribe.create')}}" method="post">
                 {{csrf_field()}}
-                <input type="email" placeholder="Your email address" name="email">
+
+                <x-inputs.honeypot/>
+                <x-inputs.countme/>
+
+                <input type="email" placeholder="Your email address" name="email"
+                       onkeyup="count_keyup()"
+                       onclick="count_keyup()">
                 <label class="privacy-box"> <input class="form-control" type="checkbox" required="" checked="">
-                    <p>
+                    <span>
                         Соглашаюсь на <a href="/privacy">обработку</a> персональных данных
-                    </p>
+                    </span>
                 </label>
                 <input type="submit" value="Subscribe Now"
-                       class="text-uppercase text-center btn btn-subscribe">
+                       class="text-uppercase text-center btn btn-subscribe" onclick="count_keyup()">
             </form>
         </aside>
 

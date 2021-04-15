@@ -71,8 +71,7 @@ php artisan migrate:refresh --path=/database/migrations/fileName.php
 Open post with comment text field, after it open browser console and write:
 
 ```
-let count = document.getElementById('countMe');
-count.value;
+document.querySelectorAll('input[name="countMe"]')[0].value;
 
 let honeypot = document.getElementById('honeypot');
 honeypot.value;

@@ -122,11 +122,9 @@
 
 .form-control {
     border-radius: 6px;
-    /*border: none;*/
-    /*margin-bottom: 15px;*/
 }
 
-.privacy-box p {
+.privacy-box span {
     margin-right: auto;
     padding-left: 5px;
     font-size: 12px;

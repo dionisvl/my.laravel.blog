@@ -30,7 +30,7 @@ Route::get('/privacy/', 'HomeController@privacy');
 Route::get('/contacts/', 'HomeController@contacts');
 Route::get('/profile', 'ProfileController@index');
 
-Route::post('/subscribe', 'SubsController@subscribe');
+Route::post('/subscribe', 'SubsController@create')->name('subscribe.create');
 Route::get('/verify/{token}', 'SubsController@verify');
 
 Route::group(['middleware' => 'auth'], function () {

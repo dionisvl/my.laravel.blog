@@ -29,31 +29,34 @@
               <div class="form-group">
                 <a href="{{route('subscribers.create')}}" class="btn btn-success">Добавить</a>
               </div>
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Email</th>
-                  <th>Действия</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($subs as $subscriber)
-                <tr>
-                  <td>{{$subscriber->id}}</td>
-                  <td>{{$subscriber->email}}
-                  </td>
-                  <td>
-                   {{Form::open(['route'=>['subscribers.destroy', $subscriber->id], 'method'=>'delete'])}}
-	                  <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                          <i class="fas fa-trash"></i>
-                      </button>
-
-                      {{Form::close()}}
-                   </td>
-                </tr>
-                @endforeach
-              </table>
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Дата</th>
+                        <th>Действия</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($subs as $subscriber)
+                        <tr>
+                            <td>{{$subscriber->id}}</td>
+                            <td>{{$subscriber->email}}</td>
+                            <td>{{$subscriber->created_at}}</td>
+                            <td>
+                                <form action="{{ route('subscribers.destroy', ['subscriber' => $subscriber->id]) }}"
+                                      method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button onclick="return confirm('are you sure?')" type="submit" class="delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
             </div>
             <!-- /.box-body -->
           </div>

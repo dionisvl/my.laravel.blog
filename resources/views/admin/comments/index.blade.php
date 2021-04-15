@@ -46,7 +46,7 @@
                                     <a href="{{route('post.showById', ['id' => $comment->post_id])}}">{{$comment->post_id}}</a>
                                 </td>
                                 <td>
-                                    @if($comment->status == 1)
+                                    @if($comment->status === 1)
                                         <a href="{{ route('admin.comments.toggle', ['id' => $comment->id]) }}">
                                             <i class="fa fa-lock"></i>
                                         </a>

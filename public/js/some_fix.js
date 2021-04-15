@@ -8,5 +8,9 @@ $(document).on('click', ".show_toggle_invokers", function () {
 let ct = 0;
 
 function count_keyup() {
-    document.getElementById('countMe').value = ++ct;
+    const elements = document.getElementsByClassName('countMe');
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].value = ++ct;
+        //console.log(elements[i].value);
+    }
 }

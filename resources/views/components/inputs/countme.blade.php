@@ -1,3 +1,3 @@
 <label>
-    <input type="text" name="countMe" id='countMe' hidden>
+    <input type="number" name="countMe" class="countMe" hidden>
 </label>
