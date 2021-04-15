@@ -29,38 +29,40 @@
               <div class="form-group">
                 <a href="{{route('users.create')}}" class="btn btn-success">Добавить</a>
               </div>
-              <table id="admin_data_table" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Имя</th>
-                  <th>E-mail</th>
-                  <th>Аватар</th>
-                  <th>Действия</th>
-                </tr>
-                </thead>
-                  <tbody>
-                  @foreach($users as $user)
-                      <tr>
-                          <td>{{$user->id}}</td>
-                          <td>{{$user->name}}</td>
-                          <td>{{$user->email}}</td>
-                          <td>
-                              <img src="{{$user->getImage()}}" alt="" class="img-responsive" width="150">
-                          </td>
-                          <td><a href="{{route('users.edit', $user->id)}}"><i class="fas fa-pencil-alt"></i></a>
-                              {{Form::open(['route'=>['users.destroy', $user->id], 'method'=>'delete'])}}
-                              <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                                  <i class="fas fa-trash"></i>
-                              </button>
+                <table id="admin_data_table" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Имя</th>
+                        <th>Дата</th>
+                        <th>E-mail</th>
+                        <th>Аватар</th>
+                        <th>Действия</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($users as $user)
+                        <tr>
+                            <td>{{$user->id}}</td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->created_at}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>
+                                <img src="{{$user->getImage()}}" alt="" class="img-responsive" width="150">
+                            </td>
+                            <td><a href="{{route('users.edit', $user->id)}}"><i class="fas fa-pencil-alt"></i></a>
+                                {{Form::open(['route'=>['users.destroy', $user->id], 'method'=>'delete'])}}
+                                <button onclick="return confirm('are you sure?')" type="submit" class="delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
 
-                              {{Form::close()}}
-                          </td>
-                      </tr>
-                  @endforeach
+                                {{Form::close()}}
+                            </td>
+                        </tr>
+                    @endforeach
 
-                </tfoot>
-              </table>
+                    </tbody>
+                </table>
             </div>
             <!-- /.box-body -->
           </div>
