@@ -47,16 +47,16 @@
                                 </td>
                                 <td>
                                     @if($comment->status == 1)
-                                        <a href="/admin/comments/toggle/{{$comment->id}}">
+                                        <a href="{{ route('admin.comments.toggle', ['id' => $comment->id]) }}">
                                             <i class="fa fa-lock"></i>
                                         </a>
                                     @else
-                                        <a href="/admin/comments/toggle/{{$comment->id}}">
+                                        <a href="{{ route('admin.comments.toggle', ['id' => $comment->id]) }}">
                                             <i class="fas fa-lock-open"></i>
                                         </a>
                                     @endif
 
-                                    <form action="/admin/comments/{{$comment->id}}/destroy" method="POST">
+                                    <form action="{{ route('admin.comments.destroy', ['id' => $comment->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button onclick="return confirm('are you sure?')" type="submit" class="delete">

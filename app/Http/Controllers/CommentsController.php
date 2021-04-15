@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
-    public function store(Request $request)
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'message' => 'required',

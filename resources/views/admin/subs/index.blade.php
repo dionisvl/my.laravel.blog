@@ -53,7 +53,6 @@
                    </td>
                 </tr>
                 @endforeach
-                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->

@@ -59,8 +59,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['adm
     Route::resource('/users', 'UsersController')->except('show');
     Route::resource('/posts', 'PostsController')->except('show');
     Route::get('/comments', 'CommentsController@index');
-    Route::get('/comments/toggle/{id}', 'CommentsController@toggle');
-    Route::delete('/comments/{id}/destroy', 'CommentsController@destroy')->name('comments.destroy');
+    Route::get('/comments/toggle/{id}', 'CommentsController@toggle')->name('admin.comments.toggle');
+    Route::delete('/comments/{id}/destroy', 'CommentsController@destroy')->name('admin.comments.destroy');
     Route::resource('/subscribers', 'SubscribersController')
         ->except('show', 'edit', 'update');
 
