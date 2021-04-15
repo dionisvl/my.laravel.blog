@@ -1,4 +1,4 @@
-<p><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p><img alt="laravel" src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 
 ## Laravel ecommerce/blog template
@@ -34,6 +34,10 @@ bootstrap/cache,
 
 - Optional:  
     see how to create demo items in `Factories.md` file.
+
+### Deployment
+- git pull
+- php artisan config:clear
 
 ## Telescope
 The "Laravel Telescope" will be enabled when `TELESCOPE_ENABLED` is true.  
