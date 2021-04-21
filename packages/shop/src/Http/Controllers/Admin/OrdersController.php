@@ -3,36 +3,50 @@
 namespace Dionisvl\Shop\Http\Controllers\Admin;
 
 use Dionisvl\Shop\Models\Order;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
+use Dionisvl\Shop\Presenters\OrdersListPresenter;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Application|Factory|Response|View
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        $orders = Order::orderBy('updated_at', 'DESC')->get();
-        return view('shop::admin.orders.index', ['orders' => $orders]);
+        $data = (new OrdersListPresenter)->getBladeOrdersList();
+        return view('shop::admin.orders.index', $data);
+    }
+
+    /**
+     * Excel orders list download
+     *
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
+    public function downloadExcelOrdersList(): void
+    {
+        $spreadsheet = (new OrdersListPresenter)->getExcelOrdersList();
+
+        $filename = 'orders_' . date('Y-m-d') . '.xlsx';
+        $writer = IOFactory::createWriter($spreadsheet, "Xlsx");
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header("Content-Disposition: attachment; filename={$filename}");
+        $writer->save("php://output");
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Application|Factory|Response|View
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view('shop::admin.orders.create');
     }
@@ -59,9 +73,9 @@ class OrdersController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return Application|Factory|Response|View
+     * @return View
      */
-    public function edit(int $id)
+    public function edit(int $id): View
     {
         $order = Order::find($id);
         return view('shop::admin.orders.edit', compact(
@@ -101,36 +115,4 @@ class OrdersController extends Controller
         return redirect()->route('orders.index');
     }
 
-    public function download(): void
-    {
-        $orders = Order::orderBy('updated_at', 'DESC')->get();
-        //return Excel::download($orders, 'orders_' . date('Y-m-d') . '.xlsx');
-        $orders = $orders->toArray();
-        $keys = array_keys($orders[0]);
-
-        $alphabet = range('A', 'Z');
-
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-
-        foreach ($keys as $key_id => $key) {
-            $sheet->setCellValue($alphabet[$key_id] . '1', $key);
-        }
-
-        foreach ($orders as $order_id => $order) {
-            $row_id = $order_id + 2;
-            $i = 0;
-            foreach ($order as $value_id => $value) {
-                $column_id = $alphabet[$i++];
-                $sheet->setCellValue($column_id . $row_id, $value);
-            }
-        }
-
-        $filename = 'orders_' . date('Y-m-d') . '.xlsx';
-        $writer = IOFactory::createWriter($spreadsheet, "Xlsx");
-
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header("Content-Disposition: attachment; filename={$filename}");
-        $writer->save("php://output");
-    }
 }

@@ -28,7 +28,7 @@ Route::group(['prefix' => 'shop', 'middleware' => ['web']], function () {
 Route::group(['prefix' => 'admin/shop', 'middleware' => ['web', 'admin']], function () {
     Route::resource('/products', ProductsController::class)
         ->except(['show']);
-    Route::get('/orders/download', ['as' => 'orders_download', 'uses' => OrdersController::class . '@download']);
+    Route::get('/orders/download', ['as' => 'orders_download', 'uses' => OrdersController::class . '@downloadExcelOrdersList']);
     Route::resource('/orders', OrdersController::class)
         ->except(['show']);
 });
