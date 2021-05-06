@@ -30,14 +30,16 @@
 
                     <p><strong>Наш адрес:</strong> г. Москва, ул. Б. Черемушкинская, 1</p>
 
-                    <?php/*<p><strong>Телефон отдела продаж </strong>8 (916) 211-88-30</p>*/?>
+                    {{--                    <p><strong>Телефон отдела продаж </strong>8 (916) 211-88-30</p>--}}
 
                     <p>Пн-Пт 9.00 - 19.00</p>
 
-                    <p><b>Электронный ящик:</b>
+                    <p>
+                        <b>Электронный ящик:</b>
                         <a href="mailto:<?=protect("info@" . $_SERVER['HTTP_HOST'])?>">
                             <?=protect("info@" . $_SERVER['HTTP_HOST'])?>
-                        </a></p>
+                        </a>
+                    </p>
 
 
                     <div id="map_container" class="map container-fluid">
