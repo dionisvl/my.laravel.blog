@@ -370,6 +370,10 @@ a.more-link:hover {
     text-indent: 1.5em;
 }
 
+td p {
+    text-indent: 0 !important;
+}
+
 .post-content a {
     text-indent: 0;
 }
@@ -1031,19 +1035,22 @@ athuor
 blog css
 =============*/
 .decoration {
-    margin: 20px 6px 20px 0
+    margin: 15px 6px 15px 0;
+    display: flex;
 }
 
 .decoration a {
     color: #60c7eb;
     border: 1px solid #60c7eb;
-    font-size: 14px;
-    height: 35px;
-    width: 105px;
-    line-height: 35px;
+    font-size: 12px;
+    height: 40px;
+    width: 115px;
+    line-height: 1em;
     padding: 0;
-    border-radius: 0;
-    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
 }
 
 .decoration a:hover {
@@ -1131,6 +1138,10 @@ blog css
     width: 90%;
     height: 80%;
     background: rgba(0, 0, 0, 0.3);
+}
+
+.aphorism-title {
+    margin-top: 10px;
 }
 
 /*related post section*/

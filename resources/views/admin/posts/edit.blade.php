@@ -88,6 +88,8 @@
                             </label>
                         </div>
                     </div>
+
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Полный текст</label>
@@ -95,6 +97,7 @@
                                       class="form-control myeditable">{{$post->content}}</textarea>
                         </div>
                     </div>
+                    <button class="btn btn-warning pull-right">Изменить</button>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Описание</label>

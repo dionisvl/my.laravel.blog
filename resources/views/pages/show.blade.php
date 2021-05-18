@@ -25,7 +25,7 @@
                                 {!! $post->content !!}
                             </div>
                             @if(!empty($aphorism))
-                                <div>Афоризм дня:</div>
+                                <div class="aphorism-title">Афоризм дня:</div>
                                 <div class="border-2 rounded-sm p-2 m-2 flex items-center bg-gray-200">
                                     {{ $aphorism->detail_text }} ({{ $aphorism->id }})
                                 </div>
