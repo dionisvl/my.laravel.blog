@@ -360,6 +360,11 @@ a.more-link:hover {
     margin-bottom: 5px;
 }
 
+.post-parent-column {
+    padding-right: 0;
+    padding-left: 0;
+}
+
 .post-content {
     padding: 0 15px 0 15px;
     overflow: hidden;

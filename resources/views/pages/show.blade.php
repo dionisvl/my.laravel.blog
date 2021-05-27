@@ -5,7 +5,7 @@
     <div class="main-content">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 flow-main">
+                <div class="col-md-8 flow-main post-parent-column">
                     <article class="post">
                         @if(!empty($post->getImage()))
                             <div class="post-detail-thumb">
