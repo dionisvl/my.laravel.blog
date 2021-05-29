@@ -39,3 +39,5 @@ yarn-error.log
 /public/packages/chat/
 /public/mix-manifest.json
 
+/docker/mysql/db_data/
+

@@ -1,0 +1,59 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: docker/nginx
+    volumes:
+      - ./:/var/www/phpqa.ru/html
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - php-fpm
+    networks:
+      - internal
+
+  php-fpm:
+    build:
+      context: docker/php-fpm7.4
+    volumes:
+      - ./:/var/www/phpqa.ru/html
+    environment:
+      XDEBUG_CONFIG: "remote_host=host.docker.internal remote_enable=1 client_host=host.docker.internal mode=debug"
+      PHP_IDE_CONFIG: "serverName=Docker-my-phpqa"
+    networks:
+      - internal
+    links:
+      - mysql
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - ./docker/mysql/db_data:/var/lib/mysql:rw
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my.laravel.blog
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 6080:8080
+
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.220.0/28

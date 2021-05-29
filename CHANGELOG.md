@@ -2,13 +2,19 @@
 
 ## Unreleased
 
-
 - выгрузка турбо страниц по API а не RSS
 
 - Сохранение кук в local storage
 - ajax полнотекстовый поиск
+
+### 2021-05-30
+
+- laravel + docker (nginx + php + mysql)
+
 ## (05.01.2020)
+
 - add loading='lazy' to all imgs
+
 ## v1.0.2 (06.08.2019)
 
 - готова email подписка
