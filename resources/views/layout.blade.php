@@ -28,10 +28,11 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
     <!-- common css -->
-    <link rel="preload" as='style' href="/css/front.css">
+    <link rel="preload" as='style' href="{{ mix('/css/front.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/front.css">
+    <link rel="stylesheet" href="{{ mix('/css/front.css') }}">
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png">
 @isset($cssParts)
