@@ -67,7 +67,20 @@
 
 @media (max-width: 600px) {
     .post_image_block {
+        display: flex;
+        justify-content: center;
+    }
+    .post-thumb {
+        grid-template-columns: minmax(50px, 120px) 1fr;
+    }
+}
+
+@media (max-width: 320px) {
+    .post_image_block {
         display: none;
+    }
+    .post-thumb {
+        grid-template-columns: none;
     }
 }
 
