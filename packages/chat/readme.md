@@ -57,3 +57,9 @@ php -q C:\OSpanel\domains\test\websockets\chat_ratchet\2-chat-server.php
 
 - Open url:  
   http://test/websockets/chat_ratchet/3a-chat-client.php
+
+##### A specific table fresh migration:
+```
+php artisan migrate:refresh --path=\packages\chat\src\database\migrations\2021_08_15_150822_create_chat_users_table.php
+php artisan migrate:refresh --path=\packages\chat\src\database\migrations\2021_08_15_150823_create_chat_messages_table.php
+```
