@@ -6,8 +6,8 @@ services:
     volumes:
       - ./:/var/www/phpqa.ru/html
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     depends_on:
       - php-fpm-lara
     networks:
@@ -32,7 +32,7 @@ services:
     image: mysql:8
     container_name: mysql
     ports:
-      - 3306:3306
+      - "3306:3306"
     expose:
       - 3306
     volumes:
@@ -41,10 +41,13 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     #restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: my.laravel.blog
-      MYSQL_USER: myUser
-      MYSQL_PASSWORD: myUser
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'my.laravel.blog'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'root'
+      ## Use % to allow remote access to all addresses.
+      ## Generally not recommended by some people to allow for root.
+      MYSQL_ROOT_HOST: "0.0.0.0"
 
   phpmyadmin:
     depends_on:
@@ -52,7 +55,7 @@ services:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-      - 8088:80
+      - "8088:80"
     environment:
       PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: root

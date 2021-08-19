@@ -1,7 +1,5 @@
 # Docker
-
 Поднять Docker Compose со сборкой
-
 ```
 docker-compose up --build
 ```
@@ -18,14 +16,10 @@ docker-compose up --build
 http://localhost/
 
 ### phpMyAdmin
-
 http://localhost:8088/
-
 ### MySQL
-
-Настройка подключения хранилища файлов:
-
+Настройка подключения хранилища файлов с нуля:
 - в Docker Desktop добавить 2 пути в Resources - File Sharing:  
-  -- путь до всего проекта для возможности подрузить my.cnf  
-  -- путь до db_data
+  -- путь до всего проекта для возможности подрузить my.cnf: `C:\ospanel\domains\my.phpqa`  
+  -- путь до db_data `C:\ospanel\domains\my.phpqa\docker\mysql\db_data`
 - Перезагрузить весь docker desktop полностью.  
