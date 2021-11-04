@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Tag;
 use Dionisvl\Shop\Http\Controllers\ProductController;
+use Illuminate\Http\Response;
 
 class HomeController extends Controller
 {
@@ -13,10 +14,12 @@ class HomeController extends Controller
         switch (config('app.main_module')) {
             case '/posts':
                 return (new PostController())->index();
+
             case '/shop':
                 return (new ProductController())->index();
+
             default:
-                return dd('error: APP_MAIN_MODULE not defined in .env');
+                return new Response('error: APP_MAIN_MODULE not defined in .env');
         }
     }
 
