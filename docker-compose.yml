@@ -5,6 +5,7 @@ services:
       context: docker/nginx
     volumes:
       - ./:/var/www/phpqa.ru/html
+      - ./storage/logs/nginx:/var/log/nginx/
     ports:
       - "80:80"
       - "443:443"
@@ -15,22 +16,22 @@ services:
 
   php-fpm-lara:
     build:
-      context: docker/php-fpm7.4
+      context: docker/php-7.4-fpm-alpine
     volumes:
       - ./:/var/www/phpqa.ru/html
     environment:
-      XDEBUG_CONFIG: "remote_host=host.docker.internal remote_enable=1 client_host=host.docker.internal mode=debug"
+      XDEBUG_CONFIG: "remote_host=host.docker.internal"
       PHP_IDE_CONFIG: "serverName=Docker-my-phpqa"
     networks:
       - internal
     links:
-      - mysql
+      - mysql-lara
     depends_on:
-      - mysql
+      - mysql-lara
 
-  mysql:
+  mysql-lara:
     image: mysql:8
-    container_name: mysql
+    container_name: mysql-lara
     ports:
       - "3306:3306"
     expose:
@@ -49,16 +50,17 @@ services:
       ## Generally not recommended by some people to allow for root.
       MYSQL_ROOT_HOST: "0.0.0.0"
 
-  phpmyadmin:
-    depends_on:
-      - mysql
-    image: phpmyadmin/phpmyadmin
-    restart: always
+  myadmin:
+    image: phpmyadmin/phpmyadmin:latest
     ports:
-      - "8088:80"
+      - "8080:80"
     environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: root
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql-lara
+    restart: always
+    depends_on:
+      - mysql-lara
+
 
 networks:
   internal:

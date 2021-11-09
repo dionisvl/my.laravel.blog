@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:alpine
 
 # подменим дефолтный default.conf на наш кастомный
 ADD ./default.conf /etc/nginx/conf.d/default.conf
