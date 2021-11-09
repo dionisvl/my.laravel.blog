@@ -27,7 +27,7 @@ class Category extends Model
 
     public static function create($fields): self
     {
-        $category = new static;
+        $category = new static();
         $category->fill($fields);
         $category->slug = static::getSlug($fields['title']);
         $category->save();
