@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine
+FROM php:8.0-fpm-alpine
 
 LABEL MAINTAINER="<dionisvl3@gmail.com>"
 LABEL RELEASEDATE="20211109"
@@ -7,10 +7,15 @@ LABEL RELEASEDATE="20211109"
 ENV \
 	# Setup same composer home directory for all users
 	COMPOSER_HOME="/usr/local/composer" \
-	PHP_VERSION=php7.4
+	PHP_VERSION=php8.0
 
 ARG XDEBUG_VERSION=3.1.1
-ARG PHP_EXTENSIONS="bcmath pdo mysqli pdo_mysql pcntl zip"
+ARG PHP_EXTENSIONS="bcmath pdo pdo_pgsql mysqli pdo_mysql pcntl zip"
+
+# prepare for postgreSql-apine:
+RUN set -ex \
+  && apk --no-cache add \
+    postgresql-dev
 
 # Install dependencies
 RUN \
@@ -22,13 +27,8 @@ RUN \
     #${PHP_VERSION}-openssl \
     libzip-dev \
     su-exec \
-    && docker-php-ext-install $PHP_EXTENSIONS
-
-# ex-gd
-RUN \
-    cd /tmp \
-    && apk add libpng libpng-dev libjpeg-turbo-dev libwebp-dev libxpm-dev gd \
-    && docker-php-ext-install gd
+    && \
+    docker-php-ext-install $PHP_EXTENSIONS
 
 # pm.max_children = 25
 ADD ./www.conf /usr/local/etc/php-fpm.d/www.conf
