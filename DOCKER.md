@@ -8,7 +8,7 @@ Docker running Nginx, PHP-FPM, MySQL and PHPMyAdmin.
 - composer install
 - create database if not exists with name "my.symf.test"
 - check current DataBase IP by command:   
-  linux variant: `docker inspect mysql | grep IPAddress`/`docker inspect postgres | grep IPAddress`  
+  linux variant: `docker inspect phpqarud_mysql-db_1 | grep IPAddress`/`docker inspect postgres | grep IPAddress`  
   win variant: `docker inspect myphpqad-pg-db-1 | findstr IPAddress`
 - your config for connection from OS: `DATABASE_URL="mysql://root:root@127.0.0.1:8989/my.symf.test?serverVersion=8.0`
 - your config for connection from docker (and Adminer): `DATABASE_URL="mysql://root:root@172.18.0.2:3306/my.symf.test?serverVersion=8.0"`
@@ -17,6 +17,11 @@ Docker running Nginx, PHP-FPM, MySQL and PHPMyAdmin.
 - `php bin/console doctrine:migrations:migrate`
 - `php bin/console doctrine:fixtures:load`
 - open url - http://localhost:8000/
+
+- enter to container `docker ps -a`,  
+  `docker exec -ti {{ container name }} /bin/sh`  
+  `docker exec -ti phpqarud_php-fpm_1 /bin/sh`
+
 ### Images to use
 
 * [Nginx](https://hub.docker.com/_/nginx/)

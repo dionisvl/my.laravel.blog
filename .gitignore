@@ -29,6 +29,7 @@ app/public/packages/chat/
 app/public/mix-manifest.json
 data/db/mysql/db_data
 storage/
+.env
 
 # PHPStorm
 .idea

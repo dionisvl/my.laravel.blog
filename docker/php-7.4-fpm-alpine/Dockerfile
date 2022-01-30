@@ -75,5 +75,8 @@ RUN wget https://getcomposer.org/installer -O - -q \
 # Configure XDebug.
 COPY xdebug.ini /usr/local/etc/php/conf.d/20-xdebug.ini
 
+# Laravel logs access fix
+RUN chown -R www-data:www-data /var/www
+RUN chmod 755 /var/www
 
 WORKDIR /var/www
