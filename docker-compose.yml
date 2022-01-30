@@ -75,6 +75,6 @@ services:
 #        depends_on:
 #            - mysqldb
 
-volumes:
-    pgdata:
-        external: true
+#volumes:
+#    pgdata:
+#        external: true
