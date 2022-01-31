@@ -86,3 +86,10 @@ honeypot.value;
 ```
 php artisan make:request Post\AddPostRequest
 ```
+
+### cache
+```
+php artisan optimize:clear
+composer dump-autoload
+composer cc
+```
