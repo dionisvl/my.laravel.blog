@@ -44,7 +44,7 @@ class Order extends Model
 
     public static function add($fields): self
     {
-        $order = new static;
+        $order = new static();
 
         $order->fill($fields);
         $order->slug = static::getSlug($fields['title']);

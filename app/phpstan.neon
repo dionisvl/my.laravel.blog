@@ -1,0 +1,21 @@
+includes:
+  # Vendor
+  - vendor/phpstan/phpstan-beberlei-assert/extension.neon
+  # Project
+  - .phpstan/baseline.neon
+  - .phpstan/booleanInConditions.neon
+
+parameters:
+  level: max
+    # Larstan recommendation:
+  checkMissingIterableValueType: false
+
+    # Ignore generic class Ds\Map
+  checkGenericClassInNonGenericObjectType: false
+
+  paths:
+    - app
+    - packages
+  fileExtensions:
+    - php
+  reportUnmatchedIgnoredErrors: false
