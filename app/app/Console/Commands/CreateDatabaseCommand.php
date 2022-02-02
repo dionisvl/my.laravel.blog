@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -70,7 +72,7 @@ class CreateDatabaseCommand extends Command
 
     /**
      * @param string $host
-     * @param integer $port
+     * @param int $port
      * @param string $username
      * @param string $password
      * @return PDO
