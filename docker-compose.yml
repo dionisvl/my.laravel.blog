@@ -23,7 +23,7 @@ services:
 
     php-fpm:
         build:
-            context: docker/php-7.4-fpm-alpine
+            context: docker/php-8.0-fpm-alpine
         volumes:
             - "./app:/var/www/phpqa.ru/app"
         environment:
