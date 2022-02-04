@@ -27,20 +27,20 @@ services:
         volumes:
             - "./app:/var/www/phpqa.ru/app"
         environment:
-            XDEBUG_CONFIG: "remote_host=host.docker.internal"
-            PHP_IDE_CONFIG: serverName=${NGINX_HOST}
+            XDEBUG_CONFIG: "remote_host=wsl.host remote_port=9003"
+            PHP_IDE_CONFIG: serverName=Docker
         networks:
             static-network:
-                ipv4_address: 172.20.0.72
+                ipv4_address: 172.20.0.10
 
-    adminer:
-        image: adminer
-        restart: always
-        ports:
-            - "8081:8080"
-        networks:
-            static-network:
-                ipv4_address: 172.20.0.73
+#    adminer:
+#        image: adminer
+#        restart: always
+#        ports:
+#            - "8081:8080"
+#        networks:
+#            static-network:
+#                ipv4_address: 172.20.0.73
 
     mysql-db:
         image: mysql:${MYSQL_VERSION}
@@ -94,6 +94,8 @@ services:
 
 networks:
     static-network:
+        driver: bridge
         ipam:
+            driver: default
             config:
-                - subnet: 172.20.0.0/16
+                - subnet: 172.20.0.0/28

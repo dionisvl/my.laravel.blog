@@ -1,16 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 //error_reporting(E_ALL);
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 
 /**
- * Laravel - A PHP Framework For Web Artisans
+ * Laravel - A PHP Framework For Web Artisans.
  *
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
-
 define('LARAVEL_START', microtime(true));
 
 /*
@@ -25,7 +26,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------

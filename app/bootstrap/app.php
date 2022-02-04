@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -25,17 +27,18 @@ if (!function_exists('locateBasePath')) {
      * @param $app
      * @return string
      */
-    function locateBasePath($app)
+    function locateBasePath($app): string
     {
-        // этот путь содержит зависимую от версии часть пути, поэтому запущенные процессы не найдут после апдейта такой путь
+        // Этот путь содержит зависимую от версии часть пути, поэтому запущенные процессы не найдут после апдейта такой путь
         // возможно разумным вариантом было бы dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'storage'
         $underBuild = realpath($app->basePath() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'storage');
         $inBuild = realpath($app->basePath() . DIRECTORY_SEPARATOR . 'storage');
 
-        if (is_dir($underBuild))
+        if ($underBuild !== false && is_dir($underBuild)) {
             return $underBuild;
-        else
-            return $inBuild;
+        }
+
+        return $inBuild;
     }
 }
 $app->useStoragePath(locateBasePath($app));

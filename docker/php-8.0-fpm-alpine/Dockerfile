@@ -10,7 +10,7 @@ ENV \
 	PHP_VERSION=php8.0
 
 ARG XDEBUG_VERSION=3.1.1
-ARG PHP_EXTENSIONS="bcmath pdo pdo_pgsql mysqli pdo_mysql pcntl zip"
+ARG PHP_EXTENSIONS="bcmath pdo pdo_pgsql mysqli pdo_mysql pcntl zip curl"
 
 # prepare for postgreSql-apine:
 RUN set -ex \
@@ -22,13 +22,18 @@ RUN \
     cd /tmp \
     && apk add \
     libmcrypt-dev \
-    # php-common includes: curl, fileinfo, json, phar, zip, pear
-    #${PHP_VERSION}-common \
+    curl-dev \
     #${PHP_VERSION}-openssl \
     libzip-dev \
     su-exec \
     && \
     docker-php-ext-install $PHP_EXTENSIONS
+
+# ext-gd
+RUN \
+    cd /tmp \
+    && apk add libpng libpng-dev libjpeg-turbo-dev libwebp-dev gd \
+    && docker-php-ext-install gd
 
 # pm.max_children = 25
 ADD ./www.conf /usr/local/etc/php-fpm.d/www.conf
@@ -76,4 +81,4 @@ RUN wget https://getcomposer.org/installer -O - -q \
 COPY xdebug.ini /usr/local/etc/php/conf.d/20-xdebug.ini
 
 
-WORKDIR /var/www
+WORKDIR /var/www/phpqa.ru/app
