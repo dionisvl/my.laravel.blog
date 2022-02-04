@@ -55,8 +55,9 @@ services:
         ports:
             - "8989:3306"
         volumes:
-            - "./data/db/mysql/db_data:/var/lib/mysql"
             - "./data/db/mysql/my.cnf:/etc/mysql/conf.d/my.cnf"
+            - "./data/db/mysql/db_data:/var/lib/mysql"
+#            - mysql-data:/var/lib/mysql
         networks:
             static-network:
                 ipv4_address: 172.20.0.77
@@ -77,7 +78,7 @@ services:
 
 #    myadmin:
 #        image: phpmyadmin/phpmyadmin:fpm-alpine
-#        container_name: phpmyadmin-sber
+#        container_name: phpmyadmin
 #        ports:
 #            - "8080:80"
 #        environment:
@@ -88,7 +89,7 @@ services:
 #            - mysqldb
 
 #volumes:
-#    pgdata:
+#    mysql-data:
 #        external: true
 
 networks:
