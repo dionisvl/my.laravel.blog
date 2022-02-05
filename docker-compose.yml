@@ -27,11 +27,14 @@ services:
         volumes:
             - "./app:/var/www/phpqa.ru/app"
         environment:
-            XDEBUG_CONFIG: "remote_host=wsl.host remote_port=9003"
-            PHP_IDE_CONFIG: serverName=Docker
+#            XDEBUG_CONFIG: "client_host=host.docker.internal client_port=9003"
+            PHP_IDE_CONFIG: serverName=${NGINX_HOST}
         networks:
             static-network:
                 ipv4_address: 172.20.0.10
+        extra_hosts:
+          # Начиная с Docker 20.10. Это обновит файл /etc/hosts автоматически и привяжет шлюз к имени host.docker.internal https://stackoverflow.com/a/43541732
+          - "host.docker.internal:host-gateway"
 
 #    adminer:
 #        image: adminer

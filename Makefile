@@ -24,7 +24,7 @@ help:
 	@echo "  test                Test application"
 
 bash:
-	docker exec -ti phpqarud_php-fpm_1 /bin/sh
+	docker exec -ti phpqaru-php-fpm-1 /bin/sh
 
 init:
 	@$(shell cp -n $(shell pwd)/app/app/composer.json.dist $(shell pwd)/app/app/composer.json 2> /dev/null)
