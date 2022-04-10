@@ -66,13 +66,13 @@
                 <div class="thumb-latest-posts">
                     <div class="media">
                         <div class="media-left">
-                            <a href="{{route('post.show', $post->slug)}}" class="popular-img">
+                            <a href="{{route('post.show', $post->slug, 0)}}" class="popular-img">
                                 <img src="{{$post->getImage()}}" alt="" loading="lazy">
                                 <div class="p-overlay"></div>
                             </a>
                         </div>
                         <div class="p-content">
-                            <a href="{{route('post.show', $post->slug)}}" class="text-uppercase">{{$post->title}}</a>
+                            <a href="{{route('post.show', $post->slug, 0)}}" class="text-uppercase">{{$post->title}}</a>
                             <span class="p-date">{{$post->getDate()}}</span>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
             <ul>
                 @foreach($categories as $category)
                     <li>
-                        <a href="{{route('blog.category.show', $category->slug)}}">{{$category->title}}</a>
+                        <a href="{{route('blog.category.show', $category->slug, 0)}}">{{$category->title}}</a>
                         <span class="post-count pull-right"> ({{$category->posts_count}})</span>
                     </li>
                 @endforeach

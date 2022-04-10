@@ -139,7 +139,7 @@
                             <div id="also_like_tns">
                                 @foreach($related as $item)
                                     <div class="single-item">
-                                        <a href="{{route('post.show', $item->slug)}}">
+                                        <a href="{{route('post.show', $item->slug, 0)}}">
                                             <img src="{{$item->getImage()}}" alt="">
                                             <p>{{$item->title}}</p>
                                         </a>

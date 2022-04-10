@@ -29,13 +29,13 @@
                                         <img src="{{$post->getImage()}}" alt="{{$post->title}}" loading="lazy">
                                     </div>
 
-                                    <a href="{{route('post.show', $post->slug)}}"
+                                    <a href="{{route('post.show', $post->slug, 0)}}"
                                        class="post-thumb-overlay text-center">
                                         <div class="text-uppercase text-center">View Post</div>
                                     </a>
                                     <header style='flex-grow:2;' class="entry-header text-uppercase">
                                         <h3 class="entry-title">
-                                            <a href="{{route('post.show', $post->slug)}}">{{$post->title}}</a>
+                                            <a href="{{route('post.show', $post->slug, 0)}}">{{$post->title}}</a>
                                         </h3>
                                     </header>
                                 </div>

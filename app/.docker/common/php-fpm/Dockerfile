@@ -10,7 +10,7 @@ ENV \
 	PHP_VERSION=php8.0
 
 ARG XDEBUG_VERSION=3.1.1
-ARG PHP_EXTENSIONS="bcmath pdo pdo_pgsql mysqli pdo_mysql pcntl zip curl"
+ARG PHP_EXTENSIONS="bcmath pdo pdo_pgsql mysqli pdo_mysql pcntl zip curl opcache"
 
 # prepare for postgreSql-apine:
 RUN set -ex \
@@ -34,13 +34,6 @@ RUN \
     cd /tmp \
     && apk add libpng libpng-dev libjpeg-turbo-dev libwebp-dev gd \
     && docker-php-ext-install gd
-
-# pm.max_children = 25
-ADD ./www.conf /usr/local/etc/php-fpm.d/www.conf
-
-# tweak custom php-fpm config
-ADD ./myPhp.ini /usr/local/etc/php/conf.d/05-php.ini
-
 
 # Build dependencies.
 ENV BUILD_DEPS \
@@ -77,8 +70,16 @@ RUN \
 RUN wget https://getcomposer.org/installer -O - -q \
     | php -- --install-dir=/bin --filename=composer --quiet
 
-# Configure XDebug.
-COPY xdebug.ini /usr/local/etc/php/conf.d/20-xdebug.ini
+
+RUN #mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
+
+COPY ./common/php/conf.d /usr/local/etc/php/conf.d
+COPY ./common/php/php-fpm.d /usr/local/etc/php-fpm.d
 
 
-WORKDIR /var/www/phpqa.ru/app
+WORKDIR /app
+
+HEALTHCHECK --interval=5s --timeout=3s --start-period=1s \
+    CMD REDIRECT_STATUS=true SCRIPT_NAME=/ping SCRIPT_FILENAME=/ping REQUEST_METHOD=GET \
+    cgi-fcgi -bind -connect 127.0.0.1:9000 || exit 1
+
