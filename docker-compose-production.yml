@@ -7,12 +7,10 @@ services:
         volumes:
             - /etc/letsencrypt:/etc/letsencrypt:ro
             - /var/www:/var/www:ro
-#            - /etc/nginx/sites-available:/etc/nginx/sites-available:rw
-#            - /etc/nginx/sites-enabled:/etc/nginx/sites-enabled:ro
         ports:
             - "80:80"
             - "443:443"
-#
+
     phpqa-nginx:
         build:
             context: app/.docker
