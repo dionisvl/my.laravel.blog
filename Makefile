@@ -20,20 +20,21 @@ docker-down-clear:
 composer-install:
 	docker-compose run --rm php-fpm composer install
 
+# HOST=185.174.137.12 PORT=2222 BUILD_NUMBER=1 KEY=provisioning/files/deploy_rsa make deploy
 deploy:
-	ssh ${HOST} -p ${PORT} 'rm -rf site_${BUILD_NUMBER}'
-	ssh ${HOST} -p ${PORT} 'mkdir site_${BUILD_NUMBER}'
-	scp -P ${PORT} docker-compose-production.yml ${HOST}:site_${BUILD_NUMBER}/docker-compose.yml
-	ssh ${HOST} -p ${PORT} 'cd site_${BUILD_NUMBER} && echo "COMPOSE_PROJECT_NAME=phpqa" >> .env'
-	ssh ${HOST} -p ${PORT} 'cd site_${BUILD_NUMBER} && docker-compose up --build --remove-orphans -d'
-	ssh ${HOST} -p ${PORT} 'rm -f site'
-	ssh ${HOST} -p ${PORT} 'ln -sr site_${BUILD_NUMBER} site'
+	ssh deploy@${HOST} -p ${PORT} -i ${KEY} 'rm -rf site_${BUILD_NUMBER}'
+	ssh deploy@${HOST} -p ${PORT} -i ${KEY} 'mkdir site_${BUILD_NUMBER}'
+	scp -P ${PORT} -i ${KEY} docker-compose-production.yml deploy@${HOST}:site_${BUILD_NUMBER}/docker-compose.yml
+	ssh deploy@${HOST} -p ${PORT} -i ${KEY} 'cd site_${BUILD_NUMBER} && echo "COMPOSE_PROJECT_NAME=phpqa" >> .env'
+	ssh deploy@${HOST} -p ${PORT} -i ${KEY} 'cd site_${BUILD_NUMBER} && docker-compose up --build --remove-orphans -d'
+	ssh deploy@${HOST} -p ${PORT} -i ${KEY} 'rm -f site'
+	ssh deploy@${HOST} -p ${PORT} -i ${KEY} 'ln -sr site_${BUILD_NUMBER} site'
 
 rollback:
-	ssh ${HOST} -p ${PORT} 'cd site_${BUILD_NUMBER} && docker-compose pull'
-	ssh ${HOST} -p ${PORT} 'cd site_${BUILD_NUMBER} && docker-compose up --build --remove-orphans -d'
-	ssh ${HOST} -p ${PORT} 'rm -f site'
-	ssh ${HOST} -p ${PORT} 'ln -sr site_${BUILD_NUMBER} site'
+	ssh deploy@${HOST} -p ${PORT} 'cd site_${BUILD_NUMBER} && docker-compose pull'
+	ssh deploy@${HOST} -p ${PORT} 'cd site_${BUILD_NUMBER} && docker-compose up --build --remove-orphans -d'
+	ssh deploy@${HOST} -p ${PORT} 'rm -f site'
+	ssh deploy@${HOST} -p ${PORT} 'ln -sr site_${BUILD_NUMBER} site'
 
 bash:
 	docker-compose run --rm php-fpm /bin/sh
