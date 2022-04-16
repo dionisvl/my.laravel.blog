@@ -21,7 +21,7 @@
 
 -   name: Set up the repository
     apt_repository:
-        repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+        repo: deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable
         state: present
         filename: docker
         update_cache: yes

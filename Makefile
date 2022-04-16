@@ -20,6 +20,16 @@ docker-down-clear:
 composer-install:
 	docker-compose run --rm php-fpm composer install
 
+bash:
+	docker-compose run --rm php-fpm /bin/sh
+
+node-bash:
+	docker-compose run --rm node /bin/sh
+npm-i:
+	docker-compose run --rm node npm i
+npm-run-prod:
+	docker-compose run --rm node npm run prod
+
 # HOST=185.174.137.12 PORT=2222 BUILD_NUMBER=1 KEY=provisioning/files/deploy_rsa make deploy
 deploy:
 	ssh deploy@${HOST} -p ${PORT} -i ${KEY} 'rm -rf site_${BUILD_NUMBER}'
@@ -35,6 +45,3 @@ rollback:
 	ssh deploy@${HOST} -p ${PORT} 'cd site_${BUILD_NUMBER} && docker-compose up --build --remove-orphans -d'
 	ssh deploy@${HOST} -p ${PORT} 'rm -f site'
 	ssh deploy@${HOST} -p ${PORT} 'ln -sr site_${BUILD_NUMBER} site'
-
-bash:
-	docker-compose run --rm php-fpm /bin/sh

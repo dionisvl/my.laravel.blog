@@ -20,19 +20,18 @@
 - php artisan storage:link
 - ln -s /var/www/THIS_SITE/storage/app/public/ /var/www/THIS_SITE/html/public/storage
 ```
-sudo chown www-data -R /var/www/THIS_SITE/{\
-storage/framework/cache,\
-storage/framework/views,\
-storage/framework/sessions,\
-html/public/storage/uploads,\
-bootstrap/cache,
-}
+chown www-data -R /app/storage/logs/
+chown www-data -R /app/storage/clockwork/
+chown www-data -R /app/storage/framework/
+chown www-data -R /app/bootstrap/cache/
+chown www-data -R /var/www/phpqa.ru/app/storage/app/public/
+chown www-data -R /app/storage/app/public/
 ```
 - `npm install`
 - `npm run prod`
 - fill all `MAIL_*` params in .env file for subscription functionality
 
-- Optional:  
+- Optional:
     see how to create demo items in `Factories.md` file.
 
 ### Deployment
@@ -40,14 +39,14 @@ bootstrap/cache,
 - php artisan config:clear
 
 ## Telescope
-The "Laravel Telescope" will be enabled when `TELESCOPE_ENABLED` is true.  
+The "Laravel Telescope" will be enabled when `TELESCOPE_ENABLED` is true.
 Access will be if `APP_ENV` is local.
 ##### Installing
-``` 
+```
 php artisan telescope:install
-php artisan migrate 
-``` 
-after updating:  
+php artisan migrate
+```
+after updating:
 `
 php artisan telescope:publish
 `

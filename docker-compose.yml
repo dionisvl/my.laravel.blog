@@ -7,8 +7,9 @@ services:
         volumes:
             - /etc/letsencrypt:/etc/letsencrypt:ro
             - /var/www:/var/www:ro
+            - /etc/nginx/sites-available:/etc/nginx/conf.d:rw
         ports:
-            - ${GATEWAY_HOTS_PORT}:8080
+            - ${GATEWAY_HOTS_PORT}:${GATEWAY_DOCKER_PORT}
             - "443:443"
 
     phpqa-nginx:
@@ -22,9 +23,10 @@ services:
         build:
             context: app/.docker
             dockerfile: common/php-fpm/Dockerfile
+        container_name: php-fpm
         environment:
-            APP_ENV: ${APP_ENV}
-            APP_DEBUG: ${APP_DEBUG}
+#            APP_ENV: ${APP_ENV}
+#            APP_DEBUG: ${APP_DEBUG}
             PHP_IDE_CONFIG: serverName=${SERVER_NAME}
             DB_HOST: ${DB_HOST}
             DB_USER: ${MYSQL_ROOT_USER}
@@ -38,6 +40,7 @@ services:
             MAILER_FROM_EMAIL: ${MAILER_FROM_EMAIL}
             SENTRY_DSN: ${SENTRY_DSN}
         volumes:
+            - /var/www:/var/www:ro
             - ./app:/app
 
     mysql:
@@ -53,3 +56,10 @@ services:
             - "./data/db/mysql/db_data:/var/lib/mysql"
         ports:
             - "8989:3306"
+
+    node:
+        build:
+            context: app/.docker/node
+        container_name: node-phpqa
+        volumes:
+            - ./app:/app
