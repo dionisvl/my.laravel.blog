@@ -92,3 +92,6 @@ php artisan optimize:clear
 composer dump-autoload
 composer cc
 ```
+
+#### mysql
+`mysql -u root -p -h mysql_phpqa`

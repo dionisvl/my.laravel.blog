@@ -40,7 +40,15 @@ services:
             MAILER_FROM_EMAIL: ${MAILER_FROM_EMAIL}
             SENTRY_DSN: ${SENTRY_DSN}
         volumes:
-            - /var/www:/var/www:ro
+            - ./app:/app
+
+    php-fpm-for-all:
+        build:
+            context: app/.docker
+            dockerfile: common/php-fpm/Dockerfile
+        container_name: php-fpm-for-all
+        volumes:
+            - /var/www:/var/www:rw
             - ./app:/app
 
     mysql:
@@ -56,6 +64,8 @@ services:
             - "./data/db/mysql/db_data:/var/lib/mysql"
         ports:
             - "8989:3306"
+        security_opt:
+            - seccomp:unconfined
 
     node:
         build:
