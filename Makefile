@@ -20,6 +20,9 @@ docker-down-clear:
 composer-install:
 	docker-compose run --rm php-fpm composer install
 
+migrate:
+	docker-compose run --rm php-fpm php artisan migrate
+
 bash:
 	docker-compose run --rm php-fpm /bin/sh
 

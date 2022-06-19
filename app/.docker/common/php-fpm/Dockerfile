@@ -1,4 +1,4 @@
-FROM php:8.0-fpm-alpine
+FROM php:8.0.20-fpm-alpine
 
 LABEL MAINTAINER="<dionisvl3@gmail.com>"
 LABEL RELEASEDATE="20211109"
@@ -67,20 +67,16 @@ RUN \
     #
     && apk del .build-deps
 
-
 RUN wget https://getcomposer.org/installer -O - -q \
     | php -- --install-dir=/bin --filename=composer --quiet
 
-
-RUN #mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
+#RUN mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 
 COPY ./common/php/conf.d /usr/local/etc/php/conf.d
 COPY ./common/php/php-fpm.d /usr/local/etc/php-fpm.d
 
-
 WORKDIR /app
 
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s \
+HEALTHCHECK --interval=60s --timeout=55s --start-period=50s \
     CMD REDIRECT_STATUS=true SCRIPT_NAME=/ping SCRIPT_FILENAME=/ping REQUEST_METHOD=GET \
     cgi-fcgi -bind -connect 127.0.0.1:9000 || exit 1
-

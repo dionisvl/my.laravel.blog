@@ -13,25 +13,33 @@ Docker running Nginx, PHP-FPM, MySQL and PHPMyAdmin.
 - return to main directory and deploy project to target servers by example command:
     - `make deploy`
 
-### Installation
-- `docker volume create --name=pgdata` (https://forums.docker.com/t/data-directory-var-lib-postgresql-data-pgdata-has-wrong-ownership/17963/31)
-- docker compose up --build
-- composer install
-- create database if not exists with name "my.symf.test"
-- check current DataBase IP by command:
-  linux variant: `docker inspect phpqarud_mysql-db_1 | grep IPAddress`/`docker inspect postgres | grep IPAddress`
-  win variant: `docker inspect myphpqad-pg-db-1 | findstr IPAddress`
-- your config for connection from OS: `DATABASE_URL="mysql://root:root@127.0.0.1:8989/my.symf.test?serverVersion=8.0`
-- your config for connection from docker (and Adminer): `DATABASE_URL="mysql://root:root@172.18.0.2:3306/my.symf.test?serverVersion=8.0"`
-- Adminer example working url for PG:
-  http://localhost:8080/?pgsql=172.19.0.2&username=root
-- `php bin/console doctrine:migrations:migrate`
-- `php bin/console doctrine:fixtures:load`
-- open url - http://localhost:8000/
+### Installation to Dev
+- make sure that you have installed php and nginx on your wsl2 system
+- make sure that you have file phpqa.local.conf in /etc/nginx/sites-available/
+- make sure that you have file .env in root directory of project with params:
+```
+# Gateway
+GATEWAY_HOTS_PORT=80
+GATEWAY_DOCKER_PORT=80
+```
+- `make init` or `docker compose up --build`
+- `make composer-install`
+- create database if not exists with name `my.laravel.blog`
+- `make migrate`
+- open url - http://phpqa.local:8080/
 
+#### Optional:
+- check current DataBase IP by command:
+    - Linux variant: `docker inspect mysql_phpqa | grep IPAddress`
+    - Windows variant: `docker inspect mysql_phpqa | findstr IPAddress`
+- your config for connection from OS: `DATABASE_URL="mysql://root:root@127.0.0.1:8989/my.laravel.blog?serverVersion=8.0`
+- your config for connection from docker (and Adminer): `DATABASE_URL="mysql://root:root@172.18.0.2:8989/my.laravel.blog?serverVersion=8.0"`
+- Adminer example working url for PG:
+    - http://localhost:8080/?pgsql=172.19.0.2&username=root
 - enter to container `docker ps -a`,
   `docker exec -ti {{ container name }} /bin/sh`
   `docker exec -ti phpqarud_php-fpm_1 /bin/sh`
+- `chmod 644 data/db/mysql/my.cnf`
 
 ### Images to use
 

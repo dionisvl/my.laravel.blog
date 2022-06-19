@@ -7,4 +7,4 @@ COPY ./common/nginx/snippets /etc/nginx/snippets
 
 WORKDIR /app
 
-HEALTHCHECK --interval=20s --timeout=3s --start-period=5s CMD curl --fail http://127.0.0.1/health || exit 1
+HEALTHCHECK --interval=60s --timeout=50s --start-period=40s CMD curl --fail http://127.0.0.1/health || exit 1

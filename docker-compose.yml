@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.9"
 services:
     gateway:
         build:
@@ -7,6 +7,7 @@ services:
         volumes:
             - /etc/letsencrypt:/etc/letsencrypt:ro
             - /var/www:/var/www:ro
+            # Копируем все сайты из родительской системы в докер образ Nginx
             - /etc/nginx/sites-available:/etc/nginx/conf.d:rw
         ports:
             - ${GATEWAY_HOTS_PORT}:${GATEWAY_DOCKER_PORT}
