@@ -18,7 +18,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="{{route('frontparts.create')}}" class="btn btn-success">Добавить</a>
+                        <a href="{{route('frontparts.create', [], false)}}" class="btn btn-success">Добавить</a>
                     </div>
                     <table id="admin_data_table" class="table table-bordered table-striped">
                         <thead>
@@ -46,10 +46,10 @@
                                 <td>{{$frontpart->preview_text}}</td>
                                 <td>{{$frontpart->detail_text}}</td>
                                 <td>
-                                    <a href="{{route('frontparts.edit', $frontpart->id)}}"><i
+                                    <a href="{{route('frontparts.edit', $frontpart->id, false)}}"><i
                                             class="fas fa-pencil-alt"></i></a>
 
-                                    {{Form::open(['route'=>['frontparts.destroy', $frontpart->id], 'method'=>'delete'])}}
+                                    {{Form::open(['route'=>['frontparts.destroy', $frontpart->id, false], 'method'=>'delete'])}}
                                     <button onclick="return confirm('are you sure?')" type="submit" class="delete">
                                         <i class="fas fa-trash"></i>
                                     </button>

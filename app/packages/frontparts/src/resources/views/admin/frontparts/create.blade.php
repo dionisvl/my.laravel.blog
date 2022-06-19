@@ -10,9 +10,9 @@
 
         <!-- Main content -->
         <section class="content">
-            <form method="POST" action="{{route('frontparts.store')}}">
-            @csrf
-            <!-- Default box -->
+            <form method="POST" action="{{route('frontparts.store', [], false)}}">
+                @csrf
+                <!-- Default box -->
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Добавляем компонент</h3>

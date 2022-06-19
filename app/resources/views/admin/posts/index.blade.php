@@ -26,7 +26,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="{{route('posts.create')}}" class="btn btn-success">Добавить</a>
+                        <a href="{{route('posts.create', [], false)}}" class="btn btn-success">Добавить</a>
                     </div>
                     <table id="admin_data_table" class="table table-bordered table-striped">
                         <thead>
@@ -52,18 +52,21 @@
                                 <td>
                                     <a href="{{route('posts.edit', $post->id)}}"><i class="fas fa-pencil-alt"></i></a>
 
-                                    {{Form::open(['route'=>['posts.destroy', $post->id], 'method'=>'delete'])}}
-                                    <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    <form method="POST" action="{{route('posts.destroy', $post->id, false)}}">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button onclick="return confirm('are you sure?')" type="submit" class="delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
 
-                                    {{Form::close()}}
-
-                                    <a target='_blank' href="{{$post->getUrl()}}"><i class="fas fa-external-link-alt"></i></a>
+                                    <a target='_blank' href="{{$post->getUrl()}}">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
-                        </tfoot>
+                        </tbody>
                     </table>
                 </div>
                 <!-- /.box-body -->

@@ -45,9 +45,10 @@
                                 <td>{{$order->contents}}</td>
                                 <td>{{$order->price}}</td>
                                 <td>
-                                    <a href="{{route('orders.edit', $order->id)}}"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="{{route('orders.edit', $order->id, false)}}"><i
+                                            class="fas fa-pencil-alt"></i></a>
 
-                                    <form method="POST" action="{{route('orders.destroy', $order->id)}}">
+                                    <form method="POST" action="{{route('orders.destroy', $order->id, false)}}">
                                         @method('DELETE')
                                         @csrf
                                         <button onclick="return confirm('are you sure?')" type="submit" class="delete">

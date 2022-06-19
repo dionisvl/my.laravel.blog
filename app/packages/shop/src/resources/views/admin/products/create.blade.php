@@ -12,9 +12,9 @@
 
         <!-- Main content -->
         <section class="content">
-            <form method="POST" action="{{route('products.store')}}" enctype='multipart/form-data'>
-            @csrf
-            <!-- Default box -->
+            <form method="POST" action="{{route('products.store', [], false)}}" enctype='multipart/form-data'>
+                @csrf
+                <!-- Default box -->
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Добавляем товар</h3>

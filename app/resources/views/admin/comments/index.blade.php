@@ -56,7 +56,9 @@
                                         </a>
                                     @endif
 
-                                    <form action="{{ route('admin.comments.destroy', ['id' => $comment->id]) }}" method="POST">
+                                    <form
+                                        action="{{ route('admin.comments.destroy', ['id' => $comment->id, [], false]) }}"
+                                        method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button onclick="return confirm('are you sure?')" type="submit" class="delete">

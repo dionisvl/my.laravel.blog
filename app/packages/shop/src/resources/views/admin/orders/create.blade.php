@@ -12,10 +12,10 @@
 
         <!-- Main content -->
         <section class="content">
-            <form method="POST" action="{{route('orders.store')}}">
-            @method('PUT')
-            @csrf
-            <!-- Default box -->
+            <form method="POST" action="{{route('orders.store', [], false)}}">
+                @method('PUT')
+                @csrf
+                <!-- Default box -->
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Добавляем заказ</h3>

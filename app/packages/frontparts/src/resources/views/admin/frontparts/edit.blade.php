@@ -12,10 +12,10 @@
 
         <!-- Main content -->
         <section class="content">
-            <form method="POST" action="{{route('frontparts.update', $frontpart->id)}}">
-            @method('PUT')
-            @csrf
-            <!-- Default box -->
+            <form method="POST" action="{{route('frontparts.update', $frontpart->id, false)}}">
+                @method('PUT')
+                @csrf
+                <!-- Default box -->
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Изменяем компонент</h3>
