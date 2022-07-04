@@ -1,8 +1,10 @@
 include .env
 
 init: docker-down-clear \
-	docker-up
-
+	docker-up \
+	composer-install \
+	npm-i npx-mix \
+	migrate
 
 up: docker-up
 down: docker-down
@@ -30,6 +32,8 @@ node-bash:
 	docker-compose run --rm node /bin/sh
 npm-i:
 	docker-compose run --rm node npm i
+npx-mix:
+	docker-compose run --rm node npx mix
 npm-run-prod:
 	docker-compose run --rm node npm run prod
 

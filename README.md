@@ -28,7 +28,7 @@ chown www-data -R /var/www/phpqa.ru/app/storage/app/public/
 chown www-data -R /app/storage/app/public/
 ```
 - `npm install`
-- `npm run prod`
+- `npx mix`
 - fill all `MAIL_*` params in .env file for subscription functionality
 
 - Optional:

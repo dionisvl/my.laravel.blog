@@ -75,6 +75,9 @@ RUN wget https://getcomposer.org/installer -O - -q \
 COPY ./common/php/conf.d /usr/local/etc/php/conf.d
 COPY ./common/php/php-fpm.d /usr/local/etc/php-fpm.d
 
+# NodeJS
+RUN apk add --update nodejs npm
+
 WORKDIR /app
 
 HEALTHCHECK --interval=60s --timeout=55s --start-period=50s \

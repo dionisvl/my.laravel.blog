@@ -16,6 +16,24 @@ Docker running Nginx, PHP-FPM, MySQL and PHPMyAdmin.
 ### Installation to Dev
 - make sure that you have installed php and nginx on your wsl2 system
 - make sure that you have file phpqa.local.conf in /etc/nginx/sites-available/
+```
+server {
+    listen 80;
+    server_name phpqa.local;
+    server_tokens off;
+    include /etc/nginx/snippets/certbot.conf;
+    location / {
+        proxy_set_header  Host $host;
+        proxy_set_header  X-Real-IP $remote_addr;
+        proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Host $remote_addr;
+        proxy_set_header  X-NginX-Proxy true;
+        proxy_pass        http://phpqa-nginx;
+        proxy_ssl_session_reuse off;
+        proxy_redirect off;
+    }
+}
+```
 - make sure that you have file .env in root directory of project with params:
 ```
 # Gateway
@@ -26,7 +44,8 @@ GATEWAY_DOCKER_PORT=80
 - `make composer-install`
 - create database if not exists with name `my.laravel.blog`
 - `make migrate`
-- open url - http://phpqa.local:8080/
+- `chmod 777 -R app/storage`
+- open url - http://phpqa.local:80/
 
 #### Optional:
 - check current DataBase IP by command:
