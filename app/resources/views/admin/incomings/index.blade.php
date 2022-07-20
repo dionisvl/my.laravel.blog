@@ -51,14 +51,19 @@
                                     @if($incoming->status == 1)
                                         <a href="/admin/incomings/toggle/{{$incoming->id}}" class="fa fa-lock"></a>
                                     @else
-                                        <a href="/admin/incomings/toggle/{{$incoming->id}}" class="fa fa-thumbs-o-up"></a>
+                                        <a href="/admin/incomings/toggle/{{$incoming->id}}"
+                                           class="fa fa-thumbs-o-up"></a>
                                     @endif
-                                    {{Form::open(['route'=>['incomings.destroy', $incoming->id], 'method'=>'delete'])}}
-                                    <button onclick="return confirm('are you sure?')" type="submit" class="delete">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-
-                                {{Form::close()}}
+                                    <form
+                                        action="{{ route('incomings.destroy', $incoming->id, false) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button onclick="return confirm('are you sure?')" type="submit" class="delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

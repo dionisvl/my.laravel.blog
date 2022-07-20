@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class CommentsController extends Controller
 {
     /**
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function store(Request $request): RedirectResponse
     {
@@ -25,7 +26,7 @@ class CommentsController extends Controller
             return redirect()->back()->withErrors(['Error: HPF']);
         }
 
-        $comment = new Comment;
+        $comment = new Comment();
         $comment->text = $request->get('message');
         $comment->post_id = $request->get('post_id');
         if (Auth::check()) {

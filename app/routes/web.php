@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web']], static function () {
     Route::get('/post/{slug}', [PostController::class, 'showBySlug'])->name('post.show');
     Route::get('/post-by-id/{id}', [PostController::class, 'showById'])->name('post.showById');
 });
@@ -33,7 +33,7 @@ Route::get('/profile', 'ProfileController@index');
 Route::post('/subscribe', 'SubsController@create')->name('subscribe.create');
 Route::get('/verify/{token}', 'SubsController@verify');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], static function () {
     Route::get('/profile', 'ProfileController@index');
     Route::post('/profile', 'ProfileController@store');
     Route::get('/logout', 'AuthController@logout');
@@ -41,18 +41,18 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::post('/comment', 'CommentsController@store');
 
-Route::group(['middleware' => ['cors']], function () {
+Route::group(['middleware' => ['cors']], static function () {
     Route::post('/incoming', 'IncomingsController@store');
 });
 
-Route::group(['middleware' => 'guest'], function () {
+Route::group(['middleware' => 'guest'], static function () {
     Route::get('/register', 'AuthController@registerForm');
     Route::post('/register', 'AuthController@register');
     Route::get('/login', 'AuthController@loginForm')->name('login');
     Route::post('/login', 'AuthController@login');
 });
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['admin', 'web']], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['admin', 'web']], static function () {
     Route::get('/', 'DashboardController@index');
     Route::resource('/categories', 'CategoriesController')->except('show');
     Route::resource('/tags', 'TagsController')->except('show');

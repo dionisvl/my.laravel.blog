@@ -57,7 +57,7 @@
                                     @endif
 
                                     <form
-                                        action="{{ route('admin.comments.destroy', ['id' => $comment->id, [], false]) }}"
+                                        action="{{ route('admin.comments.destroy', $comment->id, false) }}"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -65,6 +65,7 @@
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
