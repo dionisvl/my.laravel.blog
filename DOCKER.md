@@ -52,13 +52,37 @@ GATEWAY_DOCKER_PORT=80
     - Linux variant: `docker inspect mysql_phpqa | grep IPAddress`
     - Windows variant: `docker inspect mysql_phpqa | findstr IPAddress`
 - your config for connection from OS: `DATABASE_URL="mysql://root:root@127.0.0.1:8989/my.laravel.blog?serverVersion=8.0`
-- your config for connection from docker (and Adminer): `DATABASE_URL="mysql://root:root@172.18.0.2:8989/my.laravel.blog?serverVersion=8.0"`
+- your config for connection from docker (and
+  Adminer): `DATABASE_URL="mysql://root:root@172.18.0.2:8989/my.laravel.blog?serverVersion=8.0"`
 - Adminer example working url for PG:
     - http://localhost:8080/?pgsql=172.19.0.2&username=root
 - enter to container `docker ps -a`,
   `docker exec -ti {{ container name }} /bin/sh`
   `docker exec -ti phpqarud_php-fpm_1 /bin/sh`
 - `chmod 644 data/db/mysql/my.cnf`
+
+### Installation to Prod
+
+- you need to have nginx installed on your parent system, but not in running mode so as not to occupy port 80.
+- `cd /var/www/phpqa.ru`
+- `docker-compose up --build --remove-orphans` - for Debug mode!
+- after any changes in Nginx config, you need to restart docker container: `docker-compose restart gateway`
+
+#### make certs
+
+- if you have any problem with certs then you may remove certbot from system and install again:
+  `sudo apt-get remove certbot`
+- `cd /var/www/phpqa.ru`
+- `make down`
+- go to `provisioning` directory and run command:
+    - `make site`
+
+#### renew certs
+
+- go to production server and run command: `certbot renew`
+- or `certbot certonly --noninteractive --agree-tos -d phpqa.ru -d www.phpqa.ru`
+- or go to provisioning directory and run command:
+    - `make renew-certificates`
 
 ### Images to use
 

@@ -1,4 +1,4 @@
-FROM php:8.0.20-fpm-alpine
+FROM php:8.0.20-fpm-alpine3.16
 
 LABEL MAINTAINER="<dionisvl3@gmail.com>"
 LABEL RELEASEDATE="20211109"
