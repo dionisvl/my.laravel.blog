@@ -1,4 +1,4 @@
-FROM nginx:1.21-alpine
+FROM fabiocicerchia/nginx-lua:1.23.1-alpine3.16.2-compat
 
 RUN apk add --no-cache curl
 

@@ -1,17 +1,4 @@
-# Nginx PHP MySQL
-
-Docker running Nginx, PHP-FPM, MySQL and PHPMyAdmin.
-
-## Installation to production by docker-compose
-- go to provision directory and prepare target servers
-    - cd pro*
-    - make site
-    - make authorize
-    - make generate-deploy-key
-    - make authorize-deploy
-    - docker-login
-- return to main directory and deploy project to target servers by example command:
-    - `make deploy`
+# Docker running Nginx PHP MySQL
 
 ### Installation to Dev
 - make sure that you have installed php and nginx on your wsl2 system
@@ -35,19 +22,45 @@ server {
 }
 ```
 - make sure that you have file .env in root directory of project with params:
+
 ```
 # Gateway
 GATEWAY_HOTS_PORT=80
 GATEWAY_DOCKER_PORT=80
 ```
-- `make init` or `docker compose up --build`
+
+- `docker compose up --build` - MUST BE without errors (except nodeJS)
 - `make composer-install`
 - create database if not exists with name `my.laravel.blog`
 - `make migrate`
 - `chmod 777 -R app/storage`
+- In `hosts` file add:
+
+```
+127.0.0.1 phpqa.local
+```
+
 - open url - http://phpqa.local:80/
 
+## Installation to production by docker-compose
+
+- go to provision directory and prepare target servers
+    - cd pro*
+    - make site
+    - make authorize
+    - make generate-deploy-key
+    - make authorize-deploy
+    - docker-login
+- return to main directory and deploy project to target servers by example command:
+    - `make deploy`
+
+- you need to have nginx installed on your parent system, but not in running mode so as not to occupy port 80.
+- `cd /var/www/phpqa.ru`
+- `docker-compose up --build --remove-orphans` - for Debug mode!
+- after any changes in Nginx config, you need to restart docker container: `docker-compose restart gateway`
+
 #### Optional:
+
 - check current DataBase IP by command:
     - Linux variant: `docker inspect mysql_phpqa | grep IPAddress`
     - Windows variant: `docker inspect mysql_phpqa | findstr IPAddress`
@@ -60,13 +73,6 @@ GATEWAY_DOCKER_PORT=80
   `docker exec -ti {{ container name }} /bin/sh`
   `docker exec -ti phpqarud_php-fpm_1 /bin/sh`
 - `chmod 644 data/db/mysql/my.cnf`
-
-### Installation to Prod
-
-- you need to have nginx installed on your parent system, but not in running mode so as not to occupy port 80.
-- `cd /var/www/phpqa.ru`
-- `docker-compose up --build --remove-orphans` - for Debug mode!
-- after any changes in Nginx config, you need to restart docker container: `docker-compose restart gateway`
 
 #### make certs
 
@@ -84,18 +90,7 @@ GATEWAY_DOCKER_PORT=80
 - or go to provisioning directory and run command:
     - `make renew-certificates`
 
-### Images to use
-
-* [Nginx](https://hub.docker.com/_/nginx/)
-* [MySQL](https://hub.docker.com/_/mysql/)
-* [PHP-FPM](https://hub.docker.com/r/nanoninja/php-fpm/)
-* [Composer](https://hub.docker.com/_/composer/)
-* [PHPMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
-* [Generate Certificate](https://hub.docker.com/r/jacoelho/generate-certificate/)
-
-You should be careful when installing third party web servers such as MySQL or Nginx.
-
-This project use the following ports :
+### This project use the following ports :
 
 | Server          | Port | port internal |
 |-----------------|------|---------------|
@@ -125,9 +120,3 @@ ___
 ### Sources
 
 - https://github.com/nanoninja/docker-nginx-php-mysql
-
-## Настройки на хосте
-В файле hosts добавить
-```
-127.0.0.1 phpqa.local
-```

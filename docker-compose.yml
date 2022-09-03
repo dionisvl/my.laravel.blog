@@ -6,12 +6,15 @@ services:
             dockerfile: common/nginx/Dockerfile
         volumes:
             - /etc/letsencrypt:/etc/letsencrypt:ro
+            - /etc/ssl:/etc/ssl:ro
             - /var/www:/var/www:ro
             # Копируем все сайты из родительской системы в докер образ Nginx
             - /etc/nginx/sites-available:/etc/nginx/conf.d:rw
         ports:
             - ${GATEWAY_HOTS_PORT}:${GATEWAY_DOCKER_PORT}
             - "443:443"
+            - "8084:8084"
+            - "8083:8083"
 
     phpqa-nginx:
         build:

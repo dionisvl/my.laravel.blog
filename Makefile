@@ -37,11 +37,11 @@ npx-mix:
 npm-run-prod:
 	docker-compose run --rm node npm run prod
 
-# HOST=185.174.137.12 PORT=2222 BUILD_NUMBER=1 KEY=provisioning/files/deploy_rsa make deploy
+# HOST=185.255.132.6 PORT=2222 BUILD_NUMBER=1 KEY=provisioning/files/deploy_rsa make deploy
 deploy:
 	ssh deploy@${HOST} -p ${PORT} -i ${KEY} 'rm -rf site_${BUILD_NUMBER}'
 	ssh deploy@${HOST} -p ${PORT} -i ${KEY} 'mkdir site_${BUILD_NUMBER}'
-	scp -P ${PORT} -i ${KEY} docker-compose-production.yml deploy@${HOST}:site_${BUILD_NUMBER}/docker-compose.yml
+	scp -P ${PORT} -i ${KEY} docker-compose.yml deploy@${HOST}:site_${BUILD_NUMBER}/docker-compose.yml
 	ssh deploy@${HOST} -p ${PORT} -i ${KEY} 'cd site_${BUILD_NUMBER} && echo "COMPOSE_PROJECT_NAME=phpqa" >> .env'
 	ssh deploy@${HOST} -p ${PORT} -i ${KEY} 'cd site_${BUILD_NUMBER} && docker-compose up --build --remove-orphans -d'
 	ssh deploy@${HOST} -p ${PORT} -i ${KEY} 'rm -f site'

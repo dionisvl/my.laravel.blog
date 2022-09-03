@@ -2,8 +2,9 @@
 
 namespace Dionisvl\Chat\domain;
 
-use Ratchet\MessageComponentInterface;
+use Illuminate\Support\Facades\Log;
 use Ratchet\ConnectionInterface;
+use Ratchet\MessageComponentInterface;
 use Wkhooy\ObsceneCensorRus;
 
 // (C) CHAT CLASS
@@ -19,7 +20,9 @@ class RatchetChat implements MessageComponentInterface
     {
         $this->clients = new \SplObjectStorage;
         if ($this->debug) {
-            echo "Chat server started.\r\n";
+            $msg = "Chat server started.\r\n";
+            echo $msg;
+            Log::debug($msg);
         }
     }
 
@@ -28,7 +31,9 @@ class RatchetChat implements MessageComponentInterface
     {
         $this->clients->attach($conn);
         if ($this->debug) {
-            echo "Client connected: {$conn->resourceId}\r\n";
+            $msg = "Client connected: {$conn->resourceId}\r\n";
+            echo $msg;
+            Log::debug($msg);
         }
     }
 
@@ -37,7 +42,9 @@ class RatchetChat implements MessageComponentInterface
     {
         $this->clients->detach($conn);
         if ($this->debug) {
-            echo "Client disconnected: {$conn->resourceId}\r\n";
+            $msg = "Client disconnected: {$conn->resourceId}\r\n";
+            echo $msg;
+            Log::debug($msg);
         }
     }
 
@@ -46,18 +53,23 @@ class RatchetChat implements MessageComponentInterface
     {
         $conn->close();
         if ($this->debug) {
-            echo "Client error: {$conn->resourceId} | {$e->getMessage()}\r\n";
+            $msg = "Client error: {$conn->resourceId} | {$e->getMessage()} | {$e->getTraceAsString()}\r\n";
+            echo $msg;
+            Log::debug($msg);
         }
     }
 
     // (C6) ON RECEIVING MESSAGE FROM CLIENT - SEND TO EVERYONE
     public function onMessage(ConnectionInterface $from, $msg): void
     {
+        $msg = json_decode(stripslashes($msg), true, 512, JSON_THROW_ON_ERROR);
+
         if ($this->debug) {
-            echo "Received message from {$from->resourceId}: {$msg}\r\n";
+            $logMsg = "Received message from {$from->resourceId}: {$msg['m']}\r\n";
+//            echo $logMsg;
+            Log::debug($logMsg);
         }
 
-        $msg = json_decode($msg, true, 512, JSON_THROW_ON_ERROR);
         $msg['datetime'] = date('Y-m-d H:i:s');
         ObsceneCensorRus::filterText($msg['m']);
         $msg = json_encode($msg, JSON_THROW_ON_ERROR);
