@@ -14,6 +14,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -73,6 +74,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['adm
 Route::post('/search', [SearchController::class, 'index']);
 
 Route::post('/postlike/{post_id}', PostLikeController::class . '@toggle');
+
+Route::any('/my-ip', static function () {
+    return response()->json(['your-ip' => Request::ip()]);
+});
+
 /**
  * Verb             URI                     Action  Route Name
  * GET              /photos                 index   photos.index
