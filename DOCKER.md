@@ -74,8 +74,13 @@ GATEWAY_DOCKER_PORT=80
   `docker exec -ti phpqarud_php-fpm_1 /bin/sh`
 - `chmod 644 data/db/mysql/my.cnf`
 
-#### make certs
+## make certs
 
+- make sure that your website is accessible on :80 port
+- make sure that your nginx working correctly (`sudo nginx -t`/`sudo service nginx start`)
+- /etc/letsencrypt/cli.ini
+  - https://stackoverflow.com/questions/61770338/too-many-flags-setting-configurators-installers-authenticators-webroot-ngi
+- command for make cert: `sudo certbot --nginx -d pets.phpqa.ru`
 - if you have any problem with certs then you may remove certbot from system and install again:
   `sudo apt-get remove certbot`
 - `cd /var/www/phpqa.ru`
@@ -83,13 +88,16 @@ GATEWAY_DOCKER_PORT=80
 - go to `provisioning` directory and run command:
     - `make site`
 
-#### renew certs
+### renew certs
 
 - go to production server and run command: `certbot renew`
 - or `certbot certonly --noninteractive --agree-tos -d phpqa.ru -d www.phpqa.ru`
 - or go to provisioning directory and run command:
     - `make renew-certificates`
-
+- ```
+  sudo certbot --nginx -d pets.phpqa.ru
+  sudo certbot --nginx -d sveltewar.phpqa.ru
+  ```
 ### This project use the following ports :
 
 | Server          | Port | port internal |
