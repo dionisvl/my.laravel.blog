@@ -27,6 +27,8 @@ migrate:
 
 bash:
 	docker-compose run --rm php-fpm /bin/sh
+sh:
+	docker-compose exec php-fpm /bin/sh
 
 node-bash:
 	docker-compose run --rm node /bin/sh

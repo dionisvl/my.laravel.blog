@@ -263,7 +263,7 @@ class Post extends Model
     public function getTitle(): string
     {
         if (Request::is('/')) {
-            return 'WIKI, блог программиста, лучшие практики PHP, JS, SQL';
+            return config('app.main_title');
         }
 
         if (empty($this->title)) {

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
 use Dionisvl\FrontParts\Models\FrontPart;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -36,6 +37,10 @@ class AppServiceProvider extends ServiceProvider
                 'newCommentsCount' => Comment::where('status', 0)->count()
             ]);
         });
+
+        if (env('FORCE_HTTPS',false) || app()->environment('remote')) {
+            URL::forceScheme('https');
+        }
     }
 
     /**
