@@ -38,6 +38,7 @@ server {
     proxy_set_header Connection "upgrade";
   }
 }
+ВНИМАНИЕ, здесь 8080 - это CHAT_PROXY_SIDE_PORT
 end note
 GatewayContainer -> NginxOfConcreteSite:
 

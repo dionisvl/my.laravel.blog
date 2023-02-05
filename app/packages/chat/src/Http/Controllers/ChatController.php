@@ -22,4 +22,9 @@ class ChatController extends Controller
     {
 
     }
+
+    public function testView()
+    {
+        return view('chat::chat.pages.test');
+    }
 }

@@ -9,6 +9,22 @@
     ports:
         - "8083:8083"
 ```
+- Для тестирования необходимо убедиться в наличии nginx под-конфига тут
+  - \\wsl$\Ubuntu-22.04\etc\nginx\sites-available\phpqa.local.conf
+```
+server {
+  listen 8083;
+  location / {
+    proxy_pass http://phpqa-nginx:8085;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+  }
+}
+```
+
+- затем перейти по адресу: http://phpqa.local:8083/luap
+- получить ответ ``` Hello world from Lua  <<phpqa-nginx:8085>> container! ```
 
 ## chat_ratchet
 
@@ -48,8 +64,9 @@ php artisan chat:start
 ### Use case example (Windows platform):
 
 - edit CHAT_* params in .env file
-  server and client ports must be same. Ideal for both - 8083
-  client scheme must be "ws"
+  server and client ports must be same.
+  Ideal for both - 8083.
+  Client scheme must be "ws"
 - run server :
 ```
 php artisan chat:start
