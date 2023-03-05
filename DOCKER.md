@@ -76,7 +76,7 @@ GATEWAY_DOCKER_PORT=80
 
 ## make certs
 
-- make sure that your website is accessible on :80 port
+- Make sure that your website is accessible on :80 port
 - make sure that your nginx working correctly (`sudo nginx -t`/`sudo service nginx start`)
 - /etc/letsencrypt/cli.ini
   - https://stackoverflow.com/questions/61770338/too-many-flags-setting-configurators-installers-authenticators-webroot-ngi
@@ -86,18 +86,33 @@ GATEWAY_DOCKER_PORT=80
 - `cd /var/www/phpqa.ru`
 - `make down`
 - go to `provisioning` directory and run command:
-    - `make site`
+  - `make site`
 
-### renew certs
+## Renew certs UPDATE 2023-03-05
+
+- Stop all docker containers `cd /var/www/phpqa.ru` / `make down`
+- open file `etc\nginx\sites-available\pets.phpqa.ru.conf` and switch fastcgi_pass
+  to `fastcgi_pass unix:/var/run/php/php8.1-fpm.sock`
+- start local nginx `sudo nginx -t`/`sudo service nginx start`
+- Make sure that your website is accessible on :80 port
+- renew cert: `sudo certbot --nginx -d pets.phpqa.ru`
+- check that cert is renewed on website
+- stop local nginx `sudo service nginx stop`
+- open file `etc\nginx\sites-available\pets.phpqa.ru.conf` and switch fastcgi_pass back to docker container
+- Start all docker containers `cd /var/www/phpqa.ru` / `make up`
+- PROFIT
+
+#### Другие команды для обновления сертификата
 
 - go to production server and run command: `certbot renew`
 - or `certbot certonly --noninteractive --agree-tos -d phpqa.ru -d www.phpqa.ru`
 - or go to provisioning directory and run command:
-    - `make renew-certificates`
+  - `make renew-certificates`
 - ```
   sudo certbot --nginx -d pets.phpqa.ru
   sudo certbot --nginx -d sveltewar.phpqa.ru
   ```
+
 ### This project use the following ports :
 
 | Server          | Port | port internal |
