@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Visitor extends Model
 {
     protected $table = 'visitor';
-    protected $fillable = ['ip', 'browser', 'platform', 'referer'];
+    protected $fillable = ['ip', 'browser', 'platform', 'referer', 'target'];
 }

@@ -49,10 +49,12 @@ class VisitorController extends Controller
                     'browser' => $browser,
                     'platform' => $platform,
                     'referer' => $referer,
+                    'target' => request()->fullUrl(),
                 ]
             );
         } else {
             $visitor->referer_last = $referer;
+            $visitor->target = request()->fullUrl();
         }
 
         $visitor->save();
