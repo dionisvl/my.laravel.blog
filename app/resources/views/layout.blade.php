@@ -184,9 +184,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="text-center">&copy; @php echo date('Y'); @endphp <a href="#">Wiki Blog, </a> Designed
+                    <div class="text-center">&copy; @php echo date('Y'); @endphp <a href="#">PHPQA blog, </a> Designed
                         with
-                        <i class="fas fa-heart" style="color: red;"></i> by <a href="#">BWP</a>
+                        <i class="fas fa-heart" style="color: red;"></i> and <a href="#">Laravel 8</a>
                     </div>
                 </div>
             </div>
