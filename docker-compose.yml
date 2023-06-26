@@ -15,6 +15,9 @@ services:
             - "443:443"
             - "8084:8084"
             - "8083:8083"
+        networks:
+            mynetwork:
+                ipv4_address: 192.168.0.110
 
     phpqa-nginx:
         build:
@@ -22,6 +25,9 @@ services:
             dockerfile: common/nginx/Dockerfile
         volumes:
             - ./app:/app
+        networks:
+            mynetwork:
+                ipv4_address: 192.168.0.10
 
     php-fpm:
         build:
@@ -45,6 +51,9 @@ services:
             SENTRY_DSN: ${SENTRY_DSN}
         volumes:
             - ./app:/app
+        networks:
+            mynetwork:
+                ipv4_address: 192.168.0.20
 
     php-fpm-for-all:
         build:
@@ -54,6 +63,9 @@ services:
         volumes:
             - /var/www:/var/www:rw
             - ./app:/app
+        networks:
+            mynetwork:
+                ipv4_address: 192.168.0.30
 
     mysql:
         image: mysql:${MYSQL_VERSION}
@@ -70,6 +82,9 @@ services:
             - "8989:3306"
         security_opt:
             - seccomp:unconfined
+        networks:
+            mynetwork:
+                ipv4_address: 192.168.0.80
 
     node:
         build:
@@ -90,3 +105,9 @@ services:
 #        ports:
 #            - "1025:1025"   # smtp server
 #            - "8025:8025"   # web ui
+networks:
+    mynetwork:
+        ipam:
+            driver: default
+            config:
+                -   subnet: "192.168.0.0/24"
