@@ -77,3 +77,16 @@ services:
         container_name: node-phpqa
         volumes:
             - ./app:/app
+
+#    mailer:
+#        image: mailhog/mailhog
+#        environment:
+#            MAILER_HOST: ${MAILER_HOST}
+#            MAILER_PORT: ${MAILER_PORT}
+#            MAILER_USER: ${MAILER_USER}
+#            MAILER_PASSWORD: ${MAILER_PASSWORD}
+#            MAILER_ENCRYPTION: ${MAILER_ENCRYPTION}
+#            MAILER_FROM_EMAIL: ${MAILER_FROM_EMAIL}
+#        ports:
+#            - "1025:1025"   # smtp server
+#            - "8025:8025"   # web ui
