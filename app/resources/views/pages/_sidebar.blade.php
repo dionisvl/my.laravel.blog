@@ -5,7 +5,10 @@
             <h3 class="widget-title text-uppercase text-center">Get Newsletter</h3>
             {{--@include('admin.errors')--}}
 
-            <form action="{{route('subscribe.create')}}" method="post">
+            <form id="subscribe_form"
+                  action="{{route('subscribe.create')}}"
+                  method="post"
+            >
                 {{csrf_field()}}
 
                 <x-inputs.honeypot/>
@@ -21,7 +24,18 @@
                 </label>
                 <input type="submit" value="Subscribe Now"
                        class="text-uppercase text-center btn btn-subscribe" onclick="count_keyup()">
+                <input type="hidden" id="recaptchaResponse" name="recaptcha_response">
             </form>
+
+            <script>
+                document.getElementById('subscribe_form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    grecaptcha.execute('6LfXFfgmAAAAAIsCwVgf2a-UBefomwCjJIaJu5l2', {action: 'submit'}).then(function (token) {
+                        document.getElementById('recaptchaResponse').value = token;
+                        e.target.submit();
+                    });
+                });
+            </script>
         </aside>
 
         <aside class="widget">

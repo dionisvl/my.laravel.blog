@@ -31,7 +31,21 @@ class SubsController extends Controller
                 ->with('dangerStatus', implode(', ', $validator->errors()->all()));
         }
 
-        return $this->subscribe($request);
+        // Получение значения reCAPTCHA из POST-запроса
+        $captchaResponse = $request->get('recaptcha_response');
+        // Проверка reCAPTCHA
+        $secretKey = env('GOOGLE_RECAPTCHA_V3_SECRET_SERVER');
+        $response = file_get_contents(
+            "https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$captchaResponse}"
+        );
+        $responseData = json_decode($response, false);
+
+        if ($responseData->success) {
+            // Ваш код для обработки формы, если reCAPTCHA прошла успешно
+            return $this->subscribe($request);
+        }
+        // Обработка ошибки, если reCAPTCHA не пройдена
+        return redirect('/')->with('status', 'reCAPTCHA не пройдена' . json_encode($response));
     }
 
     private function subscribe(Request $request)
