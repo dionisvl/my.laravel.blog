@@ -79,14 +79,34 @@ GATEWAY_DOCKER_PORT=80
 - Make sure that your website is accessible on :80 port
 - make sure that your nginx working correctly (`sudo nginx -t`/`sudo service nginx start`)
 - /etc/letsencrypt/cli.ini
-  - https://stackoverflow.com/questions/61770338/too-many-flags-setting-configurators-installers-authenticators-webroot-ngi
+    - https://stackoverflow.com/questions/61770338/too-many-flags-setting-configurators-installers-authenticators-webroot-ngi
 - command for make cert: `sudo certbot --nginx -d pets.phpqa.ru`
 - if you have any problem with certs then you may remove certbot from system and install again:
   `sudo apt-get remove certbot`
-- `cd /var/www/phpqa.ru`
-- `make down`
-- go to `provisioning` directory and run command:
-  - `make site`
+    - `sudo apt-get install certbot`
+    - Ubuntu 20+: `sudo apt-get install python3-certbot-nginx` / Earlier
+      Versions `sudo apt-get install python-certbot-nginx`
+    - or Ansible variant:
+        - `cd /var/www/phpqa.ru`
+        - `make down`
+        - go to `provisioning` directory and run command: `make site`
+- Example nginx config for cert installation:
+
+```
+server {
+    listen 80;
+    server_name phpqa.ru www.phpqa.ru;
+    root /var/www/phpqa.ru/app/public;
+    index index.php;
+    try_files $uri $uri/ /index.php;
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+```
 
 ## Renew certs UPDATE 2023-03-05
 
