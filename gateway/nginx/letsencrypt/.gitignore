@@ -1,0 +1,4 @@
+*
+!.gitignore
+!.certbot.lock
+!logs

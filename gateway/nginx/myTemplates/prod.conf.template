@@ -1,0 +1,65 @@
+server {
+    listen 80;
+    server_name phpqa.ru www.phpqa.ru;
+    server_tokens off;
+    root /var/www/phpqa.ru/app/public;
+    index index.php;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass   php-fpm:9000;
+    }
+
+    location ~* \.(js|jpg|jpeg|gif|png|svg|css|ico)$ {
+        # Allow direct access to JavaScript, images, and other static files
+        try_files $uri =404;
+        expires 30d;
+        access_log off;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+
+
+server {
+    listen 443 ssl http2;
+    server_name phpqa.ru www.phpqa.ru;
+    server_tokens off;
+    root /var/www/phpqa.ru/app/public;
+    index index.php;
+
+    ssl_certificate /etc/letsencrypt/live/phpqa.ru/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/phpqa.ru/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/phpqa.ru/chain.pem;
+
+    include /etc/nginx/snippets/resolver.conf;
+    include /etc/nginx/snippets/ssl.conf;
+    include /etc/nginx/snippets/certbot.conf;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass   php-fpm:9000;
+    }
+
+    location ~* \.(js|jpg|jpeg|gif|png|svg|css|ico)$ {
+        # Allow direct access to JavaScript, images, and other static files
+        try_files $uri =404;
+        expires 30d;
+        access_log off;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+

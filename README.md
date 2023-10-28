@@ -18,6 +18,8 @@
 - create empty DB and config it into .env
 - php artisan migrate
 - php artisan storage:link
+- `mkdir -p storage/framework/{sessions,views,cache}`
+- `sudo chmod -R 777 storage`
 - ln -s /var/www/THIS_SITE/storage/app/public/ /var/www/THIS_SITE/html/public/storage
 ```
 chown www-data -R /app/storage/logs/

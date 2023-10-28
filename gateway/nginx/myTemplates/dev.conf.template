@@ -1,0 +1,28 @@
+server {
+    listen 80;
+    server_name phpqa.local;
+    root /var/www/my.phpqa/app/public;
+    index index.php;
+
+    #include /etc/nginx/snippets/certbot.conf;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass   php-fpm:9000;
+    }
+
+    location ~* \.(js|jpg|jpeg|gif|png|svg|css|ico)$ {
+        # Allow direct access to JavaScript, images, and other static files
+        try_files $uri =404;
+        expires 30d;
+        access_log off;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
