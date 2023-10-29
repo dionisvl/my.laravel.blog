@@ -25,7 +25,7 @@ services:
             - ./gateway/nginx/letsencrypt:/etc/letsencrypt
             - ./gateway/nginx/letsencrypt/logs:/var/log/letsencrypt
             - ./data/certbot/www:/var/www/certbot
-        command: certonly --webroot --webroot-path=/var/www/certbot --email ${CERTBOT_EMAIL} --agree-tos --no-eff-email --force-renewal --expand -d ${CERTBOT_DOMAINS}
+        #command: certonly --webroot --webroot-path=/var/www/certbot --email ${CERTBOT_EMAIL} --agree-tos --no-eff-email --force-renewal --expand -d ${CERTBOT_DOMAINS}
 
     php-fpm:
         build:

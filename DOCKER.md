@@ -56,8 +56,8 @@ GATEWAY_DOCKER_PORT=80
 
 - you need to have nginx installed on your parent system, but not in running mode so as not to occupy port 80.
 - `cd /var/www/phpqa.ru`
-- `docker-compose up --build --remove-orphans` - for Debug mode!
-- after any changes in Nginx config, you need to restart docker container: `docker-compose restart gateway`
+- `docker compose up --build --remove-orphans` - for Debug mode!
+- after any changes in Nginx config, you need to restart docker container: `docker compose restart gateway`
 
 #### Optional:
 
