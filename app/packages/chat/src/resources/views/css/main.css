@@ -1,74 +1,68 @@
-/* (A) WRAPPER + SHARED */
-#chat-wrap {
-    font: bold 12px/normal 'lucida grande', tahoma, verdana, arial, sans-serif;
-    border: 1px solid #aaa;
-    max-width: 600px;
-    margin: 10px auto;
-    border-radius: 2px;
-}
-
-#chat-messages, #chat-name, #chat-send {
-    padding: 5px;
-    border-radius: 2px;
-}
-
-/* (B) CHAT MESSAGES */
-#chat-messages {
-    height: 300px;
-    overflow: auto;
-}
-
-.ch-row {
+#chat-box-container {
     display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    overflow-y: auto;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 0.3em;
+    /*width: 170px;*/
+    width: auto;
+    height: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.6s ease;
+    z-index: 1; /* значение z-index больше, чем у большинства других элементов */
+    position: relative;
+}
+
+#chat_input_container {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    border: rgb(255, 0, 0) 3px;
+    border-radius: 0.3em;
+    padding: 5px;
+    background-color: lightgray;
+}
+
+label.chat_label {
+    width: 85px;
+}
+
+.chat_input[type="text"] {
+    max-width: 130px;
+}
+
+.chat_message_date {
     margin-bottom: 5px;
+    font-size: 9px;
+    color: darkgray;
 }
 
-.ch-name, .ch-msg {
-    padding: 5px;
-}
-
-.ch-name {
-    width: 150px;
-    background: #d63737;
-    color: #fff;
+.chat_username {
     font-weight: bold;
+    line-height: 1.25rem
 }
 
-.ch-msg {
-    width: 100%;
-    background: #ffe9e9;
-    border-radius: 2px;
+@keyframes move-up {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-/* (C) NAME + SEND MESSAGE */
-#chat-wrap input {
-    padding: 5px;
-    border: 0;
+#chat-message-list {
+    font-family: Verdana, serif;
+    font-size: 12px;
+    padding: 2px;
 }
 
-#chat-wrap input[type=submit] {
-    background: #5c63c1;
-    color: #fff;
-    cursor: pointer;
-}
-
-#chat-wrap input[type=submit]:disabled {
-    background: #b9b9b9;
-}
-
-#chat-name {
-    display: grid;
-}
-
-#chat-send {
-    display: none;
-}
-
-#chat-name, #chat-send {
-    grid-template-columns: 75% 25%;
-    background: #e2e2e2;
-}
-
-.ch-dt {
-    font-size: 8px;
+.chat_message {
+    animation: move-up 0.5s ease-out;
+    animation-fill-mode: forwards;
 }
