@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-    const socket = new WebSocket(CHAT_SCHEME + '://' + CHAT_HOST + ':' + CHAT_PORT + '/' + CHAT_ROUTE);
+    const socketUrl = CHAT_SCHEME + '://' + CHAT_HOST + ':' + CHAT_PORT + '/' + CHAT_ROUTE;
+    const socket = new WebSocket(socketUrl);
     const chat = document.getElementById('chat-message-list');
     const btn = document.getElementById('toggleBtn');
     const chatContainer = document.getElementById('chat-box-container');

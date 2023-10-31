@@ -3,12 +3,12 @@
 <script>
     // Default:
     // const CHAT_SCHEME = 'ws'
-    const CHAT_HOST = window.location.hostname
+    // const CHAT_HOST = window.location.hostname
     // const CHAT_PORT = '8011'
     // const CHAT_ROUTE = 'ws'
     // Configured:
     const CHAT_SCHEME = '{{config('chat.client_side.scheme')}}'
-    {{--const CHAT_HOST = '{{config('chat.client_side.host')}}'--}}
+    const CHAT_HOST = '{{config('chat.client_side.host')}}'
     const CHAT_PORT = '{{config('chat.client_side.port')}}'
     const CHAT_ROUTE = '{{config('chat.client_side.route')}}'
 </script>
