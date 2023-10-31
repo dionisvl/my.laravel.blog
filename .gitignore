@@ -41,3 +41,6 @@ storage/
 # SSL Certs
 etc/ssl/
 /storage/
+
+# Other projects
+app.my.gochat

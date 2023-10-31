@@ -42,7 +42,8 @@ label.chat_label {
 
 .chat_username {
     font-weight: bold;
-    line-height: 1.25rem
+    line-height: 1.25rem;
+    font-size: 13px;
 }
 
 @keyframes move-up {
@@ -65,4 +66,5 @@ label.chat_label {
 .chat_message {
     animation: move-up 0.5s ease-out;
     animation-fill-mode: forwards;
+    overflow-wrap: break-word;
 }
