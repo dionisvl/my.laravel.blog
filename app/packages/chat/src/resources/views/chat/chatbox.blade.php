@@ -37,7 +37,7 @@
                     Message:
                 </label>
             </div>
-            <input class="chat_input form-control" type="text" id="chat_message" name="chat_username"
+            <input class="chat_input form-control" type="text" id="chat_message" name="chat_message"
                    value="test message"
                    aria-describedby="chat_message_label">
         </div>

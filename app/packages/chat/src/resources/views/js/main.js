@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     const socketUrl = CHAT_SCHEME + '://' + CHAT_HOST + ':' + CHAT_PORT + '/' + CHAT_ROUTE;
-    const socket = new WebSocket(socketUrl);
+    let socket = new WebSocket(socketUrl);
+    socketInit()
     const chat = document.getElementById('chat-message-list');
     const btn = document.getElementById('toggleBtn');
     const chatContainer = document.getElementById('chat-box-container');
-
-
     let isExpanded = false;
     btn.addEventListener('click', () => {
         if (!isExpanded) {
@@ -56,52 +55,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const thisUserColor = getRandomColor();
     console.log('Current color:', thisUserColor);
 
-    let count = 0;
-    socket.onmessage = function (event) {
-        count++;
-        const msg = JSON.parse(event.data);
-
-        // Block of username
-        const usernameSpan = document.createElement('span');
-
-        // Block of message of this user
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('chat_message')
-        usernameSpan.textContent = msg.username + ':';
-        usernameSpan.classList.add('chat_username');
-        messageDiv.textContent = ' ' + msg.message;
-        usernameSpan.style.color = msg.color; // Set the text color to color of the username
-        messageDiv.insertBefore(usernameSpan, messageDiv.firstChild);
-
-        // block of Date of this message
-        const messageDateDiv = document.createElement('div');
-        messageDateDiv.classList.add('chat_message_date');
-        messageDateDiv.textContent = new Date(msg.time).toLocaleString();
-
-        messageDiv.insertAdjacentElement('beforeend', messageDateDiv);
-        chat.insertAdjacentElement('beforeend', messageDiv);
-        scrollBottom()
-    };
-
-    socket.addEventListener('close', (event) => {
-        console.log('WebSocket closed:', event);
-    });
-
-    socket.addEventListener('error', (event) => {
-        console.error('WebSocket error:', event);
-    });
-
-    socket.addEventListener('open', (event) => {
-        console.log('WebSocket connected');
-    });
-
-    socket.addEventListener('chat_message', (event) => {
-        console.log(`WebSocket message received: ${event.data}`);
-    });
-
-    socket.addEventListener('error', (event) => {
-        console.error('WebSocket error:', event);
-    });
 
 // Make smooth movement of messages to the top border
     const messages = document.querySelectorAll('.chat_message');
@@ -123,8 +76,77 @@ document.addEventListener("DOMContentLoaded", (event) => {
             message: message,
             color: thisUserColor
         };
-        socket.send(JSON.stringify(data));
+
+        sendMessageWithConnect(JSON.stringify(data));
     });
+
+    function sendMessageWithConnect(message) {
+        if (socket.readyState === WebSocket.OPEN) {
+            sendMessage(message)
+        } else {
+            console.log('WebSocket is not open. Attempting to reconnect...');
+            socketInit()
+            socket.addEventListener('open', () => {
+                sendMessage(message)
+            });
+        }
+    }
+
+    function socketInit() {
+        if (socket.readyState !== WebSocket.OPEN) {
+            socket = new WebSocket(socketUrl);
+        }
+        socket.onmessage = function (event) {
+            const msg = JSON.parse(event.data);
+
+            // Block of username
+            const usernameSpan = document.createElement('span');
+
+            // Block of message of this user
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat_message')
+            usernameSpan.textContent = msg.username + ':';
+            usernameSpan.classList.add('chat_username');
+            messageDiv.textContent = ' ' + msg.message;
+            usernameSpan.style.color = msg.color; // Set the text color to color of the username
+            messageDiv.insertBefore(usernameSpan, messageDiv.firstChild);
+
+            // block of Date of this message
+            const messageDateDiv = document.createElement('div');
+            messageDateDiv.classList.add('chat_message_date');
+            messageDateDiv.textContent = new Date(msg.time).toLocaleString();
+
+            messageDiv.insertAdjacentElement('beforeend', messageDateDiv);
+            chat.insertAdjacentElement('beforeend', messageDiv);
+            scrollBottom()
+        };
+
+        socket.addEventListener('close', (event) => {
+            console.log('WebSocket closed:', event);
+        });
+
+        socket.addEventListener('error', (event) => {
+            console.error('WebSocket error:', event);
+        });
+
+        socket.addEventListener('open', (event) => {
+            console.log('WebSocket connected');
+        });
+
+        socket.addEventListener('chat_message', (event) => {
+            console.log(`WebSocket message received: ${event.data}`);
+        });
+
+        socket.addEventListener('error', (event) => {
+            console.error('WebSocket error:', event);
+        });
+    }
+
+    function sendMessage(message) {
+        socket.send(message);
+        console.log('Message sent:');
+        console.log(message);
+    }
 
 // send message by Enter
     const messageInput = document.getElementById('chat_input_container');
@@ -137,4 +159,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
     console.log("web chat js fully loaded and parsed");
+
+    // random emoji paster
+    const emojis = ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "😊", "😇"];
+
+    function getRandomEmoji() {
+        return emojis[Math.floor(Math.random() * emojis.length)];
+    }
+
+    const inputField = document.getElementById('chat_message');
+    if (inputField.value === 'test message'){
+        inputField.value = inputField.value + getRandomEmoji();
+    }
 });

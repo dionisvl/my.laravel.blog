@@ -5,6 +5,19 @@ server {
     root /var/www/phpqa.ru/app/public;
     index index.php;
 
+	# do redirect to websocket nginx proxy
+	location /ws {
+        proxy_pass http://185.255.132.6:8010/ws;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+		proxy_read_timeout 600s;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
@@ -42,6 +55,23 @@ server {
     include /etc/nginx/snippets/ssl.conf;
     include /etc/nginx/snippets/certbot.conf;
 
+	# do redirect to websocket nginx proxy
+	location /ws {
+        proxy_pass http://185.255.132.6:8010/ws;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+		proxy_read_timeout 600s;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+	location /testWs/ {
+        default_type text/plain;
+        return 200 "hello everyone";
+    }
+
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
@@ -61,5 +91,7 @@ server {
     location ~ /\.ht {
         deny all;
     }
+
+
 }
 
