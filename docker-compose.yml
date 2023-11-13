@@ -30,7 +30,7 @@ services:
     php-fpm:
         build:
             context: app/.docker
-            dockerfile: common/php-fpm/Dockerfile
+            dockerfile: php-fpm/Dockerfile
         container_name: php-fpm
         environment:
 #            APP_DEBUG: ${APP_DEBUG}

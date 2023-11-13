@@ -20,13 +20,13 @@ docker-down-clear:
 
 
 composer-install:
-	docker compose run --rm php-fpm composer install
+	docker compose exec php-fpm composer install
 
 migrate:
-	docker compose run --rm php-fpm php artisan migrate
+	docker compose exec php-fpm php artisan migrate
 
 bash:
-	docker compose run --rm php-fpm /bin/sh
+	docker compose exec php-fpm /bin/bash
 sh:
 	docker compose exec php-fpm /bin/sh
 
@@ -54,3 +54,9 @@ rollback:
 	ssh deploy@${HOST} -p ${PORT} 'cd site_${BUILD_NUMBER} && docker compose up --build --remove-orphans -d'
 	ssh deploy@${HOST} -p ${PORT} 'rm -f site'
 	ssh deploy@${HOST} -p ${PORT} 'ln -sr site_${BUILD_NUMBER} site'
+
+a:
+	sudo chmod 777 -R ${APP_STORAGE_LOCATION}
+
+routes:
+	docker compose exec php-fpm php artisan route:list
