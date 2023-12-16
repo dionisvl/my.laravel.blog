@@ -8,6 +8,8 @@ init: docker-down-clear \
 
 up: docker-up
 down: docker-down
+build:
+	docker compose up --build -d
 
 docker-up:
 	docker compose up -d

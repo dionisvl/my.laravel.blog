@@ -15,6 +15,10 @@ RUN apt-get update && apt-get install -y \
         libgd-dev \
         cron \
         libpq-dev \
+        procps \
+        htop \
+        nano \
+        bash-completion \
     && docker-php-ext-install \
         gd \
         mysqli \
@@ -39,8 +43,6 @@ RUN pecl install xdebug \
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# bash-completion
-RUN apt-get install -y nano bash-completion && rm -rf /var/lib/apt/lists/*
 # bash как оболочка по умолчанию
 SHELL ["/bin/bash", "-c"]
 
