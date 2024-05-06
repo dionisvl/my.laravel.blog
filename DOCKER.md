@@ -108,14 +108,21 @@ server {
 }
 ```
 
-## Renew certs UPDATE 2024-02-11
+## Renewing certs UPDATE 2024-05-06
+- Open dir for ensure needed sites to renew: `/etc/letsencrypt/live/`
+- Prepare command to renew certs:
+  - Example command for renewing certs:
+    - `sudo certbot --nginx -d phpqa.ru -d www.phpqa.ru`
 - Stop all docker containers `cd /var/www/phpqa.ru` / `make down`
-- start local nginx `sudo nginx -t`/`sudo service nginx start`
+- start local nginx `sudo service nginx start`/`sudo nginx -t`
 - Make sure that your website is accessible on :80 port
-- renew certs:
-  - `sudo certbot --nginx -d phpqa.ru -d www.phpqa.ru`
+- Run command for renew certs, that was prepared previously
 - renewed certs will be stored there: `/etc/letsencrypt/live/`
+  - Check the certificate validity date:
+    - `cd /etc/letsencrypt/live/`
+    - `openssl x509 -enddate -noout -in cert.pem`
 - copy all of them to your letsencrypt docker directory
+  - check that certs really copied
 - stop local nginx `sudo service nginx stop`
 - Start all docker containers `cd /var/www/phpqa.ru` / `make up`
 - PROFIT
