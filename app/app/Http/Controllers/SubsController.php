@@ -9,6 +9,7 @@ use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Throwable;
 
 class SubsController extends Controller
 {
@@ -55,12 +56,12 @@ class SubsController extends Controller
         $subs = Subscription::add($request->get('email'));
         $subs->generateToken();
 
-        Mail::to($request->get('email'))->send((new SubscribeEmail($subs->token)));
-
-        if (count(Mail::failures()) > 0) {
+        try {
+            Mail::to($request->get('email'))->send((new SubscribeEmail($subs->token)));
+        } catch (Throwable $e) {
             return redirect('/')->with(
                 'dangerStatus',
-                'Ошибка при отправке письма: ' . implode(', ', Mail::failures())
+                'Error during sending email: ' . $e->getMessage(),
             );
         }
 
