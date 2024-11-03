@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Incoming;
@@ -15,7 +17,7 @@ class IncomingsController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'message' => 'required'
+            'message' => 'required',
         ]);
 
         $incoming = new Incoming();
@@ -29,7 +31,7 @@ class IncomingsController extends Controller
             [
                 'status' => 'ok',
                 'timestamp' => time(),
-                'data' => 'Your message was received! thankyou!'
+                'data' => 'Your message was received! thankyou!',
             ]
         );
     }

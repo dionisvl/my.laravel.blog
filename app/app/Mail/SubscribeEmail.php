@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
@@ -8,7 +10,8 @@ use Illuminate\Queue\SerializesModels;
 
 class SubscribeEmail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
 
     public $token;
@@ -32,7 +35,7 @@ class SubscribeEmail extends Mailable
     {
         return $this->view('emails.verify')
                     ->with([
-                        'token' => $this->token
+                        'token' => $this->token,
                     ]);
     }
 }

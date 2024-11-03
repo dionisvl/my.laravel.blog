@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
@@ -8,21 +10,23 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $user = Auth::user();
-        return view ('pages.profile', ['user' => $user]);
+        return view('pages.profile', ['user' => $user]);
     }
 
-    public function store(Request $request){
-        $this->validate($request,[
+    public function store(Request $request)
+    {
+        $this->validate($request, [
             'name' => 'required',
             'email' => [
                 'required',
                 'email',
-                Rule::unique('users')->ignore(Auth::user()->id)
+                Rule::unique('users')->ignore(Auth::user()->id),
             ],
             'password' => 'required',
-            'avatar' => 'nullable|image'
+            'avatar' => 'nullable|image',
         ]);
 
         $user = Auth::user();

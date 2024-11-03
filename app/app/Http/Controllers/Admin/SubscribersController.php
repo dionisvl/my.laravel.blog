@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Subscription;
@@ -21,7 +23,7 @@ class SubscribersController extends Controller
     {
         $subs = Subscription::all();
 
-        return view('admin.subs.index', ['subs'=>$subs]);
+        return view('admin.subs.index', ['subs' => $subs]);
     }
 
     /**
@@ -44,7 +46,7 @@ class SubscribersController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
-            'email' => 'required|email|unique:subscriptions'
+            'email' => 'required|email|unique:subscriptions',
         ]);
 
         Subscription::add($request->get('email'));

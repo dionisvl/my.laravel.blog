@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use App\Models\Category;
@@ -34,11 +36,11 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('admin._sidebar', static function ($view) {
             $view->with([
-                'newCommentsCount' => Comment::where('status', 0)->count()
+                'newCommentsCount' => Comment::where('status', 0)->count(),
             ]);
         });
 
-        if (env('FORCE_HTTPS',false) || app()->environment('remote')) {
+        if (env('FORCE_HTTPS', false) || app()->environment('remote')) {
             URL::forceScheme('https');
         }
     }
@@ -50,6 +52,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+
     }
 }

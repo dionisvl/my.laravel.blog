@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
@@ -18,7 +20,7 @@ class CommentsController extends Controller
         $this->validate($request, [
             'message' => 'required',
 //            'honeypot' => 'regex:/^$/',//check for field IS empty
-            'countMe' => 'required|numeric|min:3'
+            'countMe' => 'required|numeric|min:3',
         ]);
 
         $honeypot = $request->get('honeypot');

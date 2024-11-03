@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -7,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
 /**
- * Class Tag
+ * Class Tag.
  * @package App\Models
  * @property string slug
  */
@@ -27,7 +29,7 @@ class Tag extends Model
 
     public static function create($fields): Tag
     {
-        $tag = new static;
+        $tag = new static();
         $tag->fill($fields);
         $tag->slug = Str::slug($fields['title']);
         $tag->save();

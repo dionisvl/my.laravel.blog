@@ -54,7 +54,7 @@
                                         <i class="fa fa-calendar"></i>
                                     </div>
                                     <input type="text" class="form-control pull-right" id="datepicker" name="date"
-                                           value="<?=date('d/m/y')?>">
+                                           value="<?= date('d/m/y')?>">
                                 </div>
 
                                 <label for="balance">Остаток(на складе):</label>

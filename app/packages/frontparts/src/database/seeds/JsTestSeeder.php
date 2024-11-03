@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Dionisvl\FrontParts\database\seeds;
-
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

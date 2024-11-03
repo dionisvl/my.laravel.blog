@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
@@ -8,16 +10,19 @@ use App\Http\Controllers\Controller;
 
 class CategoriesController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $categories = Category::all();
         return view('admin.categories.index', ['categories' => $categories]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('admin.categories.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $this->validate($request, [
             'title' => 'required',
 //            'description' => 'required',
@@ -27,12 +32,14 @@ class CategoriesController extends Controller
         return redirect()->route('categories.index');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $category = Category::find($id);
-        return view('admin.categories.edit', ['category'=>$category]);
+        return view('admin.categories.edit', ['category' => $category]);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $this->validate($request, [
             'title' => 'required',
         ]);
@@ -44,7 +51,8 @@ class CategoriesController extends Controller
         return redirect()->route('categories.index');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         Category::find($id)->delete();
         return redirect()->route('categories.index');
     }

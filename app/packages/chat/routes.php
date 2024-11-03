@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Dionisvl\Chat\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 

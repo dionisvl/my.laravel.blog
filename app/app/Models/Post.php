@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Http\Controllers\PostController;
@@ -15,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 /**
- * Class Post
+ * Class Post.
  * @package App\Models
  * @property int id
  * @property string slug
@@ -23,7 +25,7 @@ use Illuminate\Support\Str;
  * @property bool is_featured
  * @property string image
  * @property bool status
- * @property string created_at
+ * @property Carbon created_at
  * @property int category_id
  * @property Tag[]|Collection tags
  * @property-read bool isLiked
@@ -67,7 +69,7 @@ class Post extends Model
 
     public static function add($fields): self
     {
-        $post = new static;
+        $post = new static();
         $post->fill($fields);
         $post->slug = Str::slug($fields['title']);
         $post->user_id = Auth::user()->id ?? 1;
@@ -204,7 +206,7 @@ class Post extends Model
 
     public function getDate()
     {
-        return date('F d, Y', strtotime($this->created_at));
+        return $this->created_at->format('F d, Y');
     }
 
     public function getPrevious()
@@ -274,10 +276,10 @@ class Post extends Model
     }
 
     /* Аксессор для получения количества лайков, $post->likes_count*/
-//    public function getLikesCountAttribute()
-//    {
-//        return $this->likes()->where('post_id', $this->id)->count();
-//    }
+    //    public function getLikesCountAttribute()
+    //    {
+    //        return $this->likes()->where('post_id', $this->id)->count();
+    //    }
 
     /* Аксессор для определения поставлен ли лайк этим пользователем, $post->is_liked */
     public function getIsLikedAttribute(): bool

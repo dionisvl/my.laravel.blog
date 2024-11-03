@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Shop\Http\Controllers\Admin;
 
 use Dionisvl\Shop\Models\Order;
@@ -20,18 +22,18 @@ class OrdersController extends Controller
      */
     public function index(): View
     {
-        $data = (new OrdersListPresenter)->getBladeOrdersList();
+        $data = (new OrdersListPresenter())->getBladeOrdersList();
         return view('shop::admin.orders.index', $data);
     }
 
     /**
-     * Excel orders list download
+     * Excel orders list download.
      *
      * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
     public function downloadExcelOrdersList(): void
     {
-        $spreadsheet = (new OrdersListPresenter)->getExcelOrdersList();
+        $spreadsheet = (new OrdersListPresenter())->getExcelOrdersList();
 
         $filename = 'orders_' . date('Y-m-d') . '.xlsx';
         $writer = IOFactory::createWriter($spreadsheet, "Xlsx");
@@ -61,7 +63,7 @@ class OrdersController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
-            'title' => 'required'
+            'title' => 'required',
         ]);
 
         Order::add($request->all());
@@ -94,7 +96,7 @@ class OrdersController extends Controller
     public function update(Request $request, int $id): RedirectResponse
     {
         $this->validate($request, [
-            'title' => 'required'
+            'title' => 'required',
         ]);
 
         $order = Order::find($id);

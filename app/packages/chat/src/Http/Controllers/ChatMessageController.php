@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Chat\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Dionisvl\Chat\Models\ChatMessage;
 use Dionisvl\Chat\Models\ChatUser;
-use Illuminate\Support\Facades\Artisan;
 
 class ChatMessageController extends Controller
 {

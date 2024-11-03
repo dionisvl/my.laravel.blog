@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Shop\Http\Controllers;
 
 use App\Models\Category;

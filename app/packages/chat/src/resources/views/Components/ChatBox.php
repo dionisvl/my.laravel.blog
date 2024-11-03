@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Chat\resources\views\Components;
 
 use Closure;

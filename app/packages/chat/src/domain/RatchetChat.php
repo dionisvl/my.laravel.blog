@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Chat\domain;
 
 use Illuminate\Support\Facades\Log;
 use Ratchet\ConnectionInterface;
 use Ratchet\MessageComponentInterface;
 use Wkhooy\ObsceneCensorRus;
+use Exception;
+use SplObjectStorage;
 
 // (C) CHAT CLASS
 class RatchetChat implements MessageComponentInterface
@@ -18,7 +22,7 @@ class RatchetChat implements MessageComponentInterface
 
     public function __construct()
     {
-        $this->clients = new \SplObjectStorage;
+        $this->clients = new SplObjectStorage();
         if ($this->debug) {
             $msg = "Chat server started.\r\n";
             echo $msg;
@@ -49,7 +53,7 @@ class RatchetChat implements MessageComponentInterface
     }
 
     // (C5) ON ERROR
-    public function onError(ConnectionInterface $conn, \Exception $e): void
+    public function onError(ConnectionInterface $conn, Exception $e): void
     {
         $conn->close();
         if ($this->debug) {
@@ -66,7 +70,7 @@ class RatchetChat implements MessageComponentInterface
 
         if ($this->debug) {
             $logMsg = "Received message from {$from->resourceId}: {$msg['m']}\r\n";
-//            echo $logMsg;
+            //            echo $logMsg;
             Log::debug($logMsg);
         }
 

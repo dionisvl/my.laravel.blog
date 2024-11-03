@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\FrontParts\Http\Controllers\Admin;
 
 use Dionisvl\FrontParts\Models\FrontPart;

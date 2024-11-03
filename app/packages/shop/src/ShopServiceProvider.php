@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Shop;
 
 use App\Models\Category;
 use Dionisvl\Shop\Models\Order;
 use Illuminate\Support\ServiceProvider;
-
 
 class ShopServiceProvider extends ServiceProvider
 {
@@ -31,7 +32,7 @@ class ShopServiceProvider extends ServiceProvider
 
         view()->composer('admin._sidebar', static function ($view) {
             $view->with([
-                'newOrdersCount' => Order::where('status', 0)->count()
+                'newOrdersCount' => Order::where('status', 0)->count(),
             ]);
         });
 

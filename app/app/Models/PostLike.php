@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class PostLike
+ * Class PostLike.
  * @package App\Models
  * @property string created_at
  */

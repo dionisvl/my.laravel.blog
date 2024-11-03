@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Shop\Presenters;
 
 use Dionisvl\Shop\Models\Order;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 /**
- * HTML or Excel orders list Simple presenter
+ * HTML or Excel orders list Simple presenter.
  */
 class OrdersListPresenter
 {
@@ -41,16 +43,16 @@ class OrdersListPresenter
             ->setCreator("Den")
             ->setLastModifiedBy("Dionisvl")
             ->setTitle("My Awesome Orders");
-        $spreadsheet->getActiveSheet()->setCellValue('B1','My Awesome Orders');
+        $spreadsheet->getActiveSheet()->setCellValue('B1', 'My Awesome Orders');
         $spreadsheet->getActiveSheet()->getStyle('B1')
             ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED);
         $spreadsheet->getActiveSheet()->getStyle('B1')->getFont()->setSize(20);
         $spreadsheet->getActiveSheet()
             ->fromArray(
                 $orders,  // The data to set
-                NULL,        // Array values with this value will not be set
+                null,        // Array values with this value will not be set
                 'B2'         // Top left coordinate of the worksheet range where
-            //    we want to set these values (default is A1)
+                //    we want to set these values (default is A1)
             );
 
         return $spreadsheet;

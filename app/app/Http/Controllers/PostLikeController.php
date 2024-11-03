@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\PostLike;
@@ -42,7 +44,7 @@ class PostLikeController extends Controller
         if (empty($post_id)) {
             return response()->json([
                 'status' => 'error',
-                'data' => 'empty post_id'
+                'data' => 'empty post_id',
             ]);
         }
 
@@ -50,7 +52,7 @@ class PostLikeController extends Controller
             PostLike::where(
                 [
                     ['post_id', '=', $post_id],
-                    ['created_at', '=', Cookie::get('likedPostToday' . $post_id)]
+                    ['created_at', '=', Cookie::get('likedPostToday' . $post_id)],
                 ]
             )
                 ->delete();
@@ -58,7 +60,7 @@ class PostLikeController extends Controller
             return response()->json(
                 [
                     'status' => 'ok',
-                    'data' => 'unliked'
+                    'data' => 'unliked',
                 ]
             )->withCookie(Cookie::forget('likedPostToday' . $post_id));
         }
@@ -72,29 +74,32 @@ class PostLikeController extends Controller
 
         return response()->json([
             'status' => 'ok',
-            'data' => 'liked'
+            'data' => 'liked',
         ])->cookie(
-            'likedPostToday' . $post_id, $postLike->created_at, 60 * 24
+            'likedPostToday' . $post_id,
+            $postLike->created_at,
+            60 * 24
         );
     }
 
     public function getIp()
     {
         $ipaddress = '';
-        if (isset($_SERVER['HTTP_CLIENT_IP']))
+        if (isset($_SERVER['HTTP_CLIENT_IP'])) {
             $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-        else if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+        } elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        else if (isset($_SERVER['HTTP_X_FORWARDED']))
+        } elseif (isset($_SERVER['HTTP_X_FORWARDED'])) {
             $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-        else if (isset($_SERVER['HTTP_FORWARDED_FOR']))
+        } elseif (isset($_SERVER['HTTP_FORWARDED_FOR'])) {
             $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-        else if (isset($_SERVER['HTTP_FORWARDED']))
+        } elseif (isset($_SERVER['HTTP_FORWARDED'])) {
             $ipaddress = $_SERVER['HTTP_FORWARDED'];
-        else if (isset($_SERVER['REMOTE_ADDR']))
+        } elseif (isset($_SERVER['REMOTE_ADDR'])) {
             $ipaddress = $_SERVER['REMOTE_ADDR'];
-        else
+        } else {
             $ipaddress = 'UNKNOWN';
+        }
         return $ipaddress;
     }
 
@@ -109,7 +114,7 @@ class PostLikeController extends Controller
         $count = $this->getCount($post_id);
 
         return response()->json([
-            'count' => $count
+            'count' => $count,
         ]);
     }
 
@@ -118,4 +123,3 @@ class PostLikeController extends Controller
         return PostLike::where('post_id', $post_id)->count();
     }
 }
-

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 use Dionisvl\Shop\Http\Controllers\CategoryController;
 use Dionisvl\Shop\Http\Controllers\Admin\OrdersController;
 use Dionisvl\Shop\Http\Controllers\Admin\ProductsController;
 use Dionisvl\Shop\Http\Controllers\OrderController;
-use \Dionisvl\Shop\Http\Controllers\ProductController;
+use Dionisvl\Shop\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'shop', 'middleware' => ['web']], function () {

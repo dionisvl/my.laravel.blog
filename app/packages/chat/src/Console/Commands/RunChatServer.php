@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Chat\Console\Commands;
 
 use Dionisvl\Chat\domain\RatchetChat;
@@ -43,9 +45,9 @@ class RunChatServer extends Command
      */
     public function handle()
     {
-//        if (PHP_SAPI !== "cli") {
-//            die("Please run this in the command line");
-//        }
+        //        if (PHP_SAPI !== "cli") {
+        //            die("Please run this in the command line");
+        //        }
 
 
         try {

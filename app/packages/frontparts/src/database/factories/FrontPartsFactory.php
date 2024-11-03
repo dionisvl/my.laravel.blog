@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /** @var Factory $factory */
 
 use Dionisvl\FrontParts\Models\FrontPart;

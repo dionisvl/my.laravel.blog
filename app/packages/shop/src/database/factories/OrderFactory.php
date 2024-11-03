@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Shop\database\factories;
 
 use Dionisvl\Shop\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-
 
 class OrderFactory extends Factory
 {
@@ -27,7 +28,7 @@ class OrderFactory extends Factory
         return [
             'title' => $name,
             'slug' => Str::slug($name),
-            'price' => $this->faker->randomNumber(5)
+            'price' => $this->faker->randomNumber(5),
         ];
     }
 }

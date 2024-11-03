@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use DateTime;
@@ -10,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 /**
- * Class Portfolio
+ * Class Portfolio.
  * @package App\Models
  * @property string slug
  * @property int user_id
@@ -33,7 +35,7 @@ class Portfolio extends Model
 
     public static function add($fields): self
     {
-        $post = new static;
+        $post = new static();
         $post->fill($fields);
         $post->slug = Str::slug($fields['title']);
         $post->user_id = Auth::user()->id;

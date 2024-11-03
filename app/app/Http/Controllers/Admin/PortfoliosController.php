@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Portfolio;
-
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -45,7 +46,7 @@ class PortfoliosController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image',
         ]);
 
         $portfolio = Portfolio::add($request->all());
@@ -82,7 +83,7 @@ class PortfoliosController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image',
         ]);
 
         $portfolio = Portfolio::find($id);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Incoming;
@@ -10,7 +12,7 @@ class IncomingsController extends Controller
     public function index()
     {
         $incomings = Incoming::all();
-        return view('admin.incomings.index', ['incomings'	=>	$incomings]);
+        return view('admin.incomings.index', ['incomings' => $incomings]);
     }
 
     public function destroy(int $id): \Illuminate\Http\RedirectResponse

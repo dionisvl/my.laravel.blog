@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'proxy_side' => [
         'port' => env('CHAT_PROXY_SIDE_PORT', '8080'),
@@ -12,5 +14,5 @@ return [
         'route' => env('CHAT_CLIENT_SIDE_ROUTE', 'ws'),
     ],
 
-    'colors' => ['#007AFF', '#FF7000', '#FF7000', '#15E25F', '#CFC700', '#CFC700', '#CF1100', '#CF00BE', '#F00']
+    'colors' => ['#007AFF', '#FF7000', '#FF7000', '#15E25F', '#CFC700', '#CFC700', '#CF1100', '#CF00BE', '#F00'],
 ];

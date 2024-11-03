@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Mail\SubscribeEmail;
@@ -16,7 +18,7 @@ class SubsController extends Controller
             $request->all(),
             [
                 'email' => 'required|email|unique:subscriptions',
-                'countMe' => 'required|numeric|min:3'
+                'countMe' => 'required|numeric|min:3',
             ]
         );
 

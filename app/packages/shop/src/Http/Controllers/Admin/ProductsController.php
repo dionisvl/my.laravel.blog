@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Shop\Http\Controllers\Admin;
 
 use App\Models\Category;
@@ -51,7 +53,7 @@ class ProductsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'detail_text' => 'required',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image',
         ]);
 
         $product = Product::add($request->all());
@@ -92,7 +94,7 @@ class ProductsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'detail_text' => 'required',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image',
         ]);
 
         $product = Product::find($id);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -19,7 +21,7 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
-            'countMe' => 'required|numeric|min:3'
+            'countMe' => 'required|numeric|min:3',
         ]);
 
         $honeypot = $request->get('honeypot');
@@ -41,18 +43,18 @@ class AuthController extends Controller
     /**
      *   1. Проверить и залогинить пользователя на основе емайл и проля
      * 2. Если человек ввел неправильный логин или пароль выводим сообщение
-     * 3. иначе редиректим его на главную
+     * 3. иначе редиректим его на главную.
      */
     public function login(Request $request)
     {
         $this->validate($request, [
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         if (Auth::attempt([
             'email' => $request->get('email'),
-            'password' => $request->get('password')
+            'password' => $request->get('password'),
         ])) {
             $user = Auth::user();
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\FrontParts\database\seeds;
 
 use Illuminate\Database\Seeder;
@@ -15,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             JsTestSeeder::class,
-            CssTestSeeder::class
+            CssTestSeeder::class,
         ]);
     }
 }

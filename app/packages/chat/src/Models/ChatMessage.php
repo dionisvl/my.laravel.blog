@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Chat\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -7,7 +9,7 @@ use RuntimeException;
 use Throwable;
 
 /**
- * Online chat message
+ * Online chat message.
  */
 class ChatMessage extends Model
 {
@@ -21,7 +23,7 @@ class ChatMessage extends Model
 
     public static function add($fields): self
     {
-        $entity = new static;
+        $entity = new static();
 
         $entity->fill($fields);
         $entity->save();

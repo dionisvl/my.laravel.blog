@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Subscription
+ * Class Subscription.
  * @package App\Models
  * @property string email
  * @property string token
@@ -14,7 +16,7 @@ class Subscription extends Model
 {
     public static function add($email): self
     {
-        $sub = new static;
+        $sub = new static();
         $sub->email = $email;
         $sub->save();
 

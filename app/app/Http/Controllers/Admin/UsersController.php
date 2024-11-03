@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
@@ -21,8 +23,10 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.users.index',
-            ['users' => $users]);
+        return view(
+            'admin.users.index',
+            ['users' => $users]
+        );
     }
 
     /**
@@ -45,7 +49,7 @@ class UsersController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required',
-            'avatar' => 'nullable|image'
+            'avatar' => 'nullable|image',
         ]);
 
         $user = User::add($request->all());
@@ -85,9 +89,9 @@ class UsersController extends Controller
             'email' => [
                 'required',
                 'email',
-                Rule::unique('users')->ignore($user->id)
+                Rule::unique('users')->ignore($user->id),
             ],
-            'avatar' => 'nullable|image'
+            'avatar' => 'nullable|image',
         ]);
 
         $user->edit($request->all());

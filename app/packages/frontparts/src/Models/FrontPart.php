@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\FrontParts\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -8,7 +10,7 @@ use RuntimeException;
 use Throwable;
 
 /**
- * Class FrontPart
+ * Class FrontPart.
  * @package Dionisvl\FrontParts\Models
  * @property string slug
  */
@@ -21,12 +23,12 @@ class FrontPart extends Model
         'detail_text',
         'preview_text',
         'type',
-        'status'
+        'status',
     ];
 
     public static function add($fields): self
     {
-        $order = new static;
+        $order = new static();
 
         $order->fill($fields);
         $order->slug = static::getSlug($fields['title']);

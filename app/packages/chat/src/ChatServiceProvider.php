@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Chat;
 
 use Dionisvl\Chat\resources\views\Components\ChatBox;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-
 
 class ChatServiceProvider extends ServiceProvider
 {
@@ -25,7 +26,7 @@ class ChatServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->commands([
-            Console\Commands\RunChatServer::class
+            Console\Commands\RunChatServer::class,
         ]);
         $this->loadRoutesFrom($this->packageDir() . '/routes.php');
         $this->loadViewsFrom($this->packageDir() . '/src/resources/views', 'chat');

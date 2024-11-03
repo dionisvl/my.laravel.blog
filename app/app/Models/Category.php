@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Dionisvl\Shop\Models\Product;
@@ -8,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 /**
- * Class Category
+ * Class Category.
  * @property string slug
  */
 class Category extends Model

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Shop\Models;
 
 use Dionisvl\Shop\database\factories\OrderFactory;
@@ -9,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 /**
- * Class Order
+ * Class Order.
  * @package Dionisvl\Shop\Models
  * @property string slug
  */
@@ -39,7 +41,7 @@ class Order extends Model
         'manager',
         'manager_id',
         'status',
-        'status_date'
+        'status_date',
     ];
 
     public static function add($fields): self

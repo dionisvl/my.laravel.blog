@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\Shop\Models;
 
 use App\Models\Category;
@@ -10,8 +12,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
 /**
- * Class Post
+ * Class Post.
  * @package App\Models
  * @property int id
  * @property string slug
@@ -43,7 +46,7 @@ class Product extends Model
 
     public static function add($fields): self
     {
-        $product = new static;
+        $product = new static();
 
         $product->fill($fields);
         $product->slug = static::getSlug($fields['title']);

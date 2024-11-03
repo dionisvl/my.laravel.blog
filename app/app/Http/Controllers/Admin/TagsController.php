@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Tag;
@@ -15,7 +17,6 @@ class TagsController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      */
     public function index()
     {
@@ -41,7 +42,7 @@ class TagsController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
-            'title' => 'required'
+            'title' => 'required',
         ]);
         Tag::create($request->all());
         return redirect()->route('tags.index');

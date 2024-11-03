@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dionisvl\FrontParts;
 
 use Illuminate\Support\ServiceProvider;
-
 
 class FrontPartsServiceProvider extends ServiceProvider
 {
