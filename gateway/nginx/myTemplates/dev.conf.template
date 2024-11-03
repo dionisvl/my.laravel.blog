@@ -1,7 +1,7 @@
 server {
     listen 80;
     server_name phpqa.local;
-    root /var/www/my.phpqa/app/public;
+    root /var/www/my.fb.admin/var/www/phpqa.ru/app/public;
     index index.php;
 
     #include /etc/nginx/snippets/certbot.conf;

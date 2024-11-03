@@ -67,17 +67,17 @@ services:
         ports:
             - "8989:3306"
 
-    postgresql:
-        image: postgres:15.6-alpine3.19
-        container_name: ${DB_POSTGRES_HOST}
-        environment:
-            - POSTGRES_DB=${DB_NAME}
-            - POSTGRES_USER=${DB_USER}
-            - POSTGRES_PASSWORD=${DB_PASSWORD}
-        volumes:
-            - "./data/db/pg/db_data:/var/lib/postgresql/data"
-        ports:
-            - "8988:5432"
+#    postgresql:
+#        image: postgres:15.6-alpine3.19
+#        container_name: ${DB_POSTGRES_HOST}
+#        environment:
+#            - POSTGRES_DB=${DB_NAME}
+#            - POSTGRES_USER=${DB_USER}
+#            - POSTGRES_PASSWORD=${DB_PASSWORD}
+#        volumes:
+#            - "./data/db/pg/db_data:/var/lib/postgresql/data"
+#        ports:
+#            - "8988:5432"
 
     node:
         build:

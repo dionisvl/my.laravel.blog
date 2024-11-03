@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     const socketUrl = CHAT_SCHEME + '://' + CHAT_HOST + ':' + CHAT_PORT + '/' + CHAT_ROUTE;
+    console.log('Connecting to WebSocket: ', socketUrl);
     let socket = new WebSocket(socketUrl);
     socketInit()
     const chat = document.getElementById('chat-message-list');

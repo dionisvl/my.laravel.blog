@@ -2,8 +2,6 @@
 
 return [
     'proxy_side' => [
-        'scheme' => env('CHAT_PROXY_SIDE_SCHEME', 'ws'),
-        'host' => env('CHAT_PROXY_SIDE_HOST', 'localhost'),
         'port' => env('CHAT_PROXY_SIDE_PORT', '8080'),
     ],
 

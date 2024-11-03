@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -53,10 +54,14 @@ class User extends Authenticatable
 
     public static function add($fields): User
     {
-        $user = new static;
-        $user->fill($fields);
+        $user = new User();
 
-        $user->save();
+        DB::transaction(function () use ($user, $fields) {
+            $user->fill($fields);
+            $user->save();
+            // todo: fix email verification, route notification is needed
+            // $user->sendEmailVerificationNotification();
+        });
 
         return $user;
     }

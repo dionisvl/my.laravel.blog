@@ -45,7 +45,7 @@ class VisitorController extends Controller
         if (empty($visitor)) {
             $visitor = Visitor::create(
                 [
-                    'ip' => $realIp,
+                    'ip' => $realIp ?? '',
                     'browser' => $browser,
                     'platform' => $platform,
                     'referer' => $referer,

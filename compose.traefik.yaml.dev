@@ -1,0 +1,55 @@
+name: ingress
+
+services:
+  traefik:
+    image: traefik:v3.1.2
+    container_name: traefik
+    restart: always
+    env_file:
+      - path: ./traefik/.env
+        required: true
+      - path: ./traefik/.env.override
+        required: false
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.http.address=:80"
+      - "--entrypoints.https.address=:443"
+      - "--entrypoints.traefik.address=:8080"
+      - "--providers.docker.exposedByDefault=false"
+      - "--providers.docker.watch=true"
+      - "--providers.docker.network=traefik"
+      - "--ping"
+      - "--ping.terminatingStatusCode=204"
+      - "--log.level=${TRAEFIK_LOG_LEVEL:-ERROR}"
+
+      # Web challenge
+        #- "--certificatesresolvers.letsencrypt.acme.tlschallenge=true"
+      # - "--certificatesresolvers.letsencrypt.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+        #- "--certificatesresolvers.cloudflare.acme.email=info@phpqa.ru"
+        #- "--certificatesresolvers.letsencrypt.acme.storage=/certs/le-acme.json"
+
+      # DNS Challenge
+      - "--certificatesresolvers.cloudflare.acme.dnschallenge=true"
+      - "--certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare"
+      # - "--certificatesresolvers.cloudflare.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.cloudflare.acme.email=info@phpqa.ru"
+      - "--certificatesresolvers.cloudflare.acme.storage=/certs/cf-acme.json"
+      - "--certificatesresolvers.cloudflare.acme.dnschallenge.delayBeforeCheck=10"
+
+      - "--log.filePath=/dev/stdout"
+      - "--log.level=DEBUG"
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+    healthcheck:
+      test: ['CMD', 'traefik', 'healthcheck', '--ping']
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik/certs:/certs
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    name: traefik
