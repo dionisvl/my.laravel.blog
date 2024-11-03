@@ -16,8 +16,8 @@ return (new PhpCsFixer\Config())
         'no_empty_comment' => true,
         'no_alternative_syntax' => true,
         'no_unneeded_control_parentheses' => true,
-        'function_typehint_space' => true,
-        'single_space_after_construct' => true,
+        'type_declaration_spaces' => true,
+        'single_space_around_construct' => true,
         'no_unused_imports' => true,
         'binary_operator_spaces' => true,
         'concat_space' => [

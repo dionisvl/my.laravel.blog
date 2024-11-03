@@ -182,6 +182,7 @@ return [
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -232,6 +233,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
+
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
     'main_module' => env('APP_MAIN_MODULE', '/'),
