@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Http\Controllers\PostController;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -32,6 +33,8 @@ use Illuminate\Support\Str;
  */
 class Post extends Model
 {
+    use HasFactory;
+
     public const IS_DRAFT = 0;
     public const IS_PUBLIC = 1;
 
@@ -104,7 +107,7 @@ class Post extends Model
         }
 
         $this->removeImage();
-        $filename = str_random(10) . '.' . $image->extension();
+        $filename = Str::random(10) . '.' . $image->extension();
         $image->storeAs('storage/uploads', $filename);
         $this->image = $filename;
         $this->save();

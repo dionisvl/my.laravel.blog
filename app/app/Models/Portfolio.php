@@ -71,7 +71,7 @@ class Portfolio extends Model
         }
 
         $this->removeImage();
-        $filename = str_random(10) . '.' . $image->extension();
+        $filename = Str::random(10) . '.' . $image->extension();
         $image->storeAs('storage/uploads/portfolio', $filename);
         $this->image = $filename;
         $this->save();

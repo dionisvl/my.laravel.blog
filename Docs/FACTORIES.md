@@ -7,6 +7,15 @@ php artisan tinker
 
 ## Main part
 
+
+### Factories
+```
+User::factory()->create();
+Post::factory()->create();
+Category::factory()->create();
+Tag::factory()->create();
+```
+
 ### Create user
 ```
 \App\Models\User::add(['name' => 'admin', 'email' => 'admin@admin.net', 'is_admin' => 1, 'password' => bcrypt('admin')]);

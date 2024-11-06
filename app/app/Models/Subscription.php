@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * Class Subscription.
@@ -25,7 +26,7 @@ class Subscription extends Model
 
     public function generateToken(): void
     {
-        $this->token = str_random(100);
+        $this->token = Str::random(100);
         $this->save();
     }
 
