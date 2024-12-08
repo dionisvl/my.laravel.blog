@@ -7,7 +7,7 @@ server {
 
 	# do redirect to websocket nginx proxy
 	location /ws {
-        proxy_pass http://185.255.132.6:8010/ws;
+        proxy_pass http://45.9.73.190:8010/ws;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "Upgrade";
@@ -60,7 +60,7 @@ server {
 
 	# do redirect to websocket nginx proxy
 	location /ws {
-        proxy_pass http://185.255.132.6:8010/ws;
+        proxy_pass http://45.9.73.190:8010/ws;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "Upgrade";
