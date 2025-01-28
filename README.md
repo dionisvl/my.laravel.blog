@@ -3,11 +3,11 @@
 
 ## Laravel ecommerce/blog template
 
-- С админкой "AdminLTE" 2.3.7
-- С редактором TinyMCE
-- Возможность создавать и редактировать теги/категории статей
-- Регистрация и управление пользователями
-- Подключение кода JS/CSS на сайт через админку
+- With the AdminLTE 2.3.7
+- With the TinyMCE editor
+- Ability to create and edit article tags/categories
+- Registration and user management
+- Connecting the JS/CSS code to the website via the admin panel
 
 ## How to Install
 
@@ -19,15 +19,11 @@
 - php artisan migrate
 - php artisan storage:link
 - `mkdir -p storage/framework/{sessions,views,cache}`
-- `sudo chmod -R 777 storage`
 - ln -s /var/www/THIS_SITE/storage/app/public/ /var/www/THIS_SITE/html/public/storage
+-
 ```
-chown www-data -R /app/storage/logs/
-chown www-data -R /app/storage/clockwork/
-chown www-data -R /app/storage/framework/
-chown www-data -R /app/bootstrap/cache/
-chown www-data -R /var/www/phpqa.ru/app/storage/app/public/
-chown www-data -R /app/storage/app/public/
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
 ```
 - `npm install`
 - `npx mix`
@@ -72,7 +68,6 @@ php artisan migrate:refresh --path=/database/migrations/fileName.php
 ```
 
 ### How to test and check honeypot
-
 Open post with comment text field, after it open browser console and write:
 
 ```
@@ -82,18 +77,9 @@ let honeypot = document.getElementById('honeypot');
 honeypot.value;
 ```
 
-### How to generate laravel request with namespace
-
-```
-php artisan make:request Post\AddPostRequest
-```
-
 ### cache
 ```
 php artisan optimize:clear
 composer dump-autoload
 composer cc
 ```
-
-#### mysql
-`mysql -u root -p -h mysql_phpqa`

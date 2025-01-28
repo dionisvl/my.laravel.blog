@@ -39,7 +39,7 @@
         </aside>
 
         <aside class="widget">
-            <h3 class="widget-title text-uppercase text-center">Online chat</h3>
+            <h3 class="widget-title text-uppercase text-center">Realtime chat</h3>
             <x-package-chat-box/>
         </aside>
 

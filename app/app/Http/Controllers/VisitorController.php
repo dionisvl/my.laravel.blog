@@ -36,7 +36,7 @@ class VisitorController extends Controller
         $realIp = request()->header('X-Real-IP');
         $browser = $agent->browser();
         $platform = $agent->platform();
-        $referer = $_SERVER['HTTP_REFERER'] ?? null;
+        $referer = $_SERVER['HTTP_REFERER'] ?? '';
         $referer = substr($referer, 0, 255);
 
         $visitor = Visitor::where('ip', $realIp)

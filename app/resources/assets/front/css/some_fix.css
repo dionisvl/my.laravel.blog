@@ -44,7 +44,7 @@
 .post-thumb {
     margin: 5px 5px 0 5px;
     display: grid;
-    grid-template-columns: minmax(50px, 200px) 1fr;
+    grid-template-columns: minmax(50px, 150px) 1fr;
 }
 
 .post-thumb img {
@@ -56,6 +56,7 @@
     position: relative;
     display: grid;
     justify-items: center;
+    align-items: center;
 }
 
 .post-thumb-overlay-img {
