@@ -45,3 +45,6 @@ etc/ssl/
 
 # Other projects
 app.my.gochat
+
+# Docker
+compose.override.yaml

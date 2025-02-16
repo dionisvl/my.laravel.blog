@@ -67,12 +67,24 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # Set the working directory for PHP
 WORKDIR /app
 
-# Expose port 9000 for PHP-FPM
-EXPOSE 9000
+## Run PHP-FPM on container start
+#CMD cron && docker-php-entrypoint php-fpm
 
-# Run PHP-FPM on container start
-CMD cron && docker-php-entrypoint php-fpm
+# Adding Nginx and Supervisor
+RUN apt-get update && apt-get install -y nginx supervisor \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-HEALTHCHECK --interval=60s --timeout=55s --start-period=50s \
-    CMD REDIRECT_STATUS=true SCRIPT_NAME=/ping SCRIPT_FILENAME=/ping REQUEST_METHOD=GET \
-    cgi-fcgi -bind -connect 127.0.0.1:9000 || exit 1
+# Copy Nginx and Supervisor configurations
+COPY ./php-fpm/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./php-fpm/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Create necessary directories
+RUN mkdir -p /run/nginx
+RUN mkdir -p /var/log/supervisor
+
+# Additional port for Nginx
+EXPOSE 80
+
+# Override the original CMD to use Supervisor
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

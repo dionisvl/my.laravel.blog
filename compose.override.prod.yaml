@@ -1,0 +1,83 @@
+services:
+  traefik:
+    command:
+      - "--api.dashboard=true"
+      - "--api.insecure=false"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.ws.address=:8080"
+      - "--certificatesresolvers.myresolver.acme.email=${ACME_EMAIL}"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./letsencrypt:/letsencrypt"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dashboard.rule=Host(`traefik.${DOMAIN_BASE}`)"
+      - "traefik.http.routers.dashboard.service=api@internal"
+      - "traefik.http.routers.dashboard.entrypoints=websecure"
+      - "traefik.http.routers.dashboard.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=${DASHBOARD_AUTH}"
+      - "traefik.http.routers.dashboard.tls.certresolver=myresolver"
+
+  php-fpm:
+    labels:
+      - "traefik.http.routers.phpqa.rule=Host(`phpqa.ru`, `www.phpqa.ru`)"
+      - "traefik.http.routers.phpqa.entrypoints=websecure"
+      - "traefik.http.routers.phpqa.tls.certresolver=myresolver"
+      - "traefik.http.routers.phpqa.middlewares=php-compress"
+      - "traefik.http.middlewares.php-compress.compress=true"
+      # WebSocket configuration
+      - "traefik.http.routers.phpqa-ws.rule=Host(`phpqa.ru`) && PathPrefix(`/ws`)"
+      - "traefik.http.routers.phpqa-ws.entrypoints=websecure"
+      - "traefik.http.routers.phpqa-ws.service=ws-service"
+      - "traefik.http.routers.phpqa-ws.tls.certresolver=myresolver"
+      - "traefik.http.services.ws-service.loadbalancer.server.port=8010"
+    networks:
+      - app-network
+
+  pets-app:
+    build:
+      context: app/.docker
+      dockerfile: php-fpm/Dockerfile
+    volumes:
+      - /var/www:/var/www
+    labels:
+      - "traefik.enable=true"
+      # HTTP to HTTPS redirect
+      - "traefik.http.routers.pets-http.rule=Host(`pets.phpqa.ru`, `www.pets.phpqa.ru`)"
+      - "traefik.http.routers.pets-http.entrypoints=web"
+      - "traefik.http.routers.pets-http.middlewares=pets-https-redirect"
+      - "traefik.http.middlewares.pets-https-redirect.redirectscheme.scheme=https"
+      # HTTPS configuration
+      - "traefik.http.routers.pets-secure.rule=Host(`pets.phpqa.ru`, `www.pets.phpqa.ru`)"
+      - "traefik.http.routers.pets-secure.entrypoints=websecure"
+      - "traefik.http.routers.pets-secure.tls=true"
+      - "traefik.http.routers.pets-secure.tls.certresolver=myresolver"
+      - "traefik.http.services.pets.loadbalancer.server.port=9000"
+    networks:
+      - app-network
+
+  sveltewar-app:
+    build:
+      context: /var/www/sveltewar.phpqa.ru/html/
+      dockerfile: Dockerfile
+    labels:
+      - "traefik.enable=true"
+      # HTTP to HTTPS redirect
+      - "traefik.http.routers.sveltewar-http.rule=Host(`sveltewar.phpqa.ru`)"
+      - "traefik.http.routers.sveltewar-http.entrypoints=web"
+      - "traefik.http.routers.sveltewar-http.middlewares=sveltewar-https-redirect"
+      - "traefik.http.middlewares.sveltewar-https-redirect.redirectscheme.scheme=https"
+      # HTTPS configuration
+      - "traefik.http.routers.sveltewar-secure.rule=Host(`sveltewar.phpqa.ru`)"
+      - "traefik.http.routers.sveltewar-secure.entrypoints=websecure"
+      - "traefik.http.routers.sveltewar-secure.tls=true"
+      - "traefik.http.routers.sveltewar-secure.tls.certresolver=myresolver"
+      - "traefik.http.services.sveltewar.loadbalancer.server.port=80"
+    networks:
+      - app-network
