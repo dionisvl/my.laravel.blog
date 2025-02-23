@@ -1,35 +1,35 @@
 # Application
-app/storage/*.key
-app/vendor
-app/codeception.yml
-app/.env
-app/.env.backup
-app/.env.testing
-app/.phpunit.result.cache
-app/Homestead.json
-app/Homestead.yaml
-app/npm-debug.log
-app/yarn-error.log
-app/node_modules
-app/composer.lock
-app/package-lock.json
-app/phpmyadmin/
+app-laravel/api-laravel/storage/*.key
+app-laravel/api-laravel/vendor
+app-laravel/api-laravel/codeception.yml
+app-laravel/api-laravel/.env
+app-laravel/api-laravel/.env.backup
+app-laravel/api-laravel/.env.testing
+app-laravel/api-laravel/.phpunit.result.cache
+app-laravel/api-laravel/Homestead.json
+app-laravel/api-laravel/Homestead.yaml
+app-laravel/api-laravel/npm-debug.log
+app-laravel/api-laravel/yarn-error.log
+app-laravel/api-laravel/node_modules
+app-laravel/api-laravel/composer.lock
+app-laravel/api-laravel/package-lock.json
+app-laravel/api-laravel/phpmyadmin/
 
-# app/public
-app/public/hot
-app/public/storage
-app/public/pets/
-app/public/css/front.css
-app/public/ckfinder/
-app/public/plugins/ckfinder/
-app/public/plugins/ckeditor/
-app/public/uploads/
-app/public/upload/
-app/public/vendor/telescope/
-app/public/robots.txt
-app/public/packages/chat/
-app/public/mix-manifest.json
-app/public/yandex_*
+# app-laravel/api-laravel/public
+app-laravel/api-laravel/public/hot
+app-laravel/api-laravel/public/storage
+app-laravel/api-laravel/public/pets/
+app-laravel/api-laravel/public/css/front.css
+app-laravel/api-laravel/public/ckfinder/
+app-laravel/api-laravel/public/plugins/ckfinder/
+app-laravel/api-laravel/public/plugins/ckeditor/
+app-laravel/api-laravel/public/uploads/
+app-laravel/api-laravel/public/upload/
+app-laravel/api-laravel/public/vendor/telescope/
+app-laravel/api-laravel/public/robots.txt
+app-laravel/api-laravel/public/packages/chat/
+app-laravel/api-laravel/public/mix-manifest.json
+app-laravel/api-laravel/public/yandex_*
 
 data/db/mysql/db_data
 data/db/pg/db_data

@@ -17,29 +17,32 @@ services:
       - app-network
 
   php-fpm:
-    build:
-      context: app/.docker
-      dockerfile: php-fpm/Dockerfile
+    build: app-laravel
     environment:
-      #            APP_DEBUG: ${APP_DEBUG}
       PHP_IDE_CONFIG: serverName=${SERVER_NAME}
       DB_HOST: ${DB_HOST}
       DB_USER: ${MYSQL_ROOT_USER}
       DB_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       DB_NAME: ${MYSQL_DATABASE}
-      MAILER_HOST: ${MAILER_HOST}
-      MAILER_PORT: ${MAILER_PORT}
-      MAILER_USER: ${MAILER_USER}
-      MAILER_PASSWORD: ${MAILER_PASSWORD}
-      MAILER_ENCRYPTION: ${MAILER_ENCRYPTION}
-      MAILER_FROM_EMAIL: ${MAILER_FROM_EMAIL}
-      SENTRY_DSN: ${SENTRY_DSN}
+    expose:
+      - "80"
     volumes:
-      - ./app:/app
+      - ./app-laravel/api-laravel:/app:rw
     networks:
       - app-network
-    labels:
-      - "traefik.enable=true"
+
+  pets-app:
+    build: app-laravel
+    volumes:
+      - /var/www/my.fb.admin/var/www/pets.phpqa.ru/app:/app:rw
+    environment:
+      PHP_IDE_CONFIG: serverName=${SERVER_NAME}
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${MYSQL_ROOT_USER}
+      DB_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
+    networks:
+      - app-network
 
   mysql:
     image: mysql:${MYSQL_VERSION}
