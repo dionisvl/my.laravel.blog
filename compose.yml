@@ -28,13 +28,17 @@ services:
       - "80"
     volumes:
       - ./app-laravel/api-laravel:/app:rw
+      - ./app-laravel/storage/app/public:/app/public/storage:rw
     networks:
       - app-network
 
   pets-app:
-    build: app-laravel
+    build: .docker/php-simple
     volumes:
       - /var/www/my.fb.admin/var/www/pets.phpqa.ru/app:/app:rw
+    env_file:
+      - path: ./.env
+        required: true
     environment:
       PHP_IDE_CONFIG: serverName=${SERVER_NAME}
       DB_HOST: ${DB_HOST}
