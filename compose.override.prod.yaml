@@ -9,7 +9,9 @@ services:
       - "--entrypoints.ws.address=:8080"
       - "--certificatesresolvers.myresolver.acme.email=${ACME_EMAIL}"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
-      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      #      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
     ports:
       - "80:80"
       - "443:443"
@@ -26,11 +28,19 @@ services:
 
   php-fpm:
     labels:
-      - "traefik.http.routers.phpqa.rule=Host(`phpqa.ru`, `www.phpqa.ru`)"
+      - "traefik.enable=true"
+      # HTTP
+      - "traefik.http.routers.phpqa-http.rule=Host(`phpqa.ru`)"
+      - "traefik.http.routers.phpqa-http.entrypoints=web"
+      - "traefik.http.routers.phpqa-http.service=phpqa"
+      # HTTPS
+      - "traefik.http.routers.phpqa.rule=Host(`phpqa.ru`) || Host(`www.phpqa.ru`)"
       - "traefik.http.routers.phpqa.entrypoints=websecure"
       - "traefik.http.routers.phpqa.tls.certresolver=myresolver"
-      - "traefik.http.routers.phpqa.middlewares=php-compress"
-      - "traefik.http.middlewares.php-compress.compress=true"
+      #      - "traefik.http.routers.phpqa.middlewares=php-compress"
+      #      - "traefik.http.middlewares.php-compress.compress=true"
+      - "traefik.http.routers.phpqa.service=phpqa"
+      - "traefik.http.services.phpqa.loadbalancer.server.port=80"
       # WebSocket configuration
       - "traefik.http.routers.phpqa-ws.rule=Host(`phpqa.ru`) && PathPrefix(`/ws`)"
       - "traefik.http.routers.phpqa-ws.entrypoints=websecure"
@@ -42,36 +52,36 @@ services:
 
   pets-app:
     volumes:
-      - /var/www/my.fb.admin/var/www/pets.phpqa.ru/app:/app:rw
+      - /var/www/pets.phpqa.ru/app:/app:rw
     labels:
       - "traefik.enable=true"
       # HTTP to HTTPS redirect
-      - "traefik.http.routers.pets-http.rule=Host(`pets.phpqa.ru`, `www.pets.phpqa.ru`)"
+      - "traefik.http.routers.pets-http.rule=Host(`pets.phpqa.ru`)"
       - "traefik.http.routers.pets-http.entrypoints=web"
-      - "traefik.http.routers.pets-http.middlewares=pets-https-redirect"
-      - "traefik.http.middlewares.pets-https-redirect.redirectscheme.scheme=https"
+      #      - "traefik.http.routers.pets-http.middlewares=pets-https-redirect"
+      #      - "traefik.http.middlewares.pets-https-redirect.redirectscheme.scheme=https"
       # HTTPS configuration
-      - "traefik.http.routers.pets-secure.rule=Host(`pets.phpqa.ru`, `www.pets.phpqa.ru`)"
+      - "traefik.http.routers.pets-secure.rule=Host(`pets.phpqa.ru`)"
       - "traefik.http.routers.pets-secure.entrypoints=websecure"
       - "traefik.http.routers.pets-secure.tls=true"
       - "traefik.http.routers.pets-secure.tls.certresolver=myresolver"
-      - "traefik.http.services.pets.loadbalancer.server.port=9000"
+      - "traefik.http.services.pets.loadbalancer.server.port=80"
     networks:
       - app-network
 
   sveltewar-app:
     build:
-      context: /var/www/my.fb.admin/var/www/sveltewar.phpqa.ru/html/
+      context: /var/www/sveltewar.phpqa.ru/html/
       dockerfile: Dockerfile
     volumes:
-      - /var/www/my.fb.admin/var/www/sveltewar.phpqa.ru/html/public:/usr/share/nginx/html/:rw
+      - /var/www/sveltewar.phpqa.ru/html/public:/usr/share/nginx/html/:rw
     labels:
       - "traefik.enable=true"
       # HTTP to HTTPS redirect
       - "traefik.http.routers.sveltewar-http.rule=Host(`sveltewar.phpqa.ru`)"
       - "traefik.http.routers.sveltewar-http.entrypoints=web"
-      - "traefik.http.routers.sveltewar-http.middlewares=sveltewar-https-redirect"
-      - "traefik.http.middlewares.sveltewar-https-redirect.redirectscheme.scheme=https"
+      #      - "traefik.http.routers.sveltewar-http.middlewares=sveltewar-https-redirect"
+      #      - "traefik.http.middlewares.sveltewar-https-redirect.redirectscheme.scheme=https"
       # HTTPS configuration
       - "traefik.http.routers.sveltewar-secure.rule=Host(`sveltewar.phpqa.ru`)"
       - "traefik.http.routers.sveltewar-secure.entrypoints=websecure"
