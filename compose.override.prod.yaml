@@ -41,11 +41,8 @@ services:
       - app-network
 
   pets-app:
-    build:
-      context: app/.docker
-      dockerfile: php-fpm/Dockerfile
     volumes:
-      - /var/www:/var/www
+      - /var/www/my.fb.admin/var/www/pets.phpqa.ru/app:/app:rw
     labels:
       - "traefik.enable=true"
       # HTTP to HTTPS redirect
@@ -64,8 +61,10 @@ services:
 
   sveltewar-app:
     build:
-      context: /var/www/sveltewar.phpqa.ru/html/
+      context: /var/www/my.fb.admin/var/www/sveltewar.phpqa.ru/html/
       dockerfile: Dockerfile
+    volumes:
+      - /var/www/my.fb.admin/var/www/sveltewar.phpqa.ru/html/public:/usr/share/nginx/html/:rw
     labels:
       - "traefik.enable=true"
       # HTTP to HTTPS redirect

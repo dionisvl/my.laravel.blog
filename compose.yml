@@ -18,6 +18,9 @@ services:
 
   php-fpm:
     build: app-laravel
+    env_file:
+      - path: ./.env
+        required: true
     environment:
       PHP_IDE_CONFIG: serverName=${SERVER_NAME}
       DB_HOST: ${DB_HOST}
@@ -34,8 +37,6 @@ services:
 
   pets-app:
     build: .docker/php-simple
-    volumes:
-      - /var/www/my.fb.admin/var/www/pets.phpqa.ru/app:/app:rw
     env_file:
       - path: ./.env
         required: true

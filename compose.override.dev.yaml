@@ -5,9 +5,10 @@ services:
       - "--api.insecure=true"
       - "--providers.docker=true"
       - "--entrypoints.web.address=:80"
-      - "--entrypoints.ws.address=:8080"
+    #      - "--entrypoints.ws.address=:8080"
     ports:
       - "80:80"
+      - "8080:8080"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.dashboard.rule=Host(`traefik.localhost`)"
@@ -15,51 +16,36 @@ services:
       - "traefik.http.routers.dashboard.entrypoints=web"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "/var/www:/var/www:rw"
+    networks:
+      - app-network
 
   php-fpm:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.services.phpqa.loadbalancer.server.port=80"
-      - "traefik.http.routers.phpqa.entrypoints=web"
-      - "traefik.http.routers.phpqa.rule=Host(`phpqa.local`)"
-      # WebSocket configuration for development
-      - "traefik.http.routers.phpqa-ws.rule=Host(`phpqa.local`) && PathPrefix(`/ws`)"
-      - "traefik.http.routers.phpqa-ws.entrypoints=ws"
-      - "traefik.http.services.ws-service.loadbalancer.server.port=8010"
-    expose:
-      - "80"
-    networks:
-      - app-network
+      - "traefik.http.services.php-fpm.loadbalancer.server.port=80"
+      - "traefik.http.routers.php-fpm.entrypoints=web"
+      - "traefik.http.routers.php-fpm.rule=Host(`phpqa.local`)"
 
   pets-app:
-    build:
-      context: app/.docker
-      dockerfile: php-fpm/Dockerfile
     volumes:
-      - /var/www/pets.phpqa.ru:/var/www/pets.phpqa.ru:rw
-      - /var/www:/var/www
+      - /var/www/my.fb.admin/var/www/pets.phpqa.ru/app:/app:rw
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.pets.rule=Host(`pets.local`)"
       - "traefik.http.routers.pets.entrypoints=web"
-      - "traefik.http.services.pets.loadbalancer.server.port=9000"
-      - "traefik.http.middlewares.pets-strip.stripprefix.prefixes=/var/www/pets.phpqa.ru/app/public"
-    networks:
-      - app-network
+      - "traefik.http.services.pets.loadbalancer.server.port=80"
 
   sveltewar-app:
     build:
       context: /var/www/my.fb.admin/var/www/sveltewar.phpqa.ru/html/
       dockerfile: Dockerfile
     volumes:
-      - /var/www/sveltewar.phpqa.ru/public:/usr/share/nginx/html/:rw
+      - /var/www/my.fb.admin/var/www/sveltewar.phpqa.ru/html/public:/usr/share/nginx/html/:rw
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.sveltewar.rule=Host(`sveltewar.local`)"
       - "traefik.http.routers.sveltewar.entrypoints=web"
-      - "traefik.http.services.sveltewar.loadbalancer.server.port=9000"
-      - "traefik.http.middlewares.sveltewar-strip.stripprefix.prefixes=/var/www/sveltewar.phpqa.ru/html/public"
+      - "traefik.http.services.sveltewar.loadbalancer.server.port=80"
     networks:
       - app-network
 

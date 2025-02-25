@@ -27,6 +27,8 @@ services:
       - "traefik.http.routers.php-fpm.rule=Host(`phpqa.local`)"
 
   pets-app:
+    volumes:
+      - /var/www/my.fb.admin/var/www/pets.phpqa.ru/app:/app:rw
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.pets.rule=Host(`pets.local`)"
