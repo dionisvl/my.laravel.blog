@@ -56,7 +56,8 @@ RUN apk add --no-cache \
     gettext \
     libffi \
     rabbitmq-c \
-    openssl
+    openssl \
+    linux-headers # Required for pecl
 
 # Install extensions properly
 RUN apk add --no-cache \
@@ -66,6 +67,12 @@ RUN apk add --no-cache \
     libzip-dev && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) gd zip
+
+# Install Xdebug with necessary dependencies
+RUN apk add --no-cache $PHPIZE_DEPS && \
+    pecl install xdebug && \
+    docker-php-ext-enable xdebug && \
+    apk del $PHPIZE_DEPS
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
