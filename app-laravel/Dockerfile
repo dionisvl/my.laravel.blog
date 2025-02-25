@@ -44,16 +44,12 @@ RUN apk add --no-cache \
     php83-sysvsem \
     php83-sysvshm \
     php83-tokenizer \
-    php83-pecl-xdebug \
     php83-pecl-amqp \
     # Runtime libraries
-    libzip \
-    libpng \
     oniguruma \
     libxml2 \
     curl \
     freetype \
-    libjpeg-turbo \
     libgd \
     postgresql-libs \
     icu \
@@ -61,6 +57,15 @@ RUN apk add --no-cache \
     libffi \
     rabbitmq-c \
     openssl
+
+# Install extensions properly
+RUN apk add --no-cache \
+    libpng-dev \
+    libjpeg-turbo-dev \
+    freetype-dev \
+    libzip-dev && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install -j$(nproc) gd zip
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
