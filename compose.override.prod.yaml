@@ -37,8 +37,8 @@ services:
       - "traefik.http.routers.phpqa.rule=Host(`phpqa.ru`) || Host(`www.phpqa.ru`)"
       - "traefik.http.routers.phpqa.entrypoints=websecure"
       - "traefik.http.routers.phpqa.tls.certresolver=myresolver"
-      #      - "traefik.http.routers.phpqa.middlewares=php-compress"
-      #      - "traefik.http.middlewares.php-compress.compress=true"
+      - "traefik.http.routers.phpqa.middlewares=php-compress"
+      - "traefik.http.middlewares.php-compress.compress=true"
       - "traefik.http.routers.phpqa.service=phpqa"
       - "traefik.http.services.phpqa.loadbalancer.server.port=80"
       # WebSocket configuration
