@@ -1,25 +1,19 @@
 include .env
 
 init: docker-down-clear \
-	docker-up \
 	composer-install \
 	npm-i npx-mix \
 	migrate
 
-up: docker-up
-down: docker-down
+up:
+	docker compose down -t 0 && docker compose up --build
+down:
+	docker compose down -t 0 --remove-orphans
 build:
 	docker compose up --build -d
 
-docker-up:
-	docker compose up -d
-
-docker-down:
-	docker compose down --remove-orphans
-
 docker-down-clear:
 	docker compose down -v --remove-orphans
-
 
 composer-install:
 	docker compose exec php-fpm composer install

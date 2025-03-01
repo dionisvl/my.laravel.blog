@@ -2,52 +2,61 @@
 
 ## Unreleased
 
-- выгрузка турбо страниц по API а не RSS
-
-- Сохранение кук в local storage
-- ajax полнотекстовый поиск
+- Turbo pages export via API instead of RSS
+- Saving cookies in local storage
+- Ajax full-text search
 
 ### 2021-05-30
 
-- laravel + docker (nginx + php + mysql)
+- Laravel + Docker (nginx + php + mysql)
 
 ## (05.01.2020)
 
-- add loading='lazy' to all imgs
+- Add loading='lazy' to all imgs
 
 ## v1.0.2 (06.08.2019)
 
-- готова email подписка
-- завершена миграция всех статей с https://sites.google.com/u/0/s/1nH469ev7zFblBP0E4qdUuND2G3lTOuEp/edit?usp=sites_home
+- Email subscription completed
+- Completed migration of all articles
+  from https://sites.google.com/u/0/s/1nH469ev7zFblBP0E4qdUuND2G3lTOuEp/edit?usp=sites_home
 
 ## v1.0.1 (06.04.2019)
 
-- простой поиск на laravel
+- Basic search on Laravel
 
 ## v1.0.0 (10.03.2019)
-- переезд на Laravel 5.7
+
+- Migration to Laravel 5.7
 
 ## v0.0.7 (01.03.2019)
-- переезд c shared-хостинга на VDS MSK-KVM-SSD Xeon E5-2650 v3
+
+- Migration from shared hosting to VDS MSK-KVM-SSD Xeon E5-2650 v3
 
 ## v0.0.6 (01.02.2019)
-- Привязка статьи к категориям.
-- Фильтрация по категориям.
+
+- Article to category linking
+- Category filtering
 
 ## v0.0.5 (30.01.2019)
-- на главной сделать только заголовки статей.
+
+- Show only article titles on homepage
 
 ## v0.0.4 (20.01.2019)
-- яндекс почта для домена
+
+- Yandex mail for domain
 
 ## v0.0.3 (22.12.2018)
-- Парсинг сайта HH по статистическим данным - интеграция MySQL с Chart.js для наглядного представления данных. - создание CRON задачи для автоматического ежедневного парсинга.
+
+- HeadHunter website parsing for statistical data - MySQL integration with Chart.js for data visualization - Creating
+  CRON job for automatic daily parsing
 
 ## v0.0.2 (22.11.2018)
-- autosizing of textarea
+
+- Autosizing of textarea
 
 ## v0.0.1 (29.10.2018)
 ### Added/Changed/Fixed/Removed
-- редактирование статей в tynymce
-- Добавить возможность "закрепить" статью
-- добавить кнопку "добавить статью" которая будет fadeIn-ить форму добавления статьи.
+
+- Article editing in TinyMCE
+- Add ability to "pin" articles
+- Add "add article" button that will fadeIn the article submission form
