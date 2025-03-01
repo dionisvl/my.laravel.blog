@@ -3,13 +3,12 @@ services:
     command:
       - "--api.dashboard=true"
       - "--api.insecure=false"
+      - "--log.level=WARNING"
       - "--providers.docker=true"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-      - "--entrypoints.ws.address=:8080"
       - "--certificatesresolvers.myresolver.acme.email=${ACME_EMAIL}"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
-      #      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
       - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
       - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
     ports:
@@ -17,6 +16,9 @@ services:
       - "443:443"
     volumes:
       - "./letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - app-network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.dashboard.rule=Host(`traefik.${DOMAIN_BASE}`)"
@@ -25,6 +27,23 @@ services:
       - "traefik.http.routers.dashboard.middlewares=auth"
       - "traefik.http.middlewares.auth.basicauth.users=${DASHBOARD_AUTH}"
       - "traefik.http.routers.dashboard.tls.certresolver=myresolver"
+
+  external-ws-proxy:
+    image: nginxinc/nginx-unprivileged:stable-alpine
+    expose:
+      - "80"
+    networks:
+      - app-network
+    volumes:
+      - ./.docker/go-chat/proxy.conf:/etc/nginx/conf.d/default.conf
+    labels:
+      - "traefik.enable=true"
+      - "traefik.tcp.routers.ws-phpqa.rule=HostSNI(`ws.phpqa.ru`)"
+      - "traefik.tcp.routers.ws-phpqa.entrypoints=websecure"
+      - "traefik.tcp.routers.ws-phpqa.tls=true"
+      - "traefik.tcp.routers.ws-phpqa.tls.certresolver=myresolver"
+      - "traefik.tcp.routers.ws-phpqa.service=ws-phpqa-service"
+      - "traefik.tcp.services.ws-phpqa-service.loadbalancer.server.port=80"
 
   php-fpm:
     labels:
@@ -37,16 +56,10 @@ services:
       - "traefik.http.routers.phpqa.rule=Host(`phpqa.ru`) || Host(`www.phpqa.ru`)"
       - "traefik.http.routers.phpqa.entrypoints=websecure"
       - "traefik.http.routers.phpqa.tls.certresolver=myresolver"
-      - "traefik.http.routers.phpqa.middlewares=php-compress"
-      - "traefik.http.middlewares.php-compress.compress=true"
+      #      - "traefik.http.routers.phpqa.middlewares=php-compress"
+      #      - "traefik.http.middlewares.php-compress.compress=true"
       - "traefik.http.routers.phpqa.service=phpqa"
       - "traefik.http.services.phpqa.loadbalancer.server.port=80"
-      # WebSocket configuration
-      - "traefik.http.routers.phpqa-ws.rule=Host(`phpqa.ru`) && PathPrefix(`/ws`)"
-      - "traefik.http.routers.phpqa-ws.entrypoints=websecure"
-      - "traefik.http.routers.phpqa-ws.service=ws-service"
-      - "traefik.http.routers.phpqa-ws.tls.certresolver=myresolver"
-      - "traefik.http.services.ws-service.loadbalancer.server.port=8010"
     networks:
       - app-network
 

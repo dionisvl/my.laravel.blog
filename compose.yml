@@ -1,8 +1,9 @@
 services:
   traefik:
-    image: traefik:v3.3.4
+    image: traefik:v3.2.5
     command:
       - "--providers.docker=true"
+      - "--providers.docker.exposedByDefault=false"
       - "--tracing=true"
       - "--tracing.serviceName=traefik"
       - "--metrics.prometheus=true"
@@ -17,7 +18,9 @@ services:
       - app-network
 
   php-fpm:
-    build: app-laravel
+    build:
+      context: ./app-laravel
+      dockerfile: ./Dockerfile
     env_file:
       - path: ./.env
         required: true
@@ -36,7 +39,9 @@ services:
       - app-network
 
   pets-app:
-    build: .docker/php-simple
+    build:
+      context: ./.docker/php-simple
+      dockerfile: ./Dockerfile
     env_file:
       - path: ./.env
         required: true
