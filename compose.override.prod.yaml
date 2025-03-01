@@ -3,10 +3,11 @@ services:
     command:
       - "--api.dashboard=true"
       - "--api.insecure=false"
-      - "--log.level=WARNING"
+      - "--log.level=WARN"
       - "--providers.docker=true"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.websecure.http3"
       - "--certificatesresolvers.myresolver.acme.email=${ACME_EMAIL}"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
@@ -14,6 +15,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "443:443/udp"  # for HTTP/3 UDP traffic
     volumes:
       - "./letsencrypt:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
@@ -56,10 +58,15 @@ services:
       - "traefik.http.routers.phpqa.rule=Host(`phpqa.ru`) || Host(`www.phpqa.ru`)"
       - "traefik.http.routers.phpqa.entrypoints=websecure"
       - "traefik.http.routers.phpqa.tls.certresolver=myresolver"
-      #      - "traefik.http.routers.phpqa.middlewares=php-compress"
-      #      - "traefik.http.middlewares.php-compress.compress=true"
+
       - "traefik.http.routers.phpqa.service=phpqa"
       - "traefik.http.services.phpqa.loadbalancer.server.port=80"
+
+      # Compress
+      - "traefik.http.routers.phpqa.middlewares=php-compress"
+      - "traefik.http.middlewares.php-compress.compress=true"
+      - "traefik.http.middlewares.php-compress.compress.includedcontenttypes=text/html,text/plain,text/css,application/javascript,application/json"
+
     networks:
       - app-network
 
