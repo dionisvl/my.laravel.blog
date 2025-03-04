@@ -2,14 +2,14 @@
 
 @section('content')
     <?php
-    /** Защита e-mail на сайте от спамеров */
+
     function protect($email)
     {
         $result = "";
         for ($i = 0; $i < strlen($email); $i++) $result .= "&#" . ord(substr($email, $i, 1)) . ";";
         return $result;
     }
-    //echo protect("a@bc.ru"); // В нужном месте преобразуем и выводим e-mail
+    //echo protect("a@bc.ru");
     ?>
 
     <style>
@@ -26,25 +26,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="new-products-title">Контакты</h1>
+                    <h1 class="new-products-title">Contacts</h1>
 
-                    <p><strong>Наш адрес:</strong> г. Москва, ул. Б. Черемушкинская, 1</p>
+                    <p><strong>Our address:</strong> 10 Rustaveli Avenue, Tbilisi, Georgia</p>
 
-                    {{--                    <p><strong>Телефон отдела продаж </strong>8 (916) 211-88-30</p>--}}
-
-                    <p>Пн-Пт 9.00 - 19.00</p>
+                    <p>Mon-Fri 9.00 - 19.00</p>
 
                     <p>
-                        <b>Электронный ящик:</b>
+                        <b>E-mail:</b>
                         <a href="mailto:<?=protect("info@" . $_SERVER['HTTP_HOST'])?>">
                             <?=protect("info@" . $_SERVER['HTTP_HOST'])?>
                         </a>
                     </p>
 
-
                     <div id="map_container" class="map container-fluid">
                         <script id="ymap_lazy" data-skip-moving="true" async=""
-                                data-src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A1ad4887964fc2e0a6f07c6246ffe638b138f8baacc8983f9a6a0f401a02e833a&amp;width=1280&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+                                data-src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A09fb52cdf1297e9cde612f27192a2ce7671dc4dc5ae01806ce6cf9a18b719793&amp;width=1280&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
                     </div>
                     <script>
                         let map_container = document.getElementById('map_container');

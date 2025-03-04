@@ -19,7 +19,7 @@
                        onclick="count_keyup()">
                 <label class="privacy-box"> <input class="form-control" type="checkbox" required="" checked="">
                     <span>
-                        Соглашаюсь на <a href="/privacy">обработку</a> персональных данных
+                        I agree to the <a href='/privacy'>processing</a> of personal data.
                     </span>
                 </label>
                 <input type="submit" value="Subscribe Now"

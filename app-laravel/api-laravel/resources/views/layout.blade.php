@@ -123,7 +123,7 @@
                     </div>
                     <div class="address">
                         <h4 class="text-uppercase">contact Info</h4>
-                        <p> б. Черемушкинская 20, Москва</p>
+                        <p> 10 Rustaveli Avenue, Tbilisi, Georgia</p>
                         <p> Phone: +123 456 78900</p>
                         <p>info@<?=$_SERVER['HTTP_HOST']?></p>
                     </div>
@@ -146,7 +146,7 @@
                             <div class="item active">
                                 <div class="single-review">
                                     <div class="review-text">
-                                        <p>Очень хороший сайт, прям помог вообще!</p>
+                                        <p>A very good website, it really helped a lot!</p>
                                     </div>
                                     <div class="author-id">
                                         <img src="/storage/blog_images/author.png" alt="" loading="lazy">
@@ -184,7 +184,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="text-center">&copy; @php echo date('Y'); @endphp <a href="#">PHPQA blog, </a> Designed
+                    <div class="text-center">&copy; 2019-@php echo date('Y'); @endphp <a href="#">PHPQA blog, </a> Designed
                         with
                         <i class="fas fa-heart" style="color: red;"></i> and <a href="#">Laravel 10</a>
                     </div>
@@ -192,6 +192,11 @@
             </div>
         </div>
     </div>
+    @isset($jsParts)
+        @foreach($jsParts as $jsPart)
+            {!! $jsPart !!}
+        @endforeach
+    @endisset
 </footer>
 <!-- js files -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -210,11 +215,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/autoloader/prism-autoloader.min.js"></script>
-@isset($jsParts)
-    @foreach($jsParts as $jsPart)
-        {!! $jsPart !!}
-    @endforeach
-@endisset
 
 </body>
 </html>
