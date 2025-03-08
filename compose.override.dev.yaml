@@ -1,21 +1,17 @@
 services:
   traefik:
     command:
+      - "--providers.docker=true"
       - "--api.dashboard=true"
       - "--api.insecure=true"
-      - "--providers.docker=true"
       - "--entrypoints.web.address=:80"
-    #      - "--entrypoints.ws.address=:8080"
     ports:
       - "80:80"
-      - "8080:8080"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.dashboard.rule=Host(`traefik.localhost`)"
       - "traefik.http.routers.dashboard.service=api@internal"
       - "traefik.http.routers.dashboard.entrypoints=web"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks:
       - app-network
 

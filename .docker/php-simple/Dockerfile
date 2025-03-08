@@ -1,9 +1,12 @@
 FROM php:8.3-fpm-alpine
 
-RUN apk add --no-cache nginx supervisor
+RUN apk add --no-cache nginx supervisor \
+    php83-gmp gmp
+
+RUN echo "extension=/usr/lib/php83/modules/gmp.so" > /usr/local/etc/php/conf.d/gmp.ini
 
 RUN docker-php-ext-install -j$(nproc) \
-   pdo_mysql mysqli
+    pdo_mysql mysqli
 
 WORKDIR /app
 

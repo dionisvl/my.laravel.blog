@@ -1,10 +1,10 @@
 services:
   traefik:
     command:
+      - "--providers.docker=true"
       - "--api.dashboard=true"
       - "--api.insecure=false"
       - "--log.level=WARN"
-      - "--providers.docker=true"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.websecure.http3"
