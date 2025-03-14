@@ -25,7 +25,7 @@
 
     <meta name="yandex-verification" content="aeb4e0b17d9f0967"/>
     <!-- Tailwind CSS -->
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- common css -->
     <link rel="preload" as='style' href="{{ mix('/css/front.css') }}">

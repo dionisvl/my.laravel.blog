@@ -1,4 +1,4 @@
-FROM php:8.3-fpm-alpine
+FROM php:8.3.19-fpm-alpine3.21
 
 # Add PHP repository and update package list
 RUN apk add --no-cache ca-certificates && \
