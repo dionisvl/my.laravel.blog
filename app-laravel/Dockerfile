@@ -64,13 +64,9 @@ RUN apk add --no-cache \
     docker-php-ext-install -j$(nproc) gd zip pdo pdo_mysql
 
 # Install Xdebug with necessary dependencies
-RUN apk add --no-cache $PHPIZE_DEPS && \
+RUN apk add --no-cache $PHPIZE_DEPS rabbitmq-c-dev && \
     pecl install xdebug && \
     docker-php-ext-enable xdebug && \
-    apk del $PHPIZE_DEPS
-
-# Install AMQP extension
-RUN apk add --no-cache $PHPIZE_DEPS rabbitmq-c-dev && \
     pecl install amqp && \
     docker-php-ext-enable amqp && \
     apk del $PHPIZE_DEPS

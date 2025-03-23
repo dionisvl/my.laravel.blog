@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with(
                 'categories',
                 Category::withCount('posts')
+                    ->having('posts_count', '>=', 2)
                     ->orderBy('posts_count', 'desc')
                     ->get()
             );
