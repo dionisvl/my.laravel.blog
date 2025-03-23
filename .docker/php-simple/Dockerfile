@@ -1,4 +1,4 @@
-FROM php:8.3-fpm-alpine
+FROM php:8.3.19-fpm-alpine3.21
 
 RUN apk add --no-cache nginx supervisor \
     php83-gmp gmp

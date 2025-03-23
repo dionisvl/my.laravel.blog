@@ -21,6 +21,8 @@ services:
       - "traefik.http.services.php-fpm.loadbalancer.server.port=80"
       - "traefik.http.routers.php-fpm.entrypoints=web"
       - "traefik.http.routers.php-fpm.rule=Host(`phpqa.local`)"
+    volumes:
+      - ./app-laravel/php/conf.d/50_xdebug.ini:/usr/local/etc/php/conf.d/50_xdebug.ini:rw
 
   pets-app:
     volumes:

@@ -34,7 +34,7 @@ services:
       - "80"
     volumes:
       - ./app-laravel/api-laravel:/app:rw
-      - ./app-laravel/storage/app/public:/app/public/storage:rw
+      - ./app-laravel/storage/public:/app/public/storage:rw
     networks:
       - app-network
 

@@ -107,7 +107,8 @@ class Post extends Model
         }
 
         $this->removeImage();
-        $filename = Str::random(10) . '.' . $image->extension();
+        $timestamp = Carbon::now()->format('Y-m-d_H-i-s');
+        $filename = $timestamp . '_' . Str::random(4) . '.' . $image->extension();
         $image->storeAs('storage/uploads', $filename);
         $this->image = $filename;
         $this->save();

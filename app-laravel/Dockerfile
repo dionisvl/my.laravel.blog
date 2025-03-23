@@ -1,9 +1,5 @@
 FROM php:8.3.19-fpm-alpine3.21
 
-# Add PHP repository and update package list
-RUN apk add --no-cache ca-certificates && \
-    apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community/ php83
-
 # Install system dependencies and PHP extensions
 RUN apk add --no-cache \
     nginx \
@@ -14,7 +10,6 @@ RUN apk add --no-cache \
     htop \
     bash-completion \
     # PHP and extensions
-    php83-fpm \
     php83-common \
     php83-gd \
     php83-mysqli \
@@ -59,14 +54,14 @@ RUN apk add --no-cache \
     openssl \
     linux-headers # Required for pecl
 
-# Install extensions properly
+# Install PHP extensions
 RUN apk add --no-cache \
     libpng-dev \
     libjpeg-turbo-dev \
     freetype-dev \
     libzip-dev && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install -j$(nproc) gd zip
+    docker-php-ext-install -j$(nproc) gd zip pdo pdo_mysql
 
 # Install Xdebug with necessary dependencies
 RUN apk add --no-cache $PHPIZE_DEPS && \
@@ -74,12 +69,18 @@ RUN apk add --no-cache $PHPIZE_DEPS && \
     docker-php-ext-enable xdebug && \
     apk del $PHPIZE_DEPS
 
+# Install AMQP extension
+RUN apk add --no-cache $PHPIZE_DEPS rabbitmq-c-dev && \
+    pecl install amqp && \
+    docker-php-ext-enable amqp && \
+    apk del $PHPIZE_DEPS
+
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Configure PHP
-COPY php/conf.d/custom.ini /etc/php83/conf.d/
-COPY php/php-fpm.d/www.conf /etc/php83/php-fpm.d/
+COPY php/conf.d/custom.ini /usr/local/etc/php/conf.d/
+COPY php/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/
 
 # Setup supervisor
 COPY supervisor/supervisord.conf /etc/supervisord.conf
