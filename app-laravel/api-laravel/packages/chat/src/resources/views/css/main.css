@@ -8,7 +8,6 @@
     border-radius: 0.3em;
     /*width: 170px;*/
     width: auto;
-    height: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.6s ease;
     z-index: 1; /* значение z-index больше, чем у большинства других элементов */
@@ -43,7 +42,7 @@ label.chat_label {
 .chat_username {
     font-weight: bold;
     line-height: 1.25rem;
-    font-size: 13px;
+    font-size: 10px;
 }
 
 @keyframes move-up {
@@ -59,8 +58,8 @@ label.chat_label {
 
 #chat-message-list {
     font-family: Verdana, serif;
-    font-size: 12px;
-    padding: 2px;
+    font-size: 10px;
+    padding: 7px;
 }
 
 .chat_message {

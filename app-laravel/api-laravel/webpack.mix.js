@@ -13,10 +13,7 @@ const mix = require('laravel-mix')
 
 // main
 mix.styles([
-    'resources/assets/front/css/animate.min.css',
     'resources/assets/front/css/style.css',
-    'resources/assets/front/css/responsive.css',
-    'resources/assets/front/css/some_fix.css',
 ], 'public/css/front.css')
 
 // websocket chat package:

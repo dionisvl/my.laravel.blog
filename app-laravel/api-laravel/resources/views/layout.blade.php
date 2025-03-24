@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="_token" content="{{ csrf_token() }}">
+    <meta name="description"
+          content="Stay updated with the latest trends in Web3 development, software engineering tips, and best coding practices for modern applications.">
 
     @if(!empty(env('CANONICAL')))
         <link rel="canonical" href="@php echo env('CANONICAL').$_SERVER['REQUEST_URI'] @endphp"/>
@@ -31,13 +33,14 @@
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
           integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+          crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'"/>
 
     <!-- common css -->
     <link rel="stylesheet" href="{{ mix('/css/front.css') }}">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          media="print" onload="this.media='all'"/>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png">
@@ -70,9 +73,9 @@
 
         <div id="navbarMenu"
              class="hidden md:flex flex-col sm:flex-row items-start sm:items-center
-            space-y-2 sm:space-y-0 sm:space-x-4
-            absolute sm:static top-full left-0 right-0 bg-white sm:bg-transparent
-            p-4 sm:p-0 shadow sm:shadow-none">
+                space-y-2 sm:space-y-0 sm:space-x-4
+                absolute sm:static top-full left-0 right-0 bg-white sm:bg-transparent
+                p-4 sm:p-0 shadow sm:shadow-none text-center mx-3">
 
             <a class="text-gray-700 hover:text-blue-500 font-medium" href="/">Homepage</a>
             <a class="text-gray-700 hover:text-blue-500 font-medium" href="/contacts/">Contacts</a>
@@ -94,6 +97,7 @@
                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                        type="text" placeholder="Search..." name="q">
                 <svg xmlns="http://www.w3.org/2000/svg"
+                     width="16" height="16"
                      class="h-4 w-4 absolute left-2.5 top-2 text-gray-400"
                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -211,11 +215,12 @@
 </footer>
 
 <!-- JavaScript -->
-<script src="/js/front.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<script src="/js/front.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" defer></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-core.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-core.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/autoloader/prism-autoloader.min.js"
+        defer></script>
 
 </body>
 </html>

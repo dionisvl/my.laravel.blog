@@ -26,7 +26,7 @@
             <label class="w-20 text-sm text-gray-600 font-medium" id="chat_username_label" for="chat_username">
                 Username:
             </label>
-            <input class="flex-1 px-3 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2
+            <input class="flex-1 p-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2
              focus:ring-blue-500 focus:border-transparent w-10"
                    type="text" id="chat_username" name="chat_username"
                    value="test1"
@@ -37,7 +37,7 @@
             <label class="w-20 text-sm text-gray-600 font-medium" id="chat_message_label" for="chat_message">
                 Message:
             </label>
-            <input class="flex-1 px-3 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2
+            <input class="flex-1 p-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2
             focus:ring-blue-500 focus:border-transparent w-10"
                    type="text" id="chat_message" name="chat_message"
                    value="test message"

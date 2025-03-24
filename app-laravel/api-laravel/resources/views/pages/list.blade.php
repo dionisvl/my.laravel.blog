@@ -24,6 +24,7 @@
                         <div class="flex-shrink-0 w-32 flex items-center justify-center p-2">
                             <div class="h-12 w-full flex items-center justify-center overflow-hidden">
                                 <img src="{{$post->getImage()}}" alt="{{$post->title}}"
+                                     width="100" height="50"
                                      class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
                                      loading="lazy">
                             </div>
