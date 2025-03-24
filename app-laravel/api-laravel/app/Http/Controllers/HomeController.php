@@ -13,16 +13,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        switch (config('app.main_module')) {
-            case '/posts':
-                return (new PostController())->index();
-
-            case '/shop':
-                return (new ProductController())->index();
-
-            default:
-                return new Response('error: APP_MAIN_MODULE not defined in .env');
-        }
+        return match (config('app.main_module')) {
+            '/posts' => (new PostController())->index(),
+            '/shop' => (new ProductController())->index(),
+            default => new Response('error: APP_MAIN_MODULE not defined in .env'),
+        };
     }
 
     public function contacts()
@@ -39,13 +34,21 @@ class HomeController extends Controller
     {
         $tag = Tag::where('slug', $slug)->firstOrFail();
         $posts = $tag->posts()->paginate(10);
-        return view('pages.list', ['posts' => $posts]);
+
+        return view('pages.list', [
+            'tag' => $tag,
+            'posts' => $posts,
+        ]);
     }
 
     public function category($slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
         $posts = $category->posts()->paginate(10);
-        return view('pages.list', ['posts' => $posts]);
+
+        return view('pages.list', [
+            'category' => $category,
+            'posts' => $posts,
+        ]);
     }
 }

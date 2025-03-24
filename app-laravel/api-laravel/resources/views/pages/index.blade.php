@@ -1,53 +1,73 @@
 @extends('layout')
 
 @section('content')
-    <!--main content start-->
-    <div class="main-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 flow-main">
-                    @foreach($posts as $post)
-                        <article class="post">
-                            <div class="post-thumb">
-                                <div class='post_image_block'>
-                                    <img src="{{$post->getImage()}}" alt="{{$post->title}}" loading="lazy">
-                                </div>
+    <div class="w-full md:w-3/4 pr-0 md:pr-6 space-y-3">
+        @foreach($posts as $post)
+            <article class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                <!-- Wrap the entire article in an anchor tag -->
+                <a href="{{route('post.show', $post->slug, 0)}}"
+                   class="flex flex-col transition-all duration-200 hover:bg-blue-50 hover:shadow-md">
 
-                                <a href="{{route('post.show', $post->slug, 0)}}" class="post-thumb-overlay text-center">
-                                    <div class="text-uppercase text-center">View Post</div>
-                                </a>
-                                <header style='flex-grow:2;' class="entry-header text-uppercase">
-                                    <h3 class="entry-title">
-                                        <a href="{{route('post.show', $post->slug, 0)}}">{{$post->title}}</a>
-                                    </h3>
-                                </header>
+                    <!-- First row: Image and Title -->
+                    <div class="flex flex-row">
+                        <!-- Post thumbnail with controlled height -->
+                        <div class="flex-shrink-0 w-32 flex items-center justify-center p-2">
+                            <div class="h-12 w-full flex items-center justify-center overflow-hidden">
+                                <img src="{{$post->getImage()}}" alt="{{$post->title}}"
+                                     class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                                     loading="lazy">
                             </div>
-                            <div class="post-content">
-                                <div class="entry-content">{!!$post->description!!}</div>
+                        </div>
 
-                                <div class="social-share social-share-title">
-                                    <span class=" pull-left">
-                                        By <a href="#">{{$post->author['name']}}</a> On {{$post->getDate()}}
-                                    </span>
-                                    <span class="float-right">
-                                        <span class="pl-2"><i class="fas fa-eye"></i> {{$post->getViewsCount()}}</span>
-                                        <a class="pl-2 like" onclick="Likes.toggle(this,event);"
-                                           data-post_id="{{$post->id}}" href="#" title="Like">
-                                            <i class="@if ($post->is_liked) fas @else far @endif fa-heart"
-                                               style="color: red;"></i>
-                                            <span class="like_button_count">{{$post->likes_count}} </span>
-                                        </a>
-                                    </span>
-                                </div>
+                        <!-- Post header -->
+                        <header class="flex-grow p-3">
+                            <h3 class="text-lg font-semibold text-gray-800 group-hover:text-blue-500 transition">
+                                {{$post->title}}
+                            </h3>
+                        </header>
+                    </div>
+
+                    <!-- Second row: Description -->
+                    @if(!empty($post->description))
+                        <div class="px-4 pb-4">
+                            <div class="prose max-w-none text-gray-600 text-sm line-clamp-2 hover:text-blue-700 transition-colors">
+                                {!!$post->description!!}
                             </div>
-                        </article>
-                    @endforeach
+                        </div>
+                    @endif
+                </a>
 
-                    {{$posts->links()}}
+                <!-- Post metadata -->
+                <div class="flex justify-between items-center text-sm text-gray-600 pl-4 p-2 border-t border-gray-200">
+                    <span>
+                        By <a href="#" class="hover:text-blue-500">{{$post->author['name']}}</a>
+                        on {{$post->getDate()}}
+                    </span>
+
+                    <div class="flex flex-wrap items-center space-x-0 sm:space-x-4 sm:mr-4">
+                        <span class="flex items-center w-full sm:w-auto">
+                            <i class="fas fa-eye mr-1"></i> {{$post->getViewsCount()}}
+                        </span>
+                        <a class="flex items-center w-full sm:w-auto group"
+                           onclick="Likes.toggle(this,event);"
+                           data-post_id="{{$post->id}}"
+                           href="#"
+                           title="Like">
+                            <i class="@if ($post->is_liked) fas @else far @endif fa-heart text-red-500 mr-1 heart-icon transition-transform duration-500">
+                            </i>
+                            <span class="like_button_count transition-colors duration-500 group-hover:text-blue-500">
+                                {{$post->likes_count}}
+                            </span>
+                        </a>
+                    </div>
                 </div>
-                @include('pages._sidebar')
-            </div>
+            </article>
+        @endforeach
+
+        <div class="mt-8">
+            {{$posts->links()}}
         </div>
     </div>
-    <!-- end main content-->
+
+    @include('pages._sidebar')
 @endsection

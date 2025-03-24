@@ -62,3 +62,14 @@ function request(url, method, payload) {
         .then(r => r.json())
         .catch(error => console.error(error))
 }
+
+// Anti-bot counter
+let ct = 0
+
+function count_keyup () {
+  const elements = document.getElementsByClassName('countMe')
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].value = ++ct
+    //console.log(elements[i].value);
+  }
+}

@@ -26,18 +26,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         chatContainer.scrollTop = chat.scrollHeight;
     }
 
-// Create an invisible button that clears the local storage when pressed
-    const clearButton = document.createElement('button');
-    clearButton.backgroundColor = 'red';
-    clearButton.textContent = '@';
-    clearButton.style.width = '30px';
-    clearButton.addEventListener('click', function () {
-        localStorage.clear();
-        console.log('Local storage cleared');
-    });
-    document.getElementById('chat_input_container').appendChild(clearButton);
-
-
 // This function first check color from local storage and if this color is invalid then generate new
 // Todo: move this logic to server and store color in cookie or DB
     function getRandomColor() {

@@ -1,57 +1,51 @@
 @extends('layout')
 
 @section('content')
-<!--main content start-->
-<div class="main-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-sm-12 col-xs-12 my-col text-center">
+    <div class="w-full md:w-1/3 sm:w-full">
+        <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 text-center">
+            @if(session('status'))
+                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4">
+                    {{session('status')}}
+                </div>
+            @endif
+            <h3 class="text-xl font-semibold mb-4">My profile</h3>
+            @include('admin.errors')
 
-                <div class="leave-comment mr0"><!--leave comment-->
-                    @if(session('status'))
-                    	<div class="alert alert-success">
-                    		{{session('status')}}
-                    	</div>
-                    @endif
-                    <h3 class="text-uppercase">My profile</h3>
-                    @include('admin.errors')
-                    <br>
-                    <img src="{{$user->getImage()}}" alt="" class="profile-image">
-                    <form class="form-horizontal contact-form" role="form" method="post" action="/profile" enctype="multipart/form-data">
+            <img src="{{$user->getImage()}}" alt="" class="w-32 h-32 object-cover rounded-full mx-auto mb-6">
 
-                    {{csrf_field()}}
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" id="name" name="name"
-                                       placeholder="Name" value="{{$user->name}}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <input type="email" class="form-control" id="email" name="email"
-                                       placeholder="Email" value="{{$user->email}}" >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <input type="password" class="form-control" id="password" name="password"
-                                       placeholder="password">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12">
-								<input type="file" class="form-control" id="image" name="avatar">	
-                            </div>
-                        </div>
-                        <button type="submit" class="btn send-btn">Update</button>
-
-                    </form>
-                </div><!--end leave comment-->
-            </div>
-
+            <form class="text-left" role="form" method="post" action="/profile" enctype="multipart/form-data">
+                {{csrf_field()}}
+                <div class="mb-4">
+                    <input type="text"
+                           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                           id="name" name="name"
+                           placeholder="Name" value="{{$user->name}}">
+                </div>
+                <div class="mb-4">
+                    <input type="email"
+                           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                           id="email" name="email"
+                           placeholder="Email" value="{{$user->email}}">
+                </div>
+                <div class="mb-4">
+                    <input type="password"
+                           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                           id="password" name="password"
+                           placeholder="Password">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+                        Profile Image
+                    </label>
+                    <input type="file"
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                           id="image" name="avatar">
+                </div>
+                <button type="submit"
+                        class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md transition duration-200 font-medium">
+                    Update
+                </button>
+            </form>
         </div>
     </div>
-</div>
-<!-- end main content-->
 @endsection

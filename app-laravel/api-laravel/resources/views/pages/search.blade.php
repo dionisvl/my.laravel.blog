@@ -1,64 +1,59 @@
 @extends('layout')
 
 @section('content')
-    <!--main content start-->
-    <div class="main-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 flow-main">
+    <div class="w-full md:w-2/3 pr-0 md:pr-6">
 
-                    <form action="/search" method="POST" role="search" class="form-inline mr-auto mb-4">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
-                                   name="q">
-                        </div>
-                        <button class="btn btn-outline-primary btn-rounded btn-sm my-0 waves-effect waves-light"
-                                type="submit">Search
-                        </button>
-                    </form>
+        <form action="/search" method="POST" role="search" class="flex mb-6">
+            {{ csrf_field() }}
+            <input class="flex-grow px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                   type="text" placeholder="Search" aria-label="Search" name="q">
+            <button class="bg-white hover:bg-blue-500 text-blue-500 hover:text-white px-4 py-2 border border-blue-500 border-l-0 rounded-r-md transition-colors duration-200"
+                    type="submit">Search
+            </button>
+        </form>
 
-                    @if($details->count() > 0)
-                        <div class="alert alert-success mb-3" role="alert">
-                            The Search results for your query <b>{{ $query }}</b> are:
-                        </div>
-                        @foreach($details as $post)
-                            <article class="post">
-                                <div class="post-thumb">
-                                    <div class='post_image_block'>
-                                        <img src="{{$post->getImage()}}" alt="{{$post->title}}" loading="lazy">
-                                    </div>
-
-                                    <a href="{{route('post.show', $post->slug, 0)}}"
-                                       class="post-thumb-overlay text-center">
-                                        <div class="text-uppercase text-center">View Post</div>
-                                    </a>
-                                    <header style='flex-grow:2;' class="entry-header text-uppercase">
-                                        <h3 class="entry-title">
-                                            <a href="{{route('post.show', $post->slug, 0)}}">{{$post->title}}</a>
-                                        </h3>
-                                    </header>
-                                </div>
-                                <div class="post-content">
-                                    <div class="entry-content">{{$post->description}}</div>
-                                    <div class="entry-content search-element-body">{!! $post->content !!}</div>
-                                    <div class="social-share social-share-title">
-                                    <span class=" pull-left">
-                                        By <a href="#">{{$post->author->name}}</a> On {{$post->getDate()}}
-                                    </span>
-                                    </div>
-                                </div>
-                            </article>
-                        @endforeach
-                    @else
-                        <div class="alert alert-warning" role="alert">
-                            For your query <b>{{ $query }}</b> nothing found.
-                        </div>
-                    @endif
-                </div>
-                @include('pages._sidebar')
+        @if($details->count() > 0)
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
+                The Search results for your query <b>{{ $query }}</b> are:
             </div>
-        </div>
+
+            @foreach($details as $post)
+                <article class="bg-white rounded-lg shadow-sm mb-6 overflow-hidden border border-gray-200">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="flex-shrink-0 w-full md:w-32 flex items-center justify-center p-2">
+                            <div class="h-12 w-full flex items-center justify-center overflow-hidden">
+                                <img src="{{$post->getImage()}}" alt="{{$post->title}}"
+                                     class="h-12 w-auto object-contain" loading="lazy">
+                            </div>
+                        </div>
+
+                        <header class="flex-grow p-3">
+                            <h3 class="text-lg font-semibold">
+                                <a href="{{route('post.show', $post->slug, 0)}}"
+                                   class="text-gray-800 hover:text-blue-500 transition">
+                                    {{$post->title}}
+                                </a>
+                            </h3>
+                        </header>
+                    </div>
+
+                    <div class="p-4 pt-0">
+                        <div class="prose max-w-none mb-2">{{$post->description}}</div>
+                        <div class="prose max-w-none text-sm text-gray-600 mb-4 search-element-body">{!! $post->content !!}</div>
+
+                        <div class="flex justify-between items-center text-sm text-gray-600 pt-4 border-t border-gray-200">
+                                        <span>
+                                            By <a href="#" class="hover:text-blue-500">{{$post->author->name}}</a> On {{$post->getDate()}}
+                                        </span>
+                        </div>
+                    </div>
+                </article>
+            @endforeach
+        @else
+            <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
+                For your query <b>{{ $query }}</b> nothing found.
+            </div>
+        @endif
     </div>
-    <!-- end main content-->
+    @include('pages._sidebar')
 @endsection

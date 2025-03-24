@@ -38,6 +38,6 @@ class CommentsController extends Controller
         }
         $comment->save();
 
-        return redirect()->back()->with('status', 'Ваш комментарий будет скоро добавлен!');
+        return redirect()->back()->with('status', 'Your comment will be added soon!');
     }
 }

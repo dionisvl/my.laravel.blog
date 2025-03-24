@@ -1,158 +1,151 @@
 @extends('layout')
 
 @section('content')
-    <!--main content start-->
-    <div class="main-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 flow-main post-parent-column">
-                    <article class="post">
-                        @if(!empty($post->getImage()))
-                            <div class="post-detail-thumb">
-                                <img src="{{$post->getImage()}}" alt="">
-                            </div>
-                        @endif
-                        <div class="post-content">
-                            <header class="entry-header text-center text-uppercase">
-                                @if($post->category)
-                                    <h6>
-                                        <a href="{{route('blog.category.show', $post->category->slug)}}"> {{$post->category->title}}</a>
-                                    </h6>
-                                @endif
-                                <h1 class="entry-title">{{$post->title}}</h1>
-                            </header>
-                            <div class="entry-content">
-                                {!! $post->content !!}
-                            </div>
-                            @if(!empty($aphorism))
-                                <div class="aphorism-title">Афоризм дня:</div>
-                                <div class="border-2 rounded-sm p-2 m-2 flex items-center bg-gray-200">
-                                    {{ $aphorism->detail_text }} ({{ $aphorism->id }})
-                                </div>
-                            @endif
-                            <div class="decoration">
-                                @foreach($post->tags as $tag)
-                                    <a href="{{route('tag.show', $tag->slug)}}"
-                                       class="btn btn-default">{{$tag->title}}</a>
-                                @endforeach
-                            </div>
-                            <div class="social-share">
-                                <span class="social-share-title pull-left">
-                                    @if(!empty($post->author->name))
-                                    By <a href="#">{{$post->author->name}}</a>
-                                    @endif On <b>{{$post->getDate()}}</b>
-                                </span>
-
-                                <span class="float-right">
-                                    <span class="pl-2">
-                                        <i class="fas fa-eye"></i> {{$post->getViewsCount()}}
-                                    </span>
-                                    <a class="pl-2 like" onclick="Likes.toggle(this,event);"
-                                       data-post_id="{{$post->id}}" href="#" title="Like">
-                                            <i class="@if ($post->is_liked) fas @else far @endif fa-heart"
-                                               style="color: red;"></i>
-                                            <span class="like_button_count">{{$post->likes_count}} </span>
-                                    </a>
-                                </span>
-
-                                <ul class="text-center float-right">
-                                    <script src="//yastatic.net/share2/share.js"></script>
-                                    <div class="ya-share2"
-                                         data-services="vkontakte,facebook,twitter,linkedin,telegram"></div>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                    @foreach($post->getComments() as $comment)
-                        <div class="bottom-comment">
-                            <div class="comment-img">
-                                <img class="img-circle" src="{{$comment->getAuthorImage()}}" alt="" width="75"
-                                     height="75">
-                            </div>
-                            <div class="comment-text">
-                                <h5>{{$comment->author_name}}</h5>
-                                <p class="comment-date">{{$comment->created_at->diffForHumans()}}</p>
-                                <p class="para">{{$comment->text}}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                    <div class="leave-comment">
-                        <h4>Leave a reply</h4>
-
-                        @include('admin.errors')
-
-                        <form class="form-horizontal contact-form" role="form" method="post" action="/comment">
-                            {{csrf_field()}}
-                            <input type="hidden" name="post_id" value="{{$post->id}}">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <x-inputs.honeypot/>
-                                    <x-inputs.countme/>
-                                    <textarea required class="border form-control" rows="4" name="message"
-                                              placeholder="Write some comment" onkeyup="count_keyup()"></textarea>
-                                </div>
-                            </div>
-                            <button class="btn send-btn">Post Comment</button>
-                        </form>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            @if(!empty($previous))
-                                <div class="single-blog-box">
-                                    <a href="{{route('post.show', $previous->slug)}}">
-                                        <img src="{{$previous->getImage()}}" alt="">
-                                        <div class="overlay">
-                                            <div class="promo-text">
-                                                <p><i class=" pull-left fa fa-angle-left"></i></p>
-                                                <h5>{{$previous->title}}</h5>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endif
-                        </div>
-                        <div class="col-md-6">
-                            @if(!empty($next))
-                                <div class="single-blog-box">
-                                    <a href="{{route('post.show', $next->slug)}}">
-                                        <img src="{{$next->getImage()}}" alt="">
-
-                                        <div class="overlay">
-                                            <div class="promo-text">
-                                                <p><i class=" pull-right fa fa-angle-right"></i></p>
-                                                <h5>{{$next->title}}</h5>
-
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endif
-                        </div>
-                    </div><!--blog next previous end-->
-
-                    @if(!empty($related))
-                        <div class="related-post-carousel"><!--related post carousel-->
-                            <div class="related-heading">
-                                <h4>You might also like</h4>
-                            </div>
-                            <div id="also_like_tns">
-                                @foreach($related as $item)
-                                    <div class="single-item">
-                                        <a href="{{route('post.show', $item->slug, 0)}}">
-                                            <img src="{{$item->getImage()}}" alt="">
-                                            <p>{{$item->title}}</p>
-                                        </a>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-
+    <div class="w-full md:w-3/4 pr-0 md:pr-6">
+        <article class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
+            @if(!empty($post->getImage()))
+                <div class="w-full h-64 md:h-96 flex items-center justify-center bg-gray-200">
+                    <img src="{{$post->getImage()}}" alt="{{$post->title}}" class="w-full h-full object-contain">
                 </div>
-                @include('pages._sidebar')
+            @endif
+
+            <div class="p-6">
+                <header class="text-center mb-6">
+                    @if($post->category)
+                        <h6 class="text-sm mb-2">
+                            <a href="{{route('blog.category.show', $post->category->slug)}}"
+                               class="text-blue-500 hover:text-blue-700">{{$post->category->title}}</a>
+                        </h6>
+                    @endif
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">{{$post->title}}</h1>
+                </header>
+
+                <div class="prose max-w-none">
+                    {!! $post->content !!}
+                </div>
+
+                @if(!empty($aphorism))
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-2">Афоризм дня:</h4>
+                        <div class="border-2 rounded-sm p-2 m-2 flex items-center bg-gray-200">
+                            {{ $aphorism->detail_text }} ({{ $aphorism->id }})
+                        </div>
+                    </div>
+                @endif
+
+                <div class="flex flex-wrap mt-6 mb-4">
+                    @foreach($post->tags as $tag)
+                        <a href="{{route('tag.show', $tag->slug)}}"
+                           class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded-full text-sm mr-2 mb-2 transition">{{$tag->title}}</a>
+                    @endforeach
+                </div>
+
+                <div class="flex justify-between items-center text-sm text-gray-600 pt-4 border-t border-gray-200">
+                    <span>
+                        @if(!empty($post->author->name))
+                            By <a href="#" class="hover:text-blue-500">{{$post->author->name}}</a>
+                        @endif
+                        On <b>{{$post->getDate()}}</b>
+                    </span>
+
+                    <div class="flex items-center">
+                        <span class="flex items-center mr-4">
+                            <i class="fas fa-eye mr-1"></i> {{$post->getViewsCount()}}
+                        </span>
+                        <a class="flex items-center w-full sm:w-auto group"
+                           onclick="Likes.toggle(this,event);"
+                           data-post_id="{{$post->id}}"
+                           href="#"
+                           title="Like">
+                            <i class="@if ($post->is_liked) fas @else far @endif fa-heart text-red-500 mr-1 heart-icon transition-transform duration-500">
+                            </i>
+                            <span class="like_button_count transition-colors duration-500 group-hover:text-blue-500">
+                                {{$post->likes_count}}
+                            </span>
+                        </a>
+
+                        <div class="ml-4">
+                            <script src="//yastatic.net/share2/share.js"></script>
+                            <div class="ya-share2" data-services="facebook,twitter,linkedin,telegram"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Comments Section -->
+        <div class="mt-8">
+            @foreach($post->getComments() as $comment)
+                <div class="bg-white p-4 mb-4 rounded-lg border border-gray-200 flex">
+                    <div class="mr-4 flex-shrink-0">
+                        <img class="rounded-full w-12 h-12 object-cover" src="{{$comment->getAuthorImage()}}"
+                             alt="{{$comment->author_name}}">
+                    </div>
+                    <div>
+                        <h5 class="font-semibold text-gray-900">{{$comment->author_name}}</h5>
+                        <p class="text-xs text-gray-500 mb-2">{{$comment->created_at->diffForHumans()}}</p>
+                        <p class="text-gray-700">{{$comment->text}}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        <!-- Comment Form -->
+        <div class="bg-white p-6 mt-8 rounded-lg border border-gray-200">
+            <h4 class="text-xl font-semibold mb-4">Leave a reply</h4>
+
+            @include('admin.errors')
+
+            <form class="w-full" role="form" method="post" action="/comment">
+                {{csrf_field()}}
+                <input type="hidden" name="post_id" value="{{$post->id}}">
+                <div class="mb-4">
+                    <x-inputs.honeypot/>
+                    <x-inputs.countme/>
+                    <textarea required
+                              class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                              rows="4" name="message" placeholder="Write some comment"
+                              onkeyup="count_keyup()"></textarea>
+                </div>
+                <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-md transition duration-200 font-medium">
+                    Post Comment
+                </button>
+            </form>
+        </div>
+
+        <!-- Previous/Next Navigation -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+            <div>
+                @if(!empty($previous))
+                    <a href="{{route('post.show', $previous->slug)}}"
+                       class="block relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+                        <img src="{{$previous->getImage()}}" alt="{{$previous->title}}"
+                             class="w-full h-32 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-start p-4">
+                            <div class="text-white">
+                                <i class="fa fa-angle-left mr-1"></i>
+                                <h5 class="font-semibold">{{$previous->title}}</h5>
+                            </div>
+                        </div>
+                    </a>
+                @endif
+            </div>
+            <div>
+                @if(!empty($next))
+                    <a href="{{route('post.show', $next->slug)}}"
+                       class="block relative rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+                        <img src="{{$next->getImage()}}" alt="{{$next->title}}" class="w-full h-32 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-end p-4">
+                            <div class="text-white text-right">
+                                <h5 class="font-semibold">{{$next->title}}</h5>
+                                <i class="fa fa-angle-right ml-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                @endif
             </div>
         </div>
     </div>
-    <!-- end main content-->
+
+    @include('pages._sidebar')
 @endsection
