@@ -11,7 +11,7 @@
                     <!-- First row: Image and Title -->
                     <div class="flex flex-row">
                         <!-- Post thumbnail with controlled height -->
-                        <div class="flex-shrink-0 w-32 flex items-center justify-center p-2">
+                        <div class="flex-shrink-0 w-32 flex items-center justify-center p-1 px-3">
                             <div class="h-12 w-full flex items-center justify-center overflow-hidden">
                                 <img src="{{$post->getImage()}}" alt="{{$post->title}}"
                                      width="75" height="50"
@@ -21,7 +21,7 @@
                         </div>
 
                         <!-- Post header -->
-                        <header class="flex-grow p-3">
+                        <header class="flex-grow flex items-center p-1 px-3">
                             <h3 class="text-lg font-semibold text-gray-800 group-hover:text-blue-500 transition">
                                 {{$post->title}}
                             </h3>
@@ -39,7 +39,7 @@
                 </a>
 
                 <!-- Post metadata -->
-                <div class="flex justify-between items-center text-sm text-gray-600 pl-4 p-2 border-t border-gray-200">
+                <div class="flex justify-between items-center text-sm text-gray-600 pl-4 p-1 border-t border-gray-200">
                     <span>
                         By <a href="#" class="hover:text-blue-500">{{$post->author['name']}}</a>
                         on {{$post->getDate()}}

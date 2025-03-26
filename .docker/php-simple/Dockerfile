@@ -10,6 +10,9 @@ RUN docker-php-ext-install -j$(nproc) \
 
 WORKDIR /app
 
+# Configure PHP
+COPY conf.d/custom.ini /usr/local/etc/php/conf.d/
+
 COPY nginx.conf /etc/nginx/http.d/default.conf
 COPY supervisord.conf /etc/supervisord.conf
 
