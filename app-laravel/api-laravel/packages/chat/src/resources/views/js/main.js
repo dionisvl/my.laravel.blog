@@ -21,10 +21,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
         isExpanded = !isExpanded;
     });
 
-// Scroll to the bottom of the chat window
-    function scrollBottom() {
-        chatContainer.scrollTop = chat.scrollHeight;
+  function scrollBottom() {
+    const last = chat.lastElementChild;
+    if (last) {
+      last.scrollIntoView({behavior: 'smooth', block: 'end'});
     }
+  }
 
 // This function first check color from local storage and if this color is invalid then generate new
 // Todo: move this logic to server and store color in cookie or DB
