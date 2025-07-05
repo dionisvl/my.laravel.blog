@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Http\Controllers\PostController;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 /**
@@ -182,7 +182,7 @@ class Post extends Model
 
     public function setDateAttribute($value): void
     {
-        $date = Carbon::createFromFormat('d/m/y', $value)->format('Y-m-d');
+        $date = Carbon::createFromFormat('Y-m-d', $value)->format('Y-m-d');
         $this->attributes['date'] = $date;
     }
 

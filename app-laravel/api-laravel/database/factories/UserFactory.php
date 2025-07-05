@@ -18,6 +18,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => bcrypt('password'), // or use Hash::make
             'remember_token' => Str::random(10),
+            'is_admin' => false,
         ];
     }
 }

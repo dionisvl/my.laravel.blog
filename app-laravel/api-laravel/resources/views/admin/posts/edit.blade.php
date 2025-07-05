@@ -63,7 +63,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="datepicker"
+                                <input type="date" class="form-control pull-right" id="datepicker"
                                        value="{{$post->date}}" name="date">
                             </div>
                             <!-- /.input group -->

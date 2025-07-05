@@ -64,9 +64,9 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control pull-right"
+                                    <input type="date" class="form-control pull-right"
                                            id="datepicker" name="date"
-                                           value="<?=date('d/m/y')?>">
+                                           value="<?=date('Y-m-d')?>">
                                 </div>
                                 <!-- /.input group -->
                             </div>
