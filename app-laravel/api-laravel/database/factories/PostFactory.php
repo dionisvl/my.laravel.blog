@@ -12,14 +12,15 @@ class PostFactory extends Factory
 
     public function definition()
     {
-        $title = $this->faker->sentence;
+        $title = $this->faker->sentence(4);
         return [
             'title' => $title,
             'slug' => Str::slug($title),
-            'content' => $this->faker->sentence,
-            'image' => 'photo1.png',
-            'date' => '08/09/17',
-            'views' => $this->faker->numberBetween(0, 5000),
+            'content' => $this->faker->paragraphs(3, true),
+            'description' => $this->faker->sentence(10),
+            'image' => null,
+            'date' => $this->faker->date('Y-m-d'),
+            'views' => $this->faker->numberBetween(0, 1000),
             'category_id' => 1,
             'user_id' => 1,
             'status' => 1,

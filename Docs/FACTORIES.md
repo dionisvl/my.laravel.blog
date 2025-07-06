@@ -1,45 +1,75 @@
-# Demo data creation
+# Demo Data & Factories
 
-### before
+## Quick Setup
+
+Run this command to populate the database with demo data:
+
+```bash
+php artisan migrate:fresh --seed
+# Or
+php artisan db:seed
 ```
+
+## Available Factories
+
+### Blog Models
+
+- **User**: Creates users with admin/regular roles
+- **Post**: Creates blog posts with content, categories, and tags
+- **Category**: Creates post categories
+- **Tag**: Creates post tags
+
+### Manual Factory Usage
+
+Enter tinker mode:
+
+```bash
 php artisan tinker
 ```
 
-## Main part
+Then run individual factories:
 
-
-### Factories
-```
+```php
 User::factory()->create();
-Post::factory()->create();
-Category::factory()->create();
-Tag::factory()->create();
+User::factory()->create(['is_admin' => true]);
+
+Category::factory()->count(5)->create();
+Tag::factory()->count(10)->create();
+
+Post::factory()->count(10)->create();
+
+Post::factory()->count(3)->create(['is_featured' => 1]);
 ```
 
-### Create user
-```
-\App\Models\User::add(['name' => 'admin', 'email' => 'admin@admin.net', 'is_admin' => 1, 'password' => bcrypt('admin')]);
+## Demo Data Structure
+
+The `BlogSeeder` creates:
+
+- **Admin user**: `admin@phpqa.ru` / `admin123`
+- **Regular user**: `user@phpqa.ru` / `user123`
+- **5 categories** with realistic names
+- **10 tags** for content organization
+- **20 regular posts** with random content
+- **5 featured posts** for homepage highlights
+
+## Custom Seeder Commands
+
+### Full Reset
+
+```bash
+php artisan migrate:fresh --seed
 ```
 
-### Fill posts
-```
-\App\Models\Post::add(['title' => 'My blog post #1', 'content' => 'content of my post #1']);
-\App\Models\Post::add(['title' => 'My blog post #2', 'content' => 'content of my post #2']);
+### Specific Seeder
+
+```bash
+php artisan db:seed --class=BlogSeeder
 ```
 
+## Factory Relationships
 
+Posts are automatically linked to:
 
-## Ecommerce part
-
-### Fill some test orders:
-```
-Order::factory()->count(4)->create();
-//or
-\Dionisvl\Shop\Models\Order::add(['title' => 'order 1', 'price' => '350']);
-```
-### Products
-```
-\Dionisvl\Shop\Models\Product::add(['title' => 'Product #1', 'price' => '300']);
-\Dionisvl\Shop\Models\Product::add(['title' => 'Product #2', 'price' => '500']);
-```
-
+- Random categories
+- Random tags (1-3 per post)
+- Admin user as author
