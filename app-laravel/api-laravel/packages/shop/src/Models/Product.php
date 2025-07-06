@@ -7,14 +7,12 @@ namespace Dionisvl\Shop\Models;
 use App\Models\Category;
 use App\Models\Comment;
 use Carbon\Carbon;
-use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use InvalidArgumentException;
 
 /**
  * Class Post.
@@ -102,7 +100,7 @@ class Product extends Model
         }
 
         $this->removeImage($type_picture);
-        $filename = str_random(10) . '.' . $file_picture->extension();
+        $filename = Str::random(10) . '.' . $file_picture->extension();
         $file_picture->storeAs('storage/shop_uploads', $filename);
         $this->{$type_picture} = $filename;
         $this->save();
@@ -165,30 +163,6 @@ class Product extends Model
             return;
         }
 
-        try {
-            $date = Carbon::createFromFormat('Y-m-d', $value);
-            if ($date !== false) {
-                $this->attributes['date'] = $date->format('Y-m-d');
-                return;
-            }
-        } catch (Exception $e) {
-            // Continue to try Carbon::parse
-        }
-
-        try {
-            $date = Carbon::parse($value);
-            $this->attributes['date'] = $date->format('Y-m-d');
-        } catch (Exception $parseException) {
-            $this->attributes['date'] = null;
-        }
-    }
-
-    public function getDateAttribute(): ?string
-    {
-        if (isset($this->attributes['date']) && !empty($this->attributes['date'])) {
-            return $this->attributes['date'];
-        }
-
-        return null;
+        $this->attributes['date'] = Carbon::parse($value)->format('Y-m-d');
     }
 }

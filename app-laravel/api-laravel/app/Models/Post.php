@@ -6,7 +6,7 @@ namespace App\Models;
 
 use App\Http\Controllers\PostController;
 use Carbon\Carbon;
-use Exception;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use InvalidArgumentException;
 
 /**
  * Class Post.
@@ -41,6 +40,20 @@ class Post extends Model
     public const IS_PUBLIC = 1;
 
     protected $fillable = ['title', 'content', 'date', 'description', 'views_count'];
+
+    protected $casts = [
+        'date' => 'string',
+    ];
+
+    public function setDateAttribute($value): void
+    {
+        if (empty($value)) {
+            $this->attributes['date'] = null;
+            return;
+        }
+
+        $this->attributes['date'] = Carbon::parse($value)->format('Y-m-d');
+    }
 
     public function category(): BelongsTo
     {
@@ -182,40 +195,6 @@ class Post extends Model
         $this->setFeatured();
     }
 
-    public function setDateAttribute($value): void
-    {
-        if (empty($value)) {
-            $this->attributes['date'] = null;
-            return;
-        }
-
-        try {
-            $date = Carbon::createFromFormat('Y-m-d', $value);
-            if ($date !== false) {
-                $this->attributes['date'] = $date->format('Y-m-d');
-                return;
-            }
-        } catch (Exception $e) {
-            // Continue to try Carbon::parse
-        }
-
-        try {
-            $date = Carbon::parse($value);
-            $this->attributes['date'] = $date->format('Y-m-d');
-        } catch (Exception $parseException) {
-            $this->attributes['date'] = null;
-        }
-    }
-
-    public function getDateAttribute(): ?string
-    {
-        if (isset($this->attributes['date']) && !empty($this->attributes['date'])) {
-            return $this->attributes['date'];
-        }
-
-        return null;
-    }
-
     public function getCategoryTitle(): string
     {
         return $this->category->title ?? 'Нет категории';
@@ -288,7 +267,7 @@ class Post extends Model
     {
         return empty($this->description)
             ? 'Справочник по тематике программирования на языках PHP, JS'
-            : strip_tags($this->description);
+            : strip_tags((string)$this->description);
     }
 
     public function getTitle(): string
@@ -304,15 +283,8 @@ class Post extends Model
         return $this->title;
     }
 
-    /* Аксессор для получения количества лайков, $post->likes_count*/
-    //    public function getLikesCountAttribute()
-    //    {
-    //        return $this->likes()->where('post_id', $this->id)->count();
-    //    }
-
-    /* Аксессор для определения поставлен ли лайк этим пользователем, $post->is_liked */
-    public function getIsLikedAttribute(): bool
+    protected function isLiked(): Attribute
     {
-        return PostController::isLiked($this->id);
+        return Attribute::make(get: fn() => PostController::isLiked($this->id));
     }
 }

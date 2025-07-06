@@ -10,16 +10,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     
-    services:
-      mysql:
-        image: mysql:8.4
-        env:
-          MYSQL_ROOT_PASSWORD: 123456
-          MYSQL_DATABASE: laravel_test
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
     steps:
       - uses: actions/checkout@v4
 
@@ -27,8 +17,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.4
-          extensions: gd, zip, pdo_mysql, mbstring, curl, xml, bcmath, exif, intl, opcache
-          coverage: xdebug
+          extensions: gd, zip, pdo, pdo_sqlite, mbstring, curl, xml, bcmath, exif, intl, opcache
 
       - name: Copy environment file
         run: cp app-laravel/api-laravel/.env.example app-laravel/api-laravel/.env
@@ -41,9 +30,14 @@ jobs:
         working-directory: app-laravel/api-laravel
         run: php artisan key:generate
 
-      - name: Run database migrations
+      - name: Create storage directories
         working-directory: app-laravel/api-laravel
-        run: php artisan migrate --force
+        run: |
+          mkdir -p storage/logs
+          mkdir -p storage/framework/cache
+          mkdir -p storage/framework/sessions
+          mkdir -p storage/framework/views
+          chmod -R 775 storage
 
       - name: Run tests
         working-directory: app-laravel/api-laravel

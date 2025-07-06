@@ -38,7 +38,12 @@ if (!function_exists('locateBasePath')) {
             return $underBuild;
         }
 
-        return $inBuild;
+        if ($inBuild !== false) {
+            return $inBuild;
+        }
+
+        // Fallback to default storage path
+        return $app->basePath() . DIRECTORY_SEPARATOR . 'storage';
     }
 }
 $app->useStoragePath(locateBasePath($app));
