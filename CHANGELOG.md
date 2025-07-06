@@ -6,6 +6,13 @@
 - Saving cookies in local storage
 - Ajax full-text search
 
+### 2025-01-06
+
+- Laravel 11 upgrade with Rector modernization
+- Replaced Form facade with native HTML forms
+- Test isolation using SQLite in-memory database
+- PHP 8.3+ modern syntax improvements
+
 ### 2021-05-30
 
 - Laravel + Docker (nginx + php + mysql)

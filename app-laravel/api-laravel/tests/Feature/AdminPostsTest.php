@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Http\Middleware\VerifyCsrfToken;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
@@ -93,7 +94,7 @@ class AdminPostsTest extends TestCase
             'category_id' => $this->category->id,
         ];
 
-        $response = $this->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class)
+        $response = $this->withoutMiddleware(VerifyCsrfToken::class)
             ->post('/admin/posts', $postData);
 
         $response->assertStatus(404); // Route не найден без middleware
@@ -112,7 +113,7 @@ class AdminPostsTest extends TestCase
         ];
 
         $response = $this->actingAs($user)
-            ->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class)
+            ->withoutMiddleware(VerifyCsrfToken::class)
             ->post('/admin/posts', $postData);
 
         $response->assertStatus(404); // Route не найден без admin middleware

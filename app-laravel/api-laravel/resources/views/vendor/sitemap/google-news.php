@@ -1,4 +1,4 @@
-<?= '<' . '?' . 'xml version="1.0" encoding="UTF-8"?>' . "\n" ?>
+<?php echo '<' . '?' . 'xml version="1.0" encoding="UTF-8"?>' . "\n" ?>
 <?php if (null != $style) {
     echo '<' . '?' . 'xml-stylesheet href="' . $style . '" type="text/xsl"?>' . "\n";
 } ?>
@@ -9,7 +9,7 @@
             <loc><?= $item['loc'] ?></loc>
             <?php
             if ($item['lastmod'] !== null) {
-                echo '<lastmod>' . date('Y-m-d\TH:i:sP', strtotime($item['lastmod'])) . '</lastmod>' . "\n";
+                echo '<lastmod>' . date('Y-m-d\TH:i:sP', strtotime((string)$item['lastmod'])) . '</lastmod>' . "\n";
             }
             ?>
             <?php
@@ -25,7 +25,7 @@
                     <news:language><?= $item['googlenews']['language'] ?></news:language>
                 </news:publication>
                 <news:publication_date><?= date('Y-m-d\TH:i:sP',
-                        strtotime($item['googlenews']['publication_date'])) ?></news:publication_date>
+                            strtotime((string)$item['googlenews']['publication_date'])) ?></news:publication_date>
                 <news:title><?= $item['title'] ?></news:title>
                 <?php
                 if (isset($item['googlenews']['access'])) {

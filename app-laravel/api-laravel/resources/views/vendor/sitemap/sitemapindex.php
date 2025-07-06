@@ -1,4 +1,4 @@
-<?= '<' . '?' . 'xml version="1.0" encoding="UTF-8"?>' . "\n"; ?>
+<?php echo '<' . '?' . 'xml version="1.0" encoding="UTF-8"?>' . "\n"; ?>
 <?php if (null != $style) {
     echo '<' . '?' . 'xml-stylesheet href="' . $style . '" type="text/xsl"?>' . "\n";
 } ?>
@@ -7,7 +7,7 @@
         <sitemap>
             <loc><?= $sitemap['loc'] ?></loc>
             <?php if ($sitemap['lastmod'] !== null) : ?>
-                <lastmod><?= date('Y-m-d\TH:i:sP', strtotime($sitemap['lastmod'])) ?></lastmod>
+                <lastmod><?= date('Y-m-d\TH:i:sP', strtotime((string)$sitemap['lastmod'])) ?></lastmod>
             <?php endif; ?>
         </sitemap>
     <?php endforeach; ?>

@@ -42,33 +42,26 @@
                             </div>
                             <div class="form-group">
                                 <label>Категория</label>
-                                {{Form::select('category_id',
-                                    $categories,
-                                    null,
-                                    ['class' => 'form-control select2'])
-                                }}
+                                <select name="category_id" class="form-control select2">
+                                    <option value="">Выберите категорию</option>
+                                    @foreach($categories as $id => $title)
+                                        <option value="{{ $id }}" {{ old('category_id') == $id ? 'selected' : '' }}>{{ $title }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Теги</label>
-                                {{Form::select('tags[]',
-                                    $tags,
-                                    null,
-                                    ['class' => 'form-control select2', 'multiple'=>'multiple','data-placeholder'=>'Выберите теги'])
-                                }}
+                                <select name="tags[]" class="form-control select2" multiple="multiple"
+                                        data-placeholder="Выберите теги">
+                                    @foreach($tags as $id => $title)
+                                        <option value="{{ $id }}" {{ in_array($id, old('tags', [])) ? 'selected' : '' }}>{{ $title }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <!-- Date -->
                             <div class="form-group">
                                 <label>Дата:</label>
-
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input type="date" class="form-control pull-right"
-                                           id="datepicker" name="date"
-                                           value="<?=date('Y-m-d')?>">
-                                </div>
-                                <!-- /.input group -->
+                                <input type="date" class="form-control" name="date" value="<?=date('Y-m-d')?>">
                             </div>
 
                             <!-- checkbox -->

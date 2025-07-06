@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Http\Controllers\PostController;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 
 /**
  * Class Post.
@@ -182,13 +184,36 @@ class Post extends Model
 
     public function setDateAttribute($value): void
     {
-        $date = Carbon::createFromFormat('Y-m-d', $value)->format('Y-m-d');
-        $this->attributes['date'] = $date;
+        if (empty($value)) {
+            $this->attributes['date'] = null;
+            return;
+        }
+
+        try {
+            $date = Carbon::createFromFormat('Y-m-d', $value);
+            if ($date !== false) {
+                $this->attributes['date'] = $date->format('Y-m-d');
+                return;
+            }
+        } catch (Exception $e) {
+            // Continue to try Carbon::parse
+        }
+
+        try {
+            $date = Carbon::parse($value);
+            $this->attributes['date'] = $date->format('Y-m-d');
+        } catch (Exception $parseException) {
+            $this->attributes['date'] = null;
+        }
     }
 
-    public function getDateAttribute(): string
+    public function getDateAttribute(): ?string
     {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d/m/y');
+        if (isset($this->attributes['date']) && !empty($this->attributes['date'])) {
+            return $this->attributes['date'];
+        }
+
+        return null;
     }
 
     public function getCategoryTitle(): string

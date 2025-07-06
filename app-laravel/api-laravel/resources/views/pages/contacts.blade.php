@@ -5,7 +5,7 @@
 
     function protect($email) {
         $result = "";
-        for ($i = 0; $i < strlen($email); $i++) $result .= "&#".ord(substr($email, $i, 1)).";";
+        for ($i = 0; $i < strlen((string)$email); $i++) $result .= "&#" . ord(substr((string)$email, $i, 1)) . ";";
 
         return $result;
     }

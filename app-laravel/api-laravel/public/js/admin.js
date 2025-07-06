@@ -4,10 +4,4 @@ $(document).ready(function () {
     'order': []
   })
   $('.select2').select2()
-
-  //Date picker
-  flatpickr('#datepicker', {
-    dateFormat: 'd/m/y',
-    defaultDate: 'today'
-  })
 })

@@ -49,12 +49,15 @@
                                     <a href="{{route('frontparts.edit', $frontpart->id, false)}}"><i
                                             class="fas fa-pencil-alt"></i></a>
 
-                                    {{Form::open(['route'=>['frontparts.destroy', $frontpart->id, false], 'method'=>'delete'])}}
+                                    <form action="{{ route('frontparts.destroy', $frontpart->id) }}" method="POST"
+                                          style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
                                     <button onclick="return confirm('are you sure?')" type="submit" class="delete">
                                         <i class="fas fa-trash"></i>
                                     </button>
 
-                                    {{Form::close()}}
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

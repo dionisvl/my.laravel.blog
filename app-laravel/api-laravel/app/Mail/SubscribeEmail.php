@@ -13,17 +13,13 @@ class SubscribeEmail extends Mailable
     use Queueable;
     use SerializesModels;
 
-
-    public $token;
-
     /**
      * Create a new message instance.
      *
      * @param $token
      */
-    public function __construct($token)
+    public function __construct(public $token)
     {
-        $this->token = $token;
     }
 
     /**

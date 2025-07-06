@@ -1,7 +1,6 @@
 # Application
 app-laravel/api-laravel/storage/*.key
 app-laravel/api-laravel/vendor
-app-laravel/api-laravel/codeception.yml
 app-laravel/api-laravel/.env
 app-laravel/api-laravel/.env.backup
 app-laravel/api-laravel/.env.testing

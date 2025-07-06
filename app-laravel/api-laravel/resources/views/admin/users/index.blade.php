@@ -51,12 +51,15 @@
                                 <img src="{{$user->getImage()}}" alt="" class="img-responsive" width="150">
                             </td>
                             <td><a href="{{route('users.edit', $user->id)}}"><i class="fas fa-pencil-alt"></i></a>
-                                {{Form::open(['route'=>['users.destroy', $user->id], 'method'=>'delete'])}}
+                                <form action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                      style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
                                 <button onclick="return confirm('are you sure?')" type="submit" class="delete">
                                     <i class="fas fa-trash"></i>
                                 </button>
 
-                                {{Form::close()}}
+                                </form>
                             </td>
                         </tr>
                     @endforeach

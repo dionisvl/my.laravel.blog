@@ -1,4 +1,4 @@
-<?= '<' . '?' . 'xml version="1.0" encoding="UTF-8"?>' . "\n" ?>
+<?php echo '<' . '?' . 'xml version="1.0" encoding="UTF-8"?>' . "\n" ?>
 <?php if (null != $style) {
     echo '<' . '?' . 'xml-stylesheet href="' . $style . '" type="text/xsl"?>' . "\n";
 } ?>

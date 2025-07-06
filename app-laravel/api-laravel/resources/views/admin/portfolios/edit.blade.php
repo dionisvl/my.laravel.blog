@@ -13,11 +13,9 @@
 
         <!-- Main content -->
         <section class="content">
-        {{Form::open([
-            'route'	=>	['portfolios.update', $portfolio->id],
-            'files'	=>	true,
-            'method'	=>	'put'
-        ])}}
+            <form action="{{ route('portfolios.update', $portfolio->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
         <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
@@ -43,7 +41,8 @@
                         <!-- checkbox -->
                         <div class="form-group">
                             <label>
-                                {{Form::checkbox('is_featured', '1', $portfolio->is_featured, ['class'=>'minimal'])}}
+                                <input type="checkbox" name="is_featured" value="1"
+                                       class="minimal" {{ $portfolio->is_featured ? 'checked' : '' }}>
                             </label>
                             <label>
                                 Рекомендовать
@@ -52,7 +51,8 @@
                         <!-- checkbox -->
                         <div class="form-group">
                             <label>
-                                {{Form::checkbox('status', '1', $portfolio->status, ['class'=>'minimal'])}}
+                                <input type="checkbox" name="status" value="1"
+                                       class="minimal" {{ $portfolio->status ? 'checked' : '' }}>
                             </label>
                             <label>
                                 Черновик
@@ -82,7 +82,7 @@
                 <!-- /.box-footer-->
             </div>
             <!-- /.box -->
-            {{Form::close()}}
+            </form>
         </section>
         <!-- /.content -->
     </div>

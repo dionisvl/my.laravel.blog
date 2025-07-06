@@ -1,4 +1,4 @@
-<?= '<' . '?' . 'xml version="1.0" encoding="UTF-8"?>' . "\n" ?>
+<?php echo '<' . '?' . 'xml version="1.0" encoding="UTF-8"?>' . "\n" ?>
 <?php if (null != $style) {
     echo '<' . '?' . 'xml-stylesheet href="' . $style . '" type="text/xsl"?>' . "\n";
 } ?>
@@ -27,7 +27,7 @@
             }
 
             if ($item['lastmod'] !== null) {
-                echo "\t\t" . '<lastmod>' . date('Y-m-d\TH:i:sP', strtotime($item['lastmod'])) . '</lastmod>' . "\n";
+                echo "\t\t" . '<lastmod>' . date('Y-m-d\TH:i:sP', strtotime((string)$item['lastmod'])) . '</lastmod>' . "\n";
             }
 
             if ($item['freq'] !== null) {

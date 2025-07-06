@@ -18,7 +18,7 @@ class ResponseObject
 
     public $code;
 
-    public $messages = array();
+    public $messages = [];
 
-    public $result = array();
+    public $result = [];
 }

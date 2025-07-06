@@ -41,12 +41,12 @@ class BlogSeeder extends Seeder
             ->create([
                 'user_id' => $admin->id,
                 'category_id' => $categories->random()->id,
-                'date' => now()->subDays(rand(1, 30))->format('Y-m-d'),
+                'date' => now()->subDays(random_int(1, 30))->format('Y-m-d'),
             ])
             ->each(function ($post) use ($tags) {
                 // Attach random tags to each post
                 $post->tags()->attach(
-                    $tags->random(rand(1, 3))->pluck('id')->toArray()
+                    $tags->random(random_int(1, 3))->pluck('id')->toArray()
                 );
             });
 
@@ -57,11 +57,11 @@ class BlogSeeder extends Seeder
                 'user_id' => $admin->id,
                 'category_id' => $categories->random()->id,
                 'is_featured' => 1,
-                'date' => now()->subDays(rand(1, 10))->format('Y-m-d'),
+                'date' => now()->subDays(random_int(1, 10))->format('Y-m-d'),
             ])
             ->each(function ($post) use ($tags) {
                 $post->tags()->attach(
-                    $tags->random(rand(1, 3))->pluck('id')->toArray()
+                    $tags->random(random_int(1, 3))->pluck('id')->toArray()
                 );
             });
     }

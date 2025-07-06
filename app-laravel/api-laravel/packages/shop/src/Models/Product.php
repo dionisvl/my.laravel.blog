@@ -6,12 +6,15 @@ namespace Dionisvl\Shop\Models;
 
 use App\Models\Category;
 use App\Models\Comment;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 
 /**
  * Class Post.
@@ -153,5 +156,39 @@ class Product extends Model
     public function getCategoryID()
     {
         return $this->category->id ?? null;
+    }
+
+    public function setDateAttribute($value): void
+    {
+        if (empty($value)) {
+            $this->attributes['date'] = null;
+            return;
+        }
+
+        try {
+            $date = Carbon::createFromFormat('Y-m-d', $value);
+            if ($date !== false) {
+                $this->attributes['date'] = $date->format('Y-m-d');
+                return;
+            }
+        } catch (Exception $e) {
+            // Continue to try Carbon::parse
+        }
+
+        try {
+            $date = Carbon::parse($value);
+            $this->attributes['date'] = $date->format('Y-m-d');
+        } catch (Exception $parseException) {
+            $this->attributes['date'] = null;
+        }
+    }
+
+    public function getDateAttribute(): ?string
+    {
+        if (isset($this->attributes['date']) && !empty($this->attributes['date'])) {
+            return $this->attributes['date'];
+        }
+
+        return null;
     }
 }

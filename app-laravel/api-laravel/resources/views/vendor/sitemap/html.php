@@ -9,7 +9,7 @@
     <?php foreach ($items as $item) : ?>
         <li>
             <a href="<?= $item['loc'] ?>"><?= (empty($item['title'])) ? $item['loc'] : $item['title'] ?></a>
-            <small>(last updated: <?= date('Y-m-d\TH:i:sP', strtotime($item['lastmod'])) ?>)</small>
+            <small>(last updated: <?= date('Y-m-d\TH:i:sP', strtotime((string)$item['lastmod'])) ?>)</small>
         </li>
     <?php endforeach; ?>
 </ul>

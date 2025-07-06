@@ -14,11 +14,9 @@
 
     <!-- Main content -->
     <section class="content">
-	{{Form::open([
-		'route'	=>	['users.update', $user->id],
-		'method'	=>	'put',
-		'files'	=>	true
-	])}}
+      <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
@@ -55,7 +53,7 @@
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-	{{Form::close()}}
+      </form>
     </section>
     <!-- /.content -->
   </div>

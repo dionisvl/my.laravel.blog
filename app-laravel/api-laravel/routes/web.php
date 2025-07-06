@@ -75,9 +75,7 @@ Route::post('/search', [SearchController::class, 'index']);
 
 Route::post('/postlike/{post_id}', PostLikeController::class . '@toggle');
 
-Route::any('/my-ip', static function () {
-    return response()->json(['your-ip' => Request::ip()]);
-});
+Route::any('/my-ip', static fn() => response()->json(['your-ip' => Request::ip()]));
 
 /**
  * Verb             URI                     Action  Route Name

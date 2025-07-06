@@ -13,7 +13,8 @@
 
             <!-- Default box -->
             <div class="box">
-                {!! Form::open(['route' => 'categories.store']) !!}
+                <form method="POST" action="{{ route('categories.store') }}">
+                    @csrf
                 <div class="box-header with-border">
                     <h3 class="box-title">Добавляем категорию</h3>
                     @if($errors->any())
@@ -46,7 +47,7 @@
                     <button class="btn btn-default">Назад</button>
                     <button class="btn btn-success pull-right">Добавить</button>
                 </div>
-            {!! Form::close() !!}
+                </form>
             <!-- /.box-footer-->
             </div>
             <!-- /.box -->

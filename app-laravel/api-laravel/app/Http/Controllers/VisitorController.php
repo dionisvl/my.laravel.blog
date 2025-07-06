@@ -37,7 +37,7 @@ class VisitorController extends Controller
         $browser = $agent->browser();
         $platform = $agent->platform();
         $referer = $_SERVER['HTTP_REFERER'] ?? '';
-        $referer = substr($referer, 0, 255);
+        $referer = substr((string)$referer, 0, 255);
 
         $visitor = Visitor::where('ip', $realIp)
             ->where('browser', $browser)

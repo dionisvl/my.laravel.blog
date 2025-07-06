@@ -13,11 +13,9 @@
 
         <!-- Main content -->
         <section class="content">
-        {{Form::open([
-            'route'	=>	['posts.update', $post->id],
-            'files'	=>	true,
-            'method'	=>	'put'
-        ])}}
+            <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
         <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
@@ -41,32 +39,25 @@
                         </div>
                         <div class="form-group">
                             <label>Категория</label>
-                            {{Form::select('category_id',
-                                $categories,
-                              $post->getCategoryID(),
-                                ['class' => 'form-control select2'])
-                            }}
+                            <select name="category_id" class="form-control select2">
+                                @foreach($categories as $id => $title)
+                                    <option value="{{ $id }}" {{ $post->getCategoryID() == $id ? 'selected' : '' }}>{{ $title }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Теги</label>
-                            {{Form::select('tags[]',
-                                $tags,
-                                $selectedTags,
-                                ['class' => 'form-control select2', 'multiple'=>'multiple','data-placeholder'=>'Выберите теги'])
-                            }}
+                            <select name="tags[]" class="form-control select2" multiple="multiple"
+                                    data-placeholder="Выберите теги">
+                                @foreach($tags as $id => $title)
+                                    <option value="{{ $id }}" {{ in_array($id, $selectedTags) ? 'selected' : '' }}>{{ $title }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <!-- Date -->
                         <div class="form-group">
                             <label>Дата:</label>
-
-                            <div class="input-group date">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="date" class="form-control pull-right" id="datepicker"
-                                       value="{{$post->date}}" name="date">
-                            </div>
-                            <!-- /.input group -->
+                            <input type="date" class="form-control" name="date" value="{{$post->date}}">
                         </div>
 
                         <!-- checkbox -->
@@ -114,7 +105,7 @@
                 <!-- /.box-footer-->
             </div>
             <!-- /.box -->
-            {{Form::close()}}
+            </form>
         </section>
         <!-- /.content -->
     </div>

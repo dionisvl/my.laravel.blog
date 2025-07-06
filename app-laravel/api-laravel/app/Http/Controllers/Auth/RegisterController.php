@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\RedirectResponse;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\Factory;
@@ -29,7 +30,7 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function register(Request $request): Application|Redirector|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
+    public function register(Request $request): Application|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
     {
         $this->validator($request->all())->validate();
 
@@ -40,7 +41,7 @@ class RegisterController extends Controller
         return redirect($this->redirectTo);
     }
 
-    protected function validator(array $data): \Illuminate\Validation\Validator
+    protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],

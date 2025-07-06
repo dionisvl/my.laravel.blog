@@ -16,7 +16,8 @@
 
       <!-- Default box -->
       <div class="box">
-      {!! Form::open(['route' => 'tags.store']) !!}
+          <form method="POST" action="{{ route('tags.store') }}">
+              @csrf
         <div class="box-header with-border">
           <h3 class="box-title">Добавляем тег</h3>
           @include('admin.errors')
@@ -34,7 +35,7 @@
           <button class="btn btn-success pull-right">Добавить</button>
         </div>
         <!-- /.box-footer-->
-        {!! Form::close() !!}
+          </form>
       </div>
       <!-- /.box -->
 

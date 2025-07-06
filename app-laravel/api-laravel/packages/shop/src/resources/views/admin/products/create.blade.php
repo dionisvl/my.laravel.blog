@@ -42,20 +42,14 @@
                                 <p class="help-block"></p>
 
                                 <label>Категория</label>
-                                {{Form::select('category_id',
-                                    $categories,
-                                    null,
-                                    ['class' => 'form-control select2'])
-                                }}
+                                <select name="category_id" class="form-control select2">
+                                    @foreach($categories as $id => $title)
+                                        <option value="{{ $id }}">{{ $title }}</option>
+                                    @endforeach
+                                </select>
 
                                 <label>Дата:</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input type="text" class="form-control pull-right" id="datepicker" name="date"
-                                           value="<?= date('d/m/y')?>">
-                                </div>
+                                <input type="date" class="form-control" name="date" value="<?= date('Y-m-d')?>">
 
                                 <label for="balance">Остаток(на складе):</label>
                                 <input type="number" name="balance" id="balance" class="form-control"

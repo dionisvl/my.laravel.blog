@@ -45,12 +45,15 @@
                               <td><a href="{{route('categories.edit', $category->id, false)}}"><i
                                           class="fas fa-pencil-alt"></i></a>
 
-                                  {{Form::open(['route'=>['categories.destroy', $category->id, false], 'method'=>'delete'])}}
+                                  <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
+                                        style="display: inline;">
+                                      @csrf
+                                      @method('DELETE')
                                   <button onclick="return confirm('are you sure?')" type="submit" class="delete">
                                       <i class="fas fa-trash"></i>
                                   </button>
 
-                                  {{Form::close()}}
+                                  </form>
 
                               </td>
                           </tr>
