@@ -10,7 +10,6 @@ app-laravel/api-laravel/Homestead.yaml
 app-laravel/api-laravel/npm-debug.log
 app-laravel/api-laravel/yarn-error.log
 app-laravel/api-laravel/node_modules
-app-laravel/api-laravel/composer.lock
 app-laravel/api-laravel/package-lock.json
 app-laravel/api-laravel/phpmyadmin/
 
