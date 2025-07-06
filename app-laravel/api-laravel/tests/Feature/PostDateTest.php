@@ -164,11 +164,6 @@ class PostDateTest extends TestCase
         // Check raw database value
         $rawDate = $post->getAttributes()['date'];
         $this->assertEquals($testDate, $rawDate, "Raw DB date should be: {$testDate}, got: " . $rawDate);
-
-        echo "\nDebug info:";
-        echo "\nExpected date: " . $testDate;
-        echo "\nPost->date: " . $post->date;
-        echo "\nRaw DB date: " . $rawDate;
     }
 
     protected function setUp(): void

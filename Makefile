@@ -56,3 +56,30 @@ a:
 
 routes:
 	docker compose exec php-fpm php artisan route:list
+
+# Testing commands
+test:
+	docker compose exec php-fpm ./vendor/bin/phpunit
+
+test-filter:
+	docker compose exec php-fpm ./vendor/bin/phpunit --filter $(FILTER)
+
+test-coverage:
+	docker compose exec php-fpm ./vendor/bin/phpunit --coverage-html coverage
+
+# Code quality commands
+rector:
+	docker compose exec php-fpm ./vendor/bin/rector process --dry-run
+
+rector-fix:
+	docker compose exec php-fpm ./vendor/bin/rector process
+
+phpstan:
+	@if [ "$$(git rev-parse --abbrev-ref HEAD)" = "master" ]; then \
+		git diff --name-only --diff-filter=ACM HEAD~1 | grep "\.php$$" | xargs -r docker compose exec -T php-fpm vendor/bin/phpstan analyse --memory-limit=2048M; \
+	else \
+		git diff --name-only --diff-filter=ACM origin/master | grep "\.php$$" | xargs -r docker compose exec -T php-fpm vendor/bin/phpstan analyse --memory-limit=2048M; \
+	fi
+
+cs-fix:
+	docker compose exec php-fpm ./vendor/bin/php-cs-fixer fix

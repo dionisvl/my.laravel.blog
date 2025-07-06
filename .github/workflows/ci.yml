@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: 123456
+          MYSQL_DATABASE: laravel_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+          extensions: gd, zip, pdo_mysql, mbstring, curl, xml, bcmath, exif, intl, opcache
+          coverage: xdebug
+
+      - name: Copy environment file
+        run: cp app-laravel/api-laravel/.env.example app-laravel/api-laravel/.env
+
+      - name: Install Composer dependencies
+        working-directory: app-laravel/api-laravel
+        run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: Generate application key
+        working-directory: app-laravel/api-laravel
+        run: php artisan key:generate
+
+      - name: Run database migrations
+        working-directory: app-laravel/api-laravel
+        run: php artisan migrate --force
+
+      - name: Run tests
+        working-directory: app-laravel/api-laravel
+        run: ./vendor/bin/phpunit --testdox
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Test Docker build
+        run: |
+          docker build -f app-laravel/Dockerfile app-laravel/ -t phpqa-test
+          docker run --rm phpqa-test php -v

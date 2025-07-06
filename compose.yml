@@ -37,6 +37,9 @@ services:
       - ./app-laravel/storage/public:/app/public/storage:rw
     networks:
       - app-network
+    restart: unless-stopped
+    depends_on:
+      - mysql
 
   pets-app:
     build:

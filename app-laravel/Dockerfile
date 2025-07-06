@@ -1,4 +1,4 @@
-FROM php:8.3.19-fpm-alpine3.21
+FROM php:8.4.10-fpm-alpine3.21
 
 # Install system dependencies and PHP extensions
 RUN apk add --no-cache \
@@ -9,37 +9,36 @@ RUN apk add --no-cache \
     nano \
     htop \
     bash-completion \
-    # PHP and extensions
-    php83-common \
-    php83-gd \
-    php83-mysqli \
-    php83-pdo_mysql \
-    php83-mbstring \
-    php83-curl \
-    php83-xml \
-    php83-bcmath \
-    php83-zip \
-    php83-exif \
-    php83-pdo_pgsql \
-    php83-pgsql \
-    php83-opcache \
-    php83-calendar \
-    php83-ctype \
-    php83-ffi \
-    php83-fileinfo \
-    php83-ftp \
-    php83-gettext \
-    php83-intl \
-    php83-phar \
-    php83-posix \
-    php83-session \
-    php83-shmop \
-    php83-sockets \
-    php83-sysvmsg \
-    php83-sysvsem \
-    php83-sysvshm \
-    php83-tokenizer \
-    php83-pecl-amqp \
+    # PHP 8.4 extensions (precompiled, fast install)
+    php84-common \
+    php84-mysqli \
+    php84-pdo_mysql \
+    php84-mbstring \
+    php84-curl \
+    php84-xml \
+    php84-bcmath \
+    php84-exif \
+    php84-pdo_pgsql \
+    php84-pgsql \
+    php84-opcache \
+    php84-calendar \
+    php84-ctype \
+    php84-ffi \
+    php84-fileinfo \
+    php84-ftp \
+    php84-gettext \
+    php84-intl \
+    php84-phar \
+    php84-posix \
+    php84-session \
+    php84-shmop \
+    php84-sockets \
+    php84-sysvmsg \
+    php84-sysvsem \
+    php84-sysvshm \
+    php84-tokenizer \
+    php84-pcntl \
+    php84-redis \
     # Runtime libraries
     oniguruma \
     libxml2 \
@@ -52,24 +51,34 @@ RUN apk add --no-cache \
     libffi \
     rabbitmq-c \
     openssl \
-    linux-headers # Required for pecl
+    libzip
 
-# Install PHP extensions
-RUN apk add --no-cache \
+# Install GD, ZIP, MySQL and PECL extensions
+RUN apk add --no-cache --virtual .build-deps \
+    $PHPIZE_DEPS \
+    rabbitmq-c-dev \
+    linux-headers \
+    freetype-dev \
     libpng-dev \
     libjpeg-turbo-dev \
-    freetype-dev \
     libzip-dev && \
+    # Configure and install extensions
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install -j$(nproc) gd zip pdo pdo_mysql
-
-# Install Xdebug with necessary dependencies
-RUN apk add --no-cache $PHPIZE_DEPS rabbitmq-c-dev && \
-    pecl install xdebug && \
-    docker-php-ext-enable xdebug && \
-    pecl install amqp && \
-    docker-php-ext-enable amqp && \
-    apk del $PHPIZE_DEPS
+    docker-php-ext-install -j$(nproc) \
+        gd \
+        zip \
+        pdo \
+        pdo_mysql \
+        mysqli && \
+    # Install PECL extensions
+    pecl install \
+        xdebug \
+        amqp && \
+    docker-php-ext-enable \
+        xdebug \
+        amqp && \
+    apk del .build-deps && \
+    rm -rf /tmp/pear
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
