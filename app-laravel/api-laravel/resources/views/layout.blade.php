@@ -202,7 +202,7 @@
             <div class="text-center text-gray-400">
                 &copy; 2019-@php echo date('Y'); @endphp <a href="#" class="hover:text-white">Web3 blog, </a> Designed
                 with
-                <i class="fas fa-heart text-red-500"></i> and <a href="#" class="hover:text-white">Laravel 11</a>
+                <i class="fas fa-heart text-red-500"></i> and <a href="#" class="hover:text-white">Laravel 12</a>
             </div>
         </div>
     </div>

@@ -197,14 +197,14 @@ class Post extends Model
 
     public function getCategoryTitle(): string
     {
-        return $this->category->title ?? 'Нет категории';
+        return $this->category->title ?? 'No category';
     }
 
     public function getTagsTitles(): string
     {
         return (!$this->tags->isEmpty())
             ? implode(', ', $this->tags->pluck('title')->all())
-            : 'Нет тегов';
+            : 'No tags';
     }
 
     public function getCategoryID()
@@ -266,7 +266,7 @@ class Post extends Model
     public function getDescription(): string
     {
         return empty($this->description)
-            ? 'Справочник по тематике программирования на языках PHP, JS'
+            ? 'Programming reference for Golang, PHP and JS topics'
             : strip_tags((string)$this->description);
     }
 
@@ -277,7 +277,7 @@ class Post extends Model
         }
 
         if (empty($this->title)) {
-            return 'Лучшие практики PHP, JS, SQL, блог программиста.';
+            return 'Best practices Golang, PHP, JS and SQL blog.';
         }
 
         return $this->title;
