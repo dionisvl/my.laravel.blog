@@ -148,7 +148,7 @@ class PostModelTest extends TestCase
         $post = Post::factory()->create(['description' => '']);
 
         $this->assertEquals(
-            'Programming reference for PHP, JS topics',
+            'Programming reference for Golang, PHP and JS topics',
             $post->getDescription()
         );
     }
