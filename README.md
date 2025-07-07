@@ -8,7 +8,7 @@
 [![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
 [![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge)](https://github.com)
+[![CI](https://img.shields.io/github/actions/workflow/status/dionisvl/my.laravel.blog/ci.yml?style=for-the-badge&logo=github&logoColor=white&label=CI)](https://github.com/dionisvl/my.laravel.blog/actions)
 
 </div>
 
