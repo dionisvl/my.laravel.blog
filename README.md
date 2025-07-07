@@ -1,6 +1,18 @@
-<p><img alt="laravel" src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+</div>
 
-## Laravel Blog Template
+<div align="center">
+
+[![Laravel](https://img.shields.io/badge/Laravel-%5E12.0-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+[![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge)](https://github.com)
+
+</div>
+
+## 🚀 Laravel Blog Template
 
 - Laravel blog with AdminLTE interface
 - TinyMCE editor for rich text editing
