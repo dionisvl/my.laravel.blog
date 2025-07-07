@@ -28,6 +28,7 @@ app-laravel/api-laravel/public/robots.txt
 app-laravel/api-laravel/public/packages/chat/
 app-laravel/api-laravel/public/mix-manifest.json
 app-laravel/api-laravel/public/yandex_*
+app-laravel/api-laravel/.phpunit.cache/*
 
 data/db/mysql/db_data
 data/db/pg/db_data

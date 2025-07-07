@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class PostDateTest extends TestCase
@@ -17,7 +18,7 @@ class PostDateTest extends TestCase
     private Category $category;
     private Tag $tag;
 
-    /** @test */
+    #[Test]
     public function post_can_save_date_in_y_m_d_format()
     {
         $postData = [
@@ -46,7 +47,7 @@ class PostDateTest extends TestCase
         $this->assertEquals('2025-01-15', $post->date);
     }
 
-    /** @test */
+    #[Test]
     public function post_can_update_date_in_y_m_d_format()
     {
         $post = Post::factory()->create([
@@ -83,7 +84,7 @@ class PostDateTest extends TestCase
         $this->assertEquals('2025-02-20', $post->date);
     }
 
-    /** @test */
+    #[Test]
     public function post_date_mutator_handles_empty_date()
     {
         $post = new Post();
@@ -92,7 +93,7 @@ class PostDateTest extends TestCase
         $this->assertNull($post->getAttributes()['date']);
     }
 
-    /** @test */
+    #[Test]
     public function post_date_mutator_handles_null_date()
     {
         $post = new Post();
@@ -101,7 +102,7 @@ class PostDateTest extends TestCase
         $this->assertNull($post->getAttributes()['date']);
     }
 
-    /** @test */
+    #[Test]
     public function post_date_mutator_converts_valid_date()
     {
         $post = new Post();
@@ -110,7 +111,7 @@ class PostDateTest extends TestCase
         $this->assertEquals('2025-01-15', $post->getAttributes()['date']);
     }
 
-    /** @test */
+    #[Test]
     public function post_date_accessor_returns_saved_date()
     {
         $post = Post::factory()->create([
@@ -122,7 +123,7 @@ class PostDateTest extends TestCase
         $this->assertEquals('2025-01-15', $post->date);
     }
 
-    /** @test */
+    #[Test]
     public function post_date_accessor_returns_null_for_empty_date()
     {
         $post = Post::factory()->create([
@@ -134,7 +135,7 @@ class PostDateTest extends TestCase
         $this->assertNull($post->date);
     }
 
-    /** @test */
+    #[Test]
     public function debug_post_creation_with_specific_date()
     {
         $testDate = '2025-07-06';

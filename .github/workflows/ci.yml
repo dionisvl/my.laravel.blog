@@ -22,14 +22,6 @@ jobs:
       - name: Copy environment file
         run: cp app-laravel/api-laravel/.env.example app-laravel/api-laravel/.env
 
-      - name: Install Composer dependencies
-        working-directory: app-laravel/api-laravel
-        run: composer install --prefer-dist --no-progress --no-interaction
-
-      - name: Generate application key
-        working-directory: app-laravel/api-laravel
-        run: php artisan key:generate
-
       - name: Create storage directories
         working-directory: app-laravel/api-laravel
         run: |
@@ -38,6 +30,14 @@ jobs:
           mkdir -p storage/framework/sessions
           mkdir -p storage/framework/views
           chmod -R 775 storage
+
+      - name: Install Composer dependencies
+        working-directory: app-laravel/api-laravel
+        run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: Generate application key
+        working-directory: app-laravel/api-laravel
+        run: php artisan key:generate
 
       - name: Run tests
         working-directory: app-laravel/api-laravel

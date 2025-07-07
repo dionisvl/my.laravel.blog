@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class AdminPostsTest extends TestCase
@@ -20,7 +21,7 @@ class AdminPostsTest extends TestCase
     private Category $category;
     private Tag $tag;
 
-    /** @test */
+    #[Test]
     public function admin_can_create_post()
     {
         $postData = [
@@ -53,7 +54,7 @@ class AdminPostsTest extends TestCase
         $this->assertTrue($post->tags->contains($this->tag));
     }
 
-    /** @test */
+    #[Test]
     public function admin_can_create_post_with_image()
     {
         $image = UploadedFile::fake()->image('test.jpg');
@@ -84,7 +85,7 @@ class AdminPostsTest extends TestCase
         $this->assertNotNull($post->image);
     }
 
-    /** @test */
+    #[Test]
     public function guest_cannot_create_post()
     {
         $postData = [
@@ -100,7 +101,7 @@ class AdminPostsTest extends TestCase
         $response->assertStatus(404); // Route не найден без middleware
     }
 
-    /** @test */
+    #[Test]
     public function non_admin_cannot_create_post()
     {
         $user = User::factory()->create(['is_admin' => false]);
@@ -119,7 +120,7 @@ class AdminPostsTest extends TestCase
         $response->assertStatus(404); // Route не найден без admin middleware
     }
 
-    /** @test */
+    #[Test]
     public function create_post_validates_required_fields()
     {
         $response = $this->actingAs($this->adminUser)
@@ -129,7 +130,7 @@ class AdminPostsTest extends TestCase
         $response->assertSessionHasErrors(['title', 'content', 'date']);
     }
 
-    /** @test */
+    #[Test]
     public function create_post_validates_image_type()
     {
         $file = UploadedFile::fake()->create('document.pdf', 1000);
