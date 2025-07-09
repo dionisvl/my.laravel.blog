@@ -4,21 +4,21 @@
 
     <div class="w-full md:w-3/4 pr-0 md:pr-6 space-y-3">
         <div class="p-4 rounded-lg mb-6">
-            <h1 class="text-2xl font-semibold text-gray-800 mb-3">
+            <h1 class="text-2xl font-semibold text-white mb-3">
                 @isset($tag)
                     {{$tag->title}}
                 @elseif(isset($category))
                     {{$category->title}}
                 @endif
             </h1>
-            <blockquote class="text-gray-800">
+            <blockquote class="text-gray-300">
                 all posts by filter
             </blockquote>
         </div>
         @foreach($posts as $post)
-            <article class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
+            <article class="bg-gray-800 rounded-lg shadow-sm overflow-hidden border border-gray-700">
                 <a href="{{route('post.show', $post->slug)}}"
-                   class="flex flex-col transition-all duration-200 hover:bg-blue-50 hover:shadow-md">
+                   class="flex flex-col transition-all duration-200 hover:bg-gray-700 hover:shadow-md">
 
                     <div class="flex flex-row">
                         <div class="flex-shrink-0 w-32 flex items-center justify-center p-1">
@@ -31,7 +31,7 @@
                         </div>
 
                         <header class="flex-grow flex items-center p-1 px-3">
-                            <h3 class=" text-lg font-semibold text-gray-800 group-hover:text-blue-500 transition">
+                            <h3 class=" text-lg font-semibold text-white group-hover:text-blue-400 transition">
                                 {{$post->title}}
                             </h3>
                         </header>
@@ -39,16 +39,16 @@
 
                     @if(!empty($post->description))
                         <div class="px-4 pb-4">
-                            <div class="prose max-w-none text-gray-600 text-sm line-clamp-2 hover:text-blue-700 transition-colors">
+                            <div class="prose max-w-none text-gray-300 text-sm line-clamp-2 hover:text-blue-400 transition-colors">
                                 {!!$post->description!!}
                             </div>
                         </div>
                     @endif
                 </a>
 
-                <div class="flex justify-between items-center text-sm text-gray-600 pl-4 p-1 border-t border-gray-200">
+                <div class="flex justify-between items-center text-sm text-gray-400 pl-4 p-1 border-t border-gray-700">
                     <span>
-                        By <a href="#" class="hover:text-blue-500">{{$post->author['name']}}</a>
+                        By <a href="#" class="hover:text-blue-400">{{$post->author['name']}}</a>
                         on {{$post->getDate()}}
                     </span>
 
