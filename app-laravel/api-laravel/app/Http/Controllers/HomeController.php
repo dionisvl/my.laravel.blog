@@ -44,7 +44,7 @@ class HomeController extends Controller
     public function category($slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
-        $posts = $category->posts()->paginate(10);
+        $posts = $category->posts()->orderBy('created_at', 'desc')->paginate(10);
 
         return view('pages.list', [
             'category' => $category,

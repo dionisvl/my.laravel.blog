@@ -28,14 +28,12 @@ bash:
 sh:
 	docker compose exec php-fpm /bin/sh
 
-node-bash:
-	docker compose run --rm node /bin/sh
 npm-i:
-	docker compose run --rm node npm i
+	cd app-laravel/api-laravel
+	node npm i
 npx-mix:
-	docker compose run --rm node npx mix
-npm-run-prod:
-	docker compose run --rm node npm run prod
+	cd app-laravel/api-laravel
+	npx mix
 
 # HOST=185.255.132.6 PORT=2222 BUILD_NUMBER=1 KEY=provisioning/files/deploy_rsa make deploy
 deploy:
