@@ -3,10 +3,10 @@
 @section('content')
     <div class="w-full md:w-3/4 pr-0 md:pr-6 space-y-3">
         @foreach($posts as $post)
-            <article class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
+            <article class="bg-gray-800 rounded-lg shadow-sm overflow-hidden border border-gray-700">
                 <!-- Wrap the entire article in an anchor tag -->
                 <a href="{{route('post.show', $post->slug, 0)}}"
-                   class="flex flex-col transition-all duration-200 hover:bg-blue-50 hover:shadow-md">
+                   class="flex flex-col transition-all duration-200 hover:bg-gray-700 hover:shadow-md">
 
                     <!-- First row: Image and Title -->
                     <div class="flex flex-row">
@@ -22,7 +22,7 @@
 
                         <!-- Post header -->
                         <header class="flex-grow flex items-center p-1 px-3">
-                            <h3 class="text-lg font-semibold text-gray-800 group-hover:text-blue-500 transition">
+                            <h3 class="text-lg font-semibold text-gray-100 group-hover:text-blue-400 transition">
                                 {{$post->title}}
                             </h3>
                         </header>
@@ -31,7 +31,7 @@
                     <!-- Second row: Description -->
                     @if(!empty($post->description))
                         <div class="px-4 pb-4">
-                            <div class="prose max-w-none text-gray-600 text-sm line-clamp-2 hover:text-blue-700 transition-colors">
+                            <div class="prose max-w-none text-gray-300 text-sm line-clamp-2 hover:text-blue-300 transition-colors">
                                 {!!$post->description!!}
                             </div>
                         </div>
@@ -39,9 +39,9 @@
                 </a>
 
                 <!-- Post metadata -->
-                <div class="flex justify-between items-center text-sm text-gray-600 pl-4 p-1 border-t border-gray-200">
+                <div class="flex justify-between items-center text-sm text-gray-400 pl-4 p-1 border-t border-gray-700">
                     <span>
-                        By <a href="#" class="hover:text-blue-500">{{$post->author['name']}}</a>
+                        By <a href="#" class="hover:text-blue-400">{{$post->author['name']}}</a>
                         on {{$post->getDate()}}
                     </span>
 
@@ -56,7 +56,7 @@
                            title="Like">
                             <i class="@if ($post->is_liked) fas @else far @endif fa-heart text-red-500 mr-1 heart-icon transition-transform duration-500">
                             </i>
-                            <span class="like_button_count transition-colors duration-500 group-hover:text-blue-500">
+                            <span class="like_button_count transition-colors duration-500 group-hover:text-blue-400">
                                 {{$post->likes_count}}
                             </span>
                         </a>

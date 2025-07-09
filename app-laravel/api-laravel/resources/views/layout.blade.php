@@ -52,9 +52,9 @@
     @endisset
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-900 text-gray-100">
 <!-- Navigation -->
-<nav class="bg-white shadow-sm sticky top-0 z-50">
+<nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
     <div class="container mx-auto px-4 py-2 relative flex items-center justify-between">
         <!-- Логотип -->
         <a class="flex-shrink-0" href="/">
@@ -62,7 +62,7 @@
         </a>
 
         <!-- Кнопка-бургер (видна только на мобильном) -->
-        <button class="md:hidden px-2 py-1 border border-gray-300 rounded"
+        <button class="md:hidden px-2 py-1 border border-gray-600 rounded text-gray-300 hover:bg-gray-700"
                 type="button" onclick="toggleMenu()">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                  viewBox="0 0 24 24" stroke="currentColor">
@@ -74,26 +74,26 @@
         <div id="navbarMenu"
              class="hidden md:flex flex-col sm:flex-row items-start sm:items-center
                 space-y-2 sm:space-y-0 sm:space-x-4
-                absolute sm:static top-full left-0 right-0 bg-white sm:bg-transparent
+                absolute sm:static top-full left-0 right-0 bg-gray-800 sm:bg-transparent
                 p-4 sm:p-0 shadow sm:shadow-none text-center mx-3">
 
-            <a class="text-gray-700 hover:text-blue-500 font-medium" href="/">Homepage</a>
-            <a class="text-gray-700 hover:text-blue-500 font-medium" href="/contacts/">Contacts</a>
+            <a class="text-gray-300 hover:text-blue-400 font-medium" href="/">Homepage</a>
+            <a class="text-gray-300 hover:text-blue-400 font-medium" href="/contacts/">Contacts</a>
 
             @if(Auth::check())
                 @if(Auth::user()->is_admin)
-                    <a class="text-gray-700 hover:text-blue-500 font-medium" href="/admin">Admin panel</a>
+                    <a class="text-gray-300 hover:text-blue-400 font-medium" href="/admin">Admin panel</a>
                 @endif
-                <a class="text-gray-700 hover:text-blue-500 font-medium" href="/profile">My profile</a>
-                <a class="text-gray-700 hover:text-blue-500 font-medium" href="/logout">Logout</a>
+                <a class="text-gray-300 hover:text-blue-400 font-medium" href="/profile">My profile</a>
+                <a class="text-gray-300 hover:text-blue-400 font-medium" href="/logout">Logout</a>
             @else
-                <a class="text-gray-700 hover:text-blue-500 font-medium" href="/register">Register</a>
-                <a class="text-gray-700 hover:text-blue-500 font-medium" href="/login">Login</a>
+                <a class="text-gray-300 hover:text-blue-400 font-medium" href="/register">Register</a>
+                <a class="text-gray-300 hover:text-blue-400 font-medium" href="/login">Login</a>
             @endif
 
             <form class="relative w-full md:w-auto" role="search" method="POST" action="/search">
                 {{ csrf_field() }}
-                <input class="pl-8 pr-4 py-1 border border-gray-300 rounded-full text-sm
+                <input class="pl-8 pr-4 py-1 border border-gray-600 bg-gray-700 text-gray-100 rounded-full text-sm
                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                        type="text" placeholder="Search..." name="q">
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -118,19 +118,19 @@
 <!-- Status Messages -->
 <div class="container mx-auto px-4 pt-4">
     @if(session('status'))
-        <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-4" role="alert">
+        <div class="bg-blue-900 border-l-4 border-blue-500 text-blue-100 p-4 mb-4" role="alert">
             {{session('status')}}
         </div>
     @endif
     @if(session('dangerStatus'))
-        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
+        <div class="bg-red-900 border-l-4 border-red-500 text-red-100 p-4 mb-4" role="alert">
             {{session('dangerStatus')}}
         </div>
     @endif
 </div>
 
 <!-- Main Content -->
-<div class="bg-gray-100 mt-6">
+<div class="bg-gray-900 mt-6">
     <div class="container mx-auto px-4 max-w-7xl">
         <div class="flex flex-wrap">
             @yield('content')
@@ -139,7 +139,7 @@
 </div>
 
 <!-- Footer -->
-<footer class="bg-gray-800 text-white pt-12 mt-12">
+<footer class="bg-gray-800 text-white pt-12 mt-12 border-t border-gray-700">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- About Section -->

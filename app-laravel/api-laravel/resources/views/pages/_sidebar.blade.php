@@ -2,13 +2,13 @@
     <div class="sticky top-4 space-y-3">
 
         <!-- Categories Widget -->
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 p-4">
-            <h3 class="text-lg font-semibold text-center mb-4">Categories</h3>
+        <div class="bg-gray-800 rounded-lg shadow-sm overflow-hidden border border-gray-700 p-4">
+            <h3 class="text-lg font-semibold text-center mb-4 text-gray-100">Categories</h3>
             <ul class="space-y-2">
                 @foreach($categories as $category)
-                    <li class="border-b border-gray-200 pb-2 last:border-0 last:pb-0">
+                    <li class="border-b border-gray-700 pb-2 last:border-0 last:pb-0">
                         <a href="{{route('blog.category.show', $category->slug, 0)}}"
-                           class="text-gray-700 hover:text-blue-500 transition flex justify-between">
+                           class="text-gray-300 hover:text-blue-400 transition flex justify-between">
                             <span class="text-sm">{{$category->title}}</span>
                             <span class="text-gray-500 text-sm">({{$category->posts_count}})</span>
                         </a>
@@ -18,14 +18,14 @@
         </div>
 
         <!-- Realtime Chat Widget -->
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 p-4">
-            <h3 class="text-lg font-semibold text-center mb-4">Realtime chat</h3>
+        <div class="bg-gray-800 rounded-lg shadow-sm overflow-hidden border border-gray-700 p-4">
+            <h3 class="text-lg font-semibold text-center mb-4 text-gray-100">Realtime chat</h3>
             <x-package-chat-box/>
         </div>
 
         <!-- Newsletter Widget -->
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 p-4">
-            <h3 class="text-lg font-semibold text-center mb-4">Get Newsletter</h3>
+        <div class="bg-gray-800 rounded-lg shadow-sm overflow-hidden border border-gray-700 p-4">
+            <h3 class="text-lg font-semibold text-center mb-4 text-gray-100">Get Newsletter</h3>
 
             <form id="subscribe_form" action="{{route('subscribe.create')}}" method="post">
                 {{csrf_field()}}
@@ -36,12 +36,12 @@
                 <input type="email" placeholder="Your email address" name="email"
                        onkeyup="count_keyup()"
                        onclick="count_keyup()"
-                       class="w-full px-4 py-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                       class="w-full px-4 py-2 mb-3 border border-gray-600 bg-gray-700 text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
 
                 <label class="flex items-center mb-4">
                     <input class="mr-2 h-4 w-4" type="checkbox" required checked>
-                    <span class="text-sm text-gray-600">
-                        I agree to the <a href='/privacy' class="text-blue-500 hover:underline">processing</a> of personal data.
+                    <span class="text-sm text-gray-300">
+                        I agree to the <a href='/privacy' class="text-blue-400 hover:underline">processing</a> of personal data.
                     </span>
                 </label>
 
@@ -65,8 +65,8 @@
         </div>
 
         <!-- Featured Posts Widget -->
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 p-4">
-            <h3 class="text-lg font-semibold text-center mb-4">Featured Posts</h3>
+        <div class="bg-gray-800 rounded-lg shadow-sm overflow-hidden border border-gray-700 p-4">
+            <h3 class="text-lg font-semibold text-center mb-4 text-gray-100">Featured Posts</h3>
 
             <div class="space-y-4">
                 @foreach($featuredPosts->take(4) as $post)
@@ -80,11 +80,11 @@
                         </div>
                         <div>
                             <a href="{{route('post.show', $post->slug, 0)}}"
-                               class="font-medium text-gray-800 hover:text-blue-500 transition text-sm block mb-1">
+                               class="font-medium text-gray-200 hover:text-blue-400 transition text-sm block mb-1">
                                 {{$post->title}}
                             </a>
-                            <span class="text-xs text-gray-500">{{$post->getDate()}}</span>
-                            <div class="text-xs text-gray-500">
+                            <span class="text-xs text-gray-400">{{$post->getDate()}}</span>
+                            <div class="text-xs text-gray-400">
                                 {!! $post->description !!}
                             </div>
                         </div>
@@ -95,8 +95,8 @@
 
 
         <!-- Recent Posts Widget -->
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 p-4">
-            <h3 class="text-lg font-semibold text-center mb-4">Recent Posts</h3>
+        <div class="bg-gray-800 rounded-lg shadow-sm overflow-hidden border border-gray-700 p-4">
+            <h3 class="text-lg font-semibold text-center mb-4 text-gray-100">Recent Posts</h3>
             <div class="space-y-4">
                 @foreach($recentPosts as $post)
                     <div class="flex space-x-3">
@@ -109,8 +109,8 @@
                         </div>
                         <div>
                             <a href="{{route('post.show', $post->slug, 0)}}"
-                               class="font-medium text-gray-800 hover:text-blue-500 transition text-sm block mb-1">{{$post->title}}</a>
-                            <span class="text-xs text-gray-500">{{$post->getDate()}}</span>
+                               class="font-medium text-gray-200 hover:text-blue-400 transition text-sm block mb-1">{{$post->title}}</a>
+                            <span class="text-xs text-gray-400">{{$post->getDate()}}</span>
                         </div>
                     </div>
                 @endforeach
