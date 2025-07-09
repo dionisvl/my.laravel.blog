@@ -4,7 +4,7 @@
     <div class="w-full md:w-3/4 pr-0 md:pr-6">
         <article class="bg-gray-800 rounded-lg shadow-sm overflow-hidden border border-gray-700">
             @if(!empty($post->getImage()))
-                <div class="w-full h-64 md:h-96 flex items-center justify-center bg-gray-200">
+                <div class="w-full h-64 md:h-96 flex items-center justify-center bg-gray-700">
                     <img src="{{$post->getImage()}}" alt="{{$post->title}}"
                          height="384"
                          class="w-full h-full object-contain">
