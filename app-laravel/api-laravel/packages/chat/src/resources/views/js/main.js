@@ -22,10 +22,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
   function scrollBottom() {
-    const last = chat.lastElementChild;
-    if (last) {
-      last.scrollIntoView({behavior: 'smooth', block: 'end'});
-    }
+      chat.scrollTop = chat.scrollHeight;
   }
 
 // This function first check color from local storage and if this color is invalid then generate new

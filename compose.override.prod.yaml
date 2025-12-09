@@ -23,7 +23,7 @@ services:
       - app-network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.dashboard.rule=Host(`traefik.${DOMAIN_BASE}`)"
+      - "traefik.http.routers.dashboard.rule=Host(`traefik.phpqa.ru`) || Host(`traefik.web3main.pro`)"
       - "traefik.http.routers.dashboard.service=api@internal"
       - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.routers.dashboard.middlewares=auth"
@@ -40,7 +40,7 @@ services:
       - ./.docker/go-chat/proxy.conf:/etc/nginx/conf.d/default.conf
     labels:
       - "traefik.enable=true"
-      - "traefik.tcp.routers.ws-phpqa.rule=HostSNI(`ws.phpqa.ru`)"
+      - "traefik.tcp.routers.ws-phpqa.rule=HostSNI(`ws.phpqa.ru`) || HostSNI(`ws.web3main.pro`)"
       - "traefik.tcp.routers.ws-phpqa.entrypoints=websecure"
       - "traefik.tcp.routers.ws-phpqa.tls=true"
       - "traefik.tcp.routers.ws-phpqa.tls.certresolver=myresolver"
@@ -51,11 +51,11 @@ services:
     labels:
       - "traefik.enable=true"
       # HTTP
-      - "traefik.http.routers.phpqa-http.rule=Host(`phpqa.ru`)"
+      - "traefik.http.routers.phpqa-http.rule=Host(`phpqa.ru`) || Host(`web3main.pro`)"
       - "traefik.http.routers.phpqa-http.entrypoints=web"
       - "traefik.http.routers.phpqa-http.service=phpqa"
       # HTTPS
-      - "traefik.http.routers.phpqa.rule=Host(`phpqa.ru`) || Host(`www.phpqa.ru`)"
+      - "traefik.http.routers.phpqa.rule=Host(`phpqa.ru`) || Host(`www.phpqa.ru`) || Host(`web3main.pro`) || Host(`www.web3main.pro`)"
       - "traefik.http.routers.phpqa.entrypoints=websecure"
       - "traefik.http.routers.phpqa.tls.certresolver=myresolver"
 
@@ -76,12 +76,12 @@ services:
     labels:
       - "traefik.enable=true"
       # HTTP to HTTPS redirect
-      - "traefik.http.routers.pets-http.rule=Host(`pets.phpqa.ru`)"
+      - "traefik.http.routers.pets-http.rule=Host(`pets.phpqa.ru`) || Host(`pets.web3main.pro`)"
       - "traefik.http.routers.pets-http.entrypoints=web"
       #      - "traefik.http.routers.pets-http.middlewares=pets-https-redirect"
       #      - "traefik.http.middlewares.pets-https-redirect.redirectscheme.scheme=https"
       # HTTPS configuration
-      - "traefik.http.routers.pets-secure.rule=Host(`pets.phpqa.ru`)"
+      - "traefik.http.routers.pets-secure.rule=Host(`pets.phpqa.ru`) || Host(`pets.web3main.pro`)"
       - "traefik.http.routers.pets-secure.entrypoints=websecure"
       - "traefik.http.routers.pets-secure.tls=true"
       - "traefik.http.routers.pets-secure.tls.certresolver=myresolver"
@@ -98,12 +98,12 @@ services:
     labels:
       - "traefik.enable=true"
       # HTTP to HTTPS redirect
-      - "traefik.http.routers.sveltewar-http.rule=Host(`sveltewar.phpqa.ru`)"
+      - "traefik.http.routers.sveltewar-http.rule=Host(`sveltewar.phpqa.ru`) || Host(`sveltewar.web3main.pro`)"
       - "traefik.http.routers.sveltewar-http.entrypoints=web"
       #      - "traefik.http.routers.sveltewar-http.middlewares=sveltewar-https-redirect"
       #      - "traefik.http.middlewares.sveltewar-https-redirect.redirectscheme.scheme=https"
       # HTTPS configuration
-      - "traefik.http.routers.sveltewar-secure.rule=Host(`sveltewar.phpqa.ru`)"
+      - "traefik.http.routers.sveltewar-secure.rule=Host(`sveltewar.phpqa.ru`) || Host(`sveltewar.web3main.pro`)"
       - "traefik.http.routers.sveltewar-secure.entrypoints=websecure"
       - "traefik.http.routers.sveltewar-secure.tls=true"
       - "traefik.http.routers.sveltewar-secure.tls.certresolver=myresolver"
