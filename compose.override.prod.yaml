@@ -50,20 +50,31 @@ services:
   php-fpm:
     labels:
       - "traefik.enable=true"
+
+      # Middleware: redirect from phpqa.ru to web3main.pro (301 permanent)
+      - "traefik.http.middlewares.redirect-old-domain.redirectregex.regex=^https?://phpqa\\.ru/(.*)"
+      - "traefik.http.middlewares.redirect-old-domain.redirectregex.replacement=https://web3main.pro/$${1}"
+      - "traefik.http.middlewares.redirect-old-domain.redirectregex.permanent=true"
+      - "traefik.http.middlewares.redirect-old-domain-www.redirectregex.regex=^https?://www\\.phpqa\\.ru/(.*)"
+      - "traefik.http.middlewares.redirect-old-domain-www.redirectregex.replacement=https://www.web3main.pro/$${1}"
+      - "traefik.http.middlewares.redirect-old-domain-www.redirectregex.permanent=true"
+
       # HTTP
-      - "traefik.http.routers.phpqa-http.rule=Host(`phpqa.ru`) || Host(`web3main.pro`)"
+      - "traefik.http.routers.phpqa-http.rule=Host(`phpqa.ru`) || Host(`www.phpqa.ru`) || Host(`web3main.pro`) || Host(`www.web3main.pro`)"
       - "traefik.http.routers.phpqa-http.entrypoints=web"
       - "traefik.http.routers.phpqa-http.service=phpqa"
+      - "traefik.http.routers.phpqa-http.middlewares=redirect-old-domain,redirect-old-domain-www"
+
       # HTTPS
       - "traefik.http.routers.phpqa.rule=Host(`phpqa.ru`) || Host(`www.phpqa.ru`) || Host(`web3main.pro`) || Host(`www.web3main.pro`)"
       - "traefik.http.routers.phpqa.entrypoints=websecure"
       - "traefik.http.routers.phpqa.tls.certresolver=myresolver"
+      - "traefik.http.routers.phpqa.middlewares=redirect-old-domain,redirect-old-domain-www,php-compress"
 
       - "traefik.http.routers.phpqa.service=phpqa"
       - "traefik.http.services.phpqa.loadbalancer.server.port=80"
 
       # Compress
-      - "traefik.http.routers.phpqa.middlewares=php-compress"
       - "traefik.http.middlewares.php-compress.compress=true"
       - "traefik.http.middlewares.php-compress.compress.includedcontenttypes=text/html,text/plain,text/css,application/javascript,application/json"
 
